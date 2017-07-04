@@ -32,8 +32,6 @@ recorder:
 
 sun:
 
-# config:
-
 automation: !include_dir_merge_list automation
 group: !include ./configuration/group.yaml
 notify: !include ./configuration/notify.yaml
@@ -46,9 +44,8 @@ tts:
 
 zwave:
   usb_path: /dev/ttyACM0
-#  config_path: /srv/homeassistant/src/python-openzwave/openzwave/config
 
-camera:
+#camera:
 #  - platform: mjpeg
 #    mjpeg_url: http://192.168.2.9:8080/video
 #    name: Camera 1
@@ -66,14 +63,6 @@ switch:
         pulselength: 190
         code_on: 349635
         code_off: 349644
-#  platform: command_line
-#  switches:
-#    camera_flash:
-#      command_on: 'curl -s "http://192.168.2.9:8080/enabletorch" > /dev/null'
-#      command_off: 'curl -s "http://192.168.2.9:8080/disabletorch" > /dev/null'
-#      command_state: 'curl "http://192.168.2.9:8080/status.json"'
-#      value_template: '{{ value_json.curvals.torch == "on" }}'
-#      friendly_name: Camera Flash
 
 binary_sensor:
   - platform: rpi_gpio
