@@ -1,0 +1,12 @@
+- alias: Reset Lights
+  trigger:
+    platform: time
+    at: '13:00:00'
+  action:
+    - service: home_assistant.turn_on
+      entity_id: group.kitchen_lights
+      data:
+        brightness: 255
+    - delay: 0:01
+    - service: home_assistant.turn_off
+      entity_id: group.kitchen_lights

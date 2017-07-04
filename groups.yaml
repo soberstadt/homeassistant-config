@@ -1,0 +1,8 @@
+weather:
+  entities:
+    - sun.sun
+    - sensor.dark_sky_icon
+    - sensor.dark_sky_summary
+  name: Weather
+  view: true
+

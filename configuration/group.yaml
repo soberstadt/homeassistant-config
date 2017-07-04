@@ -1,0 +1,24 @@
+family:
+weather:
+  - sun.sun
+  - sensor.dark_sky_icon
+  - sensor.dark_sky_summary
+speedtest:
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+  - sensor.speedtest_ping
+Living Room:
+  - binary_sensor.pir_living_room
+  - switch.living_room_lights
+kitchen_home:
+  - media_player.google_home
+kitchen_lights:
+  - light.over_sink
+  - light.oven
+bedroom_lights:
+  - light.ge_12724_3way_dimmer_switch_level
+all_lights:
+  - switch.living_room_lights
+  - switch.dining_room_light
+  - group.kitchen_lights
+  - group.bedroom_lights

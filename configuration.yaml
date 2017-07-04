@@ -1,0 +1,98 @@
+homeassistant:
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 22
+  unit_system: imperial
+  time_zone: America/New_York
+  customize: !include_dir_merge_named customize
+
+frontend:
+
+http:
+  api_password: !secret http_password
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
+
+# Checks for available updates
+updater:
+  include_used_components: true
+# Discover some devices automatically
+discovery:
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+# Enables support for tracking state changes over time.
+history:
+# View all events in a logbook
+logbook:
+recorder:
+  # Delete events and states older than 2 weeks
+  purge_days: 14
+
+sun:
+
+# config:
+
+automation: !include_dir_merge_list automation
+group: !include ./configuration/group.yaml
+notify: !include ./configuration/notify.yaml
+sensor: !include ./configuration/sensor.yaml
+script: !include_dir_merge_named script
+
+# Text to speech
+tts:
+  platform: google
+
+zwave:
+  usb_path: /dev/ttyACM0
+#  config_path: /srv/homeassistant/src/python-openzwave/openzwave/config
+
+camera:
+#  - platform: mjpeg
+#    mjpeg_url: http://192.168.2.9:8080/video
+#    name: Camera 1
+#    username: spencer
+
+switch:
+  - platform: rpi_rf
+    gpio: !secret rfr_pin
+    switches:
+      living_room_lights:
+        pulselength: 190
+        code_on: 349955
+        code_off: 349964
+      dining_room_light:
+        pulselength: 190
+        code_on: 349635
+        code_off: 349644
+#  platform: command_line
+#  switches:
+#    camera_flash:
+#      command_on: 'curl -s "http://192.168.2.9:8080/enabletorch" > /dev/null'
+#      command_off: 'curl -s "http://192.168.2.9:8080/disabletorch" > /dev/null'
+#      command_state: 'curl "http://192.168.2.9:8080/status.json"'
+#      value_template: '{{ value_json.curvals.torch == "on" }}'
+#      friendly_name: Camera Flash
+
+binary_sensor:
+  - platform: rpi_gpio
+    ports:
+      17: PIR Living Room
+#- platform: rest
+#  name: Camera Motion
+#  sensor_class: motion
+#  resource: http://192.168.2.9:8080/sensors.json?sense=motion_active
+#  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 192.168.2.1-40
+    exclude:
+      - 192.168.2.2
+    scan_options: " -sn "
+
+hdmi_cec:
+#  platform: media_player
+  devices:
+    TV: 0.0.0.0

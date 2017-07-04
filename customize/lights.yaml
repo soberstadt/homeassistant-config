@@ -1,0 +1,13 @@
+light.over_sink:
+  friendly_name: 'Lamp Over Sink'
+light.oven:
+  friendly_name: 'Oven Range'
+
+light.ge_12724_3way_dimmer_switch_level:
+  friendly_name: 'Bedroom Lights'
+
+switch.living_room_lights:
+  friendly_name: 'Living Room Lights'
+switch.dining_room_light:
+  friendly_name: Dining Room Light
+
