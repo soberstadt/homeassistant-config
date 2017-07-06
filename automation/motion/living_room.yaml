@@ -1,21 +1,12 @@
-#- alias: Living Room Motion
-#  trigger: 
-#    platform: state
-#    entity_id: binary_sensor.pir_living_room
-#    to: 'on'
-#  action:
-#    - service: script.turn_on
-#      entity_id: script.living_room_motion
-
 - alias: Day - Living Room Motion
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_living_room
       to: 'on'
   condition:
-#    - condition: state
-#      entity_id: sun.sun
-#      state: 'above_horizon'
+    - condition: state
+      entity_id: sun.sun
+      state: 'above_horizon'
     - condition: state
       entity_id: switch.living_room_lights
       state: 'off'
