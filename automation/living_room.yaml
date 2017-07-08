@@ -1,0 +1,20 @@
+- alias: Night - Lights off after 20 min of no TV
+  trigger:
+    - platform: state
+      entity_id: media_player.tv
+      to: 'off'
+      for:
+        minutes: 20
+  condition:
+    - condition: time
+      after: '23:15:00'
+      before: '08:00:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.living_room_lights
+    - service: switch.turn_off
+      entity_id: switch.dining_room_light
+    - service: switch.turn_off
+      entity_id: switch.living_room_lights
+    - service: switch.turn_off
+      entity_id: switch.dining_room_light
