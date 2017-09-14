@@ -14,6 +14,21 @@
     - service: switch.turn_on
       entity_id: switch.living_room_lights
 
+- alias: Day - Lights off after 30 min of no motion
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_living_room
+      to: 'off'
+      for:
+        minutes: 30
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'above_horizon'
+  action:
+    - service_template: switch.turn_off
+      entity_id: switch.living_room_lights
+
 - alias: Lights on when motion
   trigger:
     - platform: state
@@ -32,13 +47,13 @@
       data:
         brightness: 28
 
-- alias: Light off after 10 min of no motion
+- alias: Night- Light off after 20 min of no motion
   trigger:
     - platform: state
       entity_id: binary_sensor.pir_living_room
       to: 'off'
       for:
-        minutes: 10
+        minutes: 20
   condition:
     - condition: time
       after: '23:15:00'
