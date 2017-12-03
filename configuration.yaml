@@ -9,10 +9,12 @@ homeassistant:
 
 frontend:
 
+config:
+
 http:
   api_password: !secret http_password
-  ssl_certificate: !secret ssl_certificate
-  ssl_key: !secret ssl_key
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
   base_url: !secret base_url
 
 # Checks for available updates
@@ -53,7 +55,7 @@ zwave:
 
 switch:
   - platform: rpi_rf
-    gpio: !secret rfr_pin
+    gpio: 18
     switches:
       living_room_lights:
         pulselength: 190
@@ -68,11 +70,6 @@ binary_sensor:
   - platform: rpi_gpio
     ports:
       17: PIR Living Room
-#- platform: rest
-#  name: Camera Motion
-#  sensor_class: motion
-#  resource: http://192.168.2.9:8080/sensors.json?sense=motion_active
-#  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
 
 device_tracker:
   - platform: nmap_tracker
@@ -82,6 +79,17 @@ device_tracker:
     scan_options: " -sn "
 
 hdmi_cec:
-#  platform: media_player
   devices:
     TV: 0.0.0.0
+
+light:
+  - platform: flux_led
+    automatic_add: True
+
+google_assistant:
+  project_id: soberstadt
+  client_id: !secret google_client_id
+  access_token: !secret google_access_token
+  exposed_domains:
+    - switch
+    - light
