@@ -26,8 +26,17 @@ all_lights:
 mood_lights:
   - light.6001948a98a2_1921680101
 
-automations:
-  name: Automations
+Info:
   view: yes
+  icon: mdi:settings
   entities:
-      - group.all_automations
+    - sun.sun
+    - group.weather
+    - group.all_automations
+    - group.all_scripts
+    # - group.family
+    # - group.home_modes
+    # - group.network
+    # - group.sensors
+    # - group.garage_doors
+    # - group.media_players
