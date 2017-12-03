@@ -46,6 +46,11 @@
       entity_id: group.kitchen_lights
       data:
         brightness: 28
+    - service: light.turn_on
+      entity_id: group.mood_lights
+      data:
+        rgb_color: [63,12,0]
+        brightness_pct: 25
 
 - alias: Night- Light off after 20 min of no motion
   trigger:
@@ -61,3 +66,5 @@
   action:
     - service_template: light.turn_off
       entity_id: group.kitchen_lights
+    - service_template: light.turn_off
+      entity_id: group.mood_lights
