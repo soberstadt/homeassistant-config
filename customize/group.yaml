@@ -12,3 +12,7 @@ group.all_lights:
   hidden: true
 group.mood_lights:
   hidden: true
+group.dining_room:
+  friendly_name: Dining Room
+group.my_automations:
+  friendly_name: Automations

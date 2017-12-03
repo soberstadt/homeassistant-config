@@ -5,6 +5,7 @@ device_tracker.lynsey_mac:
 
 switch.hdmi_0:
   google_assistant_name: TV
+  friendly_name: 'TV Power'
 switch.hdmi_4:
   hidden: true
   google_assistant: false

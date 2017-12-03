@@ -1,3 +1,15 @@
+default_view:
+  view: yes
+  entities:
+    - group.living_room
+    - group.dining_room
+    - group.kitchen_lights
+    - group.bedroom_lights
+    - media_player.living_room_tv
+    - media_player.roku
+    - media_player.kitchen_speaker
+    - media_player.bedroom_speaker
+
 family:
 weather:
   - sun.sun
@@ -7,16 +19,22 @@ speedtest:
   - sensor.speedtest_download
   - sensor.speedtest_upload
   - sensor.speedtest_ping
+
 Living Room:
   - binary_sensor.pir_living_room
   - switch.living_room_lights
+  - switch.hdmi_0
 kitchen_home:
-  - media_player.google_home
+  - media_player.kitchen_speaker
 kitchen_lights:
   - light.sink
   - light.oven
 bedroom_lights:
   - light.ge_12724_3way_dimmer_switch_level
+dining_room:
+  - switch.dining_room_light
+  - light.6001948a98a2_1921680101
+
 all_lights:
   - switch.living_room_lights
   - switch.dining_room_light
@@ -26,14 +44,24 @@ all_lights:
 mood_lights:
   - light.6001948a98a2_1921680101
 
+my_automations:
+  - automation.day__lights_off_after_30_min_of_no_motion
+  - automation.day__living_room_motion
+  - automation.lights_on_when_motion
+  - automation.login_failure
+  - automation.night__lights_off_after_20_min_of_no_tv
+  - automation.night_light_off_after_20_min_of_no_motion
+  - automation.reset_lights
+  - automation.sunset
+
 Info:
   view: yes
   icon: mdi:settings
   entities:
-    - sun.sun
     - group.weather
-    - group.all_automations
+    - group.my_automations
     - group.all_scripts
+    - group.speedtest
     # - group.family
     # - group.home_modes
     # - group.network
