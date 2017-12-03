@@ -18,3 +18,8 @@
         brightness: 255
     - service: switch.turn_on
       entity_id: switch.dining_room_light
+    - service: light.turn_on
+      entity_id: group.mood_lights
+      data:
+        rgb_color: [0,255,10]
+        brightness: 255
