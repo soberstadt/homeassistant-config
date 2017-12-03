@@ -26,6 +26,8 @@ all_lights:
 mood_lights:
   - light.6001948a98a2_1921680101
 
-all_automations:
+automations:
   name: Automations
   view: yes
+  entities:
+      - group.all_automations
