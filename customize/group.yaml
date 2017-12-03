@@ -10,3 +10,5 @@ group.speedtest:
   hidden: true
 group.all_lights:
   hidden: true
+group.mood_lights:
+  hidden: true

@@ -2,3 +2,9 @@ device_tracker.spencer_mac:
   hidden: true
 device_tracker.lynsey_mac:
   hidden: true
+
+switch.hdmi_0:
+  google_assistant_name: TV
+switch.hdmi_4:
+  hidden: true
+  google_assistant: false
