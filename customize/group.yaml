@@ -6,8 +6,7 @@ group.kitchen_lights:
   friendly_name: Kitchen Lights
 group.bedroom_lights:
   friendly_name: Bedroom Lights
-group.speedtest:
-  hidden: true
+
 group.all_lights:
   hidden: true
 group.mood_lights:
