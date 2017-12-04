@@ -22,9 +22,11 @@ speedtest:
   - sensor.speedtest_ping
 
 Living Room:
-  - binary_sensor.pir_living_room
-  - switch.living_room_lights
-  - switch.hdmi_0
+  control: hidden
+  entities:
+    - binary_sensor.pir_living_room
+    - switch.living_room_lights
+    - switch.hdmi_0
 kitchen_home:
   - media_player.kitchen_speaker
 kitchen_lights:
@@ -45,6 +47,10 @@ all_lights:
 mood_lights:
   - light.6001948a98a2_1921680101
 
+scenes:
+  - scene.good_night
+  - scene.romantic
+
 my_automations:
   - automation.day__lights_off_after_30_min_of_no_motion
   - automation.day__living_room_motion
@@ -63,9 +69,8 @@ Info:
     - group.my_automations
     - group.all_scripts
     - group.speedtest
+    - group.zwave
     # - group.family
-    # - group.home_modes
     # - group.network
     # - group.sensors
-    # - group.garage_doors
     # - group.media_players

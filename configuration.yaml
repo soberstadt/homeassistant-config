@@ -74,9 +74,7 @@ binary_sensor:
 
 device_tracker:
   - platform: nmap_tracker
-    hosts: 192.168.2.1-40
-    exclude:
-      - 192.168.2.2
+    hosts: 192.168.0.100-140
     scan_options: " -sn "
 
 hdmi_cec:
