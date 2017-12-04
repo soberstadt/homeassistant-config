@@ -1,0 +1,8 @@
+- name: Good Night
+  entities:
+    group.mood_lights:
+      state: off
+    group.all_lights:
+      state: off
+    switch.hdmi_0:
+      state: off

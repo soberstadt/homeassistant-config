@@ -1,0 +1,9 @@
+- name: Romantic
+  entities:
+    group.mood_lights:
+      state: on
+      color_name: red
+      brightness: 255
+    group.bedroom_lights:
+      state: on
+      brightness_pct: 75

@@ -37,6 +37,7 @@ sun:
 automation: !include_dir_merge_list automation
 group: !include ./configuration/group.yaml
 notify: !include ./configuration/notify.yaml
+scene: !include_dir_merge_list scene
 sensor: !include ./configuration/sensor.yaml
 script: !include_dir_merge_named script
 

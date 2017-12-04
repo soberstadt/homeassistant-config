@@ -5,6 +5,7 @@ default_view:
     - group.dining_room
     - group.kitchen_lights
     - group.bedroom_lights
+    - group.scenes
     - media_player.living_room_tv
     - media_player.roku
     - media_player.kitchen_speaker
