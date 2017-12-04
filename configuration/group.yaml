@@ -69,6 +69,7 @@ Info:
     - group.my_automations
     - group.all_scripts
     - group.speedtest
+    - group.all_devices
     - group.zwave
     # - group.family
     # - group.network
