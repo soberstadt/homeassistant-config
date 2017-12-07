@@ -7,10 +7,28 @@ default_view:
     - group.bedroom_lights
     - group.scenes
     - group.family
+
+Media:
+  view: yes
+  entities:
     - media_player.living_room_tv
     - media_player.roku
     - media_player.kitchen_speaker
     - media_player.bedroom_speaker
+
+Info:
+  view: yes
+  icon: mdi:settings
+  entities:
+    - group.weather
+    - group.my_automations
+    - group.all_scripts
+    - group.speedtest
+    - group.all_devices
+    - group.zwave
+    # - group.network
+    # - group.sensors
+    # - group.media_players
 
 family:
   - device_tracker.spencer_phone
@@ -63,18 +81,3 @@ my_automations:
   - automation.night_light_off_after_20_min_of_no_motion
   - automation.reset_lights
   - automation.sunset
-
-Info:
-  view: yes
-  icon: mdi:settings
-  entities:
-    - group.weather
-    - group.my_automations
-    - group.all_scripts
-    - group.speedtest
-    - group.all_devices
-    - group.zwave
-    # - group.family
-    # - group.network
-    # - group.sensors
-    # - group.media_players
