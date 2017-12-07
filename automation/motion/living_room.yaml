@@ -76,10 +76,10 @@
       to: 'on'
   condition:
     - condition: state
-    entity_id: group.family
-    state: 'not home'
+      entity_id: group.family
+      state: 'not home'
   action:
-    - service: notify.facebook
+    - service: notify.notify
       data:
         message: 'Motion at home'
         target:
