@@ -81,3 +81,4 @@ my_automations:
   - automation.night_light_off_after_20_min_of_no_motion
   - automation.reset_lights
   - automation.sunset
+  - automation.fam_away_motion_alert

@@ -68,3 +68,19 @@
       entity_id: group.kitchen_lights
     - service_template: light.turn_off
       entity_id: group.mood_lights
+
+- alias: Fam Away Motion Alert
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.pir_living_room
+      to: 'on'
+  condition:
+    - condition: state
+    entity_id: group.family
+    state: 'not home'
+  action:
+    - service: notify.facebook
+      data:
+        message: 'Motion at home'
+        target:
+          - !secret spencer_number

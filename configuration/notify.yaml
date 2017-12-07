@@ -1,3 +1,2 @@
-- name: spencer
-  platform: pushbullet
-  api_key: o.zPaUKGRrL0MzLRcfByXxvWeyl4Cmwcxa
+- platform: facebook
+  page_access_token: !secret facebook_app_token
