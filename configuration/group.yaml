@@ -6,12 +6,15 @@ default_view:
     - group.kitchen_lights
     - group.bedroom_lights
     - group.scenes
+    - group.family
     - media_player.living_room_tv
     - media_player.roku
     - media_player.kitchen_speaker
     - media_player.bedroom_speaker
 
 family:
+  - device_tracker.spencer_phone
+  - device_tracker.lynsey_phone
 weather:
   - sun.sun
   - sensor.dark_sky_icon
