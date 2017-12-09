@@ -24,7 +24,7 @@ Info:
     - group.my_automations
     - group.all_scripts
     - group.speedtest
-    - group.all_devices
+    - group.tracked_devices
     - group.zwave
     # - group.network
     # - group.sensors
@@ -82,3 +82,11 @@ my_automations:
   - automation.reset_lights
   - automation.sunset
   - automation.fam_away_motion_alert
+  - automation.camera_offline
+
+tracked_devices:
+  - device_tracker.spencer_phone
+  - device_tracker.spencer_mac
+  - device_tracker.lynsey_phone
+  - device_tracker.lynsey_mac
+  - device_tracker.kitchen_camera

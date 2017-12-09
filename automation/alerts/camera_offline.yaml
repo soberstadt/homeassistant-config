@@ -1,0 +1,11 @@
+- alias: Camera Offline
+  trigger:
+    - platform: state
+      entity_id: device_tracker.kitchen_camera
+      state: 'not_home'
+  action:
+    - service: notify.notify
+      data:
+        message: 'Camera Offline'
+        target:
+          - !secret spencer_number
