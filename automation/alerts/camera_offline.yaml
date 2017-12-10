@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: device_tracker.kitchen_camera
-      state: 'not_home'
+      to: 'not_home'
   action:
     - service: notify.notify
       data:
