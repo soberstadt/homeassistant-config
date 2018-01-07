@@ -11,7 +11,11 @@ light.ge_12724_3way_dimmer_switch_level:
 light.6001948a98a2_1921680101:
   friendly_name: 'Mood Light'
 
-switch.living_room_lights:
-  friendly_name: 'Living Room Lights'
-switch.dining_room_light:
-  friendly_name: Dining Room Light
+light.living_room_couch_1:
+  google_assistant: false
+light.living_room_couch_2:
+  google_assistant: false
+light.behind_tv_lamp:
+  google_assistant: false
+light.dining_room_lamp:
+  google_assistant: false

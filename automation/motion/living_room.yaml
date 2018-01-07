@@ -8,11 +8,11 @@
       entity_id: sun.sun
       state: 'above_horizon'
     - condition: state
-      entity_id: switch.living_room_lights
+      entity_id: group.living_room_lights
       state: 'off'
   action:
-    - service: switch.turn_on
-      entity_id: switch.living_room_lights
+    - service: light.turn_on
+      entity_id: group.living_room_lights
 
 - alias: Day - Lights off after 30 min of no motion
   trigger:
@@ -26,8 +26,8 @@
       entity_id: sun.sun
       state: 'above_horizon'
   action:
-    - service_template: switch.turn_off
-      entity_id: switch.living_room_lights
+    - service_template: light.turn_off
+      entity_id: group.living_room_lights
 
 - alias: Lights on when motion
   trigger:

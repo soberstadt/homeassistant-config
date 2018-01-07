@@ -10,11 +10,5 @@
       after: '23:15:00'
       before: '08:00:00'
   action:
-    - service: switch.turn_off
-      entity_id: switch.living_room_lights
-    - service: switch.turn_off
-      entity_id: switch.dining_room_light
-    - service: switch.turn_off
-      entity_id: switch.living_room_lights
-    - service: switch.turn_off
-      entity_id: switch.dining_room_light
+    - service: light.turn_off
+      entity_id: group.living_room_lights

@@ -16,8 +16,8 @@
       entity_id: group.kitchen_lights
       data:
         brightness: 255
-    - service: switch.turn_on
-      entity_id: switch.dining_room_light
+    - service: light.turn_on
+      entity_id: light.dining_room_lamp
     - service: light.turn_on
       entity_id: group.mood_lights
       data:

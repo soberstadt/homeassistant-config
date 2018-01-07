@@ -42,11 +42,15 @@ speedtest:
   - sensor.speedtest_upload
   - sensor.speedtest_ping
 
+Living Room Lights:
+  entities:
+    - light.living_room_couch_1
+    - light.living_room_couch_2
+    - light.behind_tv_lamp
 Living Room:
   control: hidden
   entities:
     - binary_sensor.pir_living_room
-    - switch.living_room_lights
     - switch.hdmi_0
 kitchen_home:
   - media_player.kitchen_speaker
@@ -56,12 +60,14 @@ kitchen_lights:
 bedroom_lights:
   - light.ge_12724_3way_dimmer_switch_level
 dining_room:
-  - switch.dining_room_light
+  - light.dining_room_lamp
   - light.6001948a98a2_1921680101
 
 all_lights:
-  - switch.living_room_lights
-  - switch.dining_room_light
+  - light.living_room_couch_1
+  - light.living_room_couch_2
+  - light.behind_tv_lamp
+  - light.dining_room_lamp
   - group.kitchen_lights
   - group.bedroom_lights
   - group.mood_lights

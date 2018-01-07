@@ -57,11 +57,11 @@ switch:
   - platform: rpi_rf
     gpio: 18
     switches:
-      living_room_lights:
+      aux1:
         pulselength: 190
         code_on: 349955
         code_off: 349964
-      dining_room_light:
+      aux2:
         pulselength: 190
         code_on: 349635
         code_off: 349644
