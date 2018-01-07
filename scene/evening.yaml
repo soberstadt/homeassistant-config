@@ -1,0 +1,15 @@
+- name: Evening
+  entities:
+    group.mood_lights:
+      state: on
+      rgb_color: [0,255,10]
+      brightness: 255
+    group.bedroom_lights:
+      state: on
+      brightness_pct: 75
+    group.living_room_lights:
+      state: on
+      brightness: 255
+    light.dining_room_lamp:
+      state: on
+      brightness: 255

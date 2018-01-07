@@ -2,6 +2,7 @@ default_view:
   view: yes
   entities:
     - group.living_room
+    - group.living_room_lights
     - group.dining_room
     - group.kitchen_lights
     - group.bedroom_lights
@@ -75,6 +76,7 @@ mood_lights:
   - light.6001948a98a2_1921680101
 
 scenes:
+  - scene.evening
   - scene.good_night
   - scene.romantic
 

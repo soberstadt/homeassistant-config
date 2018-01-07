@@ -8,18 +8,6 @@
     - condition: time
       after: '10:00:00'
       before: '02:00:00'
-    - condition: state
-      entity_id: group.kitchen_lights
-      state: 'off'
   action:
-    - service: light.turn_on
-      entity_id: group.kitchen_lights
-      data:
-        brightness: 255
-    - service: light.turn_on
-      entity_id: light.dining_room_lamp
-    - service: light.turn_on
-      entity_id: group.mood_lights
-      data:
-        rgb_color: [0,255,10]
-        brightness: 255
+    - service: scene.turn_on
+      entity_id: scene.evening
