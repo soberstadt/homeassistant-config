@@ -7,6 +7,9 @@
     group.bedroom_lights:
       state: on
       brightness_pct: 75
+    group.kitchen_lights:
+      state: on
+      brightness: 255
     group.living_room_lights:
       state: on
       brightness: 255
