@@ -48,11 +48,10 @@ tts:
 zwave:
   usb_path: /dev/ttyACM0
 
-#camera:
-#  - platform: mjpeg
-#    mjpeg_url: http://192.168.2.9:8080/video
-#    name: Camera 1
-#    username: spencer
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_user
+  password: !secret mqtt_password
 
 switch:
   - platform: rpi_rf
