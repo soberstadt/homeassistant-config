@@ -27,9 +27,9 @@ Info:
     - group.speedtest
     - group.tracked_devices
     - group.zwave
+    - group.extra_lights
     # - group.network
     # - group.sensors
-    # - group.media_players
 
 family:
   - device_tracker.spencer_phone
@@ -98,3 +98,7 @@ tracked_devices:
   - device_tracker.lynsey_phone
   - device_tracker.lynsey_mac
   - device_tracker.kitchen_camera
+
+extra_lights:
+  - switch.aux1
+  - switch.aux2
