@@ -104,3 +104,5 @@ input_text:
     name: dummy
 
 roku_remote:
+
+python_script:
