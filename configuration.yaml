@@ -8,6 +8,10 @@ homeassistant:
   customize: !include_dir_merge_named customize
 
 frontend:
+  extra_html_url:
+    - /local/custom_ui/state-card-tiles.html
+  extra_html_url_es5:
+    - /local/custom_ui/state-card-tiles.html
 
 config:
 
@@ -91,3 +95,12 @@ google_assistant:
   exposed_domains:
     - switch
     - light
+
+input_boolean:
+  roku_remote_connected:
+  switch2:
+input_text:
+  roku_remote:
+    name: dummy
+
+roku_remote:

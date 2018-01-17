@@ -1,0 +1,11 @@
+pause_play:
+  sequence:
+    service: media_player.media_play_pause
+    data:
+      entity_id: media_player.roku
+
+roku_button:
+  sequence:
+    service: roku_remote.press_button
+    data_template:
+      button: "{{ button }}"

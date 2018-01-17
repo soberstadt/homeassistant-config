@@ -1,0 +1,86 @@
+input_text.roku_remote:
+  custom_ui_state_card: state-card-tiles
+  friendly_name: 'Living Room Roku'
+  config:
+    columns: 3
+    column_width: 75px
+    row_height: 75px
+    entities:
+      - entity: script.roku_button
+        icon: mdi:power
+        column_span: 3
+        data: { button: power }
+      - entity: input_boolean.roku_remote_connected
+        icon: mdi:backburger
+      - entity: input_boolean.switch2
+        icon: mdi:home-outline
+        column: 3
+      - entity: script.roku_button
+        icon: mdi:arrow-up-thick
+        column: 2
+        row: 3
+        data: { button: up }
+      - entity: script.roku_button
+        icon: mdi:arrow-left-thick
+        column: 1
+        row: 4
+        data: { button: left}
+      - entity: script.roku_button
+        label: "OK"
+        column: 2
+        row: 4
+        data: { button: select }
+      - entity: script.roku_button
+        icon: mdi:arrow-right-thick
+        column: 3
+        row: 4
+        data: { button: right }
+      - entity: script.roku_button
+        icon: mdi:arrow-down-thick
+        column: 2
+        row: 5
+        data: { button: down }
+      - entity: script.roku_button
+        icon: mdi:rewind
+        column: 1
+        row: 7
+        data: { button: reverse }
+      - entity: script.roku_button
+        icon: mdi:replay
+        column: 1
+        row: 6
+        data: { button: replay }
+      - entity: script.roku_button
+        icon: mdi:information-outline
+        column: 3
+        row: 6
+        data: { button: info }
+      - entity: script.pause_play
+        icon: mdi:play-pause
+        column: 2
+        row: 7
+      - entity: script.roku_button
+        icon: mdi:fast-forward
+        column: 3
+        row: 7
+        data: { button: forward }
+      - entity: script.roku_button
+        icon: mdi:volume-plus
+        column: 4
+        column_span: 1
+        row: 1
+        row_span: 2
+        data: { button: volume_up }
+      - entity: script.roku_button
+        icon: mdi:volume-minus
+        column: 4
+        column_span: 1
+        row: 3
+        row_span: 2
+        data: { button: volume_down }
+      - entity: script.roku_button
+        icon: mdi:volume-mute
+        column: 4
+        column_span: 1
+        row: 5
+        data: { button: volume_mute }
