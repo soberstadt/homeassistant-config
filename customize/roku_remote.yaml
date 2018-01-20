@@ -10,11 +10,13 @@ input_text.roku_remote:
         icon: mdi:power
         column_span: 3
         data: { button: power }
-      - entity: input_boolean.roku_remote_connected
+      - entity: script.roku_button
         icon: mdi:backburger
-      - entity: input_boolean.switch2
+        data: { button: back }
+      - entity: script.roku_button
         icon: mdi:home-outline
         column: 3
+        data: { button: home }
       - entity: script.roku_button
         icon: mdi:arrow-up-thick
         column: 2
