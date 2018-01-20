@@ -96,12 +96,11 @@ google_assistant:
     - switch
     - light
 
-input_boolean:
-  roku_remote_connected:
-  switch2:
 input_text:
+  roku_remote_ip:
+    name: Roku Remote IP
   roku_remote:
-    name: dummy
+    name: Roku Remote
 
 roku_remote:
 
