@@ -99,8 +99,6 @@ google_assistant:
 input_text:
   roku_remote_ip:
     name: Roku Remote IP
-  roku_remote:
-    name: Roku Remote
 
 roku_remote:
 

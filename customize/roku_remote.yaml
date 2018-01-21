@@ -1,4 +1,4 @@
-input_text.roku_remote:
+script.roku_button:
   custom_ui_state_card: state-card-tiles
   friendly_name: 'Living Room Roku'
   config:
@@ -20,51 +20,41 @@ input_text.roku_remote:
       - entity: script.roku_button
         icon: mdi:arrow-up-thick
         column: 2
-        row: 3
         data: { button: up }
       - entity: script.roku_button
         icon: mdi:arrow-left-thick
         column: 1
-        row: 4
         data: { button: left}
       - entity: script.roku_button
         label: "OK"
         column: 2
-        row: 4
         data: { button: select }
       - entity: script.roku_button
         icon: mdi:arrow-right-thick
         column: 3
-        row: 4
         data: { button: right }
       - entity: script.roku_button
         icon: mdi:arrow-down-thick
         column: 2
-        row: 5
         data: { button: down }
-      - entity: script.roku_button
-        icon: mdi:rewind
-        column: 1
-        row: 7
-        data: { button: reverse }
       - entity: script.roku_button
         icon: mdi:replay
         column: 1
-        row: 6
         data: { button: replay }
       - entity: script.roku_button
         icon: mdi:information-outline
         column: 3
-        row: 6
         data: { button: info }
+      - entity: script.roku_button
+        icon: mdi:rewind
+        column: 1
+        data: { button: reverse }
       - entity: script.pause_play
         icon: mdi:play-pause
         column: 2
-        row: 7
       - entity: script.roku_button
         icon: mdi:fast-forward
         column: 3
-        row: 7
         data: { button: forward }
       - entity: script.roku_button
         icon: mdi:volume-plus

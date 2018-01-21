@@ -9,7 +9,7 @@ default_view:
     - group.bedroom_lights
     - group.scenes
     - group.family
-    - input_text.roku_remote
+    - script.roku_button
 
 Media:
   view: yes
