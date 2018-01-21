@@ -48,9 +48,10 @@ script.roku_button:
         icon: mdi:rewind
         column: 1
         data: { button: reverse }
-      - entity: script.pause_play
+      - entity: script.roku_button
         icon: mdi:play-pause
         column: 2
+        data: { button: play }
       - entity: script.roku_button
         icon: mdi:fast-forward
         column: 3
