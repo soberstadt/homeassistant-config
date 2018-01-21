@@ -9,7 +9,7 @@ default_view:
     - group.bedroom_lights
     - group.scenes
     - group.family
-    - script.roku_button
+    - group.living_room_tv
 
 Media:
   view: yes
@@ -62,6 +62,10 @@ Living Room:
     - sensor.arrow_1_humidity
     - sensor.arrow_1_real_feel
     - sensor.arrow_1_ldr
+Living Room TV:
+  entities:
+    - script.roku_button
+
 kitchen_home:
   - media_player.kitchen_speaker
 kitchen_lights:

@@ -1,6 +1,5 @@
 script.roku_button:
   custom_ui_state_card: state-card-tiles
-  friendly_name: 'Living Room Roku'
   config:
     columns: 3
     column_width: 75px
