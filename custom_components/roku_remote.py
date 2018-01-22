@@ -1,14 +1,14 @@
 DOMAIN = 'roku_remote'
 
 LAST_BUTTON_TOPIC = 'last_button'
+LAST_IP_STATE_NAME = 'input_text.roku_remote_ip'
 
 from roku import Roku
 import logging
+import time
 
 def setup(hass, config):
     roku = None
-
-    last_ip_state_name = 'input_text.roku_remote_ip'
 
     def find_roku():
         logging.info('[roku_remote] looking for devices')
@@ -22,7 +22,7 @@ def setup(hass, config):
             if found != None: break
         if found != None: 
             roku = found
-            hass.states.set(last_ip_state_name, roku.host)
+            hass.states.set(LAST_IP_STATE_NAME, roku.host)
             logging.info('[roku_remote] selected:')
             logging.info(roku)
         else:
@@ -30,10 +30,9 @@ def setup(hass, config):
 
         return found
 
-    find_roku()
-
-    if roku == None:
-        roku = Roku(hass.states.get(last_ip_state_name).state)
+    # connect to a roku at start-up
+    if find_roku() == None:
+        roku = Roku(hass.states.get(LAST_IP_STATE_NAME).state)
 
     def button_press(call):
         button_name = call.data.get('button', '')
