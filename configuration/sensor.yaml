@@ -10,3 +10,15 @@
   monitored_conditions:
     - ping
     - download
+
+- platform: mqtt
+  state_topic: "/devices/mqtt_arrow_1/events"
+  name: "Arrow 1 Humidity"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.humidity | round(1) }}'
+
+- platform: mqtt
+  state_topic: "/devices/mqtt_arrow_1/events"
+  name: "Arrow 1 Temperature"
+  unit_of_measurement: "°C"
+  value_template: '{{ value_json.temperature | round(1) }}'

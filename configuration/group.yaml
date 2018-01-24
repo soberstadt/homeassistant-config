@@ -53,6 +53,8 @@ Living Room:
   entities:
     - binary_sensor.pir_living_room
     - switch.hdmi_0
+    - sensor.arrow_1_temperature
+    - sensor.arrow_1_humidity
 kitchen_home:
   - media_player.kitchen_speaker
 kitchen_lights:
