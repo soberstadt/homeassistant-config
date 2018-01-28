@@ -55,6 +55,7 @@ Living Room:
     - switch.hdmi_0
     - sensor.arrow_1_temperature
     - sensor.arrow_1_humidity
+    - sensor.arrow_1_real_feel
 kitchen_home:
   - media_player.kitchen_speaker
 kitchen_lights:
