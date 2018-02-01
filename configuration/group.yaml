@@ -56,6 +56,7 @@ Living Room:
     - sensor.arrow_1_temperature
     - sensor.arrow_1_humidity
     - sensor.arrow_1_real_feel
+    - sensor.arrow_1_ldr
 kitchen_home:
   - media_player.kitchen_speaker
 kitchen_lights:

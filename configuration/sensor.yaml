@@ -28,3 +28,9 @@
   name: "Arrow 1 Real Feel"
   unit_of_measurement: "°F"
   value_template: '{{ value_json.heat_index | round(1) }}'
+
+- platform: mqtt
+  state_topic: "/devices/mqtt_arrow_2/events"
+  name: "Arrow 1 LDR"
+  unit_of_measurement: "LUX"
+  value_template: '{{ value_json.lux }}'
