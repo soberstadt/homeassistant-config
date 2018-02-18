@@ -2,7 +2,9 @@
   api_key: !secret darksky
   monitored_conditions:
     - summary
-    - icon
+    - apparent_temperature
+    - temperature
+    - humidity
   update_inverval:
     minutes: 30
 
