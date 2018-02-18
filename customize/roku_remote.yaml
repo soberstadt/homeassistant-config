@@ -59,20 +59,23 @@ script.roku_button:
       - entity: script.roku_button
         icon: mdi:volume-plus
         column: 4
-        column_span: 1
         row: 1
         row_span: 2
         data: { button: volume_up }
       - entity: script.roku_button
         icon: mdi:volume-minus
         column: 4
-        column_span: 1
         row: 3
         row_span: 2
         data: { button: volume_down }
       - entity: script.roku_button
         icon: mdi:volume-mute
         column: 4
-        column_span: 1
         row: 5
         data: { button: volume_mute }
+      - entity: script.roku_ff_seconds
+        icon: mdi:fast-forward
+        label: "30"
+        column: 4
+        row: 7
+        data: { seconds: 30 }
