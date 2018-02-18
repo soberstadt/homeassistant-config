@@ -1,0 +1,10 @@
+roku_button:
+  sequence:
+    service: roku_remote.press_button
+    data_template:
+      button: "{{ button }}"
+roku_ff_seconds:
+  sequence:
+    service: python_script.roku_fast_forward_seconds
+    data_template:
+      seconds: "{{ seconds }}"

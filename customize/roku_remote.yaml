@@ -1,0 +1,81 @@
+script.roku_button:
+  custom_ui_state_card: state-card-tiles
+  config:
+    columns: 3
+    column_width: 75px
+    row_height: 75px
+    entities:
+      - entity: script.roku_button
+        icon: mdi:power
+        column_span: 3
+        data: { button: power }
+      - entity: script.roku_button
+        icon: mdi:backburger
+        data: { button: back }
+      - entity: script.roku_button
+        icon: mdi:home-outline
+        column: 3
+        data: { button: home }
+      - entity: script.roku_button
+        icon: mdi:arrow-up-thick
+        column: 2
+        data: { button: up }
+      - entity: script.roku_button
+        icon: mdi:arrow-left-thick
+        column: 1
+        data: { button: left}
+      - entity: script.roku_button
+        label: "OK"
+        column: 2
+        data: { button: select }
+      - entity: script.roku_button
+        icon: mdi:arrow-right-thick
+        column: 3
+        data: { button: right }
+      - entity: script.roku_button
+        icon: mdi:arrow-down-thick
+        column: 2
+        data: { button: down }
+      - entity: script.roku_button
+        icon: mdi:replay
+        column: 1
+        data: { button: replay }
+      - entity: script.roku_button
+        icon: mdi:information-outline
+        column: 3
+        data: { button: info }
+      - entity: script.roku_button
+        icon: mdi:rewind
+        column: 1
+        data: { button: reverse }
+      - entity: script.roku_button
+        icon: mdi:play-pause
+        column: 2
+        data: { button: play }
+      - entity: script.roku_button
+        icon: mdi:fast-forward
+        column: 3
+        data: { button: forward }
+      - entity: script.roku_button
+        icon: mdi:volume-plus
+        column: 4
+        row: 1
+        row_span: 2
+        data: { button: volume_up }
+      - entity: script.roku_button
+        icon: mdi:volume-minus
+        column: 4
+        row: 3
+        row_span: 2
+        data: { button: volume_down }
+      - entity: script.roku_button
+        icon: mdi:volume-mute
+        column: 4
+        row: 5
+        data: { button: volume_mute }
+      - entity: script.roku_ff_seconds
+        icon: mdi:fast-forward
+        label: "30"
+        column: 4
+        row: 7
+        data: { seconds: 30 }
