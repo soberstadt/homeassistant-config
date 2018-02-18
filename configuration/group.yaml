@@ -9,12 +9,12 @@ default_view:
     - group.bedroom_lights
     - group.scenes
     - group.family
-    - group.living_room_tv
 
 Media:
   view: yes
   icon: mdi:television
   entities:
+    - group.living_room_tv
     - media_player.living_room_tv
     - media_player.roku
     - media_player.kitchen_speaker
