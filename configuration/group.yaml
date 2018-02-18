@@ -1,5 +1,6 @@
 default_view:
   view: yes
+  icon: mdi:home
   entities:
     - group.living_room
     - group.living_room_lights
@@ -11,6 +12,7 @@ default_view:
 
 Media:
   view: yes
+  icon: mdi:television
   entities:
     - media_player.living_room_tv
     - media_player.roku
@@ -36,8 +38,10 @@ family:
   - device_tracker.lynsey_phone
 weather:
   - sun.sun
-  - sensor.dark_sky_icon
   - sensor.dark_sky_summary
+  - sensor.dark_sky_apparent_temperature
+  - sensor.dark_sky_temperature
+  - sensor.dark_sky_humidity
 speedtest:
   - sensor.speedtest_download
   - sensor.speedtest_upload
