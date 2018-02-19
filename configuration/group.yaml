@@ -62,6 +62,7 @@ Living Room:
     - sensor.arrow_1_humidity
     - sensor.arrow_1_real_feel
     - sensor.arrow_1_ldr
+    - sensor.arrow_1_motion
 Living Room TV:
   entities:
     - script.roku_button

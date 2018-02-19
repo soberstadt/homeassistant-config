@@ -36,3 +36,8 @@
   name: "Arrow 1 LDR"
   unit_of_measurement: "LUX"
   value_template: '{{ value_json.lux }}'
+
+- platform: mqtt
+  state_topic: "/devices/mqtt_arrow_1/events"
+  name: "Arrow 1 Motion"
+  value_template: '{{ value_json.motion }}'
