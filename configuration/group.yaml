@@ -40,9 +40,11 @@ family:
 weather:
   - sun.sun
   - sensor.dark_sky_summary
-  - sensor.dark_sky_apparent_temperature
   - sensor.dark_sky_temperature
   - sensor.dark_sky_humidity
+  - sensor.arrow_2_temperature
+  - sensor.arrow_2_humidity
+  - sensor.arrow_2_ldr
 speedtest:
   - sensor.speedtest_download
   - sensor.speedtest_upload
@@ -58,11 +60,9 @@ Living Room:
   entities:
     - binary_sensor.pir_living_room
     - switch.hdmi_0
-    - sensor.arrow_1_temperature
-    - sensor.arrow_1_humidity
-    - sensor.arrow_1_real_feel
-    - sensor.arrow_1_ldr
     - sensor.arrow_1_motion
+    - sensor.arrow_2_real_feel
+    - sensor.dark_sky_apparent_temperature
 Living Room TV:
   entities:
     - script.roku_button

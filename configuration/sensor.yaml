@@ -15,25 +15,25 @@
 
 - platform: mqtt
   state_topic: "/devices/mqtt_arrow_2/events"
-  name: "Arrow 1 Humidity"
+  name: "Arrow 2 Humidity"
   unit_of_measurement: "%"
   value_template: '{{ value_json.humidity | round(1) }}'
 
 - platform: mqtt
   state_topic: "/devices/mqtt_arrow_2/events"
-  name: "Arrow 1 Temperature"
+  name: "Arrow 2 Temperature"
   unit_of_measurement: "°C"
   value_template: '{{ value_json.temperature | round(1) }}'
 
 - platform: mqtt
   state_topic: "/devices/mqtt_arrow_2/events"
-  name: "Arrow 1 Real Feel"
+  name: "Arrow 2 Real Feel"
   unit_of_measurement: "°F"
   value_template: '{{ value_json.heat_index | round(1) }}'
 
 - platform: mqtt
   state_topic: "/devices/mqtt_arrow_2/events"
-  name: "Arrow 1 LDR"
+  name: "Arrow 2 LDR"
   unit_of_measurement: "LUX"
   value_template: '{{ value_json.lux }}'
 
