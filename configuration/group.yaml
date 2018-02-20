@@ -58,7 +58,6 @@ Living Room Lights:
 Living Room:
   control: hidden
   entities:
-    - binary_sensor.pir_living_room
     - switch.hdmi_0
     - sensor.arrow_1_motion
     - sensor.arrow_2_real_feel
