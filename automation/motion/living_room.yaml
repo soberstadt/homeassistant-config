@@ -1,7 +1,7 @@
 - alias: Day - Living Room Motion
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room
+      entity_id: sensor.arrow_1_motion
       to: 'on'
   condition:
     - condition: state
@@ -17,7 +17,7 @@
 - alias: Day - Lights off after 30 min of no motion
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room
+      entity_id: sensor.arrow_1_motion
       to: 'off'
       for:
         minutes: 30
@@ -32,7 +32,7 @@
 - alias: Lights on when motion
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room
+      entity_id: sensor.arrow_1_motion
       to: 'on'
   condition:
     - condition: state
@@ -55,7 +55,7 @@
 - alias: Night- Light off after 20 min of no motion
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room
+      entity_id: sensor.arrow_1_motion
       to: 'off'
       for:
         minutes: 20
@@ -72,7 +72,7 @@
 - alias: Fam Away Motion Alert
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room
+      entity_id: sensor.arrow_1_motion
       to: 'on'
   condition:
     - condition: state
