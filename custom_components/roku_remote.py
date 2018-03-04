@@ -50,4 +50,13 @@ def setup(hass, config):
 
     hass.services.async_register(DOMAIN, 'sleep', sleep)
 
+    def launch_channel(call):
+        channel_number = call.data.get('channel', None)
+        try:
+            roku._post('/launch/tvinput.dtv', params={'ch': channel_number})
+        except Exception as e:
+            if find_roku() != None: roku._post('/launch/tvinput.dtv', params={'ch': channel_number})
+
+    hass.services.async_register(DOMAIN, 'launch_channel', launch_channel)
+
     return True
