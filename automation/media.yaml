@@ -1,0 +1,13 @@
+- alias: Jeopardy
+  trigger:
+    platform: time
+    at: '18:59:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+      - wed
+      - thu
+      - fri
+  action:
+    - service: script.jeopardy
