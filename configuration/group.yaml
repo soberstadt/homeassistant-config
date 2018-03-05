@@ -15,6 +15,7 @@ Media:
   icon: mdi:television
   entities:
     - script.jeopardy
+    - script.wii
     - group.living_room_tv
     - media_player.living_room_tv
     - media_player.roku
