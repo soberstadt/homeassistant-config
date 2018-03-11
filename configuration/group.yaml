@@ -107,6 +107,7 @@ my_automations:
   - automation.fam_away_motion_alert
   - automation.camera_offline
   - automation.notify_for_new_devices
+  - automation.high_humidity
   - automation.jeopardy
 
 tracked_devices:
