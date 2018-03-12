@@ -1,0 +1,6 @@
+scene.evening:
+  icon: mdi:weather-sunset
+scene.good_night:
+  icon: mdi:weather-night
+scene.romantic:
+  icon: mdi:account-heart

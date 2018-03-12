@@ -3,6 +3,11 @@ device_tracker.spencer_mac:
 device_tracker.lynsey_mac:
   hidden: true
 
+device_tracker.spencer_phone:
+  icon: mdi:cellphpne
+device_tracker.lynsey_phone:
+  icon: mdi:cellphpne
+
 switch.hdmi_0:
   google_assistant_name: TV
   friendly_name: 'TV Power'
