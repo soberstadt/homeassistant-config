@@ -3,4 +3,4 @@ scene.evening:
 scene.good_night:
   icon: mdi:weather-night
 scene.romantic:
-  icon: mdi:account-heart
+  icon: mdi:heart

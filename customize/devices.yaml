@@ -4,9 +4,9 @@ device_tracker.lynsey_mac:
   hidden: true
 
 device_tracker.spencer_phone:
-  icon: mdi:cellphpne
+  icon: mdi:cellphone
 device_tracker.lynsey_phone:
-  icon: mdi:cellphpne
+  icon: mdi:cellphone
 
 switch.hdmi_0:
   google_assistant_name: TV
