@@ -36,10 +36,10 @@ Info:
     # - group.network
     # - group.sensors
 
-family:
+Family:
   - device_tracker.spencer_phone
   - device_tracker.lynsey_phone
-weather:
+Weather:
   - sun.sun
   - sensor.dark_sky_summary
   - sensor.dark_sky_temperature
@@ -47,7 +47,7 @@ weather:
   - sensor.arrow_2_temperature
   - sensor.arrow_2_humidity
   - sensor.arrow_2_ldr
-speedtest:
+Speedtest:
   - sensor.speedtest_download
   - sensor.speedtest_upload
   - sensor.speedtest_ping
@@ -61,7 +61,7 @@ Living Room:
   control: hidden
   entities:
     - switch.hdmi_0
-    - sensor.arrow_1_motion
+    - binary_sensor.pir_living_room
     - sensor.arrow_2_real_feel
     - sensor.dark_sky_apparent_temperature
 Living Room TV:
@@ -110,13 +110,17 @@ my_automations:
   - automation.high_humidity
   - automation.jeopardy
 
-tracked_devices:
+Tracked Devices:
   - device_tracker.spencer_phone
   - device_tracker.spencer_mac
   - device_tracker.lynsey_phone
   - device_tracker.lynsey_mac
   - device_tracker.kitchen_camera
 
-extra_lights:
+Extra Lights:
   - switch.aux1
   - switch.aux2
+
+House Motion:
+  - sensor.arrow_1_motion
+  - binary_sensor.pir_living_room

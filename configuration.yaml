@@ -70,6 +70,11 @@ switch:
         code_on: 349635
         code_off: 349644
 
+binary_sensor:
+  - platform: rpi_gpio
+    ports:
+      17: PIR Living Room
+
 device_tracker:
   - platform: nmap_tracker
     hosts: 192.168.0.100-140
