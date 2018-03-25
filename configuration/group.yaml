@@ -33,6 +33,7 @@ Info:
     - group.tracked_devices
     - group.zwave
     - group.extra_lights
+    - group.house_motion
     # - group.network
     # - group.sensors
 

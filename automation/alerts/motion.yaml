@@ -1,0 +1,15 @@
+- alias: Fam Away Motion Alert
+  trigger:
+    - platform: state
+      entity_id: group.house_motion
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+  action:
+    - service: notify.notify
+      data:
+        message: 'Motion at home'
+        target:
+          - !secret spencer_number

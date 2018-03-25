@@ -1,7 +1,7 @@
 - alias: Day - Living Room Motion
   trigger:
     - platform: state
-      entity_id: sensor.arrow_1_motion
+      entity_id: binary_sensor.pir_living_room
       to: 'on'
   condition:
     - condition: state
@@ -17,7 +17,7 @@
 - alias: Day - Lights off after 30 min of no motion
   trigger:
     - platform: state
-      entity_id: sensor.arrow_1_motion
+      entity_id: binary_sensor.pir_living_room
       to: 'off'
       for:
         minutes: 30
@@ -32,7 +32,7 @@
 - alias: Lights on when motion
   trigger:
     - platform: state
-      entity_id: sensor.arrow_1_motion
+      entity_id: group.house_motion
       to: 'on'
   condition:
     - condition: state
@@ -55,7 +55,7 @@
 - alias: Night- Light off after 20 min of no motion
   trigger:
     - platform: state
-      entity_id: sensor.arrow_1_motion
+      entity_id: group.house_motion
       to: 'off'
       for:
         minutes: 20
@@ -69,18 +69,3 @@
     - service_template: light.turn_off
       entity_id: group.mood_lights
 
-- alias: Fam Away Motion Alert
-  trigger:
-    - platform: state
-      entity_id: sensor.arrow_1_motion
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: group.family
-      state: 'not_home'
-  action:
-    - service: notify.notify
-      data:
-        message: 'Motion at home'
-        target:
-          - !secret spencer_number
