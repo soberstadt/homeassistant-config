@@ -84,23 +84,24 @@ version: 20180308
 </dom-module>
 
 <script>
-const DOMAIN_SCRIPT = ['script', 'python_script'];
-const DOMAIN_SENSOR = ['sensor', 'binary_sensor'];
-const DOMAIN_NO_TOGGLE = DOMAIN_SCRIPT.concat(DOMAIN_SENSOR, 'scene');
+var DOMAIN_SCRIPT = ['script', 'python_script'];
+var DOMAIN_SENSOR = ['sensor', 'binary_sensor'];
+var DOMAIN_NO_TOGGLE = DOMAIN_SCRIPT.concat(DOMAIN_SENSOR, 'scene');
 
-class StateCardTiles extends window.hassMixins.EventsMixin(Polymer.Element) {
-  static get is() { return 'state-card-tiles'; }
-  static get properties() {
-    return {
-      hass: Object,
-      stateObj: Object,
-    };
-  }
+Polymer({
+  is: 'state-card-tiles',
+  properties: {
+    hass: {
+      type: Object,
+    },
+    stateObj: {
+      type: Object,
+    },
+  },
 
-  ready() {
-    super.ready();
-    const config = this.stateObj.attributes.config;
-    let style = {};
+  ready: function () {
+    var config = this.stateObj.attributes.config;
+    var style = {};
     if (config.columns) style['--tiles-columns'] = config.columns;
     if (config.column_width) style['--tiles-column-width'] = config.column_width;
     if (config.row_height) style['--tiles-row-height'] = config.row_height;
@@ -117,94 +118,94 @@ class StateCardTiles extends window.hassMixins.EventsMixin(Polymer.Element) {
     if (config.text_align) style['--tiles-text-align'] = config.text_align;
     if (config.icon_size) style['--tiles-icon-size'] = config.icon_size;
     this.updateStyles(style);
-  }
+  },
 
-  computeFromTemplate(hass, entity, template) {
-    const state = hass.states[entity.entity].state;
-    const attributes = hass.states[entity.entity].attributes;
-    const entities = hass.states;
+  computeFromTemplate: function (hass, entity, template) {
+    var state = hass.states[entity.entity].state;
+    var attributes = hass.states[entity.entity].attributes;
+    var entities = hass.states;
     return Function('state', 'attributes', 'entities', entity[template])(state, attributes, entities);
-  }
+  },
 
-  computeLabel(hass, entity) {
+  computeLabel: function (hass, entity) {
     if (entity.label_template) {
       return this.computeFromTemplate(hass, entity, 'label_template');
     } else if (entity.label_state) {
-      const stateObj = hass.states[entity.label_state];
-      return stateObj.attributes && stateObj.attributes.unit_of_measurement ? `${stateObj.state} ${stateObj.attributes.unit_of_measurement}` : stateObj.state;
+      var stateObj = hass.states[entity.label_state];
+      return stateObj.attributes && stateObj.attributes.unit_of_measurement ? stateObj.state + ' ' + stateObj.attributes.unit_of_measurement : stateObj.state;
     } else if (entity.label) {
       return entity.label;
     } else if (DOMAIN_SENSOR.includes(entity.entity.split('.')[0])) {
-      const stateObj = hass.states[entity.entity];
-      return stateObj.attributes && stateObj.attributes.unit_of_measurement ? `${stateObj.state} ${stateObj.attributes.unit_of_measurement}` : stateObj.state;
+      var stateObj = hass.states[entity.entity];
+      return stateObj.attributes && stateObj.attributes.unit_of_measurement ? stateObj.state + ' ' + stateObj.attributes.unit_of_measurement : stateObj.state;
     } else {
       return '';
     }
-  }
+  },
 
-  hasLabelSec(entity) {
+  hasLabelSec: function (entity) {
     return entity.label_sec || entity.label_sec_state || entity.label_sec_template;
-  }
+  },
 
-  computeLabelSec(hass, entity) {
+  computeLabelSec: function (hass, entity) {
     return this.computeLabel(hass, {
       label_template: entity.label_sec_template,
       label_state: entity.label_sec_state,
       label: entity.label_sec,
       entity: entity.entity });
-  }
+  },
 
-  computeClass(hass, entity) {
-    const domain = entity.entity.split('.')[0];
+  computeClass: function (hass, entity) {
+    var domain = entity.entity.split('.')[0];
     if (DOMAIN_NO_TOGGLE.includes(domain)) {
       return '';
     } else {
       return window.hassUtil.OFF_STATES.includes(hass.states[entity.entity].state) ? 'off' : 'on';
     }
-  }
+  },
 
-  computeStyle (entity) {
-    const c = entity.column ? entity.column : 'auto';
-    const cs = entity.column_span ? entity.column_span : 1;
-    const r = entity.row ? entity.row : 'auto';
-    const rs = entity.row_span ? entity.row_span : 1;
-    let style = '';
-    if (entity.color) style += ` --tiles-color: ${entity.color};`;
-    if (entity.color_on) style += ` --tiles-color-on: ${entity.color_on};`;
-    if (entity.color_off) style += ` --tiles-color-off: ${entity.color_off};`;
-    if (entity.text_color) style += ` --tiles-text-color: ${entity.text_color};`;
-    if (entity.text_color_on) style += ` --tiles-text-color-on: ${entity.text_color_on};`;
-    if (entity.text_color_off) style += ` --tiles-text-color-off: ${entity.text_color_off};`;
-    if (entity.text_size) style += ` --tiles-text-size: ${entity.text_size};`;
-    if (entity.text_sec_color) style += ` --tiles-text-sec-color: ${entity.text_sec_color};`;
-    if (entity.text_sec_size) style += ` --tiles-text-sec-size: ${entity.text_sec_size};`;
-    if (entity.text_align) style += ` --tiles-text-align: ${entity.text_align};`;
-    if (entity.icon_size) style += ` --tiles-icon-size: ${entity.icon_size};`;
-    if (entity.image) style += ` background-image: url("${entity.image}");`;
-    return `grid-column: ${c} / span ${cs}; grid-row: ${r} / span ${rs}; ${style}`;
-  }
+  computeStyle: function (entity) {
+    var c = entity.column ? entity.column : 'auto';
+    var cs = entity.column_span ? entity.column_span : 1;
+    var r = entity.row ? entity.row : 'auto';
+    var rs = entity.row_span ? entity.row_span : 1;
+    var style = '';
+    if (entity.color) style += ' --tiles-color: ' + entity.color + ';';
+    if (entity.color_on) style += ' --tiles-color-on: ' + entity.color_on + ';';
+    if (entity.color_off) style += ' --tiles-color-off: ' + entity.color_off + ';';
+    if (entity.text_color) style += ' --tiles-text-color: ' + entity.text_color + ';';
+    if (entity.text_color_on) style += ' --tiles-text-color-on: ' + entity.text_color_on + ';';
+    if (entity.text_color_off) style += ' --tiles-text-color-off: ' + entity.text_color_off + ';';
+    if (entity.text_size) style += ' --tiles-text-size: ' + entity.text_size + ';';
+    if (entity.text_sec_color) style += ' --tiles-text-sec-color: ' + entity.text_sec_color + ';';
+    if (entity.text_sec_size) style += ' --tiles-text-sec-size: ' + entity.text_sec_size + ';';
+    if (entity.text_align) style += ' --tiles-text-align: ' + entity.text_align + ';';
+    if (entity.icon_size) style += ' --tiles-icon-size: ' + entity.icon_size + ';';
+    if (entity.image) style += ' background-image: url("' + entity.image + '");';
+    return 'grid-column: ' + c + ' / span ' + cs + '; grid-row: ' + r + ' / span ' + rs + ';' + style;
+  },
 
-  computeStyleTemplate(hass, entity) {
+  computeStyleTemplate: function (hass, entity) {
     return entity.style_template ? this.computeFromTemplate(hass, entity, 'style_template') : '';
-  }
+  },
 
-  buttonClicked(ev) {
-    const entity = ev.model.entity.entity;
-    const more_info = ev.model.entity.more_info;
-    const stateDomain = entity.split('.')[0];
+  buttonClicked: function (ev) {
+    var entity = ev.model.entity.entity;
+    var more_info = ev.model.entity.more_info;
+    var stateDomain = entity.split('.')[0];
 
     if (DOMAIN_SENSOR.includes(stateDomain) || more_info) {
       this.fire('hass-more-info', { entityId: more_info || entity });
     } else {
-      let serviceDomain;
-      let service;
-      let data;
+      var serviceDomain;
+      var service;
+      var data;
       if (DOMAIN_SCRIPT.includes(stateDomain)) {
         serviceDomain = stateDomain;
         service = entity.split('.')[1];
         data = ev.model.entity.data || {};
       } else {
-        const isOff = window.hassUtil.OFF_STATES.includes(this.hass.states[entity].state);
+        var isOff = window.hassUtil.OFF_STATES.includes(this.hass.states[entity].state);
         switch (stateDomain) {
           case 'lock':
             serviceDomain = 'lock';
@@ -226,11 +227,10 @@ class StateCardTiles extends window.hassMixins.EventsMixin(Polymer.Element) {
       }
       this.hass.callService(serviceDomain, service, data);
     }
-  }
+  },
 
-  stopPropagation(ev) {
+  stopPropagation: function (ev) {
     ev.stopPropagation();
-  }
-}
-customElements.define(StateCardTiles.is, StateCardTiles);
+  },
+});
 </script>
