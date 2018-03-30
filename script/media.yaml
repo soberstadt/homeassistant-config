@@ -12,16 +12,13 @@ roku_ff_seconds:
 jeopardy:
   alias: Jeopardy Time
   sequence:
-    - service: media_player.turn_on
-      data:
-        entity_id: media_player.living_room_tv
-    - delay:
-        seconds: 20
+    - service: script.turn_on
+      entity_id: script.turn_on_tv
     - service: roku_remote.launch_channel
       data:
         channel: '9.1'
     - delay:
-        seconds: 5
+        seconds: 10
     - service: roku_remote.press_button
       data:
         button: play
