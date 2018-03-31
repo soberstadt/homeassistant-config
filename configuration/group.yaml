@@ -34,6 +34,7 @@ Info:
     - group.zwave
     - group.extra_lights
     - group.house_motion
+    - group.garage
     # - group.network
     # - group.sensors
 
@@ -125,4 +126,7 @@ Extra Lights:
 House Motion:
   - sensor.arrow_1_motion
   - binary_sensor.pir_living_room
+
+Garage:
   - sensor.garage_distance
+  - sensor.filtered_garage_distance
