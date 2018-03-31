@@ -47,3 +47,14 @@
   name: "Garage Distance"
   unit_of_measurement: "cm"
   value_template: '{{ value_json.distance }}'
+
+- platform: filter
+  name: "filtered garage distance"
+  entity_id: sensor.garage_distance
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 4.0
+    - filter: lowpass
+      time_constant: 10
+      precision: 0
