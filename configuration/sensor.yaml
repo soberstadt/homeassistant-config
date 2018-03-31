@@ -41,3 +41,9 @@
   state_topic: "/devices/mqtt_arrow_1/events"
   name: "Arrow 1 Motion"
   value_template: '{{ value_json.motion }}'
+
+- platform: mqtt
+  state_topic: "/devices/mqtt_arrow_3/state"
+  name: "Garage Distance"
+  unit_of_measurement: "cm"
+  value_template: '{{ value_json.distance }}'

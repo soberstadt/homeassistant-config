@@ -125,3 +125,4 @@ Extra Lights:
 House Motion:
   - sensor.arrow_1_motion
   - binary_sensor.pir_living_room
+  - sensor.garage_distance
