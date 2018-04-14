@@ -1,8 +1,12 @@
 language: python
+python: "3.6"
 
-python: "3.6.4"
+sudo: required
 
 before_install:
+  - sudo mkdir -p /ssl
+  - sudo touch /ssl/fullchain.pem
+  - sudo touch /ssl/privkey.pem
   - mv github_resources/secrets_redacted.yaml secrets.yaml
 
 install: pip3 install homeassistant
