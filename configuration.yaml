@@ -96,6 +96,11 @@ google_assistant:
     - switch
     - light
 
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_secret
+
 input_text:
   roku_remote_ip:
     name: Roku Remote IP

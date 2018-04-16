@@ -21,6 +21,7 @@ Media:
     - media_player.roku
     - media_player.kitchen_speaker
     - media_player.bedroom_speaker
+    - media_player.spotify
 
 Info:
   view: yes
