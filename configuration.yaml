@@ -87,6 +87,9 @@ hdmi_cec:
 light:
   - platform: flux_led
     automatic_add: True
+    devices:
+      192.168.0.112:
+        name: flux_bedroom
 
 google_assistant:
   project_id: soberstadt
