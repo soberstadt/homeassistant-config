@@ -75,8 +75,9 @@ kitchen_home:
 kitchen_lights:
   - light.sink
   - light.oven
-bedroom_lights:
+Bedroom Lights:
   - light.ge_12724_3way_dimmer_switch_level
+  - light.flux_bedroom
 dining_room:
   - light.dining_room_lamp
   - light.6001948a98a2_1921680101
