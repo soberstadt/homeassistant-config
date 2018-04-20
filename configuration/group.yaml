@@ -83,10 +83,8 @@ dining_room:
   - light.6001948a98a2_1921680101
 
 all_lights:
-  - light.living_room_couch_1
-  - light.living_room_couch_2
-  - light.behind_tv_lamp
   - light.dining_room_lamp
+  - group.living_room_lights
   - group.kitchen_lights
   - group.bedroom_lights
   - group.mood_lights

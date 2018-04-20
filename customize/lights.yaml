@@ -12,7 +12,9 @@ light.ge_12724_3way_dimmer_switch_level:
   icon: mdi:lamp
 
 light.6001948a98a2_1921680101:
-  friendly_name: 'Mood Light'
+  friendly_name: 'Living Mood Light'
+light.flux_bedroom:
+  friendly_name: 'Bedroom Mood'
 
 light.living_room_couch_1:
   google_assistant: false
