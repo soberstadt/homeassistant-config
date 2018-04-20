@@ -1,0 +1,10 @@
+- alias: SC Tiles update info
+  trigger:
+    platform: state
+    entity_id: sensor.sc_tiles_latest_version
+  action:
+    service: persistent_notification.create
+    data_template:
+      title: Update available
+      message: "A new version for [Tiles custom state card](https://github.com/c727/home-assistant-tiles#changelog) is available: {{ states('sensor.sc_tiles_latest_version') }}"
+      notification_id: tiles_update_info
