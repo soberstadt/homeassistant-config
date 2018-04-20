@@ -3,7 +3,11 @@
     group.mood_lights:
       state: on
       color_name: red
-      brightness: 255
+      brightness_pct: 100
     group.bedroom_lights:
       state: on
-      brightness_pct: 75
+      brightness_pct: 50
+    light.flux_bedroom:
+      state: on
+      color_name: red
+      brightness_pct: 90
