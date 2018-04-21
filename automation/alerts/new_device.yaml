@@ -3,11 +3,9 @@
     platform: event
     event_type: device_tracker_new_device
   action:
-    - service: notify.notify
+    - service: notify.pushbullet
       data_template:
+        title: New device
         message: >
-          New device:
           {{trigger.event.data.host_name}}
           ({{trigger.event.data.entity_id}})
-        target:
-          - !secret spencer_number

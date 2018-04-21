@@ -8,8 +8,6 @@
       entity_id: group.family
       state: 'not_home'
   action:
-    - service: notify.notify
+    - service: notify.pushbullet
       data:
         message: 'Motion at home'
-        target:
-          - !secret spencer_number

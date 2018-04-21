@@ -4,8 +4,6 @@
       entity_id: sensor.arrow_2_humidity
       above: 50
   action:
-    - service: notify.notify
+    - service: notify.pushbullet
       data:
         message: 'Home humidity above 50%!'
-        target:
-          - !secret spencer_number

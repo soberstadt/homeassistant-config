@@ -4,8 +4,6 @@
       entity_id: device_tracker.kitchen_camera
       to: 'not_home'
   action:
-    - service: notify.notify
+    - service: notify.pushbullet
       data:
         message: 'Camera Offline'
-        target:
-          - !secret spencer_number
