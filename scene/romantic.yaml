@@ -4,7 +4,7 @@
       state: on
       color_name: red
       brightness_pct: 100
-    group.bedroom_lights:
+    light.ge_12724_3way_dimmer_switch_level:
       state: on
       brightness_pct: 50
     light.flux_bedroom:
