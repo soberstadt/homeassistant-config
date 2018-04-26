@@ -54,18 +54,21 @@
 
 - alias: Night- Light off after 20 min of no motion
   trigger:
-    - platform: state
-      entity_id: group.house_motion
-      to: 'off'
-      for:
-        minutes: 20
+    - platform: time
+      minutes: '/5'
+      seconds: 00
   condition:
-    - condition: time
-      after: '23:15:00'
-      before: '08:00:00'
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.house_motion
+        state: 'off'
+        for:
+          minutes: 20
+      - condition: time
+        after: '23:15:00'
+        before: '08:00:00'
   action:
-    - service_template: light.turn_off
-      entity_id: group.kitchen_lights
-    - service_template: light.turn_off
-      entity_id: group.mood_lights
+    - service: scene.turn_on
+      entity_id: scene.bed_time
 
