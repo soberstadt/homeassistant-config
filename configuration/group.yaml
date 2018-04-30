@@ -127,5 +127,6 @@ House Motion:
   - binary_sensor.pir_living_room
 
 Garage:
+  - sensor.garage_status
   - sensor.garage_distance
   - sensor.filtered_garage_distance

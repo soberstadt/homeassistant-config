@@ -48,6 +48,11 @@
   unit_of_measurement: "cm"
   value_template: '{{ value_json.distance }}'
 
+- platform: mqtt
+  state_topic: "/devices/mqtt_arrow_3/state"
+  name: "Garage Status"
+  value_template: '{{ value_json.state }}'
+
 - platform: filter
   name: "filtered garage distance"
   entity_id: sensor.garage_distance
