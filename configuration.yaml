@@ -99,11 +99,16 @@ google_assistant:
   entity_config:
     light.ge_12724_3way_dimmer_switch_level:
       name: Bedroom Lights
+      expose: true
+      room: bedroom
     light.flux_bedroom:
       name: Bedroom Mood
+      expose: true
+      room: bedroom
     light.6001948a98a2_1921680101:
       name: Living Mood Light
-  # expose_by_default: false
+      expose: true
+  expose_by_default: false
   # exposed_domains:
   #   - switch
   #   - light
