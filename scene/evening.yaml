@@ -16,3 +16,7 @@
     light.dining_room_lamp:
       state: on
       brightness: 255
+    light.flux_bedroom:
+      state: on
+      rgb_color: [151,255,0]
+      brightness: 255
