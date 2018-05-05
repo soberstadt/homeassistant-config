@@ -41,6 +41,10 @@ Info:
 Family:
   - device_tracker.spencer_phone
   - device_tracker.lynsey_phone
+Friends And Family:
+  - device_tracker.spencer_phone
+  - device_tracker.lynsey_phone
+
 Weather:
   - sun.sun
   - sensor.dark_sky_summary
