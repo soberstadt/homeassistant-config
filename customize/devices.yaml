@@ -13,4 +13,3 @@ switch.hdmi_0:
   friendly_name: 'TV Power'
 switch.hdmi_4:
   hidden: true
-  google_assistant: false

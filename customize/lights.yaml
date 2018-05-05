@@ -1,10 +1,8 @@
 light.sink:
   friendly_name: 'Lamp Over Sink'
-  google_assistant: false
   icon: mdi:lamp
 light.oven:
   friendly_name: 'Oven Range'
-  google_assistant: false
   icon: mdi:stove
 
 light.ge_12724_3way_dimmer_switch_level:
@@ -17,14 +15,10 @@ light.flux_bedroom:
   friendly_name: 'Bedroom Mood'
 
 light.living_room_couch_1:
-  google_assistant: false
   icon: mdi:lamp
 light.living_room_couch_2:
-  google_assistant: false
   icon: mdi:lamp
 light.behind_tv_lamp:
-  google_assistant: false
   icon: mdi:lamp
 light.dining_room_lamp:
-  google_assistant: false
   icon: mdi:lamp
