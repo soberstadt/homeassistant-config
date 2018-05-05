@@ -95,7 +95,7 @@ google_assistant:
   project_id: soberstadt
   client_id: !secret google_client_id
   access_token: !secret google_access_token
-  expose_by_default: false
+  api_key: !secret google_api_api_key
   entity_config:
     light.ge_12724_3way_dimmer_switch_level:
       name: Bedroom Lights
@@ -103,9 +103,10 @@ google_assistant:
       name: Bedroom Mood
     light.6001948a98a2_1921680101:
       name: Living Mood Light
-  exposed_domains:
-    - switch
-    - light
+  # expose_by_default: false
+  # exposed_domains:
+  #   - switch
+  #   - light
 
 input_text:
   roku_remote_ip:
