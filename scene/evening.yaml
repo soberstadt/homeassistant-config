@@ -4,7 +4,7 @@
       state: on
       rgb_color: [0,255,10]
       brightness: 255
-    group.bedroom_lights:
+    light.ge_12724_3way_dimmer_switch_level:
       state: on
       brightness_pct: 75
     group.kitchen_lights:
