@@ -2,13 +2,12 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
-    - group.living_room
+    - group.house_status
     - group.living_room_lights
     - group.dining_room
     - group.kitchen_lights
     - group.bedroom_lights
-    - group.scenes
-    - group.family
+    - group.scene_tiles
 
 Fancy:
   view: yes
@@ -75,6 +74,7 @@ Living Room:
     - binary_sensor.pir_living_room
     - sensor.arrow_2_real_feel
     - sensor.dark_sky_apparent_temperature
+
 Living Room TV:
   entities:
     - script.roku_button
