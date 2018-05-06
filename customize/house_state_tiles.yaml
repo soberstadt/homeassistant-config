@@ -3,6 +3,7 @@ input_boolean.house_state_tiles:
   config:
     columns: 3
     row_height: 60px
+    color_off: gray
     entities:
       - entity: sensor.arrow_2_real_feel
         label: Inside
@@ -16,9 +17,11 @@ input_boolean.house_state_tiles:
       - entity: device_tracker.spencer_phone
         label: Spencer
         label_sec_state: device_tracker.spencer_phone
+        color_on: var(--primary-color)
       - entity: device_tracker.lynsey_phone
         label: Lynsey
         label_sec_state: device_tracker.lynsey_phone
+        color_on: var(--primary-color)
       - entity: sensor.garage_status
         label: Garage
         label_sec_state: sensor.garage_status
