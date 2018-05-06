@@ -121,6 +121,9 @@ google_assistant:
 input_text:
   roku_remote_ip:
     name: Roku Remote IP
+input_boolean:
+  scene_tiles:
+  house_state_tiles:
 
 roku_remote:
 

@@ -1,0 +1,24 @@
+input_boolean.house_state_tiles:
+  custom_ui_state_card: state-card-tiles
+  config:
+    columns: 3
+    row_height: 60px
+    entities:
+      - entity: sensor.arrow_2_real_feel
+        label: Inside
+        label_sec_state: sensor.arrow_2_real_feel
+      - entity: sensor.dark_sky_apparent_temperature
+        label: Outside
+        label_sec_state: sensor.dark_sky_apparent_temperature
+      - entity: group.house_motion
+        label: House Motion
+        label_sec_state: group.house_motion
+      - entity: device_tracker.spencer_phone
+        label: Spencer
+        label_sec_state: device_tracker.spencer_phone
+      - entity: device_tracker.lynsey_phone
+        label: Lynsey
+        label_sec_state: device_tracker.lynsey_phone
+      - entity: sensor.garage_status
+        label: Garage
+        label_sec_state: sensor.garage_status

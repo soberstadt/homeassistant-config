@@ -10,6 +10,12 @@ default_view:
     - group.scenes
     - group.family
 
+Fancy:
+  view: yes
+  entities:
+    - group.house_status
+    - group.scene_tiles
+
 Media:
   view: yes
   icon: mdi:television
@@ -98,6 +104,13 @@ Scenes:
   - scene.evening
   - scene.good_night
   - scene.romantic
+Scene Tiles:
+  entities:
+    - input_boolean.scene_tiles
+
+House Status:
+  entities:
+    - input_boolean.house_state_tiles
 
 my_automations:
   - automation.day__lights_off_after_30_min_of_no_motion
