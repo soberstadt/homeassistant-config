@@ -17,8 +17,8 @@ Media:
     - script.jeopardy
     - script.wii
     - group.living_room_tv
-    - media_player.living_room_tv
     - media_player.roku
+    - media_player.living_room_tv
     - media_player.kitchen_speaker
     - media_player.bedroom_speaker
 
@@ -66,7 +66,6 @@ Living Room Lights:
 Living Room:
   control: hidden
   entities:
-    - switch.hdmi_0
     - binary_sensor.pir_living_room
     - sensor.arrow_2_real_feel
     - sensor.dark_sky_apparent_temperature
