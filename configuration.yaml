@@ -83,6 +83,8 @@ device_tracker:
     username: !secret google_location_account
     password: !secret google_location_password
 
+map:
+
 hdmi_cec:
   devices:
     TV: 0.0.0.0
