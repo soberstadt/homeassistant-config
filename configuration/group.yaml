@@ -3,17 +3,11 @@ default_view:
   icon: mdi:home
   entities:
     - group.house_status
+    - group.scene_tiles
     - group.living_room_lights
     - group.dining_room
     - group.kitchen_lights
     - group.bedroom_lights
-    - group.scene_tiles
-
-Fancy:
-  view: yes
-  entities:
-    - group.house_status
-    - group.scene_tiles
 
 Media:
   view: yes
