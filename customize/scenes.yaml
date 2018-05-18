@@ -4,3 +4,24 @@ scene.good_night:
   icon: mdi:weather-night
 scene.romantic:
   icon: mdi:heart
+
+input_boolean.scene_tiles:
+  custom_ui_state_card: state-card-tiles
+  config:
+    columns: 3
+    row_height: 60px
+    entities:
+      - entity: scene.evening
+        label: Evening
+        icon: mdi:weather-sunset
+      - entity: scene.bed_time
+        label: Bed Time
+        icon: mdi:weather-night
+      - entity: scene.good_night
+        label: All Off
+        icon: mdi:sleep
+      - entity: scene.romantic
+        label: Romantic
+        icon: mdi:heart
+      - entity: script.wii
+        label: Wii

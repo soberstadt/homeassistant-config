@@ -2,13 +2,12 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
-    - group.living_room
+    - group.house_status
+    - group.scene_tiles
     - group.living_room_lights
     - group.dining_room
     - group.kitchen_lights
     - group.bedroom_lights
-    - group.scenes
-    - group.family
 
 Media:
   view: yes
@@ -69,6 +68,7 @@ Living Room:
     - binary_sensor.pir_living_room
     - sensor.arrow_2_real_feel
     - sensor.dark_sky_apparent_temperature
+
 Living Room TV:
   entities:
     - script.roku_button
@@ -98,6 +98,13 @@ Scenes:
   - scene.evening
   - scene.good_night
   - scene.romantic
+Scene Tiles:
+  entities:
+    - input_boolean.scene_tiles
+
+House Status:
+  entities:
+    - input_boolean.house_state_tiles
 
 my_automations:
   - automation.day__lights_off_after_30_min_of_no_motion
