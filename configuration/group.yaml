@@ -26,7 +26,7 @@ Info:
   icon: mdi:settings
   entities:
     - group.weather
-    - group.my_automations
+    - group.all_automations
     - group.all_scripts
     - group.speedtest
     - group.tracked_devices
@@ -105,21 +105,6 @@ Scene Tiles:
 House Status:
   entities:
     - input_boolean.house_state_tiles
-
-my_automations:
-  - automation.day__lights_off_after_30_min_of_no_motion
-  - automation.day__living_room_motion
-  - automation.lights_on_when_motion
-  - automation.login_failure
-  - automation.night__lights_off_after_20_min_of_no_tv
-  - automation.night_light_off_after_20_min_of_no_motion
-  - automation.reset_lights
-  - automation.sunset
-  - automation.fam_away_motion_alert
-  - automation.camera_offline
-  - automation.notify_for_new_devices
-  - automation.high_humidity
-  - automation.jeopardy
 
 Tracked Devices:
   - device_tracker.spencer_phone

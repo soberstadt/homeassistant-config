@@ -13,5 +13,5 @@ group.mood_lights:
   hidden: true
 group.dining_room:
   friendly_name: Dining Room
-group.my_automations:
+group.all_automations:
   friendly_name: Automations
