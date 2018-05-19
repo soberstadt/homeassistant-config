@@ -8,9 +8,27 @@ input_boolean.house_state_tiles:
       - entity: sensor.arrow_2_real_feel
         label: Inside
         label_sec_state: sensor.arrow_2_real_feel
+        style_template: >
+          var humidity = parseFloat(entities['sensor.dark_sky_humidity'].state);
+          var inside = parseFloat(entities['sensor.arrow_2_real_feel'].state);
+          var outside = parseFloat(entities['sensor.dark_sky_apparent_temperature'].state);
+          if (humidity > 65 || inside < outside) {
+            return 'background-color: var(--tiles-color, var(--primary-color));'
+          } else {
+            return 'background-color: var(--tiles-color-off, var(--google-red-500));'
+          };
       - entity: sensor.dark_sky_apparent_temperature
         label: Outside
         label_sec_state: sensor.dark_sky_apparent_temperature
+        style_template: >
+          var humidity = parseFloat(entities['sensor.dark_sky_humidity'].state);
+          var inside = parseFloat(entities['sensor.arrow_2_real_feel'].state);
+          var outside = parseFloat(entities['sensor.dark_sky_apparent_temperature'].state);
+          if (humidity < 65 && inside > outside) {
+            return 'background-color: var(--tiles-color, var(--primary-color));'
+          } else {
+            return 'background-color: var(--tiles-color-off, var(--google-red-500));'
+          };
       - entity: group.house_motion
         label: House Motion
         label_sec_state: group.house_motion
