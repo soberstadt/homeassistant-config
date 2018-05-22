@@ -5,7 +5,7 @@
   window.CUSTOM_UI_LIST.push({
     name: 'Tiles custom state card',
     url: 'https://github.com/c727/home-assistant-tiles',
-    version: '20180420.2',
+    version: '20180521',
   });
 </script>
 
@@ -87,7 +87,7 @@
 
   const ON_STATES = ['on', 'open', 'locked', 'home'];
 
-  class StateCardTiles extends window.hassMixins.EventsMixin(Polymer.Element) {
+  class StateCardTiles extends Polymer.Element {
     static get is() { return 'state-card-tiles'; }
     static get properties() {
       return {
@@ -243,6 +243,20 @@
         this.hass.callService(serviceDomain, service, data);
       }
       ev.stopPropagation();
+    }
+
+    fire(type, detail, options) {
+      options = options || {};
+      detail = (detail === null || detail === undefined) ? {} : detail;
+      const event = new Event(type, {
+        bubbles: options.bubbles === undefined ? true : options.bubbles,
+        cancelable: Boolean(options.cancelable),
+        composed: options.composed === undefined ? true : options.composed
+      });
+      event.detail = detail;
+      const node = options.node || this;
+      node.dispatchEvent(event);
+      return event;
     }
 
     stopPropagation(ev) {

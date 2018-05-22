@@ -5,7 +5,7 @@
   window.CUSTOM_UI_LIST.push({
     name: 'Tiles custom state card',
     url: 'https://github.com/c727/home-assistant-tiles',
-    version: '20180420.2_es5',
+    version: '20180521_es5',
   });
 </script>
 
@@ -243,6 +243,20 @@ Polymer({
       this.hass.callService(serviceDomain, service, data);
     }
     ev.stopPropagation();
+  },
+
+  fire: function (type, detail, options) {
+    options = options || {};
+    detail = (detail === null || detail === undefined) ? {} : detail;
+    var event = new Event(type, {
+      bubbles: options.bubbles === undefined ? true : options.bubbles,
+      cancelable: Boolean(options.cancelable),
+      composed: options.composed === undefined ? true : options.composed
+    });
+    event.detail = detail;
+    var node = options.node || this;
+    node.dispatchEvent(event);
+    return event;
   },
 
   stopPropagation: function (ev) {
