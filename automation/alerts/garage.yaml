@@ -1,0 +1,40 @@
+# TODO: wait 1 minute before notifying
+- alias: Garage Open While Away
+  trigger:
+    - platform: state
+      entity_id: sensor.garage_status
+      to: 'open'
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+  action:
+    - service: notify.pushbullet
+      data:
+        message: 'Garage Open'
+
+- alias: Family Leave While Garage Open
+  trigger:
+    - platform: state
+      entity_id: group.family
+      to: 'not_home'
+  condition:
+    - condition: state
+      entity_id: sensor.garage_status
+      state: 'open'
+  action:
+    - service: notify.pushbullet
+      data:
+        message: 'Garage Left Open'
+
+- alias: Garage Open Too Long
+  trigger:
+    - platform: state
+      entity_id: sensor.garage_status
+      to: 'open'
+      for:
+        minutes: 60
+  action:
+    - service: notify.pushbullet
+      data:
+        message: 'Garage Left Open'
