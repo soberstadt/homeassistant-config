@@ -33,7 +33,6 @@ Info:
     - group.house_motion
     - group.garage
     - group.all_automations
-    - group.all_scripts
     # - group.network
     # - group.sensors
 
