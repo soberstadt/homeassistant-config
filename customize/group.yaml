@@ -15,3 +15,4 @@ group.dining_room:
   friendly_name: Dining Room
 group.all_automations:
   friendly_name: Automations
+  hidden: false
