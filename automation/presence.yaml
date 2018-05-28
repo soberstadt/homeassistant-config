@@ -17,7 +17,20 @@
           {% else %}
             input_select.lynsey_status_dropdown
           {% endif %}
-        option: Just Arrived
+        option: >
+          {% if trigger.entity_id == 'device_tracker.spencer_phone' %}
+            {% if states.input_select.spencer_status_dropdown.state == 'Just Left' %}
+              Home
+            {% else %}
+              Just Arrived
+            {% endif %}
+          {% else %}
+            {% if states.input_select.lynsey_status_dropdown.state == 'Just Left' %}
+              Home
+            {% else %}
+              Just Arrived
+            {% endif %}
+          {% endif %}
  
 - alias: Mark person as home
   trigger:
