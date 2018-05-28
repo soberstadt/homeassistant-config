@@ -7,6 +7,8 @@ homeassistant:
   time_zone: America/New_York
   customize: !include_dir_merge_named customize
 
+zone: !include ./configuration/zone.yaml
+
 frontend:
   extra_html_url:
     - /local/custom_ui/state-card-tiles.html
