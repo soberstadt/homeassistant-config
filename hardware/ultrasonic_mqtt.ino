@@ -46,9 +46,8 @@ const int BUFFER_SIZE = 300;
 bool stateOn = false;
 
 const int doorDistance = 20;
-const int floorDistance = 200;
-char previousStates[] = "eeeeeee";
-char debouncedState = 'e';
+char previousState = 'u';
+char currentState = 'c';
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -170,15 +169,13 @@ void sendState() {
   StaticJsonBuffer<BUFFER_SIZE> jsonBuffer;
 
   JsonObject& root = jsonBuffer.createObject();
-
-  root["raw_state"] = previousStates;
   
-  if(debouncedState == 'e') {
-    root["state"] = "empty";
-  } else if(debouncedState == 'o') {
+  if(currentState == 'o') {
     root["state"] = "open";
+  } else if(currentState == 'u') {
+    root["state"] = "unknown";
   } else {
-    root["state"] = "car";
+    root["state"] = "closed";
   }
 
   root["distance"] = distanceValue;
@@ -230,46 +227,23 @@ void loop() {
 
   if (checkBoundSensor(newDistanceValue, distanceValue, diffDIST)) {
     distanceValue = newDistanceValue;
-    debounceState();
-    sendState();
+    calculateState();
+    if(previousState != currentState) {
+      sendState();
+    }
   }
 
   delay(2000);
 }
 
 
-void debounceState() {
-  previousStates[6] = previousStates[5];
-  previousStates[5] = previousStates[4];
-  previousStates[4] = previousStates[3];
-  previousStates[3] = previousStates[2];
-  previousStates[2] = previousStates[1];
-  previousStates[1] = previousStates[0];
+void calculateState() {
+  previousState = currentState;
   if(distanceValue < doorDistance) {
-    previousStates[0] = 'o';
-  } else if(distanceValue > floorDistance) {
-    previousStates[0] = 'e';
+    currentState = 'o';
   } else {
-    previousStates[0] = 'c';
+    currentState = 'c';
   }
-
-  int array[255] = {0};
-  int i, max, index;
-  for(i = 0; previousStates[i] != 0; i++)
-  {
-    ++array[previousStates[i]];
-  }
-  max = array[0];
-  index = 0;
-  for(i = 0; previousStates[i] != 0; i++)
-  {
-    if( array[previousStates[i]] > max)
-    {
-      max = array[previousStates[i]];
-      index = i;
-    }
-  }
-  debouncedState = previousStates[index];
 }
 
 
@@ -298,4 +272,3 @@ void software_Reset() // Restarts program from beginning but does not reset the 
   Serial.print("resetting");
   ESP.reset(); 
 }
-
