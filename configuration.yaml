@@ -45,8 +45,8 @@ script: !include_dir_merge_named script
 # Allows you to issue voice commands from the frontend in enabled browsers
 # conversation:
 # Text to speech
-# tts:
-#   platform: google
+tts:
+  platform: google
 
 zwave:
   usb_path: /dev/ttyACM0
