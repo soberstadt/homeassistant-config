@@ -123,6 +123,25 @@ input_text:
 input_boolean:
   scene_tiles:
   house_state_tiles:
+input_select:
+  spencer_status_dropdown:
+    name: Spencer
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+    initial: Home
+  lynsey_status_dropdown:
+    name: Lynsey
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+    initial: Home
 
 roku_remote:
 

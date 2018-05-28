@@ -32,6 +32,7 @@ Info:
     - group.extra_lights
     - group.house_motion
     - group.garage
+    - group.family_dropdowns
     - group.all_automations
     # - group.network
     # - group.sensors
@@ -42,6 +43,9 @@ Family:
 Friends And Family:
   - device_tracker.spencer_phone
   - device_tracker.lynsey_phone
+Family Dropdowns:
+  - input_select.spencer_status_dropdown
+  - input_select.lynsey_status_dropdown
 
 Weather:
   - sun.sun
