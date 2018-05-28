@@ -53,17 +53,6 @@
   name: "Garage Status"
   value_template: '{{ value_json.state }}'
 
-- platform: filter
-  name: "filtered garage distance"
-  entity_id: sensor.garage_distance
-  filters:
-    - filter: outlier
-      window_size: 4
-      radius: 4.0
-    - filter: lowpass
-      time_constant: 10
-      precision: 0
-
 - platform: rest
   name: SC Tiles latest version
   resource: https://raw.githubusercontent.com/c727/home-assistant-tiles/master/LATEST_VERSION

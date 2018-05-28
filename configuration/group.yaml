@@ -26,14 +26,14 @@ Info:
   icon: mdi:settings
   entities:
     - group.weather
-    - group.all_automations
-    - group.all_scripts
     - group.speedtest
     - group.tracked_devices
     - group.zwave
     - group.extra_lights
     - group.house_motion
     - group.garage
+    - group.all_automations
+    - group.all_scripts
     # - group.network
     # - group.sensors
 
@@ -124,4 +124,3 @@ House Motion:
 Garage:
   - sensor.garage_status
   - sensor.garage_distance
-  - sensor.filtered_garage_distance
