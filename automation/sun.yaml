@@ -1,0 +1,30 @@
+- alias: Sunset
+  trigger:
+    platform: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: 8
+  condition:
+    - condition: time
+      after: '10:00:00'
+      before: '02:00:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.evening
+
+- alias: Sunrise
+  trigger:
+    platform: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    above: 8
+    below: 10
+  condition:
+    - condition: time
+      after: '05:00:00'
+      before: '12:00:00'
+  action:
+    - service: input_select.select_option
+        data:
+          entity_id: input_select.hass_theme
+          option: default
