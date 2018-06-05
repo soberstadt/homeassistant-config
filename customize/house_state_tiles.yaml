@@ -32,13 +32,13 @@ input_boolean.house_state_tiles:
       - entity: group.house_motion
         label: House Motion
         label_sec_state: group.house_motion
-      - entity: device_tracker.spencer_phone
+      - entity: input_select.spencer_status_dropdown
         label: Spencer
-        label_sec_state: device_tracker.spencer_phone
+        label_sec_state: input_select.spencer_status_dropdown
         color_on: var(--primary-color)
-      - entity: device_tracker.lynsey_phone
+      - entity: input_select.lynsey_status_dropdown
         label: Lynsey
-        label_sec_state: device_tracker.lynsey_phone
+        label_sec_state: input_select.lynsey_status_dropdown
         color_on: var(--primary-color)
       - entity: sensor.garage_status
         label: Garage
