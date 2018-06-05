@@ -56,3 +56,7 @@
 - platform: rest
   name: SC Tiles latest version
   resource: https://raw.githubusercontent.com/c727/home-assistant-tiles/master/LATEST_VERSION
+
+- platform: uptime
+  name: HA Uptime
+  unit_of_measurement: hours

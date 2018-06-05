@@ -34,8 +34,8 @@ Info:
     - group.garage
     - group.family_dropdowns
     - group.all_automations
+    - group.sensors
     # - group.network
-    # - group.sensors
 
 Family:
   - device_tracker.spencer_phone
@@ -127,3 +127,6 @@ House Motion:
 Garage:
   - sensor.garage_status
   - sensor.garage_distance
+
+Sensors:
+  - sensor.ha_uptime
