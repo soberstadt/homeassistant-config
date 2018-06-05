@@ -133,6 +133,7 @@ input_select:
       - Just Left
       - Away
       - Extended Away
+      - Work
     initial: Home
   lynsey_status_dropdown:
     name: Lynsey
@@ -142,6 +143,7 @@ input_select:
       - Just Left
       - Away
       - Extended Away
+      - Work
     initial: Home
   hass_theme:
     name: Themes
