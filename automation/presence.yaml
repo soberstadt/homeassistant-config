@@ -129,3 +129,36 @@
             input_select.lynsey_status_dropdown
           {% endif %}
         option: Extended Away
+
+- alias: Mark person at work
+  trigger:
+    - platform: state
+      entity_id: device_tracker.spencer_maps_location
+      to: 'work'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: >
+          {% if trigger.entity_id == 'device_tracker.spencer_maps_location' %}
+            input_select.spencer_status_dropdown
+          {% else %}
+            input_select.lynsey_status_dropdown
+          {% endif %}
+        option: Work
+
+- alias: Mark person leaving work
+  trigger:
+    - platform: state
+      entity_id: device_tracker.spencer_maps_location
+      from: 'work'
+      to: 'away'
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: >
+          {% if trigger.entity_id == 'device_tracker.spencer_maps_location' %}
+            input_select.spencer_status_dropdown
+          {% else %}
+            input_select.lynsey_status_dropdown
+          {% endif %}
+        option: Away
