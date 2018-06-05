@@ -25,6 +25,6 @@
       before: '12:00:00'
   action:
     - service: input_select.select_option
-        data:
-          entity_id: input_select.hass_theme
-          option: default
+      data:
+        entity_id: input_select.hass_theme
+        option: default
