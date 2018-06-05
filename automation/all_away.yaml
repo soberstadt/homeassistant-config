@@ -1,0 +1,11 @@
+- alias: All Away
+  trigger:
+    platform: time
+    at: '00:00:00'
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.good_night
