@@ -130,3 +130,4 @@ Garage:
 
 Sensors:
   - sensor.ha_uptime
+  - input_select.hass_theme
