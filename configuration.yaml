@@ -58,6 +58,7 @@ mqtt:
   broker: core-mosquitto
   username: !secret mqtt_user
   password: !secret mqtt_password
+  discovery: true
 
 # switch:
 #   - platform: rpi_rf
