@@ -55,10 +55,7 @@ Weather:
   - sensor.arrow_2_temperature
   - sensor.arrow_2_humidity
   - sensor.arrow_2_ldr
-  - sensor.arrow_2b_temperature
-  - sensor.arrow_2b_humidity
-  - sensor.arrow_2b_ldr
-  - binary_sensor.arrow_2_motion
+  - sensor.arrow_2_motion
 Speedtest:
   - sensor.speedtest_download
   - sensor.speedtest_upload
