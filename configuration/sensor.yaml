@@ -38,7 +38,7 @@
   value_template: '{{ value_json.lux }}'
 
 - platform: mqtt
-  state_topic: "/devices/mqtt_arrow_2/events"
+  state_topic: "/devices/mqtt_arrow_2/motion"
   name: "Arrow 2 Motion"
   value_template: '{{ value_json.motion }}'
 
