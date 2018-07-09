@@ -5,7 +5,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: group.family
+      entity_id: group.friends_and_family
       state: 'not_home'
   action:
     - service: notify.pushbullet

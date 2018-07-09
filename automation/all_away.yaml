@@ -4,7 +4,7 @@
     at: '00:00:00'
   condition:
     - condition: state
-      entity_id: group.family
+      entity_id: group.friends_and_family
       state: 'not_home'
   action:
     - service: scene.turn_on

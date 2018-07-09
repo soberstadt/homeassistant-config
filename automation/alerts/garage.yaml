@@ -6,7 +6,7 @@
       to: 'open'
   condition:
     - condition: state
-      entity_id: group.family
+      entity_id: group.friends_and_family
       state: 'not_home'
   action:
     - service: notify.pushbullet
@@ -16,7 +16,7 @@
 - alias: Family Leave While Garage Open
   trigger:
     - platform: state
-      entity_id: group.family
+      entity_id: group.friends_and_family
       to: 'not_home'
   condition:
     - condition: state
