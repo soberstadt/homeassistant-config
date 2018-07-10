@@ -1,33 +1,70 @@
 light.ge_12724_3way_dimmer_switch_level:
+  config_entry_id:
+  name:
   platform: zwave
   unique_id: 2-72057594076299265
 light.living_room_couch_2:
+  config_entry_id:
+  name:
   platform: hue
   unique_id: 00:17:88:01:02:fd:79:46-0b
 light.living_room_couch_1:
+  config_entry_id:
+  name:
   platform: hue
   unique_id: 00:17:88:01:02:a3:d2:93-0b
 light.dining_room_lamp:
+  config_entry_id:
+  name:
   platform: hue
   unique_id: 00:17:88:01:03:68:fd:ac-0b
 light.behind_tv_lamp:
+  config_entry_id:
+  name:
   platform: hue
   unique_id: 00:17:88:01:02:fb:b9:87-0b
 light.sink:
+  config_entry_id:
+  name:
   platform: hue
   unique_id: 00:17:88:01:02:68:c7:33-0b
 light.oven:
+  config_entry_id:
+  name:
   platform: hue
   unique_id: 00:17:88:01:02:6a:b9:cb-0b
 media_player.living_room_tv:
+  config_entry_id:
+  name:
   platform: cast
   unique_id: d457ee87-8220-2f40-692e-a7ee306c421d
 media_player.bedroom_speaker:
+  config_entry_id:
+  name:
   platform: cast
   unique_id: 5e3f2769-8d92-4144-059e-68c3d9b5867e
 media_player.kitchen_speaker:
+  config_entry_id:
+  name:
   platform: cast
   unique_id: c7cbcb76-e321-2be1-aeec-25d7270060da
 media_player.home_group:
+  config_entry_id:
+  name:
   platform: cast
   unique_id: 5f3f8b14-35fd-4964-b9e6-5cf6e2fda090
+zwave.aeotec_zw090_zstick_gen5_us:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-1
+zwave.ge_12724_3way_dimmer_switch:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-2
+media_player.roku:
+  config_entry_id:
+  name:
+  platform: roku
+  unique_id: YW00EV208786
