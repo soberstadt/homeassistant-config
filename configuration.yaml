@@ -77,6 +77,13 @@ binary_sensor:
   - platform: rpi_gpio
     ports:
       17: PIR Living Room
+  - platform: trend
+    sensors:
+      ac_running:
+        entity_id: sensor.arrow_2_real_feel
+        sample_duration: 600
+        min_gradient: -.0005
+        device_class: cold
 
 device_tracker:
   - platform: nmap_tracker

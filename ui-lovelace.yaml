@@ -1,5 +1,5 @@
 title: Home
-# Exclude entities from "Unused entities" view
+excluded_entities:
 views:
   - icon: mdi:home
     cards:
