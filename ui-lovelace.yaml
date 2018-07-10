@@ -1,0 +1,137 @@
+title: Home
+# Exclude entities from "Unused entities" view
+views:
+  - icon: mdi:home
+    cards:
+      - type: glance
+        title: Home Status
+        entities:
+          - entity: sensor.arrow_2_real_feel
+            name: Inside
+          - entity: sensor.dark_sky_apparent_temperature
+            name: Outside
+          - group.house_motion
+          - input_select.spencer_status_dropdown
+          - input_select.lynsey_status_dropdown
+          - sensor.garage_status
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                image: https://images.pexels.com/photos/248159/pexels-photo-248159.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                entity: scene.evening
+              - type: picture-entity
+                image: https://images.pexels.com/photos/545012/pexels-photo-545012.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                entity: scene.bed_time
+              - type: picture-entity
+                image: https://images.pexels.com/photos/360912/pexels-photo-360912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                entity: scene.good_night
+                name: All Off
+          - type: horizontal-stack
+            cards: # https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
+              - type: picture-entity
+                image: https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                entity: scene.romantic
+              - type: picture-entity
+                image: https://images.pexels.com/photos/163114/mario-luigi-figures-funny-163114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                entity: script.wii
+      - type: entities
+        title: Living Room
+        entities:
+          - light.living_room_couch_1
+          - light.living_room_couch_2
+          - light.behind_tv_lamp
+      - type: entities
+        title: Dining Room
+        entities:
+          - light.dining_room_lamp
+          - light.6001948a98a2_1921680101
+      - type: entities
+        title: Kitchen
+        entities:
+          - light.sink
+          - light.oven
+      - type: entities
+        title: Bedroom Lights
+        entities:
+          - light.ge_12724_3way_dimmer_switch_level
+          - light.flux_bedroom
+
+  - icon: mdi:television
+    cards:
+      - type: picture-entity
+        image: https://images.pexels.com/photos/987586/pexels-photo-987586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+        entity: script.roku_button
+        name: Roku Remote
+      - type: entities
+        title: Living Room
+        show_header_toggle: false
+        entities:
+          - script.jeopardy
+          - script.wii
+      - type: media-control
+        entity: media_player.roku
+      - type: media-control
+        entity: media_player.living_room_tv
+      - type: media-control
+        entity: media_player.kitchen_speaker
+      - type: media-control
+        entity: media_player.bedroom_speaker
+
+  - icon: mdi:settings
+    cards:
+      - type: entities
+        title: More Details
+        show_header_toggle: false
+        entities:
+          - sun.sun
+          - sensor.dark_sky_summary
+          - sensor.dark_sky_temperature
+          - sensor.dark_sky_humidity
+          - sensor.arrow_2_temperature
+          - sensor.arrow_2_humidity
+          - sensor.arrow_2_ldr
+          - sensor.arrow_2_motion
+      - type: entities
+        title: Speedtest
+        show_header_toggle: false
+        entities:
+          - sensor.speedtest_download
+          - sensor.speedtest_ping
+      - type: entities
+        title: Tracked Devices
+        show_header_toggle: false
+        entities:
+          - device_tracker.spencer_phone
+          - device_tracker.spencer_mac
+          - device_tracker.lynsey_phone
+          - device_tracker.lynsey_mac
+          - device_tracker.bob_reid_phone
+          - device_tracker.deanne_reid_phone
+          - device_tracker.kitchen_camera
+      - type: entities
+        title: House Motion
+        show_header_toggle: false
+        entities:
+          - sensor.arrow_1_motion
+          - binary_sensor.pir_living_room
+      - type: entities
+        title: Garage
+        show_header_toggle: false
+        entities:
+          - sensor.garage_status
+          - sensor.garage_distance
+      - type: entities
+        title: Family Dropdowns
+        show_header_toggle: false
+        entities:
+          - input_select.spencer_status_dropdown
+          - input_select.lynsey_status_dropdown
+      - type: entities
+        title: System
+        show_header_toggle: false
+        entities:
+          - sensor.ha_uptime
+          - input_select.hass_theme
+          - group.all_automations
