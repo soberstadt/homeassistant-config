@@ -1,0 +1,23 @@
+#
+# Main arguments, all optional
+#
+title: Hello Panel
+widget_dimensions: [120, 120]
+widget_margins: [5, 5]
+columns: 8
+
+label:
+    widget_type: label
+    text: Hello World
+
+clock:
+    widget_type: clock
+
+spencer_presence:
+    widget_type: device_tracker
+    title: Spencer
+    device: spencer_phone
+    
+layout:
+    - label(2x2)
+    - clock(2x1), spencer_presence(1x1)
