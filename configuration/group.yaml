@@ -104,6 +104,7 @@ Scenes:
   - scene.evening
   - scene.good_night
   - scene.romantic
+  - scene.movie_playing
 Scene Tiles:
   entities:
     - input_boolean.scene_tiles

@@ -25,3 +25,5 @@ input_boolean.scene_tiles:
         icon: mdi:heart
       - entity: script.wii
         label: Wii
+      - entity: scene.movie_playing
+        label: Movie
