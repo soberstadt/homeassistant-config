@@ -4,11 +4,12 @@
     - platform: state
       entity_id: sensor.garage_status
       to: 'open'
-  condition:
+  action:
+    - delay:
+        minutes: '1'
     - condition: state
       entity_id: group.friends_and_family
       state: 'not_home'
-  action:
     - service: notify.pushbullet
       data:
         message: 'Garage Open'
