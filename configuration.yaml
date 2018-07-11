@@ -82,7 +82,7 @@ binary_sensor:
       ac_running:
         entity_id: sensor.arrow_2_real_feel
         sample_duration: 600
-        min_gradient: -.0005
+        min_gradient: -.00033
         max_samples: 4
         device_class: cold
 
