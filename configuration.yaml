@@ -43,6 +43,7 @@ group: !include ./configuration/group.yaml
 notify: !include ./configuration/notify.yaml
 scene: !include_dir_merge_list scene
 sensor: !include ./configuration/sensor.yaml
+binary_sensor: !include ./configuration/binary_sensor.yaml
 script: !include_dir_merge_named script
 
 # Allows you to issue voice commands from the frontend in enabled browsers
@@ -72,19 +73,6 @@ mqtt:
 #         pulselength: 190
 #         code_on: 349635
 #         code_off: 349644
-
-binary_sensor:
-  - platform: rpi_gpio
-    ports:
-      17: PIR Living Room
-  - platform: trend
-    sensors:
-      ac_running:
-        entity_id: sensor.arrow_2_real_feel
-        sample_duration: 600
-        min_gradient: -.00033
-        max_samples: 4
-        device_class: cold
 
 device_tracker:
   - platform: nmap_tracker
