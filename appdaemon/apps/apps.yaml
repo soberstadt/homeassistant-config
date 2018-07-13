@@ -1,4 +1,4 @@
 ---
-hello_world:
-  module: hello
-  class: HelloWorld
+reset_lights:
+  module: reset_lights
+  class: ResetLights
