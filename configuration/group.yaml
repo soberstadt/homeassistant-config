@@ -82,6 +82,7 @@ kitchen_home:
 kitchen_lights:
   - light.sink
   - light.oven
+  - light.tuya_light_1
 Bedroom Lights:
   - light.ge_12724_3way_dimmer_switch_level
   - light.flux_bedroom
@@ -119,6 +120,7 @@ Tracked Devices:
   - device_tracker.kitchen_camera
 
 Extra Lights:
+  - switch.tuya_switch_1
   - switch.aux1
   - switch.aux2
 

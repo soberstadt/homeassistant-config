@@ -68,3 +68,13 @@ media_player.roku:
   name:
   platform: roku
   unique_id: YW00EV208786
+switch.tuya_switch_1:
+  config_entry_id:
+  name:
+  platform: tuya
+  unique_id: tuya.0520038268c63ab479ea
+light.tuya_light_1:
+  config_entry_id:
+  name:
+  platform: tuya
+  unique_id: tuya.00200645a020a620b1e2
