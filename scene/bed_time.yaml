@@ -4,3 +4,5 @@
       state: off
     group.kitchen_lights:
       state: off
+    group.sitting_room:
+      state: off

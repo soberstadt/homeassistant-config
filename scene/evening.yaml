@@ -20,3 +20,5 @@
       state: on
       rgb_color: [151,255,0]
       brightness: 255
+    group.sitting_room:
+      state: on

@@ -8,6 +8,7 @@ default_view:
     - group.dining_room
     - group.kitchen_lights
     - group.bedroom_lights
+    - group.sitting_room
 
 Media:
   view: yes
@@ -90,12 +91,16 @@ dining_room:
   - light.dining_room_lamp
   - light.6001948a98a2_1921680101
 
+Sitting Room:
+  - switch.tuya_switch_1
+
 all_lights:
   - light.dining_room_lamp
   - group.living_room_lights
   - group.kitchen_lights
   - group.bedroom_lights
   - group.mood_lights
+  - group.sitting_room
 mood_lights:
   - light.6001948a98a2_1921680101
 
@@ -120,7 +125,6 @@ Tracked Devices:
   - device_tracker.kitchen_camera
 
 Extra Lights:
-  - switch.tuya_switch_1
   - switch.aux1
   - switch.aux2
 

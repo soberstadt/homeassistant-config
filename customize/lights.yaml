@@ -22,3 +22,8 @@ light.behind_tv_lamp:
   icon: mdi:lamp
 light.dining_room_lamp:
   icon: mdi:lamp
+
+light.tuya_light_1:
+  friendly_name: 'Breakfast Table Light'
+switch.tuya_switch_1:
+  friendly_name: 'Sitting Room Couch 1'
