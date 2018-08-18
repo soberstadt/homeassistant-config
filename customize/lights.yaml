@@ -25,5 +25,7 @@ light.dining_room_lamp:
 
 light.tuya_light_1:
   friendly_name: 'Breakfast Table Light'
+  icon: mdi:ceiling-light
 switch.tuya_switch_1:
   friendly_name: 'Sitting Room Couch 1'
+  icon: mdi:lamp
