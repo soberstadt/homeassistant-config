@@ -115,6 +115,11 @@ google_assistant:
       expose: true
   expose_by_default: false
 
+tuya:
+  username: !secret tuya_username
+  password: !secret tuya_password
+  country_code: 1
+
 input_text:
   roku_remote_ip:
     name: Roku Remote IP
