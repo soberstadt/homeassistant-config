@@ -45,6 +45,7 @@ scene: !include_dir_merge_list scene
 sensor: !include ./configuration/sensor.yaml
 binary_sensor: !include ./configuration/binary_sensor.yaml
 script: !include_dir_merge_named script
+light: !include ./configuration/light.yaml
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 # conversation:
@@ -88,13 +89,6 @@ map:
 hdmi_cec:
   devices:
     TV: 0.0.0.0
-
-light:
-  - platform: flux_led
-    automatic_add: True
-    devices:
-      192.168.0.112:
-        name: flux_bedroom
 
 google_assistant:
   project_id: soberstadt
