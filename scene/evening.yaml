@@ -7,9 +7,15 @@
     light.ge_12724_3way_dimmer_switch_level:
       state: on
       brightness_pct: 75
-    group.kitchen_lights:
+    light.sink:
       state: on
-      brightness: 255
+      brightness_pct: 100
+    light.oven:
+      state: on
+      brightness_pct: 100
+    light.tuya_light_1:
+      state: on
+      brightness_pct: 40
     group.living_room_lights:
       state: on
       brightness: 255
