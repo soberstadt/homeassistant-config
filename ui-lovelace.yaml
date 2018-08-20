@@ -1,19 +1,23 @@
-title: Home
+title: Oberstadt Home
 excluded_entities:
 views:
   - icon: mdi:home
     cards:
       - type: glance
-        title: Home Status
         entities:
           - entity: sensor.arrow_2_real_feel
             name: Inside
           - entity: sensor.dark_sky_apparent_temperature
             name: Outside
-          - group.house_motion
-          - input_select.spencer_status_dropdown
-          - input_select.lynsey_status_dropdown
-          - sensor.garage_status
+          - entity: group.house_motion
+            icon: mdi:waves
+          - entity: input_select.spencer_status_dropdown
+            icon: mdi:account
+          - entity: input_select.lynsey_status_dropdown
+            icon: mdi:account
+          - entity: sensor.garage_status
+            name: Garage
+            icon: mdi:garage-open
       - type: vertical-stack
         cards:
           - type: horizontal-stack
@@ -36,6 +40,21 @@ views:
               - type: picture-entity
                 image: https://images.pexels.com/photos/163114/mario-luigi-figures-funny-163114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
                 entity: script.wii
+              - type: picture-entity
+                name: Movie
+                image: https://images.pexels.com/photos/1040159/pexels-photo-1040159.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                entity: scene.movie_playing
+      - type: entities
+        title: Light Groups
+        entities:
+          - light.living_room_lights
+          - light.kitchen_lights
+          - light.bedroom_lights
+          - group.sitting_room
+          - light.mood_lights
+
+  - title: Lights
+    cards:
       - type: entities
         title: Living Room
         entities:
@@ -52,6 +71,7 @@ views:
         entities:
           - light.sink
           - light.oven
+          - light.tuya_light_1
       - type: entities
         title: Bedroom Lights
         entities:
@@ -107,8 +127,6 @@ views:
           - device_tracker.spencer_mac
           - device_tracker.lynsey_phone
           - device_tracker.lynsey_mac
-          - device_tracker.bob_reid_phone
-          - device_tracker.deanne_reid_phone
           - device_tracker.kitchen_camera
       - type: entities
         title: House Motion
