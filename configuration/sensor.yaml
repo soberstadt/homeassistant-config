@@ -61,3 +61,34 @@
 - platform: uptime
   name: HA Uptime
   unit_of_measurement: hours
+
+- platform: rest
+  name: SpaceX
+  json_attributes:
+    - mission_name
+    - launch_site
+    - rocket
+  value_template: '{{ value_json["launch_date_unix"] }}'
+  resource: 'https://api.spacexdata.com/v2/launches/next'
+
+- platform: template
+  sensors:
+    spacex_next_launch_date:
+      friendly_name: 'Next Launch Date'
+      value_template: '{{ states.sensor.spacex.state | int | timestamp_custom("%m/%d/%Y %H:%M")}}'
+    spacex_next_rocket:
+      friendly_name: 'Rocket'
+      value_template: '{{ states.sensor.spacex.attributes["rocket"]["rocket_name"] }}'
+    spacex_next_landing_type:
+      friendly_name: 'Landing Type'
+      value_template: '{{ states.sensor.spacex.attributes["rocket"]["first_stage"]["cores"][0]["landing_type"] }}'
+    spacex_next_launch_site:
+      friendly_name: 'Launch Site'
+      value_template: '{{ states.sensor.spacex.attributes["launch_site"]["site_name"] }}'
+    spacex_next_mission_name:
+      friendly_name: 'Mission Name'
+      value_template: '{{ states.sensor.spacex.attributes["mission_name"] }}'
+    spacex_hours_until:
+      friendly_name: 'T Minus'
+      value_template: '{{ (( (states.sensor.spacex.state | int) - as_timestamp(now()) ) / 3600 ) | round(1) }}'
+      unit_of_measurement: "Hours"

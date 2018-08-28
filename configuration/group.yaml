@@ -36,6 +36,7 @@ Info:
     - group.family_dropdowns
     - group.all_automations
     - group.sensors
+    - group.spacex
     # - group.network
 
 Family:
@@ -139,3 +140,11 @@ Garage:
 Sensors:
   - sensor.ha_uptime
   - input_select.hass_theme
+
+SpaceX:
+  - sensor.spacex_next_mission_name
+  - sensor.spacex_next_launch_date
+  - sensor.spacex_next_launch_site
+  - sensor.spacex_next_landing_type
+  - sensor.spacex_next_rocket
+  - sensor.spacex_hours_until
