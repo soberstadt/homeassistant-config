@@ -11,3 +11,5 @@
       state: on
       color_name: red
       brightness_pct: 90
+    group.sitting_room:
+      state: off
