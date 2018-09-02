@@ -94,7 +94,7 @@ dining_room:
 
 Sitting Room:
   - switch.tuya_switch_1
-  - switch.sonoff1
+  - switch.sonoff_1
 
 all_lights:
   - light.dining_room_lamp
