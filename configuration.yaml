@@ -46,6 +46,7 @@ sensor: !include ./configuration/sensor.yaml
 binary_sensor: !include ./configuration/binary_sensor.yaml
 script: !include_dir_merge_named script
 light: !include ./configuration/light.yaml
+switch: !include ./configuration/switch.yaml
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 # conversation:
@@ -61,19 +62,6 @@ mqtt:
   username: !secret mqtt_user
   password: !secret mqtt_password
   discovery: true
-
-# switch:
-#   - platform: rpi_rf
-#     gpio: 18
-#     switches:
-#       aux1:
-#         pulselength: 190
-#         code_on: 349955
-#         code_off: 349964
-#       aux2:
-#         pulselength: 190
-#         code_on: 349635
-#         code_off: 349644
 
 device_tracker:
   - platform: nmap_tracker
