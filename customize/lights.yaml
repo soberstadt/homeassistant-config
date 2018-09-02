@@ -29,3 +29,7 @@ light.tuya_light_1:
 switch.tuya_switch_1:
   friendly_name: 'Sitting Room Couch 1'
   icon: mdi:lamp
+
+switch.sonoff_1:
+  friendly_name: 'Sitting Room Lamp'
+  icon: mdi:lamp
