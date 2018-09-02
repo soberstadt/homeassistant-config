@@ -25,3 +25,14 @@
   entities:
     - light.6001948a98a2_1921680101
     - light.flux_bedroom
+- platform: mqtt
+  name: Sonoff 1
+  state_topic: "stat/sonoff1/POWER"
+  command_topic: "cmnd/sonoff1/POWER"
+  availability_topic: "tele/sonoff1/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false

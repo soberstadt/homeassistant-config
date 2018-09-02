@@ -128,6 +128,7 @@ Tracked Devices:
 Extra Lights:
   - switch.aux1
   - switch.aux2
+  - light.sonoff1
 
 House Motion:
   - sensor.arrow_1_motion
