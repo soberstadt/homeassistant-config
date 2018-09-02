@@ -94,6 +94,7 @@ dining_room:
 
 Sitting Room:
   - switch.tuya_switch_1
+  - switch.sonoff1
 
 all_lights:
   - light.dining_room_lamp
@@ -128,7 +129,6 @@ Tracked Devices:
 Extra Lights:
   - switch.aux1
   - switch.aux2
-  - light.sonoff1
 
 House Motion:
   - sensor.arrow_1_motion
