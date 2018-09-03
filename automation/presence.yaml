@@ -140,23 +140,36 @@
           {% endif %}
         option: Away
     # if someone has been off the network for 10, only mark as away if other person is away
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ trigger.entity_id == 'device_tracker.spencer_phone' }}"
+            - condition: or
+              conditions:
+                - condition: template
+                  value_template: "{{ states.input_select.lynsey_status_dropdown.state == 'Away' }}"
+                - condition: template
+                  value_template: "{{ states.input_select.lynsey_status_dropdown.state == 'Work' }}"
+                - condition: template
+                  value_template: "{{ states.input_select.lynsey_status_dropdown.state == 'Extended Away' }}"
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ trigger.entity_id == 'device_tracker.lynsey_phone' }}"
+            - condition: or
+              conditions:
+                - condition: template
+                  value_template: "{{ states.input_select.spencer_status_dropdown.state == 'Away' }}"
+                - condition: template
+                  value_template: "{{ states.input_select.spencer_status_dropdown.state == 'Work' }}"
+                - condition: template
+                  value_template: "{{ states.input_select.spencer_status_dropdown.state == 'Extended Away' }}"
     - service: input_select.select_option
       data_template:
         entity_id: input_select.family_status_dropdown
-        option: >
-          {% if trigger.entity_id == 'device_tracker.spencer_phone' %}
-            {% if states.input_select.lynsey_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
-              Away
-            {% else %}
-              {{ states.input_select.family_status_dropdown.state }}
-            {% endif %}
-          {% else %}
-            {% if states.input_select.spencer_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
-              {{ states.input_select.family_status_dropdown.state }}
-            {% else %}
-              Away
-            {% endif %}
-          {% endif %}
+        option: Away
  
 - alias: Mark person as extended away
   trigger:
