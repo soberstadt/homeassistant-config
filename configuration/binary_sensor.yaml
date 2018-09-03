@@ -26,4 +26,4 @@
   state_topic: "/devices/mqtt_arrow_1/events"
   name: "Arrow 1 Motion"
   device_class: motion
-  value_template: '{{ value_json.motion == 'on' }}'
+  value_template: "{{ value_json.motion == 'on' }}"
