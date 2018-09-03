@@ -13,7 +13,6 @@ views:
           - entity: sensor.dark_sky_apparent_temperature
             name: Outside
           - entity: group.house_motion
-            icon: mdi:waves
           - entity: input_select.spencer_status_dropdown
             icon: mdi:account
           - entity: input_select.lynsey_status_dropdown
