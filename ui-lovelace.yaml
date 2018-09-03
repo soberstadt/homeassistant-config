@@ -18,9 +18,8 @@ views:
             icon: mdi:account
           - entity: input_select.lynsey_status_dropdown
             icon: mdi:account
-          - entity: sensor.garage_status
-            name: Garage
-            icon: mdi:garage-open
+          - entity: binary_sensor.garage_door
+            name: Garage Door
       - type: vertical-stack
         cards:
           - type: horizontal-stack

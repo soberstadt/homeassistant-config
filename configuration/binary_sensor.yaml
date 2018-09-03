@@ -9,3 +9,10 @@
       min_gradient: -.00033
       max_samples: 6
       device_class: cold
+- platform: template
+  sensors:
+    garage_door:
+      friendly_name: "Garage Open"
+      device_class: garage_door
+      value_template: >-
+        {{ states.sensor.garage_status.state == 'open' }}
