@@ -183,10 +183,18 @@
     # if someone is extended away, only mark as extended away if the other is extended away
     - condition: or
       conditions:
-        - condition: template
-          value_template: "{{ trigger.entity_id == 'device_tracker.spencer_phone' && states.input_select.lynsey_status_dropdown.state == 'Extended Away' }}"
-        - condition: template
-          value_template: "{{ trigger.entity_id == 'device_tracker.lynsey_phone' && states.input_select.spencer_status_dropdown.state == 'Extended Away' }}"
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ trigger.entity_id == 'device_tracker.spencer_phone' }}"
+            - condition: template
+              value_template: "{{ states.input_select.lynsey_status_dropdown.state == 'Extended Away' }}"
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ trigger.entity_id == 'device_tracker.lynsey_phone' }}"
+            - condition: template
+              value_template: "{{ states.input_select.spencer_status_dropdown.state == 'Extended Away' }}"
     - service: input_select.select_option
       data_template:
         entity_id: input_select.family_status_dropdown
