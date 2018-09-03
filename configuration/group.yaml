@@ -131,7 +131,7 @@ Extra Lights:
   - switch.aux2
 
 House Motion:
-  - sensor.arrow_1_motion
+  - binary_sensor.arrow_1_motion
   - binary_sensor.pir_living_room
 
 Garage:

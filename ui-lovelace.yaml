@@ -144,8 +144,8 @@ views:
         title: House Motion
         show_header_toggle: false
         entities:
-          - sensor.arrow_1_motion
-          - binary_sensor.pir_living_room
+          - binary_sensor.arrow_1_motion
+          - binary_sensor.living_room_motion
       - type: entities
         title: Garage
         show_header_toggle: false

@@ -9,6 +9,7 @@
       min_gradient: -.00033
       max_samples: 6
       device_class: cold
+
 - platform: template
   sensors:
     garage_door:
@@ -16,3 +17,13 @@
       device_class: garage_door
       value_template: >-
         {{ states.sensor.garage_status.state == 'open' }}
+    living_room_motion:
+      friendly_name: "Living Room Motion"
+      device_class: motion
+      value_template: "{{ states('binary_sensor.pir_living_room') }}"
+
+- platform: mqtt
+  state_topic: "/devices/mqtt_arrow_1/events"
+  name: "Arrow 1 Motion"
+  device_class: motion
+  value_template: '{{ value_json.motion }}'
