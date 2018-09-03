@@ -1,4 +1,7 @@
 title: Oberstadt Home
+resources:
+  - url: /local/button-card.js
+    type: module
 excluded_entities:
 views:
   - icon: mdi:home
@@ -22,28 +25,38 @@ views:
         cards:
           - type: horizontal-stack
             cards:
-              - type: picture-entity
-                image: https://images.pexels.com/photos/248159/pexels-photo-248159.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+              - type: custom:button-card
                 entity: scene.evening
-              - type: picture-entity
-                image: https://images.pexels.com/photos/545012/pexels-photo-545012.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                icon: mdi:weather-sunset
+                name: Evening
+                action: turn_on
+              - type: custom:button-card
                 entity: scene.bed_time
-              - type: picture-entity
-                image: https://images.pexels.com/photos/360912/pexels-photo-360912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                icon: mdi:weather-night
+                name: Bed Time
+                action: turn_on
+              - type: custom:button-card
                 entity: scene.good_night
+                icon: mdi:sleep
                 name: All Off
+                action: turn_on
           - type: horizontal-stack
-            cards: # https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
-              - type: picture-entity
-                image: https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+            cards:
+              - type: custom:button-card
                 entity: scene.romantic
-              - type: picture-entity
-                image: https://images.pexels.com/photos/163114/mario-luigi-figures-funny-163114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                icon: mdi:heart
+                name: Romantic
+                action: turn_on
+              - type: custom:button-card
                 entity: script.wii
-              - type: picture-entity
-                name: Movie
-                image: https://images.pexels.com/photos/1040159/pexels-photo-1040159.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+                icon: mdi:gamepad-variant
+                name: Wii
+                action: turn_on
+              - type: custom:button-card
                 entity: scene.movie_playing
+                icon: mdi:movie
+                name: Movie
+                action: turn_on
       - type: entities
         title: Light Groups
         entities:
