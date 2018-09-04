@@ -21,9 +21,7 @@
       friendly_name: "Living Room Motion"
       device_class: motion
       value_template: "{{ states('binary_sensor.pir_living_room') == 'on' }}"
-
-- platform: mqtt
-  state_topic: "/devices/mqtt_arrow_1/events"
-  name: "Arrow 1 Motion"
-  device_class: motion
-  value_template: "{{ value_json.motion == 'on' }}"
+    arrow_1_motion:
+      friendly_name: "Arrow 1 Motion"
+      device_class: motion
+      value_template: "{{ states('sensor.arrow_1_motion') == 'on' }}"
