@@ -6,6 +6,8 @@ group.kitchen_lights:
   friendly_name: Kitchen Lights
 group.bedroom_lights:
   friendly_name: Bedroom Lights
+group.sitting_room:
+  icon: mdi:lightbulb
 
 group.dining_room:
   friendly_name: Dining Room

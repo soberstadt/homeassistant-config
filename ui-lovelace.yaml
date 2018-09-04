@@ -13,6 +13,8 @@ views:
           - entity: sensor.dark_sky_apparent_temperature
             name: Outside
           - entity: group.house_motion
+            icon: mdi:run-fast
+            name: Motion
           - entity: input_select.spencer_status_dropdown
             icon: mdi:account
           - entity: input_select.lynsey_status_dropdown
@@ -88,6 +90,11 @@ views:
         entities:
           - light.ge_12724_3way_dimmer_switch_level
           - light.flux_bedroom
+      - type: entities
+        title: Sitting Room
+        entities:
+          - switch.tuya_switch_1
+          - switch.sonoff_1
 
   - icon: mdi:television
     cards:
@@ -164,3 +171,13 @@ views:
           - sensor.ha_uptime
           - input_select.hass_theme
           - group.all_automations
+      - type: entities
+        title: SpaceX
+        show_header_toggle: false
+        entities:
+          - sensor.spacex_next_mission_name
+          - sensor.spacex_next_launch_date
+          - sensor.spacex_next_launch_site
+          - sensor.spacex_next_landing_type
+          - sensor.spacex_next_rocket
+          - sensor.spacex_hours_until
