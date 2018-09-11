@@ -100,6 +100,9 @@ google_assistant:
     light.6001948a98a2_1921680101:
       name: Living Mood Light
       expose: true
+    switch.sonoff_1:
+      name: Sitting Room Lamp
+      expose: true
   expose_by_default: false
 
 tuya:
