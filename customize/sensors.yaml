@@ -8,5 +8,3 @@ sensor.spacex_next_landing_type:
   icon: mdi:bullseye-arrow
 sensor.spacex_next_rocket:
   icon: mdi:rocket
-sensor.spacex_hours_until:
-  icon: mdi:clock-outline

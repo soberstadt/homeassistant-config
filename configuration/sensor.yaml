@@ -88,7 +88,3 @@
     spacex_next_mission_name:
       friendly_name: 'Mission Name'
       value_template: '{{ states.sensor.spacex.attributes["mission_name"] }}'
-    spacex_hours_until:
-      friendly_name: 'T Minus'
-      value_template: '{{ (( (states.sensor.spacex.state | int) - as_timestamp(now()) ) / 3600 ) | round(1) }}'
-      unit_of_measurement: "Hours"
