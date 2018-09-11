@@ -152,9 +152,9 @@
             {% endif %}
           {% else %}
             {% if states.input_select.spencer_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
-              {{ states.input_select.family_status_dropdown.state }}
-            {% else %}
               Away
+            {% else %}
+              {{ states.input_select.family_status_dropdown.state }}
             {% endif %}
           {% endif %}
  
