@@ -1,7 +1,7 @@
 - alias: Jeopardy
   trigger:
     platform: time
-    at: '18:59:00'
+    at: '18:59:30'
   condition:
     condition: time
     weekday:
