@@ -1,4 +1,3 @@
-# TODO: wait 1 minute before notifying
 - alias: Garage Open While Away
   trigger:
     - platform: state
@@ -13,6 +12,25 @@
     - service: notify.pushbullet
       data:
         message: 'Garage Open'
+
+- alias: Garage Open When Lynsey Comes Back
+  trigger:
+    - platform: state
+      entity_id: sensor.garage_status
+      to: 'open'
+  action:
+    - condition: state
+      entity_id: input_select.lynsey_status_dropdown
+      state: 'Away'
+    - condition: template
+      value_template: "{{ states.input_select.spencer_status_dropdown.state in ['Home', 'Just Left'] }}"
+    - condition: state
+      entity_id: media_player.roku
+      state: 'playing'
+    - service: light.turn_on
+      data:
+        entity_id: group.living_room_lights
+        flash: short
 
 - alias: Family Leave While Garage Open
   trigger:
