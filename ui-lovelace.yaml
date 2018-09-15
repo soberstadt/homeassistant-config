@@ -7,6 +7,7 @@ views:
   - icon: mdi:home
     cards:
       - type: glance
+        column_width: calc(100% / 6)
         entities:
           - entity: sensor.arrow_2_real_feel
             name: Inside
@@ -300,13 +301,21 @@ views:
         entities:
           - sensor.garage_status
           - sensor.garage_distance
-      - type: entities
-        title: Family Dropdowns
-        show_header_toggle: false
-        entities:
-          - input_select.spencer_status_dropdown
-          - input_select.lynsey_status_dropdown
-          - input_select.family_status_dropdown
+      - type: vertical-stack
+        cards:
+          - type: history-graph
+            title: Family Presence
+            entities:
+              - entity: input_select.family_status_dropdown
+                name: Family
+              - input_select.spencer_status_dropdown
+              - input_select.lynsey_status_dropdown
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - input_select.spencer_status_dropdown
+              - input_select.lynsey_status_dropdown
+              - input_select.family_status_dropdown
       - type: entities
         title: System
         show_header_toggle: false
