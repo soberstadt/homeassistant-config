@@ -31,6 +31,16 @@
               Just Arrived
             {% endif %}
           {% endif %}
+    # if someone arives at home, change to just arrived unless previously home or just left then chagne to home
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.family_status_dropdown
+        option: >
+          {% if states.input_select.family_status_dropdown.state in ['Home', 'Just Left'] %}
+            Home
+          {% else %}
+            Just Arrived
+          {% endif %}
  
 - alias: Mark person as home
   trigger:
@@ -62,6 +72,11 @@
             input_select.lynsey_status_dropdown
           {% endif %}
         option: Home
+    # if someone has been home for 10 minutes, the family is home
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.family_status_dropdown
+        option: Home
  
 - alias: Mark person as just left
   trigger:
@@ -83,7 +98,25 @@
             input_select.lynsey_status_dropdown
           {% endif %}
         option: Just Left
- 
+    # if someone leaves the network, only mark as just left if the other is not online
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.family_status_dropdown
+        option: >
+          {% if trigger.entity_id == 'device_tracker.spencer_phone' %}
+            {% if states.device_tracker.lynsey_phone.state == 'home' %}
+              {{ states.input_select.family_status_dropdown.state }}
+            {% else %}
+              Just Left
+            {% endif %}
+          {% else %}
+            {% if states.device_tracker.spencer_phone.state == 'home' %}
+              {{ states.input_select.family_status_dropdown.state }}
+            {% else %}
+              Just Left
+            {% endif %}
+          {% endif %}
+
 - alias: Mark person as away
   trigger:
     - platform: state
@@ -106,6 +139,24 @@
             input_select.lynsey_status_dropdown
           {% endif %}
         option: Away
+    # if someone has been off the network for 10, only mark as away if other person is away
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.family_status_dropdown
+        option: >
+          {% if trigger.entity_id == 'input_select.spencer_status_dropdown' %}
+            {% if states.input_select.lynsey_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
+              Away
+            {% else %}
+              {{ states.input_select.family_status_dropdown.state }}
+            {% endif %}
+          {% else %}
+            {% if states.input_select.spencer_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
+              Away
+            {% else %}
+              {{ states.input_select.family_status_dropdown.state }}
+            {% endif %}
+          {% endif %}
  
 - alias: Mark person as extended away
   trigger:
@@ -128,6 +179,25 @@
           {% else %}
             input_select.lynsey_status_dropdown
           {% endif %}
+        option: Extended Away
+    # if someone is extended away, only mark as extended away if the other is extended away
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ trigger.entity_id == 'input_select.spencer_status_dropdown' }}"
+            - condition: template
+              value_template: "{{ states.input_select.lynsey_status_dropdown.state == 'Extended Away' }}"
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ trigger.entity_id == 'input_select.lynsey_status_dropdown' }}"
+            - condition: template
+              value_template: "{{ states.input_select.spencer_status_dropdown.state == 'Extended Away' }}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.family_status_dropdown
         option: Extended Away
 
 - alias: Mark person at work

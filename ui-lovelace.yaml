@@ -164,6 +164,7 @@ views:
         entities:
           - input_select.spencer_status_dropdown
           - input_select.lynsey_status_dropdown
+          - input_select.family_status_dropdown
       - type: entities
         title: System
         show_header_toggle: false

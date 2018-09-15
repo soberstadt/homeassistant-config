@@ -137,6 +137,16 @@ input_select:
       - Extended Away
       - Work
     initial: Home
+  family_status_dropdown:
+    name: Family Presence
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+      - Work
+    initial: Home
   hass_theme:
     name: Themes
     options:

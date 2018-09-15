@@ -48,6 +48,7 @@ Friends And Family:
 Family Dropdowns:
   - input_select.spencer_status_dropdown
   - input_select.lynsey_status_dropdown
+  - input_select.family_status_dropdown
 
 Weather:
   - sun.sun
