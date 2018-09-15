@@ -161,6 +161,10 @@ class ButtonCard extends LitElement {
         node.dispatchEvent(event);
         return event;
       }
+      case 'script':
+        let serviceName = config.entity.split('.')[1]
+        this.hass.callService('script', serviceName, config.data);
+        break;
       case 'service':
         this.hass.callService(config.service.domain, config.service.action, config.service.data);
         break;

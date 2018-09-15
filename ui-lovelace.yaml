@@ -98,10 +98,148 @@ views:
 
   - icon: mdi:television
     cards:
-      - type: picture-entity
-        image: https://images.pexels.com/photos/987586/pexels-photo-987586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
-        entity: script.roku_button
-        name: Roku Remote
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                action: script
+                icon: mdi:power
+                entity: script.roku_button
+                data: { button: power }
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                color_type: blank-card
+              - type: custom:button-card
+                color_type: blank-card
+              - type: custom:button-card
+                action: script
+                icon: mdi:volume-plus
+                entity: script.roku_button
+                data: { button: volume_up }
+                color_off: var(--primary-color)
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                action: script
+                icon: mdi:backburger
+                entity: script.roku_button
+                data: { button: back }
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                color_type: blank-card
+              - type: custom:button-card
+                action: script
+                icon: mdi:home
+                entity: script.roku_button
+                data: { button: home }
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                action: script
+                icon: mdi:volume-minus
+                entity: script.roku_button
+                data: { button: volume_down }
+                color_off: var(--primary-color)
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                color_type: blank-card
+              - type: custom:button-card
+                action: script
+                icon: mdi:arrow-up-thick
+                entity: script.roku_button
+                data: { button: up }
+                color_type: card
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                color_type: blank-card
+              - type: custom:button-card
+                action: script
+                icon: mdi:volume-mute
+                entity: script.roku_button
+                data: { button: volume_mute }
+                color_off: var(--primary-color)
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                action: script
+                icon: mdi:arrow-left-thick
+                entity: script.roku_button
+                data: { button: left }
+                color_type: card
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                action: script
+                name: OK
+                entity: script.roku_button
+                data: { button: select }
+                color_type: card
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                action: script
+                icon: mdi:arrow-right-thick
+                entity: script.roku_button
+                data: { button: right }
+                color_type: card
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                color_type: blank-card
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                color_type: blank-card
+              - type: custom:button-card
+                action: script
+                icon: mdi:arrow-down-thick
+                entity: script.roku_button
+                data: { button: down }
+                color_type: card
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                color_type: blank-card
+              - type: custom:button-card
+                color_type: blank-card
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                action: script
+                icon: mdi:replay
+                entity: script.roku_button
+                data: { button: replay }
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                color_type: blank-card
+              - type: custom:button-card
+                action: script
+                icon: mdi:information-outline
+                entity: script.roku_button
+                data: { button: info }
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                color_type: blank-card
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                action: script
+                icon: mdi:rewind
+                entity: script.roku_button
+                data: { button: reverse }
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                action: script
+                icon: mdi:play-pause
+                entity: script.roku_button
+                data: { button: play }
+                color_type: card
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                action: script
+                icon: mdi:fast-forward
+                entity: script.roku_button
+                data: { button: forward }
+                color_off: var(--primary-color)
+              - type: custom:button-card
+                color_type: blank-card
       - type: entities
         title: Living Room
         show_header_toggle: false
@@ -116,6 +254,10 @@ views:
         entity: media_player.kitchen_speaker
       - type: media-control
         entity: media_player.bedroom_speaker
+      - type: picture-entity
+        image: https://images.pexels.com/photos/987586/pexels-photo-987586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
+        entity: script.roku_button
+        name: Roku Remote
 
   - icon: mdi:settings
     cards:
