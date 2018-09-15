@@ -1,7 +1,9 @@
 title: Oberstadt Home
 resources:
-  - url: /local/button-card.js
+  - url: /local/button-card.js?v=0.2c
     type: module
+  - url: /local/mini-media-player.js?v=0.1
+    type: js
 excluded_entities:
 views:
   - icon: mdi:home
@@ -251,10 +253,12 @@ views:
         entity: media_player.roku
       - type: media-control
         entity: media_player.living_room_tv
-      - type: media-control
+      - type: custom:mini-media-player
         entity: media_player.kitchen_speaker
-      - type: media-control
+        icon: mdi:cast
+      - type: custom:mini-media-player
         entity: media_player.bedroom_speaker
+        icon: mdi:cast
       - type: picture-entity
         image: https://images.pexels.com/photos/987586/pexels-photo-987586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
         entity: script.roku_button
