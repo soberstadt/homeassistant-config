@@ -148,6 +148,11 @@ class ButtonCard extends LitElement {
           entity_id: state.entity_id,
         });
         break;
+      case 'turn_on':
+        this.hass.callService('homeassistant', 'turn_on', {
+          entity_id: state.entity_id
+        });
+        break;
       case 'more_info': {
         const node = this.shadowRoot;
         const options = {};
