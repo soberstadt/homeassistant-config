@@ -114,8 +114,6 @@ views:
               - type: custom:button-card
                 color_type: blank-card
               - type: custom:button-card
-                color_type: blank-card
-              - type: custom:button-card
                 action: script
                 icon: mdi:volume-plus
                 entity: script.roku_button
@@ -129,8 +127,6 @@ views:
                 entity: script.roku_button
                 data: { button: back }
                 color_off: var(--primary-color)
-              - type: custom:button-card
-                color_type: blank-card
               - type: custom:button-card
                 action: script
                 icon: mdi:home
@@ -155,8 +151,6 @@ views:
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
-                color_type: blank-card
-              - type: custom:button-card
                 action: script
                 icon: mdi:volume-mute
                 entity: script.roku_button
@@ -173,7 +167,7 @@ views:
                 color_off: var(--primary-color)
               - type: custom:button-card
                 action: script
-                name: OK
+                icon: mdi:check-outline
                 entity: script.roku_button
                 data: { button: select }
                 color_type: card
@@ -185,8 +179,6 @@ views:
                 data: { button: right }
                 color_type: card
                 color_off: var(--primary-color)
-              - type: custom:button-card
-                color_type: blank-card
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -198,8 +190,6 @@ views:
                 data: { button: down }
                 color_type: card
                 color_off: var(--primary-color)
-              - type: custom:button-card
-                color_type: blank-card
               - type: custom:button-card
                 color_type: blank-card
           - type: horizontal-stack
@@ -218,8 +208,6 @@ views:
                 entity: script.roku_button
                 data: { button: info }
                 color_off: var(--primary-color)
-              - type: custom:button-card
-                color_type: blank-card
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -241,8 +229,6 @@ views:
                 entity: script.roku_button
                 data: { button: forward }
                 color_off: var(--primary-color)
-              - type: custom:button-card
-                color_type: blank-card
       - type: entities
         title: Living Room
         show_header_toggle: false
