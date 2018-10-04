@@ -3,11 +3,9 @@
     - platform: state
       entity_id: group.house_motion
       to: 'on'
-  condition:
-    - condition: state
-      entity_id: group.friends_and_family
-      state: 'not_home'
   action:
+    - condition: template
+      value_template: "{{ states.input_select.family_status_dropdown.state in ['Away', 'Extended Away'] }}"
     - service: notify.pushbullet
       data:
         message: 'Motion at home'
