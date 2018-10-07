@@ -16,8 +16,8 @@ class ThermostatCard extends HTMLElement {
     else
       hvac_state = entity.state;
     const new_state = {
-      min_value: entity.attributes.min_temp,
-      max_value: entity.attributes.max_temp,
+      min_value: 60,
+      max_value: 90,
       ambient_temperature: ambient_temperature,
       target_temperature: entity.attributes.temperature,
       target_temperature_low: entity.attributes.target_temp_low,

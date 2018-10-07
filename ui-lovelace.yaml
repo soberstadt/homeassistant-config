@@ -4,7 +4,7 @@ resources:
     type: module
   - url: /local/mini-media-player.js?v=0.1
     type: js
-  - url: /local/thermostat-card.js?v=1
+  - url: /local/thermostat-card.js?v=1.1
     type: module
 excluded_entities:
 views:
