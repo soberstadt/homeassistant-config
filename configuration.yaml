@@ -103,6 +103,9 @@ google_assistant:
     switch.sonoff_1:
       name: Sitting Room Lamp
       expose: true
+    climate.house:
+      name: Thermostat
+      expose: true
   expose_by_default: false
 
 tuya:

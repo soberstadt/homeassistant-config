@@ -9,6 +9,7 @@ default_view:
     - group.kitchen_lights
     - group.bedroom_lights
     - group.sitting_room
+    - climate.house
 
 Media:
   view: yes
