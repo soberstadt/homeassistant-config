@@ -1,0 +1,23 @@
+- alias: Family Away - Set Temp
+  trigger:
+    - platform: state
+      entity_id: input_select.family_status_dropdown
+      to: 'Away'
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 79
+        operation_mode: Cool
+
+- alias: Family Home - Set Temp
+  trigger:
+    - platform: state
+      entity_id: input_select.family_status_dropdown
+      to: 'Just Arrived'
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.house
+        temperature: 76
+        operation_mode: Cool
