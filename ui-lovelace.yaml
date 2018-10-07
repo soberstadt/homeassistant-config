@@ -4,6 +4,8 @@ resources:
     type: module
   - url: /local/mini-media-player.js?v=0.1
     type: js
+  - url: /local/thermostat-card.js?v=1
+    type: module
 excluded_entities:
 views:
   - icon: mdi:home
@@ -68,9 +70,9 @@ views:
           - light.bedroom_lights
           - group.sitting_room
           - light.mood_lights
-      - type: entities
-        entities:
-          - climate.house
+      - type: custom:thermostat-card
+        entity: climate.house
+        step: 1
 
   - title: Lights
     cards:
@@ -255,6 +257,9 @@ views:
 
   - icon: mdi:settings
     cards:
+      - type: entities
+        entities:
+          - climate.house
       - type: entities
         title: More Details
         show_header_toggle: false
