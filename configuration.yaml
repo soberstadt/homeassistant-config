@@ -110,6 +110,13 @@ tuya:
   password: !secret tuya_password
   country_code: 1
 
+climate:
+  - platform: honeywell
+    username: !secret honeywell_username
+    password: !secret honeywell_password
+    region: us
+    scan_interval: 600
+
 input_text:
   roku_remote_ip:
     name: Roku Remote IP

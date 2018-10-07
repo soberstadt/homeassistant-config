@@ -68,6 +68,9 @@ views:
           - light.bedroom_lights
           - group.sitting_room
           - light.mood_lights
+      - type: entities
+        entities:
+          - climate.house
 
   - title: Lights
     cards:
