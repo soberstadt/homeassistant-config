@@ -6,7 +6,6 @@
     condition: time
     weekday:
       - mon
-      - wed
       - thu
       - fri
   action:
