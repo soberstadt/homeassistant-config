@@ -92,20 +92,23 @@ google_assistant:
     light.ge_12724_3way_dimmer_switch_level:
       name: Bedroom Lights
       expose: true
-      room: bedroom
+      room: Bedroom
     light.flux_bedroom:
       name: Bedroom Mood
       expose: true
-      room: bedroom
+      room: Mood
     light.6001948a98a2_1921680101:
       name: Living Mood Light
       expose: true
+      room: Mood
     switch.sonoff_1:
       name: Sitting Room Lamp
       expose: true
+      room: Sitting Room
     climate.house:
       name: Thermostat
       expose: true
+      room: Entryway
   expose_by_default: false
 
 tuya:
