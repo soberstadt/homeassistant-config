@@ -85,8 +85,6 @@ hdmi_cec:
 
 google_assistant:
   project_id: soberstadt
-  client_id: !secret google_client_id
-  access_token: !secret google_access_token
   api_key: !secret google_api_api_key
   entity_config:
     light.ge_12724_3way_dimmer_switch_level:
