@@ -82,7 +82,7 @@ views:
           - light.mood_lights
       - id: c316d3c63f7e4979a0ab6a7a759d0514  # Automatically created id
         type: custom:thermostat-card
-        entity: climate.house
+        entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
 
   - id: 1  # Automatically created id
     title: Lights
@@ -285,7 +285,7 @@ views:
       - id: 39c7716bca6c4c64a59db092dcb4bda2  # Automatically created id
         type: entities
         entities:
-          - climate.house
+          - climate.2gig_technologies_ct101_thermostat_iris_cooling_1
       - id: a3f159521d614731ac7751320a17c25e  # Automatically created id
         type: entities
         title: More Details
