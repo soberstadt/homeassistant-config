@@ -6,7 +6,7 @@
   action:
     - service: climate.set_temperature
       data:
-        entity_id: climate.house
+        entity_id: 2gig_technologies_ct101_thermostat_iris_cooling_1
         temperature: 79
         operation_mode: Cool
 
@@ -18,6 +18,6 @@
   action:
     - service: climate.set_temperature
       data:
-        entity_id: climate.house
+        entity_id: 2gig_technologies_ct101_thermostat_iris_cooling_1
         temperature: 76
         operation_mode: Cool

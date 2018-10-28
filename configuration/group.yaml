@@ -9,7 +9,7 @@ default_view:
     - group.kitchen_lights
     - group.bedroom_lights
     - group.sitting_room
-    - climate.house
+    - climate.2gig_technologies_ct101_thermostat_iris_cooling_1
 
 Media:
   view: yes
