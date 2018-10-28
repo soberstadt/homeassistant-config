@@ -8,9 +8,11 @@ resources:
     type: module
 excluded_entities:
 views:
-  - icon: mdi:home
+  - id: 0  # Automatically created id
+    icon: mdi:home
     cards:
-      - type: glance
+      - id: c9f11fedade648f5a56af91007986c32  # Automatically created id
+        type: glance
         column_width: calc(100% / 6)
         entities:
           - entity: sensor.arrow_2_real_feel
@@ -26,43 +28,51 @@ views:
             icon: mdi:account
           - entity: binary_sensor.garage_door
             name: Garage Door
-      - type: vertical-stack
+      - id: b5080a0c1187408cae93b18ccc1223c9  # Automatically created id
+        type: vertical-stack
         cards:
           - type: horizontal-stack
             cards:
-              - type: custom:button-card
+              - type: entity-button
                 entity: scene.evening
                 icon: mdi:weather-sunset
                 name: Evening
-                action: turn_on
-              - type: custom:button-card
+                service: scene.turn_on
+                tap_action: call-service
+              - type: entity-button
                 entity: scene.bed_time
                 icon: mdi:weather-night
                 name: Bed Time
-                action: turn_on
-              - type: custom:button-card
+                service: scene.turn_on
+                tap_action: call-service
+              - type: entity-button
                 entity: scene.good_night
                 icon: mdi:sleep
                 name: All Off
-                action: turn_on
+                service: scene.turn_on
+                tap_action: call-service
           - type: horizontal-stack
             cards:
-              - type: custom:button-card
+              - type: entity-button
                 entity: scene.romantic
                 icon: mdi:heart
                 name: Romantic
-                action: turn_on
-              - type: custom:button-card
+                service: scene.turn_on
+                tap_action: call-service
+              - type: entity-button
                 entity: script.wii
                 icon: mdi:gamepad-variant
                 name: Wii
-                action: turn_on
-              - type: custom:button-card
+                service: script.turn_on
+                tap_action: call-service
+              - type: entity-button
                 entity: scene.movie_playing
                 icon: mdi:movie
                 name: Movie
-                action: turn_on
-      - type: entities
+                service: scene.turn_on
+                tap_action: call-service
+      - id: 148c092bb96847df98155f335be42be2  # Automatically created id
+        type: entities
         title: Light Groups
         entities:
           - light.living_room_lights
@@ -70,43 +80,51 @@ views:
           - light.bedroom_lights
           - group.sitting_room
           - light.mood_lights
-      - type: custom:thermostat-card
+      - id: c316d3c63f7e4979a0ab6a7a759d0514  # Automatically created id
+        type: custom:thermostat-card
         entity: climate.house
-        step: 1
 
-  - title: Lights
+  - id: 1  # Automatically created id
+    title: Lights
     cards:
-      - type: entities
+      - id: 17b94b85afcb476b8d167ad93ee9a67c  # Automatically created id
+        type: entities
         title: Living Room
         entities:
           - light.living_room_couch_1
           - light.living_room_couch_2
           - light.behind_tv_lamp
-      - type: entities
+      - id: e386b3a5704c43faa3fc19bed4c07ca8  # Automatically created id
+        type: entities
         title: Dining Room
         entities:
           - light.dining_room_lamp
           - light.6001948a98a2_1921680101
-      - type: entities
+      - id: 4c7196226d3b48bfa63885669de0e55f  # Automatically created id
+        type: entities
         title: Kitchen
         entities:
           - light.sink
           - light.oven
           - light.tuya_light_1
-      - type: entities
+      - id: c4d371a5b82a413c96155e37b8c2cdba  # Automatically created id
+        type: entities
         title: Bedroom Lights
         entities:
           - light.ge_12724_3way_dimmer_switch_level
           - light.flux_bedroom
-      - type: entities
+      - id: e07642e0fbe34db09bf72ba4a16a60eb  # Automatically created id
+        type: entities
         title: Sitting Room
         entities:
           - switch.tuya_switch_1
           - switch.sonoff_1
 
-  - icon: mdi:television
+  - id: 2  # Automatically created id
+    icon: mdi:television
     cards:
-      - type: vertical-stack
+      - id: 2586d0867b184987994b40ec867cacf5  # Automatically created id
+        type: vertical-stack
         cards:
           - type: horizontal-stack
             cards:
@@ -114,7 +132,7 @@ views:
                 action: script
                 icon: mdi:power
                 entity: script.roku_button
-                data: { button: power }
+                data: {button: power}
                 color_off: var(--primary-color)
               - type: custom:button-card
                 color_type: blank-card
@@ -122,7 +140,7 @@ views:
                 action: script
                 icon: mdi:volume-plus
                 entity: script.roku_button
-                data: { button: volume_up }
+                data: {button: volume_up}
                 color_off: var(--primary-color)
           - type: horizontal-stack
             cards:
@@ -130,19 +148,19 @@ views:
                 action: script
                 icon: mdi:backburger
                 entity: script.roku_button
-                data: { button: back }
+                data: {button: back}
                 color_off: var(--primary-color)
               - type: custom:button-card
                 action: script
                 icon: mdi:home
                 entity: script.roku_button
-                data: { button: home }
+                data: {button: home}
                 color_off: var(--primary-color)
               - type: custom:button-card
                 action: script
                 icon: mdi:volume-minus
                 entity: script.roku_button
-                data: { button: volume_down }
+                data: {button: volume_down}
                 color_off: var(--primary-color)
           - type: horizontal-stack
             cards:
@@ -152,14 +170,14 @@ views:
                 action: script
                 icon: mdi:arrow-up-thick
                 entity: script.roku_button
-                data: { button: up }
+                data: {button: up}
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
                 action: script
                 icon: mdi:volume-mute
                 entity: script.roku_button
-                data: { button: volume_mute }
+                data: {button: volume_mute}
                 color_off: var(--primary-color)
           - type: horizontal-stack
             cards:
@@ -167,21 +185,21 @@ views:
                 action: script
                 icon: mdi:arrow-left-thick
                 entity: script.roku_button
-                data: { button: left }
+                data: {button: left}
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
                 action: script
                 icon: mdi:check-outline
                 entity: script.roku_button
-                data: { button: select }
+                data: {button: select}
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
                 action: script
                 icon: mdi:arrow-right-thick
                 entity: script.roku_button
-                data: { button: right }
+                data: {button: right}
                 color_type: card
                 color_off: var(--primary-color)
           - type: horizontal-stack
@@ -192,7 +210,7 @@ views:
                 action: script
                 icon: mdi:arrow-down-thick
                 entity: script.roku_button
-                data: { button: down }
+                data: {button: down}
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
@@ -203,7 +221,7 @@ views:
                 action: script
                 icon: mdi:replay
                 entity: script.roku_button
-                data: { button: replay }
+                data: {button: replay}
                 color_off: var(--primary-color)
               - type: custom:button-card
                 color_type: blank-card
@@ -211,7 +229,7 @@ views:
                 action: script
                 icon: mdi:information-outline
                 entity: script.roku_button
-                data: { button: info }
+                data: {button: info}
                 color_off: var(--primary-color)
           - type: horizontal-stack
             cards:
@@ -219,48 +237,57 @@ views:
                 action: script
                 icon: mdi:rewind
                 entity: script.roku_button
-                data: { button: reverse }
+                data: {button: reverse}
                 color_off: var(--primary-color)
               - type: custom:button-card
                 action: script
                 icon: mdi:play-pause
                 entity: script.roku_button
-                data: { button: play }
+                data: {button: play}
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
                 action: script
                 icon: mdi:fast-forward
                 entity: script.roku_button
-                data: { button: forward }
+                data: {button: forward}
                 color_off: var(--primary-color)
-      - type: entities
+      - id: aed7f2ab8a774007b883a0750900bfee  # Automatically created id
+        type: entities
         title: Living Room
         show_header_toggle: false
         entities:
           - script.jeopardy
           - script.wii
-      - type: media-control
+      - id: 81949810d809465a823def5865d5e324  # Automatically created id
+        type: media-control
         entity: media_player.roku
-      - type: media-control
+      - id: 5962e0f4870d45c69604c570a69d85e1  # Automatically created id
+        type: media-control
         entity: media_player.living_room_tv
-      - type: custom:mini-media-player
+      - id: 2f7ccafbe8854226878bc4aa162d6514  # Automatically created id
+        type: custom:mini-media-player
         entity: media_player.kitchen_speaker
         icon: mdi:cast
-      - type: custom:mini-media-player
+      - id: b136b74cb0554f9fa4f05825177dccf6  # Automatically created id
+        type: custom:mini-media-player
         entity: media_player.bedroom_speaker
         icon: mdi:cast
-      - type: picture-entity
+      - id: 1438f0f086164423a7d92293f865cf05  # Automatically created id
+        type: picture-entity
         image: https://images.pexels.com/photos/987586/pexels-photo-987586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
         entity: script.roku_button
         name: Roku Remote
 
-  - icon: mdi:settings
+  - id: 3  # Automatically created id
+    icon: mdi:settings
     cards:
-      - type: entities
+      - id: 39c7716bca6c4c64a59db092dcb4bda2  # Automatically created id
+        type: entities
         entities:
           - climate.house
-      - type: entities
+      - id: a3f159521d614731ac7751320a17c25e  # Automatically created id
+        type: entities
         title: More Details
         show_header_toggle: false
         entities:
@@ -272,13 +299,15 @@ views:
           - sensor.arrow_2_humidity
           - sensor.arrow_2_ldr
           - sensor.arrow_2_motion
-      - type: entities
+      - id: 0dabe724acd54c8c8423bf5fbec61f15  # Automatically created id
+        type: entities
         title: Speedtest
         show_header_toggle: false
         entities:
           - sensor.speedtest_download
           - sensor.speedtest_ping
-      - type: entities
+      - id: af179a2d3d384240a91ac4f3be773c17  # Automatically created id
+        type: entities
         title: Tracked Devices
         show_header_toggle: false
         entities:
@@ -287,19 +316,22 @@ views:
           - device_tracker.lynsey_phone
           - device_tracker.lynsey_mac
           - device_tracker.kitchen_camera
-      - type: entities
+      - id: 4376f466ef094499a10412772f03b3cf  # Automatically created id
+        type: entities
         title: House Motion
         show_header_toggle: false
         entities:
           - binary_sensor.arrow_1_motion
           - binary_sensor.living_room_motion
-      - type: entities
+      - id: 9b9f7042cd0c4171bb125d83875f2f3a  # Automatically created id
+        type: entities
         title: Garage
         show_header_toggle: false
         entities:
           - sensor.garage_status
           - sensor.garage_distance
-      - type: vertical-stack
+      - id: 97d8f655a09c430591e2ba1a0514d681  # Automatically created id
+        type: vertical-stack
         cards:
           - type: history-graph
             title: Family Presence
@@ -314,14 +346,16 @@ views:
               - input_select.spencer_status_dropdown
               - input_select.lynsey_status_dropdown
               - input_select.family_status_dropdown
-      - type: entities
+      - id: fe2749842ea94945b3747fd3f04dcf8f  # Automatically created id
+        type: entities
         title: System
         show_header_toggle: false
         entities:
           - sensor.ha_uptime
           - input_select.hass_theme
           - group.all_automations
-      - type: entities
+      - id: 6c98e6b747ff46c8bc1639f7af05f586  # Automatically created id
+        type: entities
         title: SpaceX
         show_header_toggle: false
         entities:
