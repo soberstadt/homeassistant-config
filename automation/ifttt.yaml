@@ -19,3 +19,12 @@
     service: roku_remote.press_button
     data_template:
       button: '{{ trigger.event.data.button }}'
+
+- alias: IFTTT - Wii
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: wii
+  action:
+    service: script.wii
