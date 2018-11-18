@@ -96,7 +96,7 @@ google_assistant:
       name: Sitting Room Lamp
       expose: true
       room: Sitting Room
-    climate.house:
+    climate.2gig_technologies_ct101_thermostat_iris_cooling_1:
       name: Thermostat
       expose: true
       room: Entryway
