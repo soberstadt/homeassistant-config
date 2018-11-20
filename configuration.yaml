@@ -153,4 +153,8 @@ input_select:
 
 roku_remote:
 
+meross:
+  username: !secret meross_username
+  password: !secret meross_password
+
 python_script:
