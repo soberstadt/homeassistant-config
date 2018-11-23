@@ -59,6 +59,8 @@ class Device:
 
     _error = None
 
+    _status = None
+
     def __init__(self,
                  token,
                  key,
@@ -262,10 +264,12 @@ class Device:
 
     def turn_on(self):
         payload = {"channel":0,"toggle":{"onoff":1}}
+        self._status = True
         return self._execute_cmd("SET", "Appliance.Control.Toggle", payload)
 
     def turn_off(self):
         payload = {"channel":0,"toggle":{"onoff":0}}
+        self._status = False
         return self._execute_cmd("SET", "Appliance.Control.Toggle", payload)
 
     def get_trace(self):
@@ -281,7 +285,9 @@ class Device:
         return self._execute_cmd("GET", "Appliance.System.Report", {})
 
     def get_status(self):
-        return self.get_sys_data()['all']['control']['toggle']['onoff'] == 1
+        if self._status == None:
+            self._status = self.get_sys_data()['all']['control']['toggle']['onoff'] == 1
+        return self._status
 
     def device_id(self):
         return self._uuid

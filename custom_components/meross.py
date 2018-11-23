@@ -9,7 +9,6 @@ from homeassistant.helpers import discovery
 from homeassistant.helpers.dispatcher import (
     dispatcher_send, async_dispatcher_connect)
 from homeassistant.helpers.entity import Entity
-from homeassistant.helpers.event import track_time_interval
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -61,25 +60,6 @@ def setup(hass, config):
 
     device_list = meross.list_supported_devices()
     load_devices(device_list)
-
-    def poll_devices_update(event_time):
-        """Check if accesstoken is expired and pull device list from server."""
-        _LOGGER.debug("Pull devices from Meross.")
-        # Add new discover device.
-        device_list = meross.list_supported_devices()
-        load_devices(device_list)
-        # Delete not exist device.
-        newlist_ids = []
-        for device in device_list:
-            newlist_ids.append(device.device_id())
-        for dev_id in list(hass.data[DOMAIN]['entities']):
-            if dev_id not in newlist_ids:
-                dispatcher_send(hass, SIGNAL_DELETE_ENTITY, dev_id)
-                hass.data[DOMAIN]['entities'].pop(dev_id)
-
-    track_time_interval(hass, poll_devices_update, timedelta(minutes=5))
-
-    hass.services.register(DOMAIN, SERVICE_PULL_DEVICES, poll_devices_update)
 
     def force_update(call):
         """Force all devices to pull data."""
