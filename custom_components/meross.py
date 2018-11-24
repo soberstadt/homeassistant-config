@@ -16,6 +16,7 @@ REQUIREMENTS = ['paho-mqtt']
 
 DOMAIN = 'meross'
 DATA_MEROSS = 'data_meross'
+DATA_DEVICES = 'data_devices'
 
 SIGNAL_DELETE_ENTITY = 'meross_delete'
 SIGNAL_UPDATE_ENTITY = 'meross_update'
@@ -58,8 +59,8 @@ def setup(hass, config):
             discovery.load_platform(
                 hass, ha_type, DOMAIN, {'dev_ids': dev_ids}, config)
 
-    device_list = meross.list_supported_devices()
-    load_devices(device_list)
+    hass.data[DATA_DEVICES] = meross.list_supported_devices()
+    load_devices(hass.data[DATA_DEVICES])
 
     def force_update(call):
         """Force all devices to pull data."""

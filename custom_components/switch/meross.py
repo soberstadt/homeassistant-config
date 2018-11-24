@@ -1,16 +1,20 @@
 from homeassistant.components.switch import ENTITY_ID_FORMAT, SwitchDevice
-from ..meross import DATA_MEROSS, MerossDevice
+from ..meross import DATA_DEVICES, MerossDevice
 
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up Meross Switch device."""
     if discovery_info is None:
         return
-    meross = hass.data[DATA_MEROSS]
+    meross_devices = hass.data[DATA_DEVICES]
     dev_ids = discovery_info.get('dev_ids')
     devices = []
     for dev_id in dev_ids:
-        device = meross.get_device_by_id(dev_id)
+        device = None
+        for m_device in meross_devices:
+            if m_device.device_id() == dev_id:
+                device = m_device
+                continue
         if device is None:
             continue
         devices.append(MerossSwitch(device))

@@ -285,7 +285,7 @@ class Device:
         return self._execute_cmd("GET", "Appliance.System.Report", {})
 
     def get_status(self):
-        if self._status == None:
+        if self._status is None:
             self._status = self.get_sys_data()['all']['control']['toggle']['onoff'] == 1
         return self._status
 

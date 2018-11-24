@@ -127,13 +127,6 @@ class MerossHttpClient:
 
         return supported_devices
 
-    def get_device_by_id(self, uuid):
-        supported_devices = self.list_supported_devices()
-        for dev in supported_devices:
-            if dev.device_id() == uuid:
-                return dev
-        None
-
 
 class AuthenticatedPostException(Exception):
     pass
