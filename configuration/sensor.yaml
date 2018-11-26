@@ -88,3 +88,8 @@
     spacex_next_mission_name:
       friendly_name: 'Mission Name'
       value_template: '{{ states.sensor.spacex.attributes["mission_name"] }}'
+
+    spencers_battery:
+      unit_of_measurement: '%'
+      value_template: '{{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_level | round(0) }}'
+
