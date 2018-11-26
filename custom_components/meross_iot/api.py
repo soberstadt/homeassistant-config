@@ -5,7 +5,6 @@ import json
 import time
 import string
 import random
-import logging
 from .device_factory import build_wrapper
 
 
@@ -134,5 +133,3 @@ class AuthenticatedPostException(Exception):
 
 class UnauthorizedException(Exception):
     pass
-
-

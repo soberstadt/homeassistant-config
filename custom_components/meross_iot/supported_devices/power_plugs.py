@@ -22,6 +22,7 @@ class ClientStatus(Enum):
     SUBSCRIBED = auto()
     CONNECTION_DROPPED = auto()
 
+
 class Device:
     _status_lock = None
     _client_status = None
@@ -51,6 +52,7 @@ class Device:
     # Waiting condition used to wait for command ACKs
     _waiting_message_ack_queue = None
     _waiting_subscribers_queue = None
+    _waiting_message_id = None
 
     _ack_response = None
 
@@ -66,6 +68,7 @@ class Device:
                  key,
                  user_id,
                 **kwords):
+
         self._status_lock = RLock()
 
         self._waiting_message_ack_queue = Condition()
@@ -178,13 +181,18 @@ class Device:
                     self._waiting_message_ack_queue.notify()
 
             # Otherwise process it accordingly
+            elif self._message_from_self(message):
+                if message['header']['method'] == "PUSH" and 'payload' in message and 'toggle' in message['payload']:
+                    self._handle_toggle(message)
+                else:
+                    l.debug("UNKNOWN msg received by %s" % self._uuid)
+                    # if message['header']['method'] == "PUSH":
+                    # TODO
             else:
-                l.debug("UNKNOWN msg = %s" % message)
-                # if message['header']['method'] == "PUSH":
-                # TODO
-        except:
-            # TODO
-            l.debug("UNKNOWN2")
+                # do nothing because the message was from a different device
+                pass
+        except Exception as e:
+            l.debug("%s failed to process message because: %s" % (self._uuid, e))
 
     def _on_log(self, client, userdata, level, buf):
         # print("Data: %s - Buff: %s" % (userdata, buf))
@@ -256,6 +264,16 @@ class Device:
 
             return self._ack_response['payload']
 
+    def _message_from_self(self, message):
+        try:
+            return 'from' in message['header'] and message['header']['from'].split('/')[2] == self._uuid
+        except:
+            return false
+
+    def _handle_toggle(self, message):
+        if 'onoff' in message['payload']['toggle']:
+            self._status = (message['payload']['toggle']['onoff'] == 1)
+
     def get_sys_data(self):
         return self._execute_cmd("GET", "Appliance.System.All", {})
 
@@ -301,8 +319,7 @@ class Mss310(Device):
 
 
 class Mss110(Device):
-    def get_type(self):
-        return "MSS110"
+    pass
 
 
 class AtomicCounter(object):
