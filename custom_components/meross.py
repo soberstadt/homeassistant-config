@@ -34,7 +34,7 @@ CONFIG_SCHEMA = vol.Schema({
 
 def setup(hass, config):
     """Set up Tuya Component."""
-    from .meross_cloud.meross_cloud import MerossHttpClient
+    from .meross_iot.api import MerossHttpClient
 
     username = config[DOMAIN][CONF_USERNAME]
     password = config[DOMAIN][CONF_PASSWORD]
