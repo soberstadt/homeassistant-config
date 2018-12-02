@@ -45,10 +45,15 @@ def setup(hass, config):
         'entities': {}
     }
 
-    def load_devices(device_list):
+    def fetch_devices():
+        hass.data[DATA_DEVICES] = {}
+        for device in meross.list_supported_devices():
+            hass.data[DATA_DEVICES][device.device_id()] = device
+
+    def load_devices():
         """Load new devices by device_list."""
         device_type_list = {}
-        for device in device_list:
+        for device in hass.data[DATA_DEVICES].values():
             if device.device_id() not in hass.data[DOMAIN]['entities']:
                 ha_type = 'switch'
                 if ha_type not in device_type_list:
@@ -59,8 +64,8 @@ def setup(hass, config):
             discovery.load_platform(
                 hass, ha_type, DOMAIN, {'dev_ids': dev_ids}, config)
 
-    hass.data[DATA_DEVICES] = meross.list_supported_devices()
-    load_devices(hass.data[DATA_DEVICES])
+    fetch_devices()
+    load_devices()
 
     def force_update(call):
         """Force all devices to pull data."""
@@ -74,13 +79,13 @@ def setup(hass, config):
 class MerossDevice(Entity):
     """Meross base device."""
 
-    def __init__(self, meross):
+    def __init__(self, id):
         """Meross devices."""
-        self.meross = meross
+        self.id = id
 
     async def async_added_to_hass(self):
         """Call when entity is added to hass."""
-        dev_id = self.meross.device_id()
+        dev_id = self.id
         self.hass.data[DOMAIN]['entities'][dev_id] = self.entity_id
         async_dispatcher_connect(
             self.hass, SIGNAL_DELETE_ENTITY, self._delete_callback)
@@ -90,17 +95,17 @@ class MerossDevice(Entity):
     @property
     def device_id(self):
         """Return Meross device id."""
-        return self.meross.device_id()
+        return self.id
 
     @property
     def unique_id(self):
         """Return a unique ID."""
-        return 'meross.{}'.format(self.meross.device_id())
+        return 'meross.{}'.format(self.id)
 
     @property
     def name(self):
         """Return Meross device name."""
-        return self.meross.device_id()
+        return self.id
 
     @property
     def available(self):
@@ -110,6 +115,9 @@ class MerossDevice(Entity):
     def update(self):
         """Refresh Tuya device data."""
         None
+
+    def device(self):
+        return self.hass.data[DATA_DEVICES][self.id]
 
     @callback
     def _delete_callback(self, dev_id):

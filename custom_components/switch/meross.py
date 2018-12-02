@@ -10,34 +10,30 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     dev_ids = discovery_info.get('dev_ids')
     devices = []
     for dev_id in dev_ids:
-        device = None
-        for m_device in meross_devices:
-            if m_device.device_id() == dev_id:
-                device = m_device
-                continue
-        if device is None:
-            continue
-        devices.append(MerossSwitch(device))
+        if meross_devices[dev_id] is not None:
+            devices.append(MerossSwitch(dev_id))
     add_entities(devices)
 
 
 class MerossSwitch(MerossDevice, SwitchDevice):
     """meross Switch Device."""
 
-    def __init__(self, meross):
+    def __init__(self, id):
         """Init Meross switch device."""
-        super().__init__(meross)
-        self.entity_id = ENTITY_ID_FORMAT.format(meross.device_id())
+        super().__init__(id)
+        self.entity_id = ENTITY_ID_FORMAT.format(id)
 
     @property
     def is_on(self):
         """Return true if switch is on."""
-        return self.meross.get_status()
+        if self.device() is None:
+            return False
+        return self.device().get_status()
 
     def turn_on(self, **kwargs):
         """Turn the switch on."""
-        self.meross.turn_on()
+        self.device() and self.device().turn_on()
 
     def turn_off(self, **kwargs):
         """Turn the device off."""
-        self.meross.turn_off()
+        self.device() and self.device().turn_off()
