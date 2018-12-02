@@ -33,3 +33,8 @@ switch.tuya_switch_1:
 switch.sonoff_1:
   friendly_name: 'Sitting Room Lamp'
   icon: mdi:lamp
+
+switch.1712216593425625131334298f10a3cb:
+  friendly_name: Meross 1
+switch.1712213843127125131334298f10a49d:
+  friendly_name: Meross 2
