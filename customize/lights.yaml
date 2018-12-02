@@ -34,7 +34,10 @@ switch.sonoff_1:
   friendly_name: 'Sitting Room Lamp'
   icon: mdi:lamp
 
+# Meross 1
 switch.1712216593425625131334298f10a3cb:
-  friendly_name: Meross 1
+  friendly_name: Christmas Tree
+  icon: mdi:pine-tree
+# Meross 2
 switch.1712213843127125131334298f10a49d:
-  friendly_name: Meross 2
+  friendly_name: Camera Power
