@@ -1,6 +1,12 @@
 - alias: Camera Offline
   trigger:
     - platform: state
+      entity_id: input_select.spencer_status_dropdown
+      to: 'Home'
+      for:
+        minutes: 10
+  conditions:
+    - condition: state
       entity_id: device_tracker.kitchen_camera
       to: 'not_home'
   action:

@@ -1,4 +1,4 @@
-- alias: Family Away - Set Temp
+- alias: Family Away
   trigger:
     - platform: state
       entity_id: input_select.family_status_dropdown
@@ -9,8 +9,10 @@
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
         temperature: 79
         operation_mode: Cool
+    - service: switch.turn_on
+      entity_id: switch.1712213843127125131334298f10a49d
 
-- alias: Family Home - Set Temp
+- alias: Family Home
   trigger:
     - platform: state
       entity_id: input_select.family_status_dropdown
@@ -21,3 +23,5 @@
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
         temperature: 75
         operation_mode: Cool
+    - service: switch.turn_off
+      entity_id: switch.1712213843127125131334298f10a49d
