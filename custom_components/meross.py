@@ -13,7 +13,7 @@ from homeassistant.helpers.event import track_time_interval
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['paho-mqtt']
+REQUIREMENTS = ['meross_iot==0.1.2.0']
 
 DOMAIN = 'meross'
 DATA_MEROSS = 'data_meross'
@@ -35,7 +35,7 @@ CONFIG_SCHEMA = vol.Schema({
 
 def setup(hass, config):
     """Set up Tuya Component."""
-    from .meross_iot.api import MerossHttpClient
+    from meross_iot.api import MerossHttpClient
 
     username = config[DOMAIN][CONF_USERNAME]
     password = config[DOMAIN][CONF_PASSWORD]
