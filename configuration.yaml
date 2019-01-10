@@ -20,10 +20,12 @@ frontend:
     - /local/custom_ui/state-card-tiles_es5.html
   themes: !include_dir_merge_named themes/
 
+lovelace:
+  mode: yaml
+
 config:
 
 http:
-  api_password: !secret http_password
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   base_url: !secret base_url
