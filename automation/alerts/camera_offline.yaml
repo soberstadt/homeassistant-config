@@ -2,13 +2,13 @@
   trigger:
     - platform: state
       entity_id: input_select.spencer_status_dropdown
-      to: 'Home'
+      to: 'Away'
       for:
         minutes: 10
-  conditions:
+  condition:
     - condition: state
       entity_id: device_tracker.kitchen_camera
-      to: 'not_home'
+      state: 'not_home'
   action:
     - service: notify.pushbullet
       data:
