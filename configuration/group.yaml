@@ -73,7 +73,7 @@ Living Room Lights:
 Living Room:
   control: hidden
   entities:
-    - binary_sensor.pir_living_room
+    - binary_sensor.living_room_motion
     - sensor.arrow_2_real_feel
     - sensor.dark_sky_apparent_temperature
 
@@ -135,7 +135,7 @@ Extra Lights:
 
 House Motion:
   - binary_sensor.arrow_1_motion
-  # - binary_sensor.pir_living_room
+  # - binary_sensor.living_room_motion
 
 Garage:
   - sensor.garage_status
