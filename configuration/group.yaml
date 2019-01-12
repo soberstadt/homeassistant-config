@@ -135,7 +135,7 @@ Extra Lights:
 
 House Motion:
   - binary_sensor.arrow_1_motion
-  - binary_sensor.pir_living_room
+  # - binary_sensor.pir_living_room
 
 Garage:
   - sensor.garage_status
