@@ -125,7 +125,6 @@ input_select:
       - Away
       - Extended Away
       - Work
-    initial: Home
   lynsey_status_dropdown:
     name: Lynsey
     options:
@@ -135,7 +134,6 @@ input_select:
       - Away
       - Extended Away
       - Work
-    initial: Home
   family_status_dropdown:
     name: Family Presence
     options:
@@ -145,7 +143,6 @@ input_select:
       - Away
       - Extended Away
       - Work
-    initial: Home
   hass_theme:
     name: Themes
     options:
