@@ -1,0 +1,28 @@
+esphomeyaml:
+  name: mqtt_arrow_5
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+
+mqtt:
+  broker: !secret mqtt_broker
+  username: !secret mqtt_user
+  password: !secret mqtt_password
+  topic_prefix: '/devices/mqtt_arrow_5'
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+# api:
+
+ota:
+  password: !secret mqtt_password
+
+binary_sensor:
+  - platform: gpio
+    pin: GPIO4
+    name: bs1
