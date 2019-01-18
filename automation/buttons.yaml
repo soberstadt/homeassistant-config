@@ -1,0 +1,13 @@
+- alias: All Lights Button
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.arrow_5_button
+      to: 'on'
+  action:
+    - service_template: >
+        {% if group.all_lights.state == 'off' %}
+          light.turn_on
+        {% else %}
+          light.turn_off
+        {% endif %}
+      entity_id: group.all_lights

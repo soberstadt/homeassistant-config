@@ -18,3 +18,8 @@
   state_topic: "/devices/mqtt_arrow_4/binary_sensor/bs1/state"
   device_class: motion
   availability_topic: "/devices/mqtt_arrow_4/status"
+
+- platform: mqtt
+  name: Arrow 5 Button
+  state_topic: "/devices/mqtt_arrow_5/binary_sensor/bs1/state"
+  availability_topic: "/devices/mqtt_arrow_5/status"
