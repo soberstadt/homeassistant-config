@@ -80,9 +80,20 @@ views:
           - light.bedroom_lights
           - light.sitting_room_lights
           - light.mood_lights
-      - id: c316d3c63f7e4979a0ab6a7a759d0514  # Automatically created id
-        type: custom:thermostat-card
-        entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+      - type: conditional
+        conditions:
+          - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+            state_not: "heat"
+        card:
+          type: custom:thermostat-card
+          entity:  climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+      - type: conditional
+        conditions:
+          - entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
+            state: "heat"
+        card:
+          type: custom:thermostat-card
+          entity:  climate.2gig_technologies_ct101_thermostat_iris_heating_1
 
   - id: 1  # Automatically created id
     title: Lights
