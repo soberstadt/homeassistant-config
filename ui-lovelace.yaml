@@ -287,10 +287,22 @@ views:
   - id: 3  # Automatically created id
     icon: mdi:settings
     cards:
-      - id: 39c7716bca6c4c64a59db092dcb4bda2  # Automatically created id
-        type: entities
-        entities:
-          - climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+      - type: conditional
+        conditions:
+          - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+            state_not: "heat"
+        card:
+          type: entities
+          entities:
+            - climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+      - type: conditional
+        conditions:
+          - entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
+            state: "heat"
+        card:
+          type: entities
+          entities:
+            - climate.2gig_technologies_ct101_thermostat_iris_heating_1
       - id: a3f159521d614731ac7751320a17c25e  # Automatically created id
         type: entities
         title: More Details
