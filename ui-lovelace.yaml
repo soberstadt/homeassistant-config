@@ -1,6 +1,6 @@
 title: Oberstadt Home
 resources:
-  - url: /local/button-card.js?v=0.2.1c
+  - url: /local/button-card.js?v=0.0.5.1
     type: module
   - url: /local/mini-media-player.js?v=0.1
     type: js
