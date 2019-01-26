@@ -5,7 +5,7 @@
       to: 'on'
   action:
     - service_template: >
-        {% if group.all_lights.state == 'off' %}
+        {% if is_state('group.all_lights.state', 'off') %}
           light.turn_on
         {% else %}
           light.turn_off
