@@ -30,13 +30,9 @@
 - platform: group
   name: Sitting Room Lights
   entities:
-    - light.christmas_tree
     - light.buffet_lamp
     - light.sitting_room_couch
 
-- platform: switch
-  name: Christmas Tree
-  entity_id: switch.1712216593425625131334298f10a3cb
 - platform: switch
   name: Buffet Lamp
   entity_id: switch.sonoff_1

@@ -130,10 +130,10 @@ views:
         entities:
           - switch.tuya_switch_1
           - switch.sonoff_1
-          - switch.1712216593425625131334298f10a3cb
       - type: entities
         title: Extra
         entities:
+          - switch.1712216593425625131334298f10a3cb
           - switch.1712213843127125131334298f10a49d
 
   - id: 2  # Automatically created id
