@@ -390,7 +390,6 @@ views:
           - sensor.arrow_2_temperature
           - sensor.arrow_2_humidity
           - sensor.arrow_2_ldr
-          - sensor.arrow_2_motion
       - id: 0dabe724acd54c8c8423bf5fbec61f15  # Automatically created id
         type: entities
         title: Speedtest
