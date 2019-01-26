@@ -153,7 +153,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: power
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 color_type: blank-card
               - type: custom:button-card
@@ -165,7 +165,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: volume_up
-                color_off: var(--primary-color)
+                color: var(--primary-color)
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -177,7 +177,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: back
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 action: service
                 icon: mdi:home
@@ -187,7 +187,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: home
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 action: service
                 icon: mdi:volume-minus
@@ -197,7 +197,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: volume_down
-                color_off: var(--primary-color)
+                color: var(--primary-color)
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -212,7 +212,7 @@ views:
                     entity_id: remote.roku
                     command: up
                 color_type: card
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 action: service
                 icon: mdi:volume-mute
@@ -222,7 +222,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: volume_mute
-                color_off: var(--primary-color)
+                color: var(--primary-color)
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -235,7 +235,7 @@ views:
                     entity_id: remote.roku
                     command: left
                 color_type: card
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 action: service
                 icon: mdi:check-outline
@@ -246,7 +246,7 @@ views:
                     entity_id: remote.roku
                     command: select
                 color_type: card
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 action: service
                 icon: mdi:arrow-right-thick
@@ -257,7 +257,7 @@ views:
                     entity_id: remote.roku
                     command: right
                 color_type: card
-                color_off: var(--primary-color)
+                color: var(--primary-color)
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -272,7 +272,7 @@ views:
                     entity_id: remote.roku
                     command: down
                 color_type: card
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 color_type: blank-card
           - type: horizontal-stack
@@ -286,7 +286,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: replay
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 color_type: blank-card
               - type: custom:button-card
@@ -298,7 +298,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: info
-                color_off: var(--primary-color)
+                color: var(--primary-color)
           - type: horizontal-stack
             cards:
               - type: custom:button-card
@@ -310,7 +310,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: reverse
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 action: service
                 icon: mdi:play-pause
@@ -321,7 +321,7 @@ views:
                     entity_id: remote.roku
                     command: play
                 color_type: card
-                color_off: var(--primary-color)
+                color: var(--primary-color)
               - type: custom:button-card
                 action: service
                 icon: mdi:fast-forward
@@ -331,7 +331,7 @@ views:
                   data:
                     entity_id: remote.roku
                     command: forward
-                color_off: var(--primary-color)
+                color: var(--primary-color)
       - id: aed7f2ab8a774007b883a0750900bfee  # Automatically created id
         type: entities
         title: Living Room
