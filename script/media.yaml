@@ -3,7 +3,7 @@ roku_button:
     service: remote.send_command
     data_template:
       entity_id: remote.roku
-      button: "{{ button }}"
+      command: "{{ button }}"
 roku_ff_seconds:
   sequence:
     service: python_script.roku_fast_forward_seconds
@@ -23,7 +23,7 @@ jeopardy:
     - service: remote.send_command
       data:
         entity_id: remote.roku
-        button: play
+        command: play
 
 wii:
   sequence:
