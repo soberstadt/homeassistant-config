@@ -165,61 +165,93 @@ views:
           - type: horizontal-stack
             cards:
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:backburger
-                entity: script.roku_button
-                data: {button: back}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: back
                 color_off: var(--primary-color)
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:home
-                entity: script.roku_button
-                data: {button: home}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: home
                 color_off: var(--primary-color)
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:volume-minus
-                entity: script.roku_button
-                data: {button: volume_down}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: volume_down
                 color_off: var(--primary-color)
           - type: horizontal-stack
             cards:
               - type: custom:button-card
                 color_type: blank-card
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:arrow-up-thick
-                entity: script.roku_button
-                data: {button: up}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: up
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:volume-mute
-                entity: script.roku_button
-                data: {button: volume_mute}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: volume_mute
                 color_off: var(--primary-color)
           - type: horizontal-stack
             cards:
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:arrow-left-thick
-                entity: script.roku_button
-                data: {button: left}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: left
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:check-outline
-                entity: script.roku_button
-                data: {button: select}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: select
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:arrow-right-thick
-                entity: script.roku_button
-                data: {button: right}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: right
                 color_type: card
                 color_off: var(--primary-color)
           - type: horizontal-stack
@@ -227,10 +259,14 @@ views:
               - type: custom:button-card
                 color_type: blank-card
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:arrow-down-thick
-                entity: script.roku_button
-                data: {button: down}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: down
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
@@ -238,39 +274,59 @@ views:
           - type: horizontal-stack
             cards:
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:replay
-                entity: script.roku_button
-                data: {button: replay}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: replay
                 color_off: var(--primary-color)
               - type: custom:button-card
                 color_type: blank-card
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:information-outline
-                entity: script.roku_button
-                data: {button: info}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: info
                 color_off: var(--primary-color)
           - type: horizontal-stack
             cards:
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:rewind
-                entity: script.roku_button
-                data: {button: reverse}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: reverse
                 color_off: var(--primary-color)
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:play-pause
-                entity: script.roku_button
-                data: {button: play}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: play
                 color_type: card
                 color_off: var(--primary-color)
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:fast-forward
-                entity: script.roku_button
-                data: {button: forward}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: forward
                 color_off: var(--primary-color)
       - id: aed7f2ab8a774007b883a0750900bfee  # Automatically created id
         type: entities
