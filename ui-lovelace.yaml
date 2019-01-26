@@ -37,40 +37,58 @@ views:
                 entity: scene.evening
                 icon: mdi:weather-sunset
                 name: Evening
-                service: scene.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.evening
               - type: entity-button
                 entity: scene.bed_time
                 icon: mdi:weather-night
                 name: Bed Time
-                service: scene.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.bed_time
               - type: entity-button
                 entity: scene.good_night
                 icon: mdi:sleep
                 name: All Off
-                service: scene.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.good_night
           - type: horizontal-stack
             cards:
               - type: entity-button
                 entity: scene.romantic
                 icon: mdi:heart
                 name: Romantic
-                service: scene.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.romantic
               - type: entity-button
                 entity: script.wii
                 icon: mdi:gamepad-variant
                 name: Wii
-                service: script.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.wii
               - type: entity-button
                 entity: scene.movie_playing
                 icon: mdi:movie
                 name: Movie
-                service: scene.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.movie_playing
       - id: 148c092bb96847df98155f335be42be2  # Automatically created id
         type: entities
         title: Light Groups
