@@ -56,7 +56,7 @@
 
 - alias: Night- Light off after 20 min of no motion
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/5'
       seconds: 00
   condition:
