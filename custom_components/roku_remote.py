@@ -34,16 +34,6 @@ def setup(hass, config):
     if roku == None:
         roku = Roku(hass.states.get(LAST_IP_STATE_NAME).state)
 
-    def button_press(call):
-        button_name = call.data.get('button', '')
-        hass.states.set("{0}.{1}".format(DOMAIN, LAST_BUTTON_TOPIC), button_name)
-        try:
-            getattr(roku, button_name)()
-        except Exception as e:
-            if find_roku() != None: getattr(roku, button_name)()
-
-
-    hass.services.async_register(DOMAIN, 'press_button', button_press)
 
     def sleep(call):
         time.sleep(call.data.get('time'))
