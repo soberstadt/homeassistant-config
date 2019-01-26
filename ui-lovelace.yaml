@@ -145,10 +145,14 @@ views:
           - type: horizontal-stack
             cards:
               - type: custom:button-card
-                action: script
+                action: service
                 icon: mdi:power
-                entity: script.roku_button
-                data: {button: power}
+                service:
+                  domain: remote
+                  action: send_command
+                  data:
+                    entity_id: remote.roku
+                    command: power
                 color_off: var(--primary-color)
               - type: custom:button-card
                 color_type: blank-card
