@@ -6,6 +6,10 @@ resources:
     type: js
   - url: /local/thermostat-card.js?v=1.1
     type: module
+  - url: /local/color-picker.js?v=1
+    type: js
+  - url: /local/card-tools.js?v=0.3
+    type: js
 excluded_entities:
 views:
   - id: 0  # Automatically created id
@@ -153,6 +157,8 @@ views:
         entities:
           - switch.1712216593425625131334298f10a3cb
           - switch.1712213843127125131334298f10a49d
+      - type: custom:color-picker
+        entity: light.mood_lights
 
   - id: 2  # Automatically created id
     icon: mdi:television
