@@ -13,8 +13,6 @@ roku_ff_seconds:
 jeopardy:
   alias: Jeopardy Time
   sequence:
-    - service: script.turn_on
-      entity_id: script.turn_on_tv
     - service: roku_remote.launch_channel
       data:
         channel: '9.1'
