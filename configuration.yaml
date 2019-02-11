@@ -150,7 +150,9 @@ input_select:
       - midnight
     initial: default
 
+# custom components:
 roku_remote:
+custom_updater:
 
 meross:
   username: !secret meross_username

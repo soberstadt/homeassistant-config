@@ -10,6 +10,8 @@ resources:
     type: js
   - url: /local/card-tools.js?v=0.3
     type: js
+  - url: /local/tracker-card.js?v=0.3.0
+    type: js
 excluded_entities:
 views:
   - id: 0  # Automatically created id
@@ -479,3 +481,8 @@ views:
           - sensor.spacex_next_launch_site
           - sensor.spacex_next_landing_type
           - sensor.spacex_next_rocket
+      - type: custom:tracker-card
+        title:
+        trackers:
+          - sensor.custom_card_tracker
+          - sensor.custom_component_tracker
