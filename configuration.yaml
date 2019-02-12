@@ -154,6 +154,25 @@ input_select:
 roku_remote:
 custom_updater:
 
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: !secret influxdb_password
+  max_retries: 3
+  default_measurement: state
+
+panel_iframe:
+  influx:
+    title: InfluxDB
+    icon: mdi:chart-areaspline
+    url: http://192.168.0.190:8888
+  grafana:
+    title: Grafana
+    icon: mdi:chart-timeline
+    url: http://192.168.0.190:3001
+
 meross:
   username: !secret meross_username
   password: !secret meross_password
