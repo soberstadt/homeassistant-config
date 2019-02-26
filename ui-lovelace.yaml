@@ -10,7 +10,7 @@ resources:
     type: js
   - url: /local/card-tools.js?v=0.4
     type: js
-  - url: /local/tracker-card.js?v=0.3.0
+  - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: js
 excluded_entities:
 views:
