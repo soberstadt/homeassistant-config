@@ -43,6 +43,7 @@ recorder:
   purge_keep_days: 3
 
 sun:
+system_health:
 
 automation: !include_dir_merge_list automation
 group: !include ./configuration/group.yaml
