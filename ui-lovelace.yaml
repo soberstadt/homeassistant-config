@@ -1,11 +1,14 @@
 title: Oberstadt Home
 resources:
+  # local copies of cards that I have edited
   - url: /local/button-card.js?v=0.0.6.0
     type: module
-  - url: /local/mini-media-player-bundle.js?v=1.0.0
-    type: js
   - url: /local/thermostat-card.js?v=1.1
     type: module
+  # local copy of card that isn't in registry
+  - url: /local/mini-media-player-bundle.js?v=1.0.0
+    type: js
+  # cards loaded via custom_updater
   - url: /customcards/github/thomasloven/color-picker.js?track=true
     type: js
   - url: /customcards/github/thomasloven/card-tools.js?track=true
