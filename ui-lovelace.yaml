@@ -374,22 +374,17 @@ views:
       - id: 5962e0f4870d45c69604c570a69d85e1  # Automatically created id
         type: media-control
         entity: media_player.living_room_tv
-      - id: 2f7ccafbe8854226878bc4aa162d6514  # Automatically created id
-        type: custom:mini-media-player
-        entity: media_player.kitchen_speaker
-        icon: mdi:cast
-      - id: b136b74cb0554f9fa4f05825177dccf6  # Automatically created id
-        type: custom:mini-media-player
-        entity: media_player.bedroom_speaker
-        icon: mdi:cast
-      - type: custom:mini-media-player
-        entity: media_player.googlehome9316
-        icon: mdi:cast
-      - id: 1438f0f086164423a7d92293f865cf05  # Automatically created id
-        type: picture-entity
-        image: https://images.pexels.com/photos/987586/pexels-photo-987586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
-        entity: script.roku_button
-        name: Roku Remote
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_speaker
+            icon: mdi:cast
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            icon: mdi:cast
+          - type: custom:mini-media-player
+            entity: media_player.googlehome9316
+            icon: mdi:cast
 
   - id: 3  # Automatically created id
     icon: mdi:settings
