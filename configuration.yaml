@@ -74,6 +74,11 @@ device_tracker:
 
 map:
 
+speedtestdotnet:
+  monitored_conditions:
+    - ping
+    - download
+
 hdmi_cec:
   devices:
     TV: 0.0.0.0

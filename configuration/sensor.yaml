@@ -8,11 +8,6 @@
   update_inverval:
     minutes: 30
 
-- platform: speedtest
-  monitored_conditions:
-    - ping
-    - download
-
 - platform: mqtt
   state_topic: "/devices/mqtt_arrow_2/events"
   name: "Arrow 2 Humidity"
