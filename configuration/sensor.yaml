@@ -5,7 +5,7 @@
     - apparent_temperature
     - temperature
     - humidity
-  update_inverval:
+  scan_interval:
     minutes: 30
 
 - platform: mqtt
