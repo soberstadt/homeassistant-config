@@ -3,10 +3,14 @@
     platform: time
     at: '18:59:30'
   condition:
-    condition: time
-    weekday:
-      - mon
-      - thu
-      - fri
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+          - mon
+          - thu
+          - fri
+      - condition: template
+        value_template: "{{ states.input_select.family_status_dropdown.state != 'Extended Away' }}"
   action:
     - service: script.jeopardy
