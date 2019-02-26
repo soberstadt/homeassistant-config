@@ -1,10 +1,10 @@
 title: Oberstadt Home
 resources:
-  - url: /customcards/github/custom-cards/button-card.js?track=true
+  - url: /local/button-card.js?v=0.0.6.0
     type: module
   - url: /local/mini-media-player-bundle.js?v=1.0.0
     type: js
-  - url: /customcards/github/ciotlosm/thermostat-card.js?track=true
+  - url: /local/thermostat-card.js?v=1.1
     type: module
   - url: /customcards/github/thomasloven/color-picker.js?track=true
     type: js
