@@ -11,7 +11,7 @@ mqtt:
   broker: !secret mqtt_broker
   username: !secret mqtt_user
   password: !secret mqtt_password
-  topic_prefix: '/devices/mqtt_arrow_5'
+  topic_prefix: '/devices/mqtt_arrow_4'
 
 # Enable logging
 logger:
