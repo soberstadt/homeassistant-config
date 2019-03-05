@@ -22,10 +22,10 @@ Garage | Arduino | [Source](ultrasonic_mqtt.ino) | Garage door sensor
 
 Room | Firmware | source | purpose | hardware
 --- | --- | --- | --- | ---
-Living Room | esphomelib | [Source](mqtt_arrow_4.yaml) | Motion sensor | NodeMCU
+Living Room | esphomelib | [Source](../esphome/mqtt_arrow_4.yaml) | Motion sensor | NodeMCU
 
 ## mqtt_arrow_5
 
 Room | Firmware | source | purpose | hardware
 --- | --- | --- | --- | ---
-Not integrated | esphomelib | [Source](mqtt_arrow_5.yaml) | House light switch button | D1 Mini
+Not integrated | esphomelib | [Source](../esphome/mqtt_arrow_5.yaml) | House light switch button | D1 Mini
