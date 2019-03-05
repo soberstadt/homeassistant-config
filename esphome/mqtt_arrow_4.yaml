@@ -1,4 +1,4 @@
-esphomeyaml:
+esphome:
   name: mqtt_arrow_4
   platform: ESP8266
   board: nodemcuv2
