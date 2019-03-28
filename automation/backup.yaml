@@ -1,0 +1,26 @@
+# Backup at 2AM
+- alias: Create snapshot
+  trigger:
+    platform: time
+    at: '02:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - sun
+        - tues
+        - fri
+  action:
+    - service: hassio.snapshot_full
+      data_template:
+        name: Backup {{ now().strftime('%Y-%m-%d') }}
+ 
+# Back to Dropbox
+- alias: Backup to Dropbox
+  trigger:
+    platform: time
+    at: '03:00:00'
+  action:
+    - service: hassio.addon_stdin
+      data_template:
+        addon: "7be23ff5_dropbox_sync"
+        input: {"command":"upload"}
