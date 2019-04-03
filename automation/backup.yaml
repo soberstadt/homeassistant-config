@@ -7,13 +7,13 @@
     - condition: time
       weekday:
         - sun
-        - tues
+        - tue
         - fri
   action:
     - service: hassio.snapshot_full
       data_template:
         name: Backup {{ now().strftime('%Y-%m-%d') }}
- 
+
 # Back to Dropbox
 - alias: Backup to Dropbox
   trigger:
