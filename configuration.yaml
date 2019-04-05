@@ -110,6 +110,12 @@ google_assistant:
       room: Entryway
   expose_by_default: false
 
+googlehome:
+  devices:
+    - host: 192.168.0.191
+    - host: 192.168.0.192
+    - host: 192.168.0.193
+
 tuya:
   username: !secret tuya_username
   password: !secret tuya_password
