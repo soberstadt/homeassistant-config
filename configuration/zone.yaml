@@ -2,3 +2,7 @@
   latitude: !secret work_latitude
   longitude: !secret work_longitude
   radius: 650
+- name: Neighborhood
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  radius: 7000
