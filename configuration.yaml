@@ -130,6 +130,7 @@ input_text:
 input_boolean:
   scene_tiles:
   house_state_tiles:
+  guest_mode:
 input_select:
   spencer_status_dropdown:
     name: Spencer

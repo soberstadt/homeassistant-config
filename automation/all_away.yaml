@@ -9,3 +9,30 @@
   action:
     - service: scene.turn_on
       entity_id: scene.good_night
+
+- alias: Late Night Return
+  trigger:
+    - platform: state
+      entity_id: input_select.family_status_dropdown
+      to: 'Just Arrived'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: state
+      entity_id: group.kitchen_lights
+      state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: group.kitchen_lights
+      data:
+        brightness_pct: 100
+    - service: light.turn_on
+      entity_id: light.dining_room_lamp
+      data:
+        brightness_pct: 100
+    - service: light.turn_on
+      entity_id: light.6001948a98a2_1921680101
+      data:
+        rgb_color: [0,255,10]
+        brightness_pct: 100
