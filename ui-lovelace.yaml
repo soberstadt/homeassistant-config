@@ -9,6 +9,8 @@ resources:
   # cards loaded via custom_updater
   - url: /customcards/github/custom-cards/button-card.js?track=true
     type: module
+  - url: /customcards/github/custom-cards/roku-card.js?track=true
+    type: module
   - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: js
   - url: /customcards/github/thomasloven/card-tools.js?track=true
@@ -168,6 +170,10 @@ views:
   - id: 2  # Automatically created id
     icon: mdi:television
     cards:
+      - type: custom:roku-card
+        entity: remote.roku
+        name: Living Room TV
+        tv: true
       - id: 2586d0867b184987994b40ec867cacf5  # Automatically created id
         type: vertical-stack
         cards:
