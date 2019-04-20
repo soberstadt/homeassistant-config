@@ -16,9 +16,9 @@
       entity_id: input_select.family_status_dropdown
       to: 'Just Arrived'
   condition:
-    - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
+    - condition: time
+      after: ‘00:00:00’
+      before: ‘07:00:00’
     - condition: state
       entity_id: group.kitchen_lights
       state: 'off'
