@@ -171,7 +171,7 @@ views:
     icon: mdi:television
     cards:
       - type: custom:roku-card
-        entity: remote.roku
+        entity: media_player.roku
         name: Living Room TV
         tv: true
       - id: 2586d0867b184987994b40ec867cacf5  # Automatically created id
