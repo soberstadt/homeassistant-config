@@ -11,3 +11,21 @@
           light.turn_off
         {% endif %}
       entity_id: group.all_lights
+
+- alias: RF Button 1 - Left Action
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.rf_button_one_left
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.darkroom
+
+- alias: RF Button 1 - Right Action
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.rf_button_one_right
+      to: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.darkroom
