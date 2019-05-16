@@ -1,0 +1,8 @@
+- name: Dark Room
+  entities:
+    light.ge_12724_3way_dimmer_switch_level:
+      state: off
+    light.flux_bedroom:
+      state: on
+      color_name: red
+      brightness_pct: 90
