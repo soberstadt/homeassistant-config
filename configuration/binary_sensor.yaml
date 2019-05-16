@@ -30,12 +30,12 @@
   name: RF Button One - Left
   payload_on: "9864A1"
   state_topic: "tele/sonoff_rf/RESULT"
-  value_template: '{{ value_json.RfReceived.RfKey }}'
+  value_template: '{{ value_json.RfReceived.Data }}'
   off_delay: 3
 
 - platform: mqtt
   name: RF Button One - Right
   payload_on: "9864A2"
   state_topic: "tele/sonoff_rf/RESULT"
-  value_template: '{{ value_json.RfReceived.RfKey }}'
+  value_template: '{{ value_json.RfReceived.Data }}'
   off_delay: 3
