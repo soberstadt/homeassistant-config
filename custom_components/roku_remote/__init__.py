@@ -3,11 +3,14 @@ DOMAIN = 'roku_remote'
 LAST_BUTTON_TOPIC = 'last_button'
 LAST_IP_STATE_NAME = 'input_text.roku_remote_ip'
 
-from roku import Roku
+REQUIREMENTS = ['python-roku==3.1.5']
+
 import logging
 import time
 
 def setup(hass, config):
+    from roku import Roku
+
     roku = None
 
     def find_roku():
@@ -20,7 +23,7 @@ def setup(hass, config):
         for d in devices:
             if d.port == 8060: found = d
             if found != None: break
-        if found != None: 
+        if found != None:
             roku = found
             hass.states.set(LAST_IP_STATE_NAME, roku.host)
             logging.info('[roku_remote] selected:')
