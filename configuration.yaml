@@ -14,10 +14,6 @@ auth:
 zone: !include ./configuration/zone.yaml
 
 frontend:
-  extra_html_url:
-    - /local/custom_ui/state-card-tiles.html
-  extra_html_url_es5:
-    - /local/custom_ui/state-card-tiles_es5.html
   themes: !include_dir_merge_named themes/
 
 lovelace:
@@ -131,8 +127,6 @@ input_text:
   roku_remote_ip:
     name: Roku Remote IP
 input_boolean:
-  scene_tiles:
-  house_state_tiles:
   guest_mode:
 input_select:
   spencer_status_dropdown:
