@@ -79,10 +79,6 @@ speedtestdotnet:
     - ping
     - download
 
-hdmi_cec:
-  devices:
-    TV: 0.0.0.0
-
 google_assistant:
   project_id: soberstadt
   api_key: !secret google_api_api_key

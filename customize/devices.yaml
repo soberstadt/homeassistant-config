@@ -7,9 +7,3 @@ device_tracker.spencer_phone:
   icon: mdi:cellphone
 device_tracker.lynsey_phone:
   icon: mdi:cellphone
-
-switch.hdmi_0:
-  google_assistant_name: TV
-  friendly_name: 'TV Power'
-switch.hdmi_4:
-  hidden: true

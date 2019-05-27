@@ -25,8 +25,6 @@ jeopardy:
 
 wii:
   sequence:
-    - service: script.turn_on
-      entity_id: script.turn_on_tv
     - service: media_player.select_source
       data:
         entity_id: media_player.roku
@@ -34,14 +32,3 @@ wii:
     - service: python_script.set_roku_volume
       data:
         level: 14
-
-turn_on_tv:
-  sequence:
-    - condition: state
-      entity_id: switch.hdmi_0
-      state: 'off'
-    - service: media_player.turn_on
-      data:
-        entity_id: media_player.living_room_tv
-    - delay:
-        seconds: 20
