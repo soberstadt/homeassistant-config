@@ -274,6 +274,7 @@ views:
               - input_select.spencer_status_dropdown
               - input_select.lynsey_status_dropdown
               - input_select.family_status_dropdown
+              - input_boolean.guest_mode
       - id: fe2749842ea94945b3747fd3f04dcf8f  # Automatically created id
         type: entities
         title: System
