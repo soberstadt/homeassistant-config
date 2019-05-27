@@ -98,6 +98,17 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.movie_playing
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: scene.night_light
+                icon: mdi:flashlight
+                name: Night Light
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.night_light
       - id: 148c092bb96847df98155f335be42be2  # Automatically created id
         type: entities
         title: Light Groups

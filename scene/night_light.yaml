@@ -1,0 +1,17 @@
+- name: Night
+  entities:
+    light.dining_room_lamp:
+      state: on
+      brightness_pct: 20
+    group.living_room_lights:
+      state: off
+    group.kitchen_lights:
+      state: off
+    group.bedroom_lights:
+      state: off
+    group.mood_lights:
+      state: off
+    group.sitting_room:
+      state: off
+    input_select.hass_theme:
+      option: midnight
