@@ -1,4 +1,4 @@
-- name: Night
+- name: Night Light
   entities:
     light.dining_room_lamp:
       state: on
