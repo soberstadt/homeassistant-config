@@ -1,0 +1,14 @@
+- alias: Guest Mode Still On
+  trigger:
+    - platform: time_pattern
+      hours: '/12'
+  condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'on'
+      for:
+        hours: 24
+  action:
+    - service: notify.pushbullet
+      data:
+        message: 'Guest Mode still on'
