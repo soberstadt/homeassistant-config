@@ -98,8 +98,6 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.movie_playing
-          - type: horizontal-stack
-            cards:
               - type: entity-button
                 entity: scene.night_light
                 icon: mdi:flashlight
