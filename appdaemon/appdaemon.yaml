@@ -3,14 +3,13 @@ log:
   logfile: STDOUT
   errorfile: STDERR
 appdaemon:
-  api_key: !secret appdaemon_key
+  api_key: appdaemon_key
   threads: 10
   app_dir: /config/appdaemon/apps
   plugins:
     HASS:
       type: hass
       ha_url: http://hassio/homeassistant
-      ha_key: !secret http_password
 hadashboard:
   dash_url: http://127.0.0.1:5050
   dash_dir: /config/appdaemon/dashboards
