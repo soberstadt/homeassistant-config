@@ -39,7 +39,7 @@
       to: 'Neighborhood'
   condition:
     - condition: template
-      value_template: "{{ states.input_select.family_status_dropdown.state in ['Away', 'Extended Away'] }}"
+      value_template: "{{ states.input_select.family_status_dropdown.state in ['Away', 'Work', 'Extended Away'] }}"
   action:
     - service: climate.set_temperature
       data:

@@ -1,0 +1,35 @@
+- alias: High Humidity
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.arrow_2_humidity
+      above: 50
+  action:
+    - service: notify.pushbullet
+      data:
+        message: 'Home humidity above 50%!'
+
+- alias: Climate - Too Hot (Family Home)
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.arrow_2_temperature
+      above: 78.5
+  action:
+    - condition: state
+      entity_id: input_select.family_status_dropdown
+      state: 'Home'
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - service: notify.pushbullet
+      data:
+        message: 'Temperature above 78.5!'
+
+- alias: Climate - Too Hot (Family Home)
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.arrow_2_temperature
+      above: 82
+  action:
+    - service: notify.pushbullet
+      data:
+        message: 'Temperature above 82!'
