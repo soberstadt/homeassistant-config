@@ -1,0 +1,4 @@
+force_update:
+  description: Force refreshing the status of devices
+pull_devices:
+  description: Look for new devices

@@ -1,0 +1,12 @@
+sleep:
+  description: Pause the thread for a number of seconds
+  fields:
+    element:
+      description: seconds to sleep for
+      example: '20'
+launch_channel:
+  description: Change the roku to a specific channel
+  fields:
+    element:
+      description: channel to launch on roku
+      example: '2.1'
