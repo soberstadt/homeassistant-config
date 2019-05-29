@@ -32,6 +32,10 @@
   entities:
     - light.buffet_lamp
     - light.sitting_room_couch
+- platform: group
+  name: Dining Room Lights
+  entities:
+    - light.dining_room_lamp
 
 - platform: switch
   name: Buffet Lamp

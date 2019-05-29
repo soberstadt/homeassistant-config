@@ -115,6 +115,7 @@ views:
           - light.kitchen_lights
           - light.bedroom_lights
           - light.sitting_room_lights
+          - light.dining_room_lights
           - light.mood_lights
       - type: conditional
         conditions:
@@ -166,10 +167,10 @@ views:
         entities:
           - switch.tuya_switch_1
           - switch.sonoff_1
+          - switch.1712216593425625131334298f10a3cb
       - type: entities
         title: Extra
         entities:
-          - switch.1712216593425625131334298f10a3cb
           - switch.1712213843127125131334298f10a49d
       - type: custom:color-picker
         entity: light.mood_lights
