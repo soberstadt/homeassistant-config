@@ -324,4 +324,4 @@ views:
             url: http://192.168.0.190:3001
             name: Grafana
             icon: mdi:chart-timeline
-  - !include ./lovelace/automations_view.yaml
+  - !include /config/lovelace/automations_view.yaml
