@@ -1,0 +1,9 @@
+- id: 0  # Automatically created id
+  icon: mdi:map-marker-path
+  cards:
+    - type: entities
+      title: Presence
+      entities:
+        - light.living_room_couch_1
+        - light.living_room_couch_2
+        - light.behind_tv_lamp
