@@ -29,7 +29,7 @@
     - service_template: light.turn_off
       entity_id: group.living_room_lights
 
-- alias: Lights on when motion
+- alias: Night - Lights on when motion
   trigger:
     - platform: state
       entity_id: group.house_motion
@@ -54,7 +54,7 @@
         brightness_pct: 25
         transition: 3
 
-- alias: Night- Light off after 20 min of no motion
+- alias: Night - Light off after 20 min of no motion
   trigger:
     - platform: time_pattern
       minutes: '/5'

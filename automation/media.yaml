@@ -1,4 +1,4 @@
-- alias: Jeopardy
+- alias: Autoplay Jeopardy
   trigger:
     platform: time
     at: '18:59:30'

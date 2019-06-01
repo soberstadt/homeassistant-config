@@ -24,7 +24,7 @@
       data:
         message: 'Temperature above 78.5!'
 
-- alias: Climate - Too Hot (Family Home)
+- alias: Climate - Too Hot (Family Away)
   trigger:
     - platform: numeric_state
       entity_id: sensor.arrow_2_temperature

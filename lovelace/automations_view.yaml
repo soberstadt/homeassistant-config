@@ -2,8 +2,77 @@ title: Automation
 icon: mdi:map-marker-path
 cards:
   - type: entities
+    title: Alerts
+    entities:
+      - automation.login_failure
+      - automation.camera_offline
+      - automation.high_humidity
+      - automation.climate_too_hot_family_home
+      - automation.climate_too_hot_family_away
+      - automation.guest_mode_still_on
+      - automation.fam_away_motion_alert
+      - automation.notify_for_new_devices
+  - type: entities
+    title: Garage
+    entities:
+      - automation.garage_open_too_long
+      - automation.garage_open_when_lynsey_comes_back
+      - automation.garage_open_while_away
+      - automation.family_leave_while_garage_open
+  - type: entities
+    title: Motion
+    entities:
+       - automation.day_living_room_motion
+       - automation.day_lights_off_after_30_min_of_no_motion
+       - automation.night_light_off_after_20_min_of_no_motion
+       - automation.night_lights_on_when_motion
+  - type: entities
+    title: System
+    entities:
+      - automation.create_snapshot
+      - automation.backup_to_dropbox
+      - automation.theme_picker
+  - type: entities
+    title: Buttons
+    entities:
+      - automation.all_lights_button
+      - automation.rf_button_1_left_action
+      - automation.rf_button_1_right_action
+  - type: entities
+    title: Home/Away
+    entities:
+      - automation.family_away
+      - automation.family_home
+      - automation.return_to_neighborhood
+      - automation.all_away_at_midnight
+      - automation.late_night_return
+  - type: entities
+    title: IFTTT
+    entities:
+      - automation.ifttt_roku
+      - automation.ifttt_scenes
+      - automation.ifttt_wii
+      - automation.ifttt_night_scene
+  - type: entities
+    title: Lights
+    entities:
+      - automation.night_lights_off_after_20_min_of_no_tv
+  - type: entities
+    title: Media
+    entities:
+      - automation.autoplay_jeopardy
+  - type: entities
     title: Presence
     entities:
-      - light.living_room_couch_1
-      - light.living_room_couch_2
-      - light.behind_tv_lamp
+      - automation.mark_person_as_just_arrived
+      - automation.mark_person_as_home
+      - automation.mark_person_as_just_left
+      - automation.mark_person_as_away
+      - automation.mark_person_as_extended_away
+      - automation.mark_person_at_work
+      - automation.mark_person_leaving_work
+  - type: entities
+    title: Sun
+    entities:
+      - automation.sunrise
+      - automation.sunset
