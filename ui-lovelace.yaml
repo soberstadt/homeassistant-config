@@ -292,7 +292,6 @@ views:
         entities:
           - sensor.ha_uptime
           - input_select.hass_theme
-          - group.all_automations
       - id: 6c98e6b747ff46c8bc1639f7af05f586  # Automatically created id
         type: entities
         title: SpaceX
