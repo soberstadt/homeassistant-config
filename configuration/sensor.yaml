@@ -89,4 +89,4 @@
       value_template: '{{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_level | round(0) }}'
 
     roku_source:
-      value_template: '{{ states.media_player.roku.source }}'
+      value_template: '{{ states.media_player.roku.attributes.source }}'
