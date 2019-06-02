@@ -40,7 +40,7 @@
     service: scene.turn_on
     data_template:
       entity_id: >
-        {% if states.input_select.family_status_dropdown.state == 'on' %}
+        {% if states.input_boolean.guest_mode.state == 'on' %}
           scene.night_light
         {% else %}
           scene.good_night
