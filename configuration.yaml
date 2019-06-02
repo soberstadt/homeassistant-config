@@ -107,8 +107,9 @@ google_assistant:
 
 googlehome:
   devices:
-    - host: 192.168.0.191
+    - host: 192.168.0.115
       track_devices: false
+      track_alarms: true
     - host: 192.168.0.192
       track_devices: false
     - host: 192.168.0.193
