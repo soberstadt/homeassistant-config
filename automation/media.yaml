@@ -31,5 +31,7 @@
       for:
         minutes: 15
   action:
-    - service: remote.turn_off
-      entity_id: remote.roku
+    - service: remote.send_command
+      data:
+        entity_id: remote.roku
+        command: power
