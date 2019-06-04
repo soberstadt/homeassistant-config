@@ -11,6 +11,8 @@ resources:
     type: module
   - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: js
+  - url: /customcards/github/maykar/compact-custom-header.js?track=true
+    type: module
   - url: /customcards/github/thomasloven/card-tools.js?track=true
     type: js
   - url: /customcards/github/thomasloven/color-picker.js?track=true
@@ -21,6 +23,7 @@ views:
     icon: mdi:home
     background: var(--background-image)
     cards:
+      - type: custom:compact-custom-header
       - id: c9f11fedade648f5a56af91007986c32  # Automatically created id
         type: glance
         columns: 6
@@ -136,6 +139,7 @@ views:
   - title: Lights
     background: var(--background-image)
     cards:
+      - type: custom:compact-custom-header
       - id: 17b94b85afcb476b8d167ad93ee9a67c  # Automatically created id
         type: entities
         title: Living Room
@@ -180,6 +184,7 @@ views:
     icon: mdi:television
     background: var(--background-image)
     cards:
+      - type: custom:compact-custom-header
       - type: custom:roku-card
         entity: media_player.roku
         tv: true
@@ -212,6 +217,7 @@ views:
     icon: mdi:settings
     background: var(--background-image)
     cards:
+      - type: custom:compact-custom-header
       - type: conditional
         conditions:
           - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
