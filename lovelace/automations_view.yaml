@@ -1,5 +1,6 @@
 title: Automation
 icon: mdi:map-marker-path
+background: var(--background-image)
 cards:
   - type: entities
     title: Alerts

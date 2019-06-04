@@ -17,8 +17,9 @@ resources:
     type: js
 excluded_entities:
 views:
-  - id: 0  # Automatically created id
+  - title: Home
     icon: mdi:home
+    background: var(--background-image)
     cards:
       - id: c9f11fedade648f5a56af91007986c32  # Automatically created id
         type: glance
@@ -132,8 +133,8 @@ views:
           type: custom:thermostat-card
           entity:  climate.2gig_technologies_ct101_thermostat_iris_heating_1
 
-  - id: 1  # Automatically created id
-    title: Lights
+  - title: Lights
+    background: var(--background-image)
     cards:
       - id: 17b94b85afcb476b8d167ad93ee9a67c  # Automatically created id
         type: entities
@@ -175,8 +176,9 @@ views:
       - type: custom:color-picker
         entity: light.mood_lights
 
-  - id: 2  # Automatically created id
+  - title: Media
     icon: mdi:television
+    background: var(--background-image)
     cards:
       - type: custom:roku-card
         entity: media_player.roku
@@ -206,8 +208,9 @@ views:
             entity: media_player.googlehome9316
             icon: mdi:cast
 
-  - id: 3  # Automatically created id
+  - title: Settings
     icon: mdi:settings
+    background: var(--background-image)
     cards:
       - type: conditional
         conditions:
