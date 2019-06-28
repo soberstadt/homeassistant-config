@@ -5,7 +5,7 @@
       to: 'Away'
   action:
     - service: switch.turn_on
-      entity_id: switch.1712213843127125131334298f10a49d
+      entity_id: switch.meross_2
     - condition: state
       entity_id: input_boolean.guest_mode
       state: 'off'
@@ -27,7 +27,7 @@
         temperature: 74
         operation_mode: Cool
     - service: switch.turn_off
-      entity_id: switch.1712213843127125131334298f10a49d
+      entity_id: switch.meross_2
 
 - alias: Return to Neighborhood
   trigger:

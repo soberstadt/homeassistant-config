@@ -172,11 +172,11 @@ views:
         entities:
           - switch.tuya_switch_1
           - switch.sonoff_1
-          - switch.1712216593425625131334298f10a3cb
+          - switch.meross_1
       - type: entities
         title: Extra
         entities:
-          - switch.1712213843127125131334298f10a49d
+          - switch.meross_2
       - type: custom:color-picker
         entity: light.mood_lights
 
