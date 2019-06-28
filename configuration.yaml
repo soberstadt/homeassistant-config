@@ -177,7 +177,7 @@ custom_updater:
 #   max_retries: 3
 #   default_measurement: state
 
-meross:
+meross_cloud:
   username: !secret meross_username
   password: !secret meross_password
 
