@@ -70,7 +70,6 @@ device_tracker:
   - platform: google_maps
     username: !secret google_location_account
     password: !secret google_location_password
-  - platform: bluetooth_tracker
 
 map:
 
