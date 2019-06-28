@@ -14,4 +14,4 @@
     group.sitting_room:
       state: off
     input_select.hass_theme:
-      option: midnight
+      option: clear-dark
