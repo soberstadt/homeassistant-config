@@ -3,19 +3,16 @@ resources:
   # local copy of card that I have edited
   - url: /local/thermostat-card.js?v=1.1
     type: module
-  # local copy of card that isn't in registry
-  - url: /local/mini-media-player-bundle.js?v=1.2.0
-    type: js
-  # cards loaded via custom_updater
-  - url: /customcards/github/custom-cards/roku-card.js?track=true
+  # cards loaded via hacs
+  - url: /community_plugin/compact-custom-header/compact-custom-header.js
     type: module
-  - url: /customcards/github/custom-cards/tracker-card.js?track=true
-    type: js
-  - url: /customcards/github/maykar/compact-custom-header.js?track=true
+  - url: /community_plugin/mini-media-player/mini-media-player.js
     type: module
-  - url: /customcards/github/thomasloven/card-tools.js?track=true
+  - url: /community_plugin/roku-card/roku-card.js
+    type: module
+  - url: /community_plugin/lovelace-color-picker/color-picker.js
     type: js
-  - url: /customcards/github/thomasloven/color-picker.js?track=true
+  - url: /community_plugin/lovelace-card-tools/card-tools.js
     type: js
 excluded_entities:
 views:
@@ -23,7 +20,6 @@ views:
     icon: mdi:home
     background: var(--background-image)
     cards:
-      - type: custom:compact-custom-header
       - id: c9f11fedade648f5a56af91007986c32  # Automatically created id
         type: glance
         columns: 6
@@ -139,7 +135,6 @@ views:
   - title: Lights
     background: var(--background-image)
     cards:
-      - type: custom:compact-custom-header
       - id: 17b94b85afcb476b8d167ad93ee9a67c  # Automatically created id
         type: entities
         title: Living Room
@@ -184,7 +179,6 @@ views:
     icon: mdi:television
     background: var(--background-image)
     cards:
-      - type: custom:compact-custom-header
       - type: custom:roku-card
         entity: media_player.roku
         tv: true
@@ -217,7 +211,6 @@ views:
     icon: mdi:settings
     background: var(--background-image)
     cards:
-      - type: custom:compact-custom-header
       - type: conditional
         conditions:
           - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
