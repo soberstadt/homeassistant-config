@@ -238,7 +238,6 @@ views:
           - sensor.dark_sky_humidity
           - sensor.arrow_2_temperature
           - sensor.arrow_2_humidity
-          - sensor.arrow_2_ldr
       - id: 0dabe724acd54c8c8423bf5fbec61f15  # Automatically created id
         type: entities
         title: Speedtest
@@ -304,9 +303,4 @@ views:
           - sensor.spacex_next_launch_site
           - sensor.spacex_next_landing_type
           - sensor.spacex_next_rocket
-      - type: custom:tracker-card
-        title:
-        trackers:
-          - sensor.custom_card_tracker
-          - sensor.custom_component_tracker
   - !include lovelace/automations_view.yaml
