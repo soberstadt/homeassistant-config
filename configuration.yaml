@@ -104,16 +104,6 @@ google_assistant:
       room: Entryway
   expose_by_default: false
 
-googlehome:
-  devices:
-    - host: 192.168.0.115
-      track_devices: false
-      track_alarms: true
-    - host: 192.168.0.192
-      track_devices: false
-    - host: 192.168.0.193
-      track_devices: false
-
 tuya:
   username: !secret tuya_username
   password: !secret tuya_password
