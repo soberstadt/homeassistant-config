@@ -107,6 +107,15 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.night_light
+              - type: entity-button
+                entity: scene.night_light
+                icon: mdi:baby-buggy
+                name: Lily Bed Time
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.lily_bed_time
       - id: 148c092bb96847df98155f335be42be2  # Automatically created id
         type: entities
         title: Light Groups

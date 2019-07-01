@@ -1,0 +1,17 @@
+- name: Lily Bed Time
+  entities:
+    group.sitting_room:
+      state: off
+    light.living_room_lights:
+      state: on
+      brightness_pct: 25
+    light.living_room_couch_2:
+      state: off
+    light.tuya_light_1:
+      state: off
+    light.dining_room_lamp:
+      state: off
+    light.flux_lily_bedroom:
+      state: on
+      color_name: orange
+      brightness_pct: 10
