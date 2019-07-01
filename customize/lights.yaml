@@ -13,6 +13,8 @@ light.6001948a98a2_1921680101:
   friendly_name: 'Living Mood Light'
 light.flux_bedroom:
   friendly_name: 'Bedroom Mood'
+light.flux_lily_bedroom:
+  friendly_name: 'Lily Mood Light'
 
 light.living_room_couch_1:
   icon: mdi:lamp
