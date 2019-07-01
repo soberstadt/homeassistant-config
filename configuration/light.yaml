@@ -5,6 +5,8 @@
       name: flux_bedroom
     192.168.0.101:
       name: 6001948a98a2_1921680101
+    192.168.0.122:
+      name: flux_lily_bedroom
 - platform: group
   name: Living Room Lights
   entities:

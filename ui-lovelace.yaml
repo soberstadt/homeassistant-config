@@ -161,6 +161,10 @@ views:
         entities:
           - light.ge_12724_3way_dimmer_switch_level
           - light.flux_bedroom
+      - type: entities
+        title: Lily Bedroom
+        entities:
+          - light.flux_lily_bedroom
       - id: e07642e0fbe34db09bf72ba4a16a60eb  # Automatically created id
         type: entities
         title: Sitting Room
