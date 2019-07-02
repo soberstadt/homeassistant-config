@@ -5,6 +5,7 @@
     - apparent_temperature
     - temperature
     - humidity
+    - weather
   scan_interval:
     minutes: 30
 

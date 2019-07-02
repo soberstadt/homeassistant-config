@@ -6,6 +6,8 @@ resources:
   # cards loaded via hacs
   - url: /community_plugin/compact-custom-header/compact-custom-header.js
     type: module
+  - url: /community_plugin/home-card/home-card.js
+    type: module
   - url: /community_plugin/mini-media-player/mini-media-player.js
     type: module
   - url: /community_plugin/roku-card/roku-card.js
@@ -224,6 +226,20 @@ views:
     icon: mdi:settings
     background: var(--background-image)
     cards:
+      - type: 'custom:home-card'
+        theme: two_story_with_garage
+        entities:
+          - type: garage
+            entity: binary_sensor.garage_door
+          - type: upstairs_light
+            entity: light.bedroom_lights
+          - type: downstairs_light
+            entity: light.living_room_lights
+        resources:
+          - entity: binary_sensor.living_room_motion
+            icon: 'mdi:alarm-light'
+          - entity: sensor.arrow_2_real_feel
+            icon: 'mdi:thermometer'
       - type: conditional
         conditions:
           - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
