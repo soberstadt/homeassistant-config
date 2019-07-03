@@ -22,13 +22,6 @@ dining_room:
 Sitting Room:
   - switch.tuya_switch_1
   - switch.sonoff_1
-all_lights:
-  - light.dining_room_lamp
-  - group.living_room_lights
-  - group.kitchen_lights
-  - group.bedroom_lights
-  - group.mood_lights
-  - group.sitting_room
 mood_lights:
   - light.6001948a98a2_1921680101
 
