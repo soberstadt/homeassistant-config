@@ -149,7 +149,6 @@ input_select:
       - midnight
       - clear
       - clear-dark
-    initial: clear
 
 # custom components:
 roku_remote:
