@@ -228,6 +228,7 @@ views:
     cards:
       - type: 'custom:home-card'
         theme: two_story_with_garage
+        weather: weather.dark_sky
         entities:
           - type: garage
             entity: binary_sensor.garage_door
