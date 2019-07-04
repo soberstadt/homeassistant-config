@@ -192,16 +192,49 @@ views:
     icon: mdi:television
     background: var(--background-image)
     cards:
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            icon: mdi:netflix
+            name: Netflix
+            tap_action:
+              action: call-service
+              service: media_player.select_source
+              service_data:
+                entity_id: media_player.roku
+                source: Netflix
+          - type: entity-button
+            icon: mdi:amazon
+            name: Prime Video
+            tap_action:
+              action: call-service
+              service: media_player.select_source
+              service_data:
+                entity_id: media_player.roku
+                source: Prime Video
+          - type: entity-button
+            icon: mdi:youtube
+            name: YouTube
+            tap_action:
+              action: call-service
+              service: media_player.select_source
+              service_data:
+                entity_id: media_player.roku
+                source: YouTube
+          - type: entity-button
+            icon: mdi:wii
+            name: Wii
+            tap_action:
+              action: call-service
+              service: script.wii
+          - type: entity-button
+            name: Jeopardy
+            tap_action:
+              action: call-service
+              service: script.jeopardy
       - type: custom:roku-card
         entity: media_player.roku
         tv: true
-      - id: aed7f2ab8a774007b883a0750900bfee  # Automatically created id
-        type: entities
-        title: Living Room
-        show_header_toggle: false
-        entities:
-          - script.jeopardy
-          - script.wii
       - id: 81949810d809465a823def5865d5e324  # Automatically created id
         type: media-control
         entity: media_player.roku
