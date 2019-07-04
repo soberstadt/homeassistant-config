@@ -15,3 +15,5 @@
       state: on
       color_name: orange
       brightness_pct: 10
+    script.lily_white_noise:
+      state: true
