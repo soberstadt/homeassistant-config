@@ -1,14 +1,14 @@
 title: Oberstadt Home
 resources:
   # local copy of card that I have edited
+  - url: /local/roku-card.js?v=1
+    type: module
   - url: /local/thermostat-card.js?v=1.1
     type: module
   # cards loaded via hacs
   - url: /community_plugin/compact-custom-header/compact-custom-header.js
     type: module
   - url: /community_plugin/mini-media-player/mini-media-player.js
-    type: module
-  - url: /community_plugin/roku-card/roku-card.js
     type: module
   - url: /community_plugin/lovelace-color-picker/color-picker.js
     type: js
