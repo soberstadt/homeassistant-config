@@ -197,7 +197,6 @@ views:
           - type: entity-button
             entity: media_player.roku
             icon: mdi:netflix
-            name: Netflix
             tap_action:
               action: call-service
               service: media_player.select_source
@@ -207,7 +206,6 @@ views:
           - type: entity-button
             entity: media_player.roku
             icon: mdi:amazon
-            name: Prime Video
             tap_action:
               action: call-service
               service: media_player.select_source
@@ -217,7 +215,6 @@ views:
           - type: entity-button
             entity: media_player.roku
             icon: mdi:youtube
-            name: YouTube
             tap_action:
               action: call-service
               service: media_player.select_source
@@ -227,13 +224,12 @@ views:
           - type: entity-button
             entity: media_player.roku
             icon: mdi:wii
-            name: Wii
             tap_action:
               action: call-service
               service: script.wii
           - type: entity-button
             entity: media_player.roku
-            name: Jeopardy
+            icon: alpha-j-circle
             tap_action:
               action: call-service
               service: script.jeopardy
