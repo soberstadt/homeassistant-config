@@ -195,6 +195,7 @@ views:
       - type: horizontal-stack
         cards:
           - type: entity-button
+            entity: media_player.roku
             icon: mdi:netflix
             name: Netflix
             tap_action:
@@ -204,6 +205,7 @@ views:
                 entity_id: media_player.roku
                 source: Netflix
           - type: entity-button
+            entity: media_player.roku
             icon: mdi:amazon
             name: Prime Video
             tap_action:
@@ -213,6 +215,7 @@ views:
                 entity_id: media_player.roku
                 source: Prime Video
           - type: entity-button
+            entity: media_player.roku
             icon: mdi:youtube
             name: YouTube
             tap_action:
@@ -222,12 +225,14 @@ views:
                 entity_id: media_player.roku
                 source: YouTube
           - type: entity-button
+            entity: media_player.roku
             icon: mdi:wii
             name: Wii
             tap_action:
               action: call-service
               service: script.wii
           - type: entity-button
+            entity: media_player.roku
             name: Jeopardy
             tap_action:
               action: call-service
