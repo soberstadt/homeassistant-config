@@ -91,11 +91,11 @@
     roku_source:
       value_template: '{{ states.media_player.roku.attributes.source }}'
 
-    heat_index_suite:
+    arrow_2_real_feel_local:
       friendly_name: 'Arrow 2 Real Feel - Local'
       entity_id: [sensor.arrow_2_temperature, sensor.arrow_2_humidity]
       value_template: >-
-        {% set T = ((states('sensor.arrow_2_temperature')|float)*1.8+32) %}
+        {% set T = states('sensor.arrow_2_temperature')|float %}
         {% set RH = states('sensor.arrow_2_humidity')|float %}
         {% set STEADMAN_HI = 0.5 * (T + 61.0 + ((T-68.0)*1.2) + (RH*0.094)) %}
         {% if STEADMAN_HI >= 80 %}
