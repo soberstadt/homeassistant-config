@@ -1,0 +1,24 @@
+esphome:
+  name: mqtt_arrow_6
+  platform: ESP32
+  board: esp32dev
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+
+logger:
+
+api:
+
+ota:
+  password: !secret mqtt_password
+
+sensor:
+  - platform: dht
+    pin: D7
+    temperature:
+      name: "Arrow 2 Temperature - New"
+    humidity:
+      name: "Arrow 2 Humidity - New"
+    update_interval: 2m
