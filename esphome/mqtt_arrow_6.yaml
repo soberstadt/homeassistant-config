@@ -30,6 +30,7 @@ esp32_camera:
   power_down_pin: GPIO32
   reset_pin: GPIO15
   # Image settings
-  name: Test Camera 1
-
+  name: Camera 1
+  resolution: 800x600
+  max_framerate: 5 fps
 
