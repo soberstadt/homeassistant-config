@@ -36,7 +36,8 @@ cards:
   - type: entities
     title: Buttons
     entities:
-      - automation.all_lights_button
+      - automation.nightstand_button_short_press
+      - automation.nightstand_button_long_press
       - automation.rf_button_1_left_action
       - automation.rf_button_1_right_action
   - type: entities

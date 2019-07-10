@@ -1,16 +1,28 @@
-- alias: All Lights Button
+- alias: Nightstand Button - Short Press
   trigger:
     - platform: state
       entity_id: binary_sensor.arrow_5_button
       to: 'on'
   action:
-    - service_template: >
-        {% if is_state('group.all_lights.state', 'off') %}
-          light.turn_on
+    - service: scene.turn_on
+      entity_id: scene.darkroom
+
+- alias: Nightstand Button - Long Press
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.arrow_5_button
+      to: 'on'
+      for:
+        seconds: 4
+  action:
+    service: scene.turn_on
+    data_template:
+      entity_id: >
+        {% if states.input_boolean.guest_mode.state == 'on' %}
+          scene.night_light
         {% else %}
-          light.turn_off
+          scene.good_night
         {% endif %}
-      entity_id: group.all_lights
 
 - alias: RF Button 1 - Left Action
   trigger:
