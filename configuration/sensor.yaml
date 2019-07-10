@@ -9,17 +9,6 @@
     minutes: 30
 
 - platform: mqtt
-  state_topic: "/devices/mqtt_arrow_2/events"
-  name: "Arrow 2 LDR"
-  unit_of_measurement: "LUX"
-  value_template: '{{ value_json.lux }}'
-
-- platform: mqtt
-  state_topic: "/devices/mqtt_arrow_2/motion"
-  name: "Arrow 2 Motion"
-  value_template: '{{ value_json.motion }}'
-
-- platform: mqtt
   state_topic: "/devices/mqtt_arrow_1/events"
   name: "Arrow 1 Motion"
   value_template: '{{ value_json.motion }}'
