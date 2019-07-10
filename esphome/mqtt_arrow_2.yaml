@@ -19,7 +19,7 @@ sensor:
     pin: D7
     model: DHT22
     temperature:
-      name: "Arrow 2 Temperature - New"
+      name: "Arrow 2 Temperature"
     humidity:
-      name: "Arrow 2 Humidity - New"
+      name: "Arrow 2 Humidity"
     update_interval: 120s

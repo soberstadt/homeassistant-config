@@ -10,24 +10,6 @@
 
 - platform: mqtt
   state_topic: "/devices/mqtt_arrow_2/events"
-  name: "Arrow 2 Humidity"
-  unit_of_measurement: "%"
-  value_template: '{{ value_json.humidity | round(1) }}'
-
-- platform: mqtt
-  state_topic: "/devices/mqtt_arrow_2/events"
-  name: "Arrow 2 Temperature"
-  unit_of_measurement: "°C"
-  value_template: '{{ value_json.temperature | round(1) }}'
-
-- platform: mqtt
-  state_topic: "/devices/mqtt_arrow_2/events"
-  name: "Arrow 2 Real Feel"
-  unit_of_measurement: "°F"
-  value_template: '{{ value_json.heat_index | round(1) }}'
-
-- platform: mqtt
-  state_topic: "/devices/mqtt_arrow_2/events"
   name: "Arrow 2 LDR"
   unit_of_measurement: "LUX"
   value_template: '{{ value_json.lux }}'
@@ -91,8 +73,8 @@
     roku_source:
       value_template: '{{ states.media_player.roku.attributes.source }}'
 
-    arrow_2_real_feel_local:
-      friendly_name: 'Arrow 2 Real Feel - Local'
+    arrow_2_real_feel:
+      friendly_name: 'Arrow 2 Real Feel'
       entity_id: [sensor.arrow_2_temperature, sensor.arrow_2_humidity]
       value_template: >-
         {% set T = states('sensor.arrow_2_temperature')|float %}
