@@ -1,7 +1,7 @@
 esphome:
-  name: mqtt_arrow_6
-  platform: ESP32
-  board: esp32dev
+  name: mqtt_arrow_2
+  platform: ESP8266
+  board: d1_mini
 
 wifi:
   ssid: !secret mqtt_wifi_ssid
@@ -17,8 +17,9 @@ ota:
 sensor:
   - platform: dht
     pin: D7
+    model: DHT22
     temperature:
       name: "Arrow 2 Temperature - New"
     humidity:
       name: "Arrow 2 Humidity - New"
-    update_interval: 2m
+    update_interval: 120s
