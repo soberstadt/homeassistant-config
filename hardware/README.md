@@ -10,7 +10,7 @@ Sitting Room | MongooseOS | [Source](motion.js) | Motion sensor | NodeMCU
 
 Room | Firmware | source | purpose | hardware
 --- | --- | --- | --- | ---
-Living Room | MongooseOS | [Source](climate.js) | Climate and Light sensor | D1 Mini
+Living Room | esphome | [Source](../esphome/mqtt_arrow_2.yaml) | Climate sensor | D1 Mini
 
 ## mqtt_arrow_3
 
@@ -22,10 +22,10 @@ Garage | Arduino | [Source](ultrasonic_mqtt.ino) | Garage door sensor
 
 Room | Firmware | source | purpose | hardware
 --- | --- | --- | --- | ---
-Living Room | esphomelib | [Source](../esphome/mqtt_arrow_4.yaml) | Motion sensor | NodeMCU
+Living Room | esphome | [Source](../esphome/mqtt_arrow_4.yaml) | Motion sensor | NodeMCU
 
 ## mqtt_arrow_5
 
 Room | Firmware | source | purpose | hardware
 --- | --- | --- | --- | ---
-Not integrated | esphomelib | [Source](../esphome/mqtt_arrow_5.yaml) | House light switch button | D1 Mini
+Not integrated | esphome | [Source](../esphome/mqtt_arrow_5.yaml) | House light switch button | D1 Mini
