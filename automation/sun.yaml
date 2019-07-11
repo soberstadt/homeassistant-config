@@ -28,3 +28,5 @@
       data:
         entity_id: input_select.hass_theme
         option: clear
+    - service: light.turn_off
+      entity_id: light.flux_lily_bedroom
