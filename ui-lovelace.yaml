@@ -52,14 +52,14 @@ views:
                   service_data:
                     entity_id: scene.evening
               - type: entity-button
-                entity: scene.bed_time
-                icon: mdi:weather-night
-                name: Bed Time
+                entity: scene.night_light
+                icon: mdi:flashlight
+                name: Night Light
                 tap_action:
                   action: call-service
                   service: scene.turn_on
                   service_data:
-                    entity_id: scene.bed_time
+                    entity_id: scene.night_light
               - type: entity-button
                 entity: scene.good_night
                 icon: mdi:sleep
@@ -89,15 +89,6 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.movie_playing
-              - type: entity-button
-                entity: scene.night_light
-                icon: mdi:flashlight
-                name: Night Light
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.night_light
               - type: entity-button
                 entity: scene.lily_bed_time
                 icon: mdi:baby-buggy
