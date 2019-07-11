@@ -81,15 +81,6 @@ views:
                   service_data:
                     entity_id: scene.romantic
               - type: entity-button
-                entity: script.wii
-                icon: mdi:gamepad-variant
-                name: Wii
-                tap_action:
-                  action: call-service
-                  service: script.turn_on
-                  service_data:
-                    entity_id: script.wii
-              - type: entity-button
                 entity: scene.movie_playing
                 icon: mdi:movie
                 name: Movie
@@ -108,7 +99,7 @@ views:
                   service_data:
                     entity_id: scene.night_light
               - type: entity-button
-                entity: scene.night_light
+                entity: scene.lily_bed_time
                 icon: mdi:baby-buggy
                 name: Lily Bed Time
                 tap_action:
