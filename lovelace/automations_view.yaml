@@ -6,7 +6,6 @@ cards:
     title: Alerts
     entities:
       - automation.login_failure
-      - automation.camera_offline
       - automation.high_humidity
       - automation.climate_too_hot_family_home
       - automation.climate_too_hot_family_away
