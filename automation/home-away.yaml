@@ -46,3 +46,21 @@
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
         temperature: 76
         operation_mode: Cool
+
+- alias: Return from Walk
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_door
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.flux_lily_bedroom
+        state: 'off'
+      - condition: time
+        after: '20:30:00'
+        before: '23:30:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.lily_bed_time
