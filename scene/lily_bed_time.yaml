@@ -5,7 +5,10 @@
       brightness_pct: 40
     group.sitting_room:
       state: off
-    light.living_room_lights:
+    light.behind_tv_lamp:
+      state: on
+      brightness_pct: 25
+    light.living_room_couch_1:
       state: on
       brightness_pct: 25
     light.living_room_couch_2:
