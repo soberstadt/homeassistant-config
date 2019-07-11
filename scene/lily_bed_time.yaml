@@ -1,5 +1,8 @@
 - name: Lily Bed Time
   entities:
+    light.ge_12724_3way_dimmer_switch_level:
+      state: on
+      brightness_pct: 40
     group.sitting_room:
       state: off
     light.living_room_lights:
@@ -7,8 +10,15 @@
       brightness_pct: 25
     light.living_room_couch_2:
       state: off
+    group.mood_lights:
+      state: on
+      color_name: red
+      brightness_pct: 100
     light.tuya_light_1:
       state: off
+    light.sink:
+      state: on
+      brightness_pct: 25
     light.dining_room_lamp:
       state: off
     light.flux_lily_bedroom:
