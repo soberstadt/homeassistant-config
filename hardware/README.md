@@ -4,7 +4,7 @@ I have a series of ESP8266 boards that serve as sensors around the house. Here t
 
 Room | Firmware | source | purpose | hardware
 --- | --- | --- | --- | ---
-Sitting Room | MongooseOS | [Source](motion.js) | Motion sensor | NodeMCU
+Sitting Room | esphome | [Source](../esphome/mqtt_arrow_1.yaml) | Motion sensor | NodeMCU
 
 ## mqtt_arrow_2
 

@@ -5,10 +5,6 @@
       device_class: garage_door
       value_template: >-
         {{ states.sensor.garage_status.state == 'open' }}
-    arrow_1_motion:
-      friendly_name: "Arrow 1 Motion"
-      device_class: motion
-      value_template: "{{ states('sensor.arrow_1_motion') == 'on' }}"
     spencer_charging:
       value_template: >-
         {{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_charging }}
