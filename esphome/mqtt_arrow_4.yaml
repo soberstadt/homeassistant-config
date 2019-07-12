@@ -6,6 +6,7 @@ esphome:
 wifi:
   ssid: !secret mqtt_wifi_ssid
   password: !secret mqtt_wifi_password
+  fast_connect: true
 
 mqtt:
   broker: !secret mqtt_broker
