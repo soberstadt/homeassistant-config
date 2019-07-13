@@ -2,22 +2,16 @@ esphome:
   name: sonoff2
   platform: ESP8266
   board: esp01_1m
-  board_flash_mode: dout
 
 wifi:
   ssid: !secret mqtt_wifi_ssid
   password: !secret mqtt_wifi_password
 
-mqtt:
-  broker: !secret mqtt_broker
-  username: !secret mqtt_user
-  password: !secret mqtt_password
-
 # Enable logging
 logger:
 
 # Enable Home Assistant API
-# api:
+api:
 
 ota:
   password: !secret mqtt_password
