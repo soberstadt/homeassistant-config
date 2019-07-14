@@ -9,11 +9,6 @@
     minutes: 30
 
 - platform: mqtt
-  state_topic: "/devices/mqtt_arrow_1/events"
-  name: "Arrow 1 Motion"
-  value_template: '{{ value_json.motion }}'
-
-- platform: mqtt
   state_topic: "/devices/mqtt_arrow_3/state"
   name: "Garage Distance"
   unit_of_measurement: "cm"
@@ -85,3 +80,18 @@
         {% set HI_C = (HI-32)/1.8 %}
         {{- HI_C|round(1) -}}
       unit_of_measurement: '°C'
+
+- platform: min_max
+  type: mean
+  name: House Mean Temperature
+  entity_ids:
+    - sensor.arrow_2_temperature
+    - sensor.arrow_5_temperature
+    - sensor.sonoff_2_temperature
+- platform: min_max
+  type: mean
+  name: House Mean Humidity
+  entity_ids:
+    - sensor.arrow_2_humidity
+    - sensor.arrow_5_humidity
+    - sensor.sonoff_2_humidity
