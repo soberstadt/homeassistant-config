@@ -31,3 +31,13 @@ switch:
     name: "Sonoff 2 Switch"
     pin: GPIO12
     id: relay
+
+sensor:
+  - platform: dht
+    pin: GPIO3
+    model: DHT22
+    temperature:
+      name: "Sonoff 2 Temperature"
+    humidity:
+      name: "Sonoff 2 Humidity"
+    update_interval: 120s
