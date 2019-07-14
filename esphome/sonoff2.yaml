@@ -22,24 +22,12 @@ binary_sensor:
       number: GPIO0
       mode: INPUT_PULLUP
       inverted: True
-    name: "Sonoff Basic Button"
+    name: "Sonoff 2 Button"
     on_press:
       - switch.toggle: relay
 
 switch:
   - platform: gpio
-    name: "Sonoff Basic Relay"
+    name: "Sonoff 2 Switch"
     pin: GPIO12
     id: relay
-
-output:
-  - platform: esp8266_pwm
-    id: basic_green_led
-    pin:
-      number: GPIO13
-      inverted: True
-
-light:
-  - platform: monochromatic
-    name: "Sonoff Basic Green LED"
-    output: basic_green_led
