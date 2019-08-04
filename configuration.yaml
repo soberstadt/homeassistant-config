@@ -94,6 +94,10 @@ google_assistant:
       name: Living Mood Light
       expose: true
       room: Mood
+    light.flux_lily_bedroom:
+      name: Lily Night Light
+      expose: true
+      room: Lily's room
     switch.sonoff_1:
       name: Sitting Room Lamp
       expose: true
