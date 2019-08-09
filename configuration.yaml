@@ -69,7 +69,6 @@ device_tracker:
     scan_options: " -sn "
   - platform: google_maps
     username: !secret google_location_account
-    password: !secret google_location_password
 
 map:
 
