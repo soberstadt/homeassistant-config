@@ -4,5 +4,5 @@
   "documentation": "",
   "dependencies": [],
   "codeowners": [],
-  "requirements": ["python-roku==3.1.5"]
+  "requirements": ["roku==3.0.0"]
 }

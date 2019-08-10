@@ -3,7 +3,7 @@ DOMAIN = 'roku_remote'
 LAST_BUTTON_TOPIC = 'last_button'
 LAST_IP_STATE_NAME = 'input_text.roku_remote_ip'
 
-REQUIREMENTS = ['python-roku==3.1.5']
+REQUIREMENTS = ['roku==3.0.0']
 
 import logging
 import time
