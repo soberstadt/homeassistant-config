@@ -13,7 +13,7 @@
       data:
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
         temperature: 79
-        operation_mode: Cool
+        hvac_mode: cool
 
 - alias: Family Home
   trigger:
@@ -25,7 +25,7 @@
       data:
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
         temperature: 74
-        operation_mode: Cool
+        hvac_mode: cool
     - service: switch.turn_off
       entity_id: switch.meross_2
 
@@ -45,7 +45,7 @@
       data:
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
         temperature: 76
-        operation_mode: Cool
+        hvac_mode: cool
 
 - alias: Return from Walk
   trigger:
