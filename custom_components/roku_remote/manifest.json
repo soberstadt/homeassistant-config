@@ -4,5 +4,5 @@
   "documentation": "",
   "dependencies": [],
   "codeowners": [],
-  "requirements": ["roku==3.0.0"]
+  "requirements": ["roku==3.1"]
 }
