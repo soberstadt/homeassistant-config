@@ -5,6 +5,8 @@
       brightness_pct: 20
     group.living_room_lights:
       state: off
+    script.tv_off:
+      state: true
     group.kitchen_lights:
       state: off
     group.bedroom_lights:

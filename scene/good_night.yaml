@@ -8,6 +8,8 @@
       state: off
     group.living_room_lights:
       state: off
+    script.tv_off:
+      state: true
     group.kitchen_lights:
       state: off
     light.dining_room_lamp:
