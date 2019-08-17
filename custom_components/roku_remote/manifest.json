@@ -1,8 +1,0 @@
-{
-  "domain": "roku_remote",
-  "name": "Roku Remote",
-  "documentation": "",
-  "dependencies": [],
-  "codeowners": [],
-  "requirements": ["roku==3.1"]
-}

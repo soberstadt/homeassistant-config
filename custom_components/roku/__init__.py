@@ -1,5 +1,6 @@
 """Support for Roku."""
 import logging
+import time
 
 import voluptuous as vol
 
@@ -58,6 +59,11 @@ def setup(hass, config):
     hass.services.register(
         DOMAIN, SERVICE_SCAN, service_handler, schema=ROKU_SCAN_SCHEMA
     )
+
+    def sleep(call):
+        time.sleep(call.data.get('time'))
+
+    hass.services.async_register(DOMAIN, 'sleep', sleep)
 
     return True
 
