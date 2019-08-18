@@ -2,6 +2,8 @@
   trigger:
     - platform: state
       entity_id: input_select.hass_theme
+    - platform: homeassistant
+      event: start
   action:
     - service: frontend.set_theme
       data_template:

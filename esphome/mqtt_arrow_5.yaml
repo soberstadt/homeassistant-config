@@ -1,0 +1,48 @@
+esphome:
+  name: mqtt_arrow_5
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+
+logger:
+
+api:
+
+ota:
+  password: !secret mqtt_password
+
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: Arrow 5 Button
+
+sensor:
+  - platform: dht
+    pin: D7
+    model: DHT22
+    temperature:
+      name: "Arrow 5 Temperature"
+    humidity:
+      name: "Arrow 5 Humidity"
+    update_interval: 120s
+
+output:
+  - platform: esp8266_pwm
+    pin: D1
+    id: redgpio
+  - platform: esp8266_pwm
+    pin: D2
+    id: greengpio
+  - platform: esp8266_pwm
+    pin: D3
+    id: bluegpio
+
+light:
+  - platform: rgb
+    name: Arrow 5 Alert Light
+    red: redgpio
+    green: greengpio
+    blue: bluegpio

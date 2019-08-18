@@ -13,6 +13,8 @@ light.6001948a98a2_1921680101:
   friendly_name: 'Living Mood Light'
 light.flux_bedroom:
   friendly_name: 'Bedroom Mood'
+light.flux_lily_bedroom:
+  friendly_name: 'Lily Mood Light'
 
 light.living_room_couch_1:
   icon: mdi:lamp
@@ -33,3 +35,10 @@ switch.tuya_switch_1:
 switch.sonoff_1:
   friendly_name: 'Sitting Room Lamp'
   icon: mdi:lamp
+
+# Meross 1
+switch.meross_1:
+  friendly_name: Meross 1
+# Meross 2
+switch.meross_2:
+  friendly_name: Camera Power

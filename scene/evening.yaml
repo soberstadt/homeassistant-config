@@ -18,10 +18,10 @@
       brightness_pct: 40
     group.living_room_lights:
       state: on
-      brightness: 255
+      brightness_pct: 100
     light.dining_room_lamp:
       state: on
-      brightness: 255
+      brightness_pct: 100
     light.flux_bedroom:
       state: on
       rgb_color: [151,255,0]

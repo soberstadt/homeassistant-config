@@ -1,0 +1,43 @@
+esphome:
+  name: sonoff2
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: !secret mqtt_password
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Sonoff 2 Button"
+    on_press:
+      - switch.toggle: relay
+
+switch:
+  - platform: gpio
+    name: "Sonoff 2 Switch"
+    pin: GPIO12
+    id: relay
+
+sensor:
+  - platform: dht
+    pin: GPIO3
+    model: DHT22
+    temperature:
+      name: "Sonoff 2 Temperature"
+    humidity:
+      name: "Sonoff 2 Humidity"
+    update_interval: 120s

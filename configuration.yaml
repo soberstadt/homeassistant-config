@@ -14,16 +14,14 @@ auth:
 zone: !include ./configuration/zone.yaml
 
 frontend:
-  extra_html_url:
-    - /local/custom_ui/state-card-tiles.html
-  extra_html_url_es5:
-    - /local/custom_ui/state-card-tiles_es5.html
   themes: !include_dir_merge_named themes/
+
+lovelace:
+  mode: yaml
 
 config:
 
 http:
-  api_password: !secret http_password
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   base_url: !secret base_url
@@ -41,6 +39,7 @@ recorder:
   purge_keep_days: 3
 
 sun:
+system_health:
 
 automation: !include_dir_merge_list automation
 group: !include ./configuration/group.yaml
@@ -56,16 +55,13 @@ switch: !include ./configuration/switch.yaml
 # conversation:
 # Text to speech
 tts:
-  platform: google
+  platform: google_translate
 
 zwave:
   usb_path: /dev/ttyACM0
-
-mqtt:
-  broker: core-mosquitto
-  username: !secret mqtt_user
-  password: !secret mqtt_password
-  discovery: true
+  device_config:
+    light.ge_12724_3way_dimmer_switch_level:
+      polling_intensity: 1
 
 device_tracker:
   - platform: nmap_tracker
@@ -73,14 +69,13 @@ device_tracker:
     scan_options: " -sn "
   - platform: google_maps
     username: !secret google_location_account
-    password: !secret google_location_password
-  - platform: bluetooth_tracker
 
 map:
 
-hdmi_cec:
-  devices:
-    TV: 0.0.0.0
+speedtestdotnet:
+  monitored_conditions:
+    - ping
+    - download
 
 google_assistant:
   project_id: soberstadt
@@ -98,11 +93,15 @@ google_assistant:
       name: Living Mood Light
       expose: true
       room: Mood
+    light.flux_lily_bedroom:
+      name: Lily Night Light
+      expose: true
+      room: Lily's room
     switch.sonoff_1:
       name: Sitting Room Lamp
       expose: true
       room: Sitting Room
-    climate.house:
+    climate.2gig_technologies_ct101_thermostat_iris_cooling_1:
       name: Thermostat
       expose: true
       room: Entryway
@@ -113,12 +112,8 @@ tuya:
   password: !secret tuya_password
   country_code: 1
 
-input_text:
-  roku_remote_ip:
-    name: Roku Remote IP
 input_boolean:
-  scene_tiles:
-  house_state_tiles:
+  guest_mode:
 input_select:
   spencer_status_dropdown:
     name: Spencer
@@ -129,7 +124,6 @@ input_select:
       - Away
       - Extended Away
       - Work
-    initial: Home
   lynsey_status_dropdown:
     name: Lynsey
     options:
@@ -139,7 +133,6 @@ input_select:
       - Away
       - Extended Away
       - Work
-    initial: Home
   family_status_dropdown:
     name: Family Presence
     options:
@@ -149,14 +142,29 @@ input_select:
       - Away
       - Extended Away
       - Work
-    initial: Home
   hass_theme:
     name: Themes
     options:
       - default
       - midnight
-    initial: default
+      - clear
+      - clear-dark
 
-roku_remote:
+# custom components:
+hacs:
+  token: !secret hacs_token
+
+# influxdb:
+#   host: a0d7b954-influxdb
+#   port: 8086
+#   database: homeassistant
+#   username: homeassistant
+#   password: !secret influxdb_password
+#   max_retries: 3
+#   default_measurement: state
+
+meross_cloud:
+  username: !secret meross_username
+  password: !secret meross_password
 
 python_script:

@@ -5,6 +5,8 @@
       name: flux_bedroom
     192.168.0.101:
       name: 6001948a98a2_1921680101
+    192.168.0.122:
+      name: flux_lily_bedroom
 - platform: group
   name: Living Room Lights
   entities:
@@ -27,3 +29,19 @@
   entities:
     - light.6001948a98a2_1921680101
     - light.flux_bedroom
+- platform: group
+  name: Sitting Room Lights
+  entities:
+    - light.buffet_lamp
+    - light.sitting_room_couch
+- platform: group
+  name: Dining Room Lights
+  entities:
+    - light.dining_room_lamp
+
+- platform: switch
+  name: Buffet Lamp
+  entity_id: switch.sonoff_1
+- platform: switch
+  name: Sitting Room Couch
+  entity_id: switch.tuya_switch_1

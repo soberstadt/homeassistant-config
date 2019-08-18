@@ -1,19 +1,28 @@
 title: Oberstadt Home
 resources:
-  - url: /local/button-card.js?v=0.2.1c
+  # local copy of card that I have edited
+  - url: /local/roku-card.js?v=1
     type: module
-  - url: /local/mini-media-player.js?v=0.1
-    type: js
   - url: /local/thermostat-card.js?v=1.1
     type: module
+  # cards loaded via hacs
+  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+    type: module
+  - url: /community_plugin/mini-media-player/mini-media-player.js
+    type: module
+  - url: /community_plugin/lovelace-color-picker/color-picker.js
+    type: js
+  - url: /community_plugin/lovelace-card-tools/card-tools.js
+    type: js
 excluded_entities:
 views:
-  - id: 0  # Automatically created id
+  - title: Home
     icon: mdi:home
+    background: var(--background-image)
     cards:
       - id: c9f11fedade648f5a56af91007986c32  # Automatically created id
         type: glance
-        column_width: calc(100% / 6)
+        columns: 6
         entities:
           - entity: sensor.arrow_2_real_feel
             name: Inside
@@ -37,40 +46,58 @@ views:
                 entity: scene.evening
                 icon: mdi:weather-sunset
                 name: Evening
-                service: scene.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.evening
               - type: entity-button
-                entity: scene.bed_time
-                icon: mdi:weather-night
-                name: Bed Time
-                service: scene.turn_on
-                tap_action: call-service
+                entity: scene.night_light
+                icon: mdi:flashlight
+                name: Night Light
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.night_light
               - type: entity-button
                 entity: scene.good_night
                 icon: mdi:sleep
                 name: All Off
-                service: scene.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.good_night
           - type: horizontal-stack
             cards:
               - type: entity-button
                 entity: scene.romantic
                 icon: mdi:heart
                 name: Romantic
-                service: scene.turn_on
-                tap_action: call-service
-              - type: entity-button
-                entity: script.wii
-                icon: mdi:gamepad-variant
-                name: Wii
-                service: script.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.romantic
               - type: entity-button
                 entity: scene.movie_playing
                 icon: mdi:movie
                 name: Movie
-                service: scene.turn_on
-                tap_action: call-service
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.movie_playing
+              - type: entity-button
+                entity: scene.lily_bed_time
+                icon: mdi:baby-buggy
+                name: Lily Bed Time
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.lily_bed_time
       - id: 148c092bb96847df98155f335be42be2  # Automatically created id
         type: entities
         title: Light Groups
@@ -78,14 +105,26 @@ views:
           - light.living_room_lights
           - light.kitchen_lights
           - light.bedroom_lights
-          - group.sitting_room
+          - light.sitting_room_lights
+          - light.dining_room_lights
           - light.mood_lights
-      - id: c316d3c63f7e4979a0ab6a7a759d0514  # Automatically created id
-        type: custom:thermostat-card
-        entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+      - type: conditional
+        conditions:
+          - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+            state_not: "heat"
+        card:
+          type: custom:thermostat-card
+          entity:  climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+      - type: conditional
+        conditions:
+          - entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
+            state: "heat"
+        card:
+          type: custom:thermostat-card
+          entity:  climate.2gig_technologies_ct101_thermostat_iris_heating_1
 
-  - id: 1  # Automatically created id
-    title: Lights
+  - title: Lights
+    background: var(--background-image)
     cards:
       - id: 17b94b85afcb476b8d167ad93ee9a67c  # Automatically created id
         type: entities
@@ -113,179 +152,115 @@ views:
         entities:
           - light.ge_12724_3way_dimmer_switch_level
           - light.flux_bedroom
+      - type: entities
+        title: Lily Bedroom
+        entities:
+          - light.flux_lily_bedroom
       - id: e07642e0fbe34db09bf72ba4a16a60eb  # Automatically created id
         type: entities
         title: Sitting Room
         entities:
           - switch.tuya_switch_1
           - switch.sonoff_1
-
-  - id: 2  # Automatically created id
-    icon: mdi:television
-    cards:
-      - id: 2586d0867b184987994b40ec867cacf5  # Automatically created id
-        type: vertical-stack
-        cards:
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                action: script
-                icon: mdi:power
-                entity: script.roku_button
-                data: {button: power}
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                color_type: blank-card
-              - type: custom:button-card
-                action: script
-                icon: mdi:volume-plus
-                entity: script.roku_button
-                data: {button: volume_up}
-                color_off: var(--primary-color)
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                action: script
-                icon: mdi:backburger
-                entity: script.roku_button
-                data: {button: back}
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                action: script
-                icon: mdi:home
-                entity: script.roku_button
-                data: {button: home}
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                action: script
-                icon: mdi:volume-minus
-                entity: script.roku_button
-                data: {button: volume_down}
-                color_off: var(--primary-color)
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                color_type: blank-card
-              - type: custom:button-card
-                action: script
-                icon: mdi:arrow-up-thick
-                entity: script.roku_button
-                data: {button: up}
-                color_type: card
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                action: script
-                icon: mdi:volume-mute
-                entity: script.roku_button
-                data: {button: volume_mute}
-                color_off: var(--primary-color)
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                action: script
-                icon: mdi:arrow-left-thick
-                entity: script.roku_button
-                data: {button: left}
-                color_type: card
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                action: script
-                icon: mdi:check-outline
-                entity: script.roku_button
-                data: {button: select}
-                color_type: card
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                action: script
-                icon: mdi:arrow-right-thick
-                entity: script.roku_button
-                data: {button: right}
-                color_type: card
-                color_off: var(--primary-color)
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                color_type: blank-card
-              - type: custom:button-card
-                action: script
-                icon: mdi:arrow-down-thick
-                entity: script.roku_button
-                data: {button: down}
-                color_type: card
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                color_type: blank-card
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                action: script
-                icon: mdi:replay
-                entity: script.roku_button
-                data: {button: replay}
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                color_type: blank-card
-              - type: custom:button-card
-                action: script
-                icon: mdi:information-outline
-                entity: script.roku_button
-                data: {button: info}
-                color_off: var(--primary-color)
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                action: script
-                icon: mdi:rewind
-                entity: script.roku_button
-                data: {button: reverse}
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                action: script
-                icon: mdi:play-pause
-                entity: script.roku_button
-                data: {button: play}
-                color_type: card
-                color_off: var(--primary-color)
-              - type: custom:button-card
-                action: script
-                icon: mdi:fast-forward
-                entity: script.roku_button
-                data: {button: forward}
-                color_off: var(--primary-color)
-      - id: aed7f2ab8a774007b883a0750900bfee  # Automatically created id
-        type: entities
-        title: Living Room
-        show_header_toggle: false
+          - switch.meross_1
+      - type: entities
+        title: Extra
         entities:
-          - script.jeopardy
-          - script.wii
+          - switch.meross_2
+      - type: custom:color-picker
+        entity: light.mood_lights
+
+  - title: Media
+    icon: mdi:television
+    background: var(--background-image)
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            entity: media_player.roku
+            icon: mdi:netflix
+            show_name: false
+            tap_action:
+              action: call-service
+              service: media_player.select_source
+              service_data:
+                entity_id: media_player.roku
+                source: Netflix
+          - type: entity-button
+            entity: media_player.roku
+            icon: mdi:amazon
+            show_name: false
+            tap_action:
+              action: call-service
+              service: media_player.select_source
+              service_data:
+                entity_id: media_player.roku
+                source: Prime Video
+          - type: entity-button
+            entity: media_player.roku
+            icon: mdi:youtube
+            show_name: false
+            tap_action:
+              action: call-service
+              service: media_player.select_source
+              service_data:
+                entity_id: media_player.roku
+                source: YouTube
+          - type: entity-button
+            entity: media_player.roku
+            icon: mdi:wii
+            show_name: false
+            tap_action:
+              action: call-service
+              service: script.wii
+          - type: entity-button
+            entity: media_player.roku
+            icon: mdi:alpha-j-circle
+            show_name: false
+            tap_action:
+              action: call-service
+              service: script.jeopardy
+      - type: custom:roku-card
+        entity: media_player.roku
+        tv: true
       - id: 81949810d809465a823def5865d5e324  # Automatically created id
         type: media-control
         entity: media_player.roku
       - id: 5962e0f4870d45c69604c570a69d85e1  # Automatically created id
         type: media-control
         entity: media_player.living_room_tv
-      - id: 2f7ccafbe8854226878bc4aa162d6514  # Automatically created id
-        type: custom:mini-media-player
-        entity: media_player.kitchen_speaker
-        icon: mdi:cast
-      - id: b136b74cb0554f9fa4f05825177dccf6  # Automatically created id
-        type: custom:mini-media-player
-        entity: media_player.bedroom_speaker
-        icon: mdi:cast
-      - id: 1438f0f086164423a7d92293f865cf05  # Automatically created id
-        type: picture-entity
-        image: https://images.pexels.com/photos/987586/pexels-photo-987586.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=495
-        entity: script.roku_button
-        name: Roku Remote
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_speaker
+            icon: mdi:cast
+          - type: custom:mini-media-player
+            entity: media_player.bedroom_speaker
+            icon: mdi:cast
+          - type: custom:mini-media-player
+            entity: media_player.googlehome9316
+            icon: mdi:cast
 
-  - id: 3  # Automatically created id
+  - title: Settings
     icon: mdi:settings
+    background: var(--background-image)
     cards:
-      - id: 39c7716bca6c4c64a59db092dcb4bda2  # Automatically created id
-        type: entities
-        entities:
-          - climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+      - type: conditional
+        conditions:
+          - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+            state_not: "heat"
+        card:
+          type: entities
+          entities:
+            - climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+      - type: conditional
+        conditions:
+          - entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
+            state: "heat"
+        card:
+          type: entities
+          entities:
+            - climate.2gig_technologies_ct101_thermostat_iris_heating_1
       - id: a3f159521d614731ac7751320a17c25e  # Automatically created id
         type: entities
         title: More Details
@@ -297,8 +272,6 @@ views:
           - sensor.dark_sky_humidity
           - sensor.arrow_2_temperature
           - sensor.arrow_2_humidity
-          - sensor.arrow_2_ldr
-          - sensor.arrow_2_motion
       - id: 0dabe724acd54c8c8423bf5fbec61f15  # Automatically created id
         type: entities
         title: Speedtest
@@ -346,6 +319,7 @@ views:
               - input_select.spencer_status_dropdown
               - input_select.lynsey_status_dropdown
               - input_select.family_status_dropdown
+              - input_boolean.guest_mode
       - id: fe2749842ea94945b3747fd3f04dcf8f  # Automatically created id
         type: entities
         title: System
@@ -353,7 +327,6 @@ views:
         entities:
           - sensor.ha_uptime
           - input_select.hass_theme
-          - group.all_automations
       - id: 6c98e6b747ff46c8bc1639f7af05f586  # Automatically created id
         type: entities
         title: SpaceX
@@ -364,3 +337,4 @@ views:
           - sensor.spacex_next_launch_site
           - sensor.spacex_next_landing_type
           - sensor.spacex_next_rocket
+  - !include lovelace/automations_view.yaml

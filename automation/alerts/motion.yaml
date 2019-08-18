@@ -5,7 +5,10 @@
       to: 'on'
   action:
     - condition: template
-      value_template: "{{ states.input_select.family_status_dropdown.state in ['Away', 'Extended Away'] }}"
+      value_template: "{{ states.input_select.family_status_dropdown.state in ['Away', 'Work', 'Extended Away'] }}"
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
     - service: notify.pushbullet
       data:
         message: 'Motion at home'

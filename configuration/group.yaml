@@ -1,88 +1,14 @@
-default_view:
-  view: yes
-  icon: mdi:home
-  entities:
-    - group.house_status
-    - group.scene_tiles
-    - group.living_room_lights
-    - group.dining_room
-    - group.kitchen_lights
-    - group.bedroom_lights
-    - group.sitting_room
-    - climate.2gig_technologies_ct101_thermostat_iris_cooling_1
-
-Media:
-  view: yes
-  icon: mdi:television
-  entities:
-    - script.jeopardy
-    - script.wii
-    - group.living_room_tv
-    - media_player.roku
-    - media_player.living_room_tv
-    - media_player.kitchen_speaker
-    - media_player.bedroom_speaker
-
-Info:
-  view: yes
-  icon: mdi:settings
-  entities:
-    - group.weather
-    - group.speedtest
-    - group.tracked_devices
-    - group.zwave
-    - group.extra_lights
-    - group.house_motion
-    - group.garage
-    - group.family_dropdowns
-    - group.all_automations
-    - group.sensors
-    - group.spacex
-    # - group.network
-
 Family:
   - device_tracker.spencer_phone
   - device_tracker.lynsey_phone
 Friends And Family:
   - device_tracker.spencer_phone
   - device_tracker.lynsey_phone
-Family Dropdowns:
-  - input_select.spencer_status_dropdown
-  - input_select.lynsey_status_dropdown
-  - input_select.family_status_dropdown
-
-Weather:
-  - sun.sun
-  - sensor.dark_sky_summary
-  - sensor.dark_sky_temperature
-  - sensor.dark_sky_humidity
-  - sensor.arrow_2_temperature
-  - sensor.arrow_2_humidity
-  - sensor.arrow_2_ldr
-  - sensor.arrow_2_motion
-Speedtest:
-  - sensor.speedtest_download
-  - sensor.speedtest_upload
-  - sensor.speedtest_ping
 
 Living Room Lights:
-  entities:
-    - light.living_room_couch_1
-    - light.living_room_couch_2
-    - light.behind_tv_lamp
-Living Room:
-  control: hidden
-  entities:
-    - binary_sensor.pir_living_room
-    - sensor.arrow_2_real_feel
-    - sensor.dark_sky_apparent_temperature
-
-Living Room TV:
-  entities:
-    - script.roku_button
-
-kitchen_home:
-  - media_player.kitchen_speaker
+  - light.living_room_couch_1
+  - light.living_room_couch_2
+  - light.behind_tv_lamp
 kitchen_lights:
   - light.sink
   - light.oven
@@ -93,60 +19,12 @@ Bedroom Lights:
 dining_room:
   - light.dining_room_lamp
   - light.6001948a98a2_1921680101
-
 Sitting Room:
   - switch.tuya_switch_1
   - switch.sonoff_1
-
-all_lights:
-  - light.dining_room_lamp
-  - group.living_room_lights
-  - group.kitchen_lights
-  - group.bedroom_lights
-  - group.mood_lights
-  - group.sitting_room
 mood_lights:
   - light.6001948a98a2_1921680101
 
-Scenes:
-  - scene.evening
-  - scene.good_night
-  - scene.romantic
-  - scene.movie_playing
-Scene Tiles:
-  entities:
-    - input_boolean.scene_tiles
-
-House Status:
-  entities:
-    - input_boolean.house_state_tiles
-
-Tracked Devices:
-  - device_tracker.spencer_phone
-  - device_tracker.spencer_mac
-  - device_tracker.lynsey_phone
-  - device_tracker.lynsey_mac
-  - device_tracker.kitchen_camera
-
-Extra Lights:
-  - switch.aux1
-  - switch.aux2
-
 House Motion:
   - binary_sensor.arrow_1_motion
-  - binary_sensor.pir_living_room
-
-Garage:
-  - sensor.garage_status
-  - sensor.garage_distance
-
-Sensors:
-  - sensor.ha_uptime
-  - input_select.hass_theme
-
-SpaceX:
-  - sensor.spacex_next_mission_name
-  - sensor.spacex_next_launch_date
-  - sensor.spacex_next_launch_site
-  - sensor.spacex_next_landing_type
-  - sensor.spacex_next_rocket
+  - binary_sensor.living_room_motion

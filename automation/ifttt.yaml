@@ -16,8 +16,9 @@
     event_data:
       action: call_roku
   action:
-    service: roku_remote.press_button
+    service: remote.send_command
     data_template:
+      entity_id: remote.roku
       button: '{{ trigger.event.data.button }}'
 
 - alias: IFTTT - Wii
@@ -28,3 +29,19 @@
       action: wii
   action:
     service: script.wii
+
+- alias: IFTTT - Night Scene
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: night_scene
+  action:
+    service: scene.turn_on
+    data_template:
+      entity_id: >
+        {% if states.input_boolean.guest_mode.state == 'on' %}
+          scene.night_light
+        {% else %}
+          scene.good_night
+        {% endif %}

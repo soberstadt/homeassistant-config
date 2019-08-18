@@ -1,7 +1,3 @@
-- platform: rpi_gpio
-  ports:
-    17: PIR Living Room
-
 - platform: template
   sensors:
     garage_door:
@@ -9,11 +5,28 @@
       device_class: garage_door
       value_template: >-
         {{ states.sensor.garage_status.state == 'open' }}
-    living_room_motion:
-      friendly_name: "Living Room Motion"
-      device_class: motion
-      value_template: "{{ states('binary_sensor.pir_living_room') == 'on' }}"
-    arrow_1_motion:
-      friendly_name: "Arrow 1 Motion"
-      device_class: motion
-      value_template: "{{ states('sensor.arrow_1_motion') == 'on' }}"
+    spencer_charging:
+      value_template: >-
+        {{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_charging }}
+
+- platform: mqtt
+  name: Living Room Motion
+  state_topic: "/devices/mqtt_arrow_4/binary_sensor/bs1/state"
+  device_class: motion
+  availability_topic: "/devices/mqtt_arrow_4/status"
+
+# button 1 Left: 9864A1
+# button 1 Right: 9864A2
+- platform: mqtt
+  name: RF Button One - Left
+  payload_on: "9864A1"
+  state_topic: "tele/sonoff_rf/RESULT"
+  value_template: '{{ value_json.RfReceived.Data }}'
+  off_delay: 3
+
+- platform: mqtt
+  name: RF Button One - Right
+  payload_on: "9864A2"
+  state_topic: "tele/sonoff_rf/RESULT"
+  value_template: '{{ value_json.RfReceived.Data }}'
+  off_delay: 3

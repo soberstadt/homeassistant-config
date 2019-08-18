@@ -1,9 +1,0 @@
-- alias: High Humidity
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.arrow_2_humidity
-      above: 50
-  action:
-    - service: notify.pushbullet
-      data:
-        message: 'Home humidity above 50%!'

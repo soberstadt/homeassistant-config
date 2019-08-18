@@ -1,7 +1,7 @@
 - alias: Day - Living Room Motion
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room
+      entity_id: binary_sensor.living_room_motion
       to: 'on'
   condition:
     - condition: state
@@ -13,11 +13,13 @@
   action:
     - service: light.turn_on
       entity_id: group.living_room_lights
+      data:
+        brightness_pct: 80
 
 - alias: Day - Lights off after 30 min of no motion
   trigger:
     - platform: state
-      entity_id: binary_sensor.pir_living_room
+      entity_id: binary_sensor.living_room_motion
       to: 'off'
       for:
         minutes: 30
@@ -29,7 +31,7 @@
     - service_template: light.turn_off
       entity_id: group.living_room_lights
 
-- alias: Lights on when motion
+- alias: Night - Lights on when motion
   trigger:
     - platform: state
       entity_id: group.house_motion
@@ -54,9 +56,9 @@
         brightness_pct: 25
         transition: 3
 
-- alias: Night- Light off after 20 min of no motion
+- alias: Night - Light off after 20 min of no motion
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/5'
       seconds: 00
   condition:

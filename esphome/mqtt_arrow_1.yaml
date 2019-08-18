@@ -1,0 +1,24 @@
+esphome:
+  name: mqtt_arrow_1
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+  fast_connect: on
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: !secret mqtt_password
+
+binary_sensor:
+  - platform: gpio
+    pin: D5
+    name: Arrow 1 Motion
+    device_class: motion

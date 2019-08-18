@@ -1,12 +1,37 @@
-- alias: Jeopardy
+- alias: Autoplay Jeopardy
   trigger:
     platform: time
     at: '18:59:30'
   condition:
-    condition: time
-    weekday:
-      - mon
-      - thu
-      - fri
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: template
+        value_template: "{{ states.input_select.family_status_dropdown.state != 'Extended Away' }}"
   action:
     - service: script.jeopardy
+
+- alias: Roku off if chromecast doing nothing
+  trigger:
+    platform: state
+    entity_id: media_player.living_room_tv
+    to: 'off'
+    for:
+      minutes: 15
+  condition:
+    - condition: state
+      entity_id: sensor.roku_source
+      state: 'Streaming box'
+      for:
+        minutes: 15
+  action:
+    - service: remote.send_command
+      data:
+        entity_id: remote.roku
+        command: power

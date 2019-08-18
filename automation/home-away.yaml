@@ -1,0 +1,66 @@
+- alias: Family Away
+  trigger:
+    - platform: state
+      entity_id: input_select.family_status_dropdown
+      to: 'Away'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.meross_2
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+        temperature: 79
+        hvac_mode: cool
+
+- alias: Family Home
+  trigger:
+    - platform: state
+      entity_id: input_select.family_status_dropdown
+      to: 'Just Arrived'
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+        temperature: 74
+        hvac_mode: cool
+    - service: switch.turn_off
+      entity_id: switch.meross_2
+
+- alias: Return to Neighborhood
+  trigger:
+    - platform: state
+      entity_id: device_tracker.google_maps_114754196444501299267
+      to: 'Neighborhood'
+    - platform: state
+      entity_id: device_tracker.google_maps_104430582414753567698
+      to: 'Neighborhood'
+  condition:
+    - condition: template
+      value_template: "{{ states.input_select.family_status_dropdown.state in ['Away', 'Work', 'Extended Away'] }}"
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+        temperature: 76
+        hvac_mode: cool
+
+- alias: Return from Walk
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_door
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.flux_lily_bedroom
+        state: 'off'
+      - condition: time
+        after: '20:30:00'
+        before: '23:30:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.lily_bed_time

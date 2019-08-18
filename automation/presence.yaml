@@ -204,10 +204,10 @@
   trigger:
     - platform: state
       entity_id: device_tracker.google_maps_114754196444501299267
-      to: 'work'
+      to: 'Work'
     - platform: state
       entity_id: device_tracker.google_maps_104430582414753567698
-      to: 'work'
+      to: 'Work'
   action:
     - service: input_select.select_option
       data_template:
