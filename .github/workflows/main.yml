@@ -12,7 +12,7 @@ jobs:
     - run: sudo mkdir -p /ssl
     - run: sudo touch /ssl/fullchain.pem
     - run: sudo touch /ssl/privkey.pem
-    - run: mv github_resources/secrets_redacted.yaml secrets.yaml
+    - run: mv /home/runner/work/homeassistant-config/homeassistant-config/github_resources/secrets_redacted.yaml /home/runner/work/homeassistant-config/homeassistant-config/secrets.yaml
     - run: sudo apt-get install libudev-dev
     - run: pip3 install homeassistant
-    - run: hass -c . --script check_config -f
+    - run: hass -c /home/runner/work/homeassistant-config/homeassistant-config --script check_config -f
