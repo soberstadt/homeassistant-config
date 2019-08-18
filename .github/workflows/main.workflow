@@ -1,6 +1,6 @@
 workflow "Check Home Assistant Configuration" {
   on = "push"
-  resolves = ["STABLE", "RC", "DEV"]
+  resolves = ["STABLE", "RC"]
 }
 
 action "STABLE" {
