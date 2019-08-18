@@ -8,7 +8,13 @@ jobs:
 
     steps:
     - run: ls .
+      uses: ludeeus/action-ha-config-check@0.0.1
+    - run: echo "$GITHUB_WORKSPACE"/"$ACTION_CONFIG_PATH"
+      uses: ludeeus/action-ha-config-check@0.0.1
+    - run: ls $GITHUB_WORKSPACE
+      uses: ludeeus/action-ha-config-check@0.0.1
     - run: pwd
+      uses: ludeeus/action-ha-config-check@0.0.1
     - name: Home Assistant Configuration Check
       uses: ludeeus/action-ha-config-check@0.0.1
       env:
