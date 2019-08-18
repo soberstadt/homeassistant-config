@@ -5,9 +5,12 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
+    - run: ls .
+    - run: pwd
     - name: Home Assistant Configuration Check
       uses: ludeeus/action-ha-config-check@0.0.1
       env:
           ACTION_VERSION: STABLE
+    - run: echo All Done!
