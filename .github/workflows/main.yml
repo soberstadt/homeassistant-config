@@ -7,16 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: ls .
-      uses: ludeeus/action-ha-config-check@0.0.1
-    - run: echo "$GITHUB_WORKSPACE"/"$ACTION_CONFIG_PATH"
-      uses: ludeeus/action-ha-config-check@0.0.1
-    - run: ls $GITHUB_WORKSPACE
-      uses: ludeeus/action-ha-config-check@0.0.1
-    - run: pwd
-      uses: ludeeus/action-ha-config-check@0.0.1
-    - name: Home Assistant Configuration Check
-      uses: ludeeus/action-ha-config-check@0.0.1
-      env:
-          ACTION_VERSION: STABLE
-    - run: echo All Done!
+    - run: touch home-assistant_v2.db
+    - run: touch home-assistant.log
+    - run: sudo mkdir -p /ssl
+    - run: sudo touch /ssl/fullchain.pem
+    - run: sudo touch /ssl/privkey.pem
+    - run: mv github_resources/secrets_redacted.yaml secrets.yaml
+    - run: sudo apt-get install libudev-dev
+    - run: pip3 install homeassistant
+    - run: hass -c . --script check_config -f
