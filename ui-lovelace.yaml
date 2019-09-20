@@ -91,7 +91,7 @@ views:
                     entity_id: scene.movie_playing
               - type: entity-button
                 entity: scene.lily_bed_time
-                icon: mdi:baby-buggy
+                icon: mdi:baby-carriage
                 name: Lily Bed Time
                 tap_action:
                   action: call-service
@@ -240,6 +240,10 @@ views:
           - type: custom:mini-media-player
             entity: media_player.googlehome9316
             icon: mdi:cast
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - script.lily_white_noise
 
   - title: Settings
     icon: mdi:settings
