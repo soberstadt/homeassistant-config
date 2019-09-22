@@ -15,6 +15,10 @@ resources:
   - url: /community_plugin/lovelace-card-tools/card-tools.js
     type: js
 excluded_entities:
+cch:
+  hide_tabs: 5
+  hide_help: true
+  hide_config: true
 views:
   - title: Home
     icon: mdi:home
@@ -248,6 +252,7 @@ views:
   - title: Settings
     icon: mdi:settings
     background: var(--background-image)
+    path: settings
     cards:
       - type: conditional
         conditions:
@@ -342,3 +347,11 @@ views:
           - sensor.spacex_next_landing_type
           - sensor.spacex_next_rocket
   - !include lovelace/automations_view.yaml
+  - title: wifi
+    path: wifi
+    cards:
+      - type: markdown
+        content: >
+          ## Lovelace
+
+          Starting with Home Assistant 0.72, we're experimenting with a new way of defining your interface. We're calling it the **Lovelace UI**.
