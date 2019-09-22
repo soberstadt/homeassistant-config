@@ -129,6 +129,7 @@ views:
 
   - title: Lights
     background: var(--background-image)
+    icon: mdi:lightbulb-on-outline
     cards:
       - id: 17b94b85afcb476b8d167ad93ee9a67c  # Automatically created id
         type: entities
