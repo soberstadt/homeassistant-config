@@ -228,6 +228,11 @@ views:
       - type: custom:roku-card
         entity: media_player.roku
         tv: true
+        apps:
+          - id: Netflix
+            icon: mdi:netflix
+          - id: Prime Video
+            icon: mdi:amazon
       - id: 81949810d809465a823def5865d5e324  # Automatically created id
         type: media-control
         entity: media_player.roku
