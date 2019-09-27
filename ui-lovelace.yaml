@@ -249,6 +249,48 @@ views:
             show_header_toggle: false
             entities:
               - script.lily_white_noise
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            entity: media_player.roku
+            name: NBC
+            tap_action:
+              action: call-service
+              service: media_player.play_media
+              service_data:
+                entity_id: media_player.roku
+                media_content_type: "TV"
+                media_content_id: '2.1'
+          - type: entity-button
+            entity: media_player.roku
+            name: CBS
+            tap_action:
+              action: call-service
+              service: media_player.play_media
+              service_data:
+                entity_id: media_player.roku
+                media_content_type: "TV"
+                media_content_id: '6.1'
+          - type: entity-button
+            entity: media_player.roku
+            name: ABC
+            tap_action:
+              action: call-service
+              service: media_player.play_media
+              service_data:
+                entity_id: media_player.roku
+                media_content_type: "TV"
+                media_content_id: '9.1'
+          - type: entity-button
+            entity: media_player.roku
+            name: FOX
+            tap_action:
+              action: call-service
+              service: media_player.play_media
+              service_data:
+                entity_id: media_player.roku
+                media_content_type: "TV"
+                media_content_id: '35.1'
 
   - title: Settings
     icon: mdi:settings
