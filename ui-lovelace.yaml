@@ -251,9 +251,11 @@ views:
               - script.lily_white_noise
       - type: horizontal-stack
         cards:
-          - type: entity-button
+          - type: picture-entity
             entity: media_player.roku
-            name: NBC
+            image: /local/nbc.png
+            show_name: false
+            show_state: false
             tap_action:
               action: call-service
               service: media_player.play_media
@@ -261,9 +263,11 @@ views:
                 entity_id: media_player.roku
                 media_content_type: "TV"
                 media_content_id: '2.1'
-          - type: entity-button
+          - type: picture-entity
             entity: media_player.roku
-            name: CBS
+            image: /local/cbs.png
+            show_name: false
+            show_state: false
             tap_action:
               action: call-service
               service: media_player.play_media
@@ -271,9 +275,11 @@ views:
                 entity_id: media_player.roku
                 media_content_type: "TV"
                 media_content_id: '6.1'
-          - type: entity-button
+          - type: picture-entity
             entity: media_player.roku
-            name: ABC
+            image: /local/abc.png
+            show_name: false
+            show_state: false
             tap_action:
               action: call-service
               service: media_player.play_media
@@ -281,9 +287,11 @@ views:
                 entity_id: media_player.roku
                 media_content_type: "TV"
                 media_content_id: '9.1'
-          - type: entity-button
+          - type: picture-entity
             entity: media_player.roku
-            name: FOX
+            image: /local/fox.png
+            show_name: false
+            show_state: false
             tap_action:
               action: call-service
               service: media_player.play_media
