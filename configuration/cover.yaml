@@ -1,0 +1,19 @@
+- platform: template
+  covers:
+    garage_door:
+      friendly_name: "Garage Door"
+      value_template: "{{ states.sensor.garage_status.state == 'open' }}"
+      open_cover:
+        service: switch.turn_on
+        data:
+          entity_id: switch.garage_remote
+      close_cover:
+        service: switch.turn_on
+        data:
+          entity_id: switch.garage_remote
+      icon_template: >-
+        {% if states.sensor.garage_status.state == 'open' %}
+          mdi:garage-open
+        {% else %}
+          mdi:garage
+        {% endif %}

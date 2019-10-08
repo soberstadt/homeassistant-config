@@ -50,6 +50,7 @@ binary_sensor: !include ./configuration/binary_sensor.yaml
 script: !include_dir_merge_named script
 light: !include ./configuration/light.yaml
 switch: !include ./configuration/switch.yaml
+cover: !include ./configuration/cover.yaml
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 # conversation:
