@@ -31,5 +31,3 @@
       state: on
       rgb_color: [255,36,0]
       brightness_pct: 10
-    script.lily_white_noise:
-      state: true
