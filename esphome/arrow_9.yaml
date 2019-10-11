@@ -1,0 +1,39 @@
+esphome:
+  name: arrow_9
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+
+logger:
+
+api:
+
+ota:
+  password: !secret mqtt_password
+
+# web_server:
+#   port: 80
+
+binary_sensor:
+  - platform: gpio
+    pin: D4
+    name: Arrow 9 Motion
+    device_class: motion
+
+sensor:
+  - platform: dht
+    pin: D3
+    model: DHT22
+    temperature:
+      name: "Arrow 9 Temperature"
+    humidity:
+      name: "Arrow 9 Humidity"
+    update_interval: 120s
+
+switch:
+  # Switch to restart the device.
+  - platform: restart
+    name: Arrow 7 Restart

@@ -1,0 +1,110 @@
+esphome:
+  name: arrow_7
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+
+logger:
+
+api:
+
+ota:
+  password: !secret mqtt_password
+
+web_server:
+  port: 80
+
+# Sync time with Home Assistant.
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+
+# Text sensors with general information.
+text_sensor:
+  # Expose ESPHome version as sensor.
+  - platform: version
+    name: Arrow 7 ESPHome Version
+  # Expose WiFi information as sensors.
+  - platform: wifi_info
+    ip_address:
+      name: Arrow 7 IP
+
+# Sensors with general information.
+sensor:
+  # Uptime sensor.
+  - platform: uptime
+    name: Arrow 7 Uptime
+
+  # WiFi Signal sensor.
+  - platform: wifi_signal
+    name: Arrow 7 WiFi Signal
+    update_interval: 60s
+
+# Global to store the on/off state of the chime
+globals:
+  - id: chime
+    type: bool
+    restore_value: true
+    initial_value: 'true'
+
+# Exposed switches.
+switch:
+  # Switch to restart the doorbell.
+  - platform: restart
+    name: Arrow 7 Restart
+
+  # Switch to turn on/off the chime.
+  - platform: gpio
+    id: relay
+    inverted: true
+    name: Doorbell Chime
+    pin: GPIO0
+
+  # Switch to turn on/off chime when
+  # doorbell button is pushed.
+  #
+  # It creates a "virtual" switch based
+  # on a global variable.
+  - platform: template
+    name: Doorbell Chime Active
+    id: chime_active
+    restore_state: false
+    turn_on_action:
+      - globals.set:
+          id: chime
+          value: 'true'
+    turn_off_action:
+      - globals.set:
+          id: chime
+          value: 'false'
+    lambda: |-
+      return id(chime);
+# Binary sensor representing the
+# Doorbell button push.
+binary_sensor:
+  - platform: gpio
+    id: button
+    name: Doorbell Button
+    pin:
+      # Connected to GPIO on the ESP-01S.
+      number: GPIO2
+      mode: INPUT_PULLUP
+      inverted: true
+    filters:
+      # Small filter, to debounce the button press.
+      - delayed_on: 25ms
+      - delayed_off: 25ms
+    on_press:
+      # Only turn on the chime when it is active.
+      then:
+        if:
+          condition:
+            - switch.is_on: chime_active
+          then:
+            - switch.turn_on: relay
+    on_release:
+      # On release, turn of the chime.
+      - switch.turn_off: relay
