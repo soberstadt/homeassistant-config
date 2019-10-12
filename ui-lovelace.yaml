@@ -332,7 +332,9 @@ views:
           - sensor.dark_sky_humidity
           - sensor.arrow_2_temperature
           - sensor.arrow_2_humidity
-      - id: 0dabe724acd54c8c8423bf5fbec61f15  # Automatically created id
+          - sensor.house_mean_temperature
+          - sensor.house_mean_humidity
+      - id: 0dabe724acd54c8c8423bf5fbec61f15 # Automatically created id
         type: entities
         title: Speedtest
         show_header_toggle: false
@@ -356,6 +358,7 @@ views:
         entities:
           - binary_sensor.arrow_1_motion
           - binary_sensor.living_room_motion
+          - binary_sensor.arrow_9_motion
       - id: 9b9f7042cd0c4171bb125d83875f2f3a  # Automatically created id
         type: entities
         title: Garage
