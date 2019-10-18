@@ -81,8 +81,8 @@
         {{- HI_C|round(1) -}}
       unit_of_measurement: '°C'
 
-    ave_real_feel:
-      friendly_name: 'House Average Real Feel'
+    avg_real_feel:
+      friendly_name: "House Average Real Feel"
       entity_id: [sensor.house_mean_temperature, sensor.house_mean_humidity]
       value_template: >-
         {% set T = states('sensor.house_mean_temperature')|float %}

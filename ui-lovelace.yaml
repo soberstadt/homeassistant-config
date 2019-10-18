@@ -24,11 +24,20 @@ views:
     icon: mdi:home
     background: var(--background-image)
     cards:
-      - id: c9f11fedade648f5a56af91007986c32  # Automatically created id
-        type: glance
+      - type: conditional
+        conditions:
+          - entity: cover.garage_door
+            state: "open"
+        card:
+          type: entities
+          show_header_toggle: false
+          entities:
+            - camera.camera_1
+            - cover.garage_door
+      - type: glance
         columns: 6
         entities:
-          - entity: sensor.arrow_2_real_feel
+          - entity: sensor.avg_real_feel
             name: Inside
           - entity: sensor.dark_sky_apparent_temperature
             name: Outside
@@ -39,10 +48,9 @@ views:
             icon: mdi:account
           - entity: input_select.lynsey_status_dropdown
             icon: mdi:account
-          - entity: binary_sensor.garage_door
+          - entity: cover.garage_door
             name: Garage Door
-      - id: b5080a0c1187408cae93b18ccc1223c9  # Automatically created id
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: horizontal-stack
             cards:
@@ -334,6 +342,7 @@ views:
           - sensor.arrow_2_humidity
           - sensor.house_mean_temperature
           - sensor.house_mean_humidity
+          - sensor.avg_real_feel
       - id: 0dabe724acd54c8c8423bf5fbec61f15 # Automatically created id
         type: entities
         title: Speedtest
