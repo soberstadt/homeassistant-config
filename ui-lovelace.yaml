@@ -110,8 +110,7 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.lily_bed_time
-      - id: 148c092bb96847df98155f335be42be2  # Automatically created id
-        type: entities
+      - type: entities
         title: Light Groups
         entities:
           - light.living_room_lights
@@ -126,41 +125,37 @@ views:
             state_not: "heat"
         card:
           type: custom:thermostat-card
-          entity:  climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+          entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
       - type: conditional
         conditions:
           - entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
             state: "heat"
         card:
           type: custom:thermostat-card
-          entity:  climate.2gig_technologies_ct101_thermostat_iris_heating_1
+          entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
 
   - title: Lights
     background: var(--background-image)
     icon: mdi:lightbulb-on-outline
     cards:
-      - id: 17b94b85afcb476b8d167ad93ee9a67c  # Automatically created id
-        type: entities
+      - type: entities
         title: Living Room
         entities:
           - light.living_room_couch_1
           - light.living_room_couch_2
           - light.behind_tv_lamp
-      - id: e386b3a5704c43faa3fc19bed4c07ca8  # Automatically created id
-        type: entities
+      - type: entities
         title: Dining Room
         entities:
           - light.dining_room_lamp
           - light.6001948a98a2_1921680101
-      - id: 4c7196226d3b48bfa63885669de0e55f  # Automatically created id
-        type: entities
+      - type: entities
         title: Kitchen
         entities:
           - light.sink
           - light.oven
           - light.tuya_light_1
-      - id: c4d371a5b82a413c96155e37b8c2cdba  # Automatically created id
-        type: entities
+      - type: entities
         title: Bedroom Lights
         entities:
           - light.ge_12724_3way_dimmer_switch_level
@@ -169,8 +164,7 @@ views:
         title: Lily Bedroom
         entities:
           - light.flux_lily_bedroom
-      - id: e07642e0fbe34db09bf72ba4a16a60eb  # Automatically created id
-        type: entities
+      - type: entities
         title: Sitting Room
         entities:
           - switch.tuya_switch_1
@@ -236,11 +230,9 @@ views:
       - type: custom:roku-card
         entity: media_player.roku
         tv: true
-      - id: 81949810d809465a823def5865d5e324  # Automatically created id
-        type: media-control
+      - type: media-control
         entity: media_player.roku
-      - id: 5962e0f4870d45c69604c570a69d85e1  # Automatically created id
-        type: media-control
+      - type: media-control
         entity: media_player.living_room_tv
       - type: vertical-stack
         cards:
@@ -270,7 +262,7 @@ views:
               service_data:
                 entity_id: media_player.roku
                 media_content_type: "TV"
-                media_content_id: '2.1'
+                media_content_id: "2.1"
           - type: picture-entity
             entity: media_player.roku
             image: /local/cbs.png
@@ -282,7 +274,7 @@ views:
               service_data:
                 entity_id: media_player.roku
                 media_content_type: "TV"
-                media_content_id: '6.1'
+                media_content_id: "6.1"
           - type: picture-entity
             entity: media_player.roku
             image: /local/abc.png
@@ -294,7 +286,7 @@ views:
               service_data:
                 entity_id: media_player.roku
                 media_content_type: "TV"
-                media_content_id: '9.1'
+                media_content_id: "9.1"
           - type: picture-entity
             entity: media_player.roku
             image: /local/fox.png
@@ -306,7 +298,7 @@ views:
               service_data:
                 entity_id: media_player.roku
                 media_content_type: "TV"
-                media_content_id: '35.1'
+                media_content_id: "35.1"
 
   - title: Settings
     icon: mdi:settings
@@ -329,8 +321,7 @@ views:
           type: entities
           entities:
             - climate.2gig_technologies_ct101_thermostat_iris_heating_1
-      - id: a3f159521d614731ac7751320a17c25e  # Automatically created id
-        type: entities
+      - type: entities
         title: More Details
         show_header_toggle: false
         entities:
@@ -343,15 +334,13 @@ views:
           - sensor.house_mean_temperature
           - sensor.house_mean_humidity
           - sensor.avg_real_feel
-      - id: 0dabe724acd54c8c8423bf5fbec61f15 # Automatically created id
-        type: entities
+      - type: entities
         title: Speedtest
         show_header_toggle: false
         entities:
           - sensor.speedtest_download
           - sensor.speedtest_ping
-      - id: af179a2d3d384240a91ac4f3be773c17  # Automatically created id
-        type: entities
+      - type: entities
         title: Tracked Devices
         show_header_toggle: false
         entities:
@@ -360,23 +349,21 @@ views:
           - device_tracker.lynsey_phone
           - device_tracker.lynsey_mac
           - device_tracker.kitchen_camera
-      - id: 4376f466ef094499a10412772f03b3cf  # Automatically created id
-        type: entities
+      - type: entities
         title: House Motion
         show_header_toggle: false
         entities:
           - binary_sensor.arrow_1_motion
           - binary_sensor.living_room_motion
           - binary_sensor.arrow_9_motion
-      - id: 9b9f7042cd0c4171bb125d83875f2f3a  # Automatically created id
-        type: entities
+      - type: entities
         title: Garage
         show_header_toggle: false
         entities:
+          - cover.garage_door
           - sensor.garage_status
           - sensor.garage_distance
-      - id: 97d8f655a09c430591e2ba1a0514d681  # Automatically created id
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: history-graph
             title: Family Presence
@@ -392,15 +379,13 @@ views:
               - input_select.lynsey_status_dropdown
               - input_select.family_status_dropdown
               - input_boolean.guest_mode
-      - id: fe2749842ea94945b3747fd3f04dcf8f  # Automatically created id
-        type: entities
+      - type: entities
         title: System
         show_header_toggle: false
         entities:
           - sensor.ha_uptime
           - input_select.hass_theme
-      - id: 6c98e6b747ff46c8bc1639f7af05f586  # Automatically created id
-        type: entities
+      - type: entities
         title: SpaceX
         show_header_toggle: false
         entities:

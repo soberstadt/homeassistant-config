@@ -12,12 +12,12 @@
   state_topic: "/devices/mqtt_arrow_3/state"
   name: "Garage Distance"
   unit_of_measurement: "cm"
-  value_template: '{{ value_json.distance }}'
+  value_template: "{{ value_json.distance }}"
 
 - platform: mqtt
   state_topic: "/devices/mqtt_arrow_3/state"
   name: "Garage Status"
-  value_template: '{{ value_json.state }}'
+  value_template: "{{ value_json.state }}"
 
 - platform: uptime
   name: HA Uptime
@@ -30,35 +30,35 @@
     - launch_site
     - rocket
   value_template: '{{ value_json["launch_date_unix"] }}'
-  resource: 'https://api.spacexdata.com/v2/launches/next'
+  resource: "https://api.spacexdata.com/v2/launches/next"
 
 - platform: template
   sensors:
     spacex_next_launch_date:
-      friendly_name: 'Next Launch Date'
+      friendly_name: "Next Launch Date"
       value_template: '{{ states.sensor.spacex.state | int | timestamp_custom("%m/%d/%Y %H:%M")}}'
     spacex_next_rocket:
-      friendly_name: 'Rocket'
+      friendly_name: "Rocket"
       value_template: '{{ states.sensor.spacex.attributes["rocket"]["rocket_name"] }}'
     spacex_next_landing_type:
-      friendly_name: 'Landing Type'
+      friendly_name: "Landing Type"
       value_template: '{{ states.sensor.spacex.attributes["rocket"]["first_stage"]["cores"][0]["landing_type"] }}'
     spacex_next_launch_site:
-      friendly_name: 'Launch Site'
+      friendly_name: "Launch Site"
       value_template: '{{ states.sensor.spacex.attributes["launch_site"]["site_name"] }}'
     spacex_next_mission_name:
-      friendly_name: 'Mission Name'
+      friendly_name: "Mission Name"
       value_template: '{{ states.sensor.spacex.attributes["mission_name"] }}'
 
     spencers_battery:
-      unit_of_measurement: '%'
-      value_template: '{{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_level | round(0) }}'
+      unit_of_measurement: "%"
+      value_template: "{{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_level | round(0) }}"
 
     roku_source:
-      value_template: '{{ states.media_player.roku.attributes.source }}'
+      value_template: "{{ states.media_player.roku.attributes.source }}"
 
     arrow_2_real_feel:
-      friendly_name: 'Arrow 2 Real Feel'
+      friendly_name: "Arrow 2 Real Feel"
       entity_id: [sensor.arrow_2_temperature, sensor.arrow_2_humidity]
       value_template: >-
         {% set T = states('sensor.arrow_2_temperature')|float %}
@@ -79,7 +79,7 @@
         {% endif %}
         {% set HI_C = (HI-32)/1.8 %}
         {{- HI_C|round(1) -}}
-      unit_of_measurement: '°C'
+      unit_of_measurement: "°C"
 
     avg_real_feel:
       friendly_name: "House Average Real Feel"
@@ -103,7 +103,7 @@
         {% endif %}
         {% set HI_C = (HI-32)/1.8 %}
         {{- HI_C|round(1) -}}
-      unit_of_measurement: '°C'
+      unit_of_measurement: "°C"
 
 - platform: min_max
   type: mean
