@@ -360,6 +360,7 @@ views:
         title: Garage
         show_header_toggle: false
         entities:
+          - camera.camera_1
           - cover.garage_door
           - sensor.garage_status
           - sensor.garage_distance

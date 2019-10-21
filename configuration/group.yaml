@@ -28,3 +28,4 @@ mood_lights:
 House Motion:
   - binary_sensor.arrow_1_motion
   - binary_sensor.living_room_motion
+  - binary_sensor.arrow_9_motion
