@@ -46,3 +46,7 @@ light:
     red: redgpio
     green: greengpio
     blue: bluegpio
+
+switch:
+  - platform: restart
+    name: Arrow 5 Restart

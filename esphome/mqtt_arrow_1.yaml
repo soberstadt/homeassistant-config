@@ -22,3 +22,7 @@ binary_sensor:
     pin: D5
     name: Arrow 1 Motion
     device_class: motion
+
+switch:
+  - platform: restart
+    name: Arrow 1 Restart

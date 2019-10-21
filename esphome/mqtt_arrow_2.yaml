@@ -23,3 +23,7 @@ sensor:
     humidity:
       name: "Arrow 2 Humidity"
     update_interval: 120s
+
+switch:
+  - platform: restart
+    name: Arrow 2 Restart

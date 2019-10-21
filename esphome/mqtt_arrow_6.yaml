@@ -34,3 +34,14 @@ esp32_camera:
   resolution: 800x600
   max_framerate: 5 fps
 
+sensor:
+  - platform: uptime
+    name: Arrow 6 Uptime
+  - platform: wifi_signal
+    name: Arrow 6 WiFi Signal
+    update_interval: 60s
+
+switch:
+  # Switch to restart the device.
+  - platform: restart
+    name: Arrow 6 Restart

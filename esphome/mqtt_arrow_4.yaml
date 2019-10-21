@@ -27,3 +27,7 @@ binary_sensor:
     pin: D5
     name: bs1
     device_class: motion
+
+switch:
+  - platform: restart
+    name: Arrow 4 Restart
