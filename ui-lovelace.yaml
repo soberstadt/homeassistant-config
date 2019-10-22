@@ -395,6 +395,7 @@ views:
           - sensor.spacex_next_launch_site
           - sensor.spacex_next_landing_type
           - sensor.spacex_next_rocket
+  - !include lovelace/arrows_view.yaml
   - !include lovelace/automations_view.yaml
   - title: wifi
     path: wifi

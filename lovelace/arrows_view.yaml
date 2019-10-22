@@ -1,0 +1,57 @@
+title: Arrow Devices
+icon: mdi:bullseye-arrow
+background: var(--background-image)
+cards:
+  - type: entities
+    title: Arrow 1
+    entities:
+      - binary_sensor.arrow_1_motion
+      - switch.arrow_1_restart
+  - type: entities
+    title: Arrow 2
+    entities:
+      - switch.arrow_2_restart
+      - sensor.arrow_2_temperature
+      - sensor.arrow_2_humidity
+  - type: entities
+    title: Arrow 3
+    entities:
+      - sensor.garage_status
+      - sensor.garage_distance
+  - type: entities
+    title: Arrow 4
+    entities:
+      - binary_sensor.arrow_4_motion
+      - switch.arrow_4_restart
+  - type: entities
+    title: Arrow 5
+    entities:
+      - light.arrow_5_alert_light
+      - binary_sensor.arrow_5_button
+      - sensor.arrow_5_humidity
+      - switch.arrow_5_restart
+  - type: entities
+    title: Arrow 6
+    entities:
+      - camera.camera_1
+      - sensor.arrow_6_uptime_2
+      - sensor.arrow_6_wifi_signal_2
+      - switch.arrow_6_restart
+  - type: entities
+    title: Arrow 7
+    entities:
+      - switch.arrow_7_restart
+  - type: entities
+    title: Arrow 8
+    entities:
+      - switch.arrow_8_relay_2
+      - sensor.arrow_8_uptime_2
+      - sensor.arrow_8_wifi_signal_2
+      - switch.arrow_8_restart
+  - type: entities
+    title: Arrow 9
+    entities:
+      - binary_sensor.arrow_9_motion
+      - sensor.arrow_9_temperature
+      - sensor.arrow_9_humidity
+      - switch.arrow_9_restart

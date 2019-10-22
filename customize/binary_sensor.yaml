@@ -1,2 +1,4 @@
+binary_sensor.arrow_1_motion:
+  friendly_name: "Sitting Room Motion"
 binary_sensor.arrow_9_motion:
   friendly_name: "Lily Room Motion"
