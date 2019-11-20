@@ -7,7 +7,7 @@ homeassistant:
   time_zone: America/New_York
   customize: !include_dir_merge_named customize
   auth_providers:
-   - type: homeassistant
+    - type: homeassistant
 
 auth:
 
@@ -112,6 +112,13 @@ tuya:
   username: !secret tuya_username
   password: !secret tuya_password
   country_code: 1
+
+stream:
+
+camera:
+  - platform: ffmpeg
+    input: !secret front_door_camera_url
+    name: Front Door
 
 input_boolean:
   guest_mode:
