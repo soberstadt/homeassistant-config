@@ -1,6 +1,7 @@
 from homeassistant.components.switch import SwitchDevice
 from meross_iot.cloud.devices.power_plugs import GenericPlug
-from .common import (calculate_switch_id, DOMAIN, ENROLLED_DEVICES, MANAGER)
+
+from .common import DOMAIN, ENROLLED_DEVICES, MANAGER, calculate_switch_id
 
 
 class SwitchEntityWrapper(SwitchDevice):
@@ -14,9 +15,12 @@ class SwitchEntityWrapper(SwitchDevice):
         self._device = device
         self._channel_id = channel
         self._id = calculate_switch_id(self._device.uuid, channel)
-        if len(self._device.get_channels())>1:
-            self._device_name = "%s (channel: %d)" % (self._device.name, channel)
+        if channel > 0:
+            # This is a sub-channel within the multi-way adapter
+            channelData = self._device.get_channels()[channel]
+            self._device_name = channelData['devName']
         else:
+            # This is the root device
             self._device_name = self._device.name
 
         device.register_event_callback(self.handler)
