@@ -21,7 +21,7 @@ cards:
   - type: entities
     title: Arrow 4
     entities:
-      - binary_sensor.arrow_4_motion
+      - binary_sensor.living_room_motion
       - switch.arrow_4_restart
   - type: entities
     title: Arrow 5
