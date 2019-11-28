@@ -7,17 +7,10 @@ wifi:
   ssid: !secret mqtt_wifi_ssid
   password: !secret mqtt_wifi_password
 
-mqtt:
-  broker: !secret mqtt_broker
-  username: !secret mqtt_user
-  password: !secret mqtt_password
-  topic_prefix: '/devices/mqtt_arrow_4'
-
 # Enable logging
 logger:
 
-# Enable Home Assistant API
-# api:
+api:
 
 ota:
   password: !secret mqtt_password
@@ -25,7 +18,7 @@ ota:
 binary_sensor:
   - platform: gpio
     pin: D5
-    name: bs1
+    name: Living Room Motion
     device_class: motion
 
 switch:
