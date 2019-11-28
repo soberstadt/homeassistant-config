@@ -22,6 +22,8 @@ binary_sensor:
     pin: D5
     name: Arrow 1 Motion
     device_class: motion
+    filters:
+      - delayed_off: 30s
 
 switch:
   - platform: restart
