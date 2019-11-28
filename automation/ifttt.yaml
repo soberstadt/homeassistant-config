@@ -7,7 +7,7 @@
   action:
     service: scene.turn_on
     data_template:
-      entity_id: '{{ trigger.event.data.entity_id }}'
+      entity_id: "{{ trigger.event.data.entity_id }}"
 
 - alias: IFTTT - Roku
   trigger:
@@ -19,7 +19,7 @@
     service: remote.send_command
     data_template:
       entity_id: remote.roku
-      button: '{{ trigger.event.data.button }}'
+      button: "{{ trigger.event.data.button }}"
 
 - alias: IFTTT - Wii
   trigger:
@@ -45,3 +45,16 @@
         {% else %}
           scene.good_night
         {% endif %}
+
+- alias: IFTTT - Roku Channel
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_roku_channel
+  action:
+    service: media_player.play_media
+    data_template:
+      entity_id: media_player.roku
+      media_content_type: "TV"
+      media_content_id: "{{ trigger.event.data.channel }}"
