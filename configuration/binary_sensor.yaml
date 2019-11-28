@@ -9,12 +9,6 @@
       value_template: >-
         {{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_charging }}
 
-- platform: mqtt
-  name: Living Room Motion
-  state_topic: "/devices/mqtt_arrow_4/binary_sensor/bs1/state"
-  device_class: motion
-  availability_topic: "/devices/mqtt_arrow_4/status"
-
 # button 1 Left: 9864A1
 # button 1 Right: 9864A2
 - platform: mqtt
