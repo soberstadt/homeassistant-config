@@ -19,6 +19,7 @@ cards:
       - automation.garage_open_when_lynsey_comes_back
       - automation.garage_open_while_away
       - automation.family_leave_while_garage_open
+      - automation.return_from_walk
   - type: entities
     title: Motion
     entities:
@@ -54,6 +55,7 @@ cards:
       - automation.ifttt_scenes
       - automation.ifttt_wii
       - automation.ifttt_night_scene
+      - automation.ifttt_roku_channel
   - type: entities
     title: Lights
     entities:

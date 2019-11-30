@@ -16,7 +16,7 @@ resources:
     type: js
 excluded_entities:
 cch:
-  hide_tabs: 5
+  hide_tabs: 6
   hide_help: true
   hide_config: true
 views:

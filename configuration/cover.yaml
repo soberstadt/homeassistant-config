@@ -12,6 +12,7 @@
         service: switch.turn_on
         data:
           entity_id: switch.garage_remote
+      availability_template: "{{ states.switch.garage_remote.state == 'unavailable' }}"
       icon_template: >-
         {% if states.sensor.garage_status.state == 'open' %}
           mdi:garage-open
