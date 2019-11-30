@@ -133,6 +133,12 @@ views:
         card:
           type: custom:thermostat-card
           entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
+      - type: picture-glance
+        title: Front Door
+        camera_image: camera.front_door
+        camera_view: live
+        entities:
+          - camera.front_door
 
   - title: Lights
     background: var(--background-image)
