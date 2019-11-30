@@ -2,6 +2,7 @@
   covers:
     garage_door:
       friendly_name: "Garage Door"
+      device_class: garage
       value_template: "{{ states.sensor.garage_status.state == 'open' }}"
       open_cover:
         service: switch.turn_on
