@@ -1,0 +1,59 @@
+esphome:
+  name: arrow_3
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+  fast_connect: on
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: !secret mqtt_password
+
+# Enable Web server.
+web_server:
+  port: 80
+
+# Sensors with general information.
+sensor:
+  - platform: ultrasonic
+    id: a3_ultrasonic_sensor
+    name: "Arrow 3 Distance Sensor"
+    trigger_pin: D1
+    echo_pin: D2
+    update_interval: 7s
+    timeout: 4m
+
+  # Uptime sensor.
+  - platform: uptime
+    name: Arrow 3 Uptime
+  # WiFi Signal sensor.
+  - platform: wifi_signal
+    name: Arrow 3 WiFi Signal
+    update_interval: 300s
+
+binary_sensor:
+  - platform: template
+    name: "Garage Door"
+    device_class: garage_door
+    lambda: |-
+      if (id(a3_ultrasonic_sensor).state <= 0.2) {
+        // closed
+        return false;
+      } else {
+        // open
+        return true;
+      }
+    filters:
+      - delayed_on_off: 15s
+
+switch:
+  - platform: restart
+    name: Arrow 3 Restart
