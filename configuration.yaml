@@ -106,6 +106,10 @@ google_assistant:
       name: Thermostat
       expose: true
       room: Entryway
+    cover.garage_door:
+      name: Garage Door
+      expose: true
+      room: Garage
   expose_by_default: false
 
 tuya:
