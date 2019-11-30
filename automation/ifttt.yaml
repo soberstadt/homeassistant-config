@@ -19,7 +19,7 @@
     service: remote.send_command
     data_template:
       entity_id: remote.roku
-      button: "{{ trigger.event.data.button }}"
+      command: "{{ trigger.event.data.button }}"
 
 - alias: IFTTT - Wii
   trigger:
