@@ -38,7 +38,8 @@ switch.sonoff_1:
 
 # Meross 1
 switch.meross_1:
-  friendly_name: Meross 1
+  friendly_name: Christmas Tree
+  icon: mdi:pine-tree
 # Meross 2
 switch.meross_2:
   friendly_name: Camera Power

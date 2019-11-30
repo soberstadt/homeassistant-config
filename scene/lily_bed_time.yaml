@@ -3,7 +3,9 @@
     light.ge_12724_3way_dimmer_switch_level:
       state: on
       brightness_pct: 40
-    group.sitting_room:
+    switch.tuya_switch_1:
+      state: off
+    switch.sonoff_1:
       state: off
     light.behind_tv_lamp:
       state: on
@@ -29,5 +31,5 @@
       state: off
     light.flux_lily_bedroom:
       state: on
-      rgb_color: [255,36,0]
+      rgb_color: [255, 36, 0]
       brightness_pct: 10

@@ -32,6 +32,7 @@
 - platform: group
   name: Sitting Room Lights
   entities:
+    - light.christmas_tree
     - light.buffet_lamp
     - light.sitting_room_couch
 - platform: group
@@ -45,3 +46,6 @@
 - platform: switch
   name: Sitting Room Couch
   entity_id: switch.tuya_switch_1
+- platform: switch
+  name: Christmas Tree
+  entity_id: switch.meross_1

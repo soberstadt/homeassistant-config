@@ -22,6 +22,7 @@ dining_room:
 Sitting Room:
   - switch.tuya_switch_1
   - switch.sonoff_1
+  - switch.meross_1
 mood_lights:
   - light.6001948a98a2_1921680101
 
