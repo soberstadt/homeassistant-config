@@ -36,4 +36,4 @@ sensor:
 switch:
   # Switch to restart the device.
   - platform: restart
-    name: Arrow 7 Restart
+    name: Arrow 9 Restart

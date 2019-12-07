@@ -4,27 +4,32 @@ background: var(--background-image)
 cards:
   - type: entities
     title: Arrow 1
+    show_header_toggle: false
     entities:
       - binary_sensor.arrow_1_motion
       - switch.arrow_1_restart
   - type: entities
     title: Arrow 2
+    show_header_toggle: false
     entities:
       - switch.arrow_2_restart
       - sensor.arrow_2_temperature
       - sensor.arrow_2_humidity
   - type: entities
     title: Arrow 3
+    show_header_toggle: false
     entities:
       - binary_sensor.garage_door
       - switch.arrow_3_restart
   - type: entities
     title: Arrow 4
+    show_header_toggle: false
     entities:
       - binary_sensor.living_room_motion
       - switch.arrow_4_restart
   - type: entities
     title: Arrow 5
+    show_header_toggle: false
     entities:
       - light.arrow_5_alert_light
       - binary_sensor.arrow_5_button
@@ -32,6 +37,7 @@ cards:
       - switch.arrow_5_restart
   - type: entities
     title: Arrow 6
+    show_header_toggle: false
     entities:
       - camera.camera_1
       - sensor.arrow_6_uptime_2
@@ -39,10 +45,12 @@ cards:
       - switch.arrow_6_restart
   - type: entities
     title: Arrow 7
+    show_header_toggle: false
     entities:
       - switch.arrow_7_restart
   - type: entities
     title: Arrow 8
+    show_header_toggle: false
     entities:
       - switch.arrow_8_relay_2
       - sensor.arrow_8_uptime_2
@@ -50,6 +58,7 @@ cards:
       - switch.arrow_8_restart
   - type: entities
     title: Arrow 9
+    show_header_toggle: false
     entities:
       - binary_sensor.arrow_9_motion
       - sensor.arrow_9_temperature
