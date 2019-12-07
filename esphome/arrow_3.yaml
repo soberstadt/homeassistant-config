@@ -44,7 +44,7 @@ binary_sensor:
     name: "Garage Door"
     device_class: garage_door
     lambda: |-
-      if (id(a3_ultrasonic_sensor).state > 0.2) {
+      if (id(a3_ultrasonic_sensor).state > 0.25) {
         // closed
         return false;
       } else {
