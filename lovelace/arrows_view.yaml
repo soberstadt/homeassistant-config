@@ -16,8 +16,8 @@ cards:
   - type: entities
     title: Arrow 3
     entities:
-      - sensor.garage_status
-      - sensor.garage_distance
+      - binary_sensor.garage_door
+      - switch.arrow_3_restart
   - type: entities
     title: Arrow 4
     entities:

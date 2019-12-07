@@ -26,8 +26,8 @@ sensor:
   - platform: ultrasonic
     id: a3_ultrasonic_sensor
     name: "Arrow 3 Distance Sensor"
-    trigger_pin: D1
-    echo_pin: D2
+    trigger_pin: D2
+    echo_pin: D1
     update_interval: 7s
     timeout: 4m
 
@@ -44,7 +44,7 @@ binary_sensor:
     name: "Garage Door"
     device_class: garage_door
     lambda: |-
-      if (id(a3_ultrasonic_sensor).state <= 0.2) {
+      if (id(a3_ultrasonic_sensor).state > 0.2) {
         // closed
         return false;
       } else {

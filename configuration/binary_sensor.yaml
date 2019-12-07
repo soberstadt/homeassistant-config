@@ -1,10 +1,5 @@
 - platform: template
   sensors:
-    garage_door:
-      friendly_name: "Garage Open"
-      device_class: garage_door
-      value_template: >-
-        {{ states.sensor.garage_status.state == 'open' }}
     spencer_charging:
       value_template: >-
         {{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_charging }}
@@ -15,12 +10,12 @@
   name: RF Button One - Left
   payload_on: "9864A1"
   state_topic: "tele/sonoff_rf/RESULT"
-  value_template: '{{ value_json.RfReceived.Data }}'
+  value_template: "{{ value_json.RfReceived.Data }}"
   off_delay: 3
 
 - platform: mqtt
   name: RF Button One - Right
   payload_on: "9864A2"
   state_topic: "tele/sonoff_rf/RESULT"
-  value_template: '{{ value_json.RfReceived.Data }}'
+  value_template: "{{ value_json.RfReceived.Data }}"
   off_delay: 3

@@ -3,7 +3,7 @@
     garage_door:
       friendly_name: "Garage Door"
       device_class: garage
-      value_template: "{{ states.sensor.garage_status.state == 'open' }}"
+      value_template: "{{ states.binary_sensor.garage_door.state == 'on' }}"
       open_cover:
         service: switch.turn_on
         data:
@@ -14,7 +14,7 @@
           entity_id: switch.garage_remote
       availability_template: "{{ states.switch.garage_remote.state != 'unavailable' }}"
       icon_template: >-
-        {% if states.sensor.garage_status.state == 'open' %}
+        {% if states.binary_sensor.garage_door.state == 'on' %}
           mdi:garage-open
         {% else %}
           mdi:garage
