@@ -6,22 +6,22 @@
       brightness: 255
     light.ge_12724_3way_dimmer_switch_level:
       state: on
-      brightness_pct: 75
+      brightness: 191
     light.sink:
       state: on
-      brightness_pct: 100
+      brightness: 255
     light.oven:
       state: on
-      brightness_pct: 100
+      brightness: 255
     light.tuya_light_1:
       state: on
-      brightness_pct: 40
+      brightness: 102
     group.living_room_lights:
       state: on
-      brightness_pct: 100
+      brightness: 255
     light.dining_room_lamp:
       state: on
-      brightness_pct: 100
+      brightness: 255
     light.flux_bedroom:
       state: on
       rgb_color: [151,255,0]

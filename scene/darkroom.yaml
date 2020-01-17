@@ -4,5 +4,5 @@
       state: off
     light.flux_bedroom:
       state: on
-      color_name: red
-      brightness_pct: 90
+      rgb_color: [255, 0, 0]
+      brightness: 230

@@ -2,6 +2,6 @@
   entities:
     group.living_room_lights:
       state: on
-      brightness_pct: 20
+      brightness: 51
     light.tuya_light_1:
       state: off

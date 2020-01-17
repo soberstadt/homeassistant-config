@@ -2,7 +2,7 @@
   entities:
     light.dining_room_lamp:
       state: on
-      brightness_pct: 20
+      brightness: 51
     group.living_room_lights:
       state: off
     script.tv_off:

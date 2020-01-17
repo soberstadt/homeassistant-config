@@ -2,14 +2,14 @@
   entities:
     group.mood_lights:
       state: on
-      color_name: red
-      brightness_pct: 100
+      rgb_color: [255, 0, 0]
+      brightness: 255
     light.ge_12724_3way_dimmer_switch_level:
       state: on
-      brightness_pct: 20
+      brightness: 51
     light.flux_bedroom:
       state: on
-      color_name: red
-      brightness_pct: 90
+      rgb_color: [255, 0, 0]
+      brightness: 230
     group.sitting_room:
       state: off
