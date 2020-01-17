@@ -28,8 +28,8 @@ sensor:
     name: "Arrow 3 Distance Sensor"
     trigger_pin: D2
     echo_pin: D1
-    update_interval: 7s
-    timeout: 4m
+    update_interval: 5s
+    timeout: 3m
 
   # Uptime sensor.
   - platform: uptime

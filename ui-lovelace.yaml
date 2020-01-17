@@ -368,7 +368,6 @@ views:
         entities:
           - camera.camera_1
           - cover.garage_door
-          - binary_sensor.garage_door
       - type: vertical-stack
         cards:
           - type: history-graph
