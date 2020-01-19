@@ -1,30 +1,14 @@
 good_night:
   alias: Good Night
   sequence:
-    - service: homeassistant.turn_off
+    - service: scene.turn_on
       data:
-        entity_id: group.mood_lights
-    - service: homeassistant.turn_off
-      data:
-        entity_id: group.bedroom_lights
-    - service: homeassistant.turn_off
-      data:
-        entity_id: group.sitting_room
-    - service: homeassistant.turn_off
-      data:
-        entity_id: group.living_room_lights
-    - service: homeassistant.turn_off
-      data:
-        entity_id: group.kitchen_lights
+        entity_id: scene.good_night_lights
     - service: script.tv_off
     - service: input_select.select_option
       data:
         entity_id: input_select.hass_theme
         option: clear-dark
-    - service: light.turn_on
-      data:
-        entity_id: light.dining_room_lamp
-        brightness: 51
     - condition: state
       entity_id: input_boolean.guest_mode
       state: 'off'

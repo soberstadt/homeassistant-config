@@ -7,8 +7,7 @@
       entity_id: group.friends_and_family
       state: 'not_home'
   action:
-    - service: scene.turn_on
-      entity_id: scene.good_night
+    - service: script.good_night
 
 - alias: Late Night Return
   trigger:

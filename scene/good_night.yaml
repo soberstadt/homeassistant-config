@@ -1,5 +1,8 @@
-- name: Good Night
+- name: Good Night Lights
   entities:
+    light.dining_room_lamp:
+      state: on
+      brightness: 51
     group.mood_lights:
       state: off
     group.bedroom_lights:
@@ -8,10 +11,5 @@
       state: off
     group.living_room_lights:
       state: off
-    script.tv_off:
-      state: true
     group.kitchen_lights:
       state: off
-    light.dining_room_lamp:
-      state: off
-    input_select.hass_theme: clear-dark

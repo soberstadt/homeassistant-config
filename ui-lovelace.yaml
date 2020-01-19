@@ -64,23 +64,21 @@ views:
                   service_data:
                     entity_id: scene.evening
               - type: entity-button
-                entity: scene.night_light
+                entity: scene.good_night_lights
                 icon: mdi:flashlight
                 name: Night Light
                 tap_action:
                   action: call-service
                   service: scene.turn_on
                   service_data:
-                    entity_id: scene.night_light
+                    entity_id: scene.good_night_lights
               - type: entity-button
-                entity: scene.good_night
+                entity: script.good_night
                 icon: mdi:sleep
                 name: All Off
                 tap_action:
                   action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.good_night
+                  service: script.good_night
           - type: horizontal-stack
             cards:
               - type: entity-button

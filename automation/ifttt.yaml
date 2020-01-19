@@ -37,14 +37,7 @@
     event_data:
       action: night_scene
   action:
-    service: scene.turn_on
-    data_template:
-      entity_id: >
-        {% if states.input_boolean.guest_mode.state == 'on' %}
-          scene.night_light
-        {% else %}
-          scene.good_night
-        {% endif %}
+    service: script.good_night
 
 - alias: IFTTT - Roku Channel
   trigger:

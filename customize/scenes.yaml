@@ -1,6 +1,6 @@
 scene.evening:
   icon: mdi:weather-sunset
-scene.good_night:
+scene.good_night_lights:
   icon: mdi:weather-night
 scene.romantic:
   icon: mdi:heart
