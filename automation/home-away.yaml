@@ -2,16 +2,19 @@
   trigger:
     - platform: state
       entity_id: input_select.family_status_dropdown
-      to: 'Away'
+      to: "Away"
   action:
     - service: switch.turn_on
       entity_id: switch.meross_2
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'off'
+      state: "off"
+    - condition: state
+      entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
+      state: "cool"
     - service: climate.set_temperature
       data:
-        entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+        entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
         temperature: 79
         hvac_mode: cool
 
@@ -19,31 +22,39 @@
   trigger:
     - platform: state
       entity_id: input_select.family_status_dropdown
-      to: 'Just Arrived'
+      to: "Just Arrived"
   action:
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
-        temperature: 74
-        hvac_mode: cool
     - service: switch.turn_off
       entity_id: switch.meross_2
+    - condition: state
+      entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
+      state: "cool"
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
+        temperature: 74
+        hvac_mode: cool
 
 - alias: Return to Neighborhood
   trigger:
     - platform: state
       entity_id: device_tracker.google_maps_114754196444501299267
-      to: 'Neighborhood'
+      to: "Neighborhood"
     - platform: state
       entity_id: device_tracker.google_maps_104430582414753567698
-      to: 'Neighborhood'
+      to: "Neighborhood"
   condition:
-    - condition: template
-      value_template: "{{ states.input_select.family_status_dropdown.state in ['Away', 'Work', 'Extended Away'] }}"
+    condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ states.input_select.family_status_dropdown.state in ['Away', 'Work', 'Extended Away'] }}"
+      - condition: state
+        entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
+        state: "cool"
   action:
     - service: climate.set_temperature
       data:
-        entity_id: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
+        entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
         temperature: 76
         hvac_mode: cool
 
@@ -51,16 +62,19 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.garage_door
-      to: 'on'
+      to: "on"
   condition:
     condition: and
     conditions:
       - condition: state
         entity_id: light.flux_lily_bedroom
-        state: 'off'
+        state: "off"
       - condition: time
-        after: '20:30:00'
-        before: '23:30:00'
+        after: "20:30:00"
+        before: "23:30:00"
+      - condition: state
+        entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
+        state: "cool"
   action:
     - service: scene.turn_on
       entity_id: scene.lily_bed_time

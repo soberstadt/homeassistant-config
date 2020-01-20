@@ -117,20 +117,8 @@ views:
           - light.sitting_room_lights
           - light.dining_room_lights
           - light.mood_lights
-      - type: conditional
-        conditions:
-          - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
-            state_not: "heat"
-        card:
-          type: custom:thermostat-card
-          entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
-      - type: conditional
-        conditions:
-          - entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
-            state: "heat"
-        card:
-          type: custom:thermostat-card
-          entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
+      - type: custom:thermostat-card
+        entity: climate.2gig_technologies_ct101_thermostat_iris_mode
       - type: picture-glance
         title: Front Door
         camera_image: camera.front_door
@@ -309,22 +297,9 @@ views:
     background: var(--background-image)
     path: settings
     cards:
-      - type: conditional
-        conditions:
-          - entity: climate.2gig_technologies_ct101_thermostat_iris_cooling_1
-            state_not: "heat"
-        card:
-          type: entities
-          entities:
-            - climate.2gig_technologies_ct101_thermostat_iris_cooling_1
-      - type: conditional
-        conditions:
-          - entity: climate.2gig_technologies_ct101_thermostat_iris_heating_1
-            state: "heat"
-        card:
-          type: entities
-          entities:
-            - climate.2gig_technologies_ct101_thermostat_iris_heating_1
+      - type: entities
+        entities:
+          - climate.2gig_technologies_ct101_thermostat_iris_mode
       - type: entities
         title: More Details
         show_header_toggle: false

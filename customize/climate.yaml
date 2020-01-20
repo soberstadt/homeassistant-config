@@ -1,4 +1,2 @@
-climate.2gig_technologies_ct101_thermostat_iris_cooling_1:
-  friendly_name: "Home Thermostat - Cool"
-climate.2gig_technologies_ct101_thermostat_iris_heating_1:
-  friendly_name: "Home Thermostat - Heat"
+climate.2gig_technologies_ct101_thermostat_iris_mode:
+  friendly_name: "Home Thermostat"
