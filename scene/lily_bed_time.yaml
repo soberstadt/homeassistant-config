@@ -7,14 +7,9 @@
       state: off
     switch.sonoff_1:
       state: off
-    light.behind_tv_lamp:
+    light.living_room_lights:
       state: on
       brightness: 64
-    light.living_room_couch_1:
-      state: on
-      brightness: 64
-    light.living_room_couch_2:
-      state: off
     group.mood_lights:
       state: on
       rgb_color: [255, 0, 0]
