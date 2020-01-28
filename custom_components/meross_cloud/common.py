@@ -1,13 +1,15 @@
 # Constants
 DOMAIN = 'meross_cloud'
+ATTR_CONFIG = "config"
 MANAGER = 'manager'
-ENROLLED_DEVICES = 'enrolled_devices'
 MEROSS_MANAGER = "%s.%s" % (DOMAIN, MANAGER)
 SENSORS = 'sensors'
 HA_SWITCH = 'switch'
 HA_LIGHT = 'light'
 HA_SENSOR = 'sensor'
 HA_COVER = 'cover'
+HA_CLIMATE = 'climate'
+MEROSS_PLATFORMS = (HA_LIGHT, HA_SWITCH, HA_COVER, HA_SENSOR, HA_CLIMATE)
 
 
 def calculate_switch_id(uuid: str, channel: int):

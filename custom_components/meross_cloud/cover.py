@@ -1,11 +1,15 @@
+import logging
+
 from homeassistant.components.cover import (SUPPORT_CLOSE, SUPPORT_OPEN,
                                             CoverDevice)
 from homeassistant.const import (STATE_CLOSED, STATE_CLOSING, STATE_OPEN,
                                  STATE_OPENING, STATE_UNKNOWN)
 from meross_iot.cloud.devices.door_openers import GenericGarageDoorOpener
+from meross_iot.meross_event import MerossEventType
 
-from .common import (DOMAIN, ENROLLED_DEVICES, MANAGER,
-                     calculate_gerage_door_opener_id)
+from .common import (DOMAIN, MANAGER)
+
+_LOGGER = logging.getLogger(__name__)
 
 ATTR_DOOR_STATE = 'door_state'
 
@@ -13,15 +17,20 @@ ATTR_DOOR_STATE = 'door_state'
 class OpenGarageCover(CoverDevice):
     """Representation of a OpenGarage cover."""
 
-    def __init__(self, device: GenericGarageDoorOpener, channel: int):
+    def __init__(self, device: GenericGarageDoorOpener):
         """Initialize the cover."""
         self._state_before_move = STATE_UNKNOWN
         self._state = STATE_UNKNOWN
         self._device = device
-        self._channel = channel
-        self._id = calculate_gerage_door_opener_id(self._device.uuid, self._channel)
-        self._device_name = "%s (channel: %d)" % (self._device.name, self._channel)
+        self._device_id = device.uuid
+        self._id = device.uuid
+        self._device_name = self._device.name
         device.register_event_callback(self.handler)
+
+        if len(self._device.get_channels())>1:
+            _LOGGER.error(f"Garage opener {self._id} has more than 1 channel. This is currently not supported.")
+
+        self._channel = 0
 
         # If the device is online, we need to update its status from STATE_UNKNOWN
         if device.online and self._state == STATE_UNKNOWN:
@@ -32,12 +41,15 @@ class OpenGarageCover(CoverDevice):
                 self._state = STATE_CLOSED
 
     def handler(self, evt) -> None:
-        if evt.channel == self._channel:
-            # The underlying library only exposes "open" and "closed" statuses
-            if evt.door_state == 'open':
-                self._state = STATE_OPEN
-            elif evt.door_state == 'closed':
-                self._state = STATE_CLOSED
+        if evt.event_type == MerossEventType.GARAGE_DOOR_STATUS:
+            if evt.channel == self._channel:
+                # The underlying library only exposes "open" and "closed" statuses
+                if evt.door_state == 'open':
+                    self._state = STATE_OPEN
+                elif evt.door_state == 'closed':
+                    self._state = STATE_CLOSED
+                else:
+                    _LOGGER.error("Unknown/Invalid event door_state: %s" % evt.door_state)
 
         # In cny case update the UI
         self.async_schedule_update_ha_state(False)
@@ -121,13 +133,28 @@ class OpenGarageCover(CoverDevice):
         """Flag supported features."""
         return SUPPORT_OPEN | SUPPORT_CLOSE
 
+    @property
+    def device_info(self):
+        return {
+            'identifiers': {(DOMAIN, self._device_id)},
+            'name': self._device_name,
+            'manufacturer': 'Meross',
+            'model': self._device.type + " " + self._device.hwversion,
+            'sw_version': self._device.fwversion
+        }
+
+
+async def async_setup_entry(hass, config_entry, async_add_entities):
+    cover_entities = []
+    manager = hass.data[DOMAIN][MANAGER]  # type:MerossManager
+    openers = manager.get_devices_by_kind(GenericGarageDoorOpener)
+
+    for opener in openers:  # type: GenericGarageDoorOpener
+        w = OpenGarageCover(device=opener)
+        cover_entities.append(w)
+
+    async_add_entities(cover_entities)
+
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
-    switch_devices = []
-    device = hass.data[DOMAIN][MANAGER].get_device_by_uuid(discovery_info)
-    for k, c in enumerate(device.get_channels()):
-        w = OpenGarageCover(device, k)
-        switch_devices.append(w)
-
-    async_add_entities(switch_devices)
-    hass.data[DOMAIN][ENROLLED_DEVICES].add(device.uuid)
+    pass

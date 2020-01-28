@@ -1,27 +1,26 @@
 from homeassistant.components.switch import SwitchDevice
 from meross_iot.cloud.devices.power_plugs import GenericPlug
 
-from .common import DOMAIN, ENROLLED_DEVICES, MANAGER, calculate_switch_id
+from .common import DOMAIN, MANAGER, calculate_switch_id
 
 
 class SwitchEntityWrapper(SwitchDevice):
     """Wrapper class to adapt the Meross switches into the Homeassistant platform"""
-    _device = None
-    _channel_id = None
-    _id = None
-    _device_name = None
 
     def __init__(self, device: GenericPlug, channel: int):
         self._device = device
         self._channel_id = channel
-        self._id = calculate_switch_id(self._device.uuid, channel)
-        if channel > 0:
-            # This is a sub-channel within the multi-way adapter
+        self._device_id = device.uuid
+        self._device_name = self._device.name
+
+        # If the current device has more than 1 channel, we need to setup the device name and id accordingly
+        if len(device.get_channels())>1:
+            self._id = calculate_switch_id(self._device.uuid, channel)
             channelData = self._device.get_channels()[channel]
-            self._device_name = channelData['devName']
+            self._entity_name = "{} - {}".format(self._device.name, channelData.get('devName', 'Main Switch'))
         else:
-            # This is the root device
-            self._device_name = self._device.name
+            self._id = self._device.uuid
+            self._entity_name = self._device.name
 
         device.register_event_callback(self.handler)
 
@@ -29,30 +28,47 @@ class SwitchEntityWrapper(SwitchDevice):
         self.async_schedule_update_ha_state(False)
 
     @property
-    def today_energy_kwh(self):
-        """Return the today total energy usage in kWh."""
-        return None
+    def unique_id(self) -> str:
+        # Since Meross plugs may have more than 1 switch, we need to provide a composed ID
+        # made of uuid and channel
+        return self._id
+
+    @property
+    def name(self) -> str:
+        return self._entity_name
+
+    @property
+    def device_info(self):
+        return {
+            'identifiers': {(DOMAIN, self._device_id)},
+            'name': self._device_name,
+            'manufacturer': 'Meross',
+            'model': self._device.type + " " + self._device.hwversion,
+            'sw_version': self._device.fwversion
+        }
 
     @property
     def available(self) -> bool:
         # A device is available if it's online
         return self._device.online
 
+    # TODO
+    #@property
+    #def device_state_attributes(self):
+    #    """Return the state attributes of the device."""
+    #    return self._emeter_params
+
+
     @property
-    def name(self) -> str:
-        return self._device_name
+    def today_energy_kwh(self):
+        """Return the today total energy usage in kWh."""
+        return None
 
     @property
     def should_poll(self) -> bool:
         # In general, we don't want HomeAssistant to poll this device.
         # Instead, we will notify HA when an event is received.
         return False
-
-    @property
-    def unique_id(self) -> str:
-        # Since Meross plugs may have more than 1 switch, we need to provide a composed ID
-        # made of uuid and channel
-        return self._id
 
     @property
     def is_on(self) -> bool:
@@ -67,13 +83,21 @@ class SwitchEntityWrapper(SwitchDevice):
         self._device.turn_on_channel(self._channel_id)
 
 
+async def async_setup_entry(hass, config_entry, async_add_entities):
+    switch_entities = []
+    manager = hass.data[DOMAIN][MANAGER]  # type:MerossManager
+    plugs = manager.get_devices_by_kind(GenericPlug)
+
+    for plug in plugs:  # type: GenericPlug
+        # Every Meross plug might have multiple switches onboard. For this reason we need to
+        # instantiate multiple switch entities for every channel.
+        for channel_index, channel in enumerate(plug.get_channels()):
+            w = SwitchEntityWrapper(device=plug, channel=channel_index)
+            switch_entities.append(w)
+
+    async_add_entities(switch_entities)
+
+
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
-    switch_devices = []
-    device = hass.data[DOMAIN][MANAGER].get_device_by_uuid(discovery_info)
+    pass
 
-    for k, c in enumerate(device.get_channels()):
-        w = SwitchEntityWrapper(device, k)
-        switch_devices.append(w)
-
-    async_add_entities(switch_devices)
-    hass.data[DOMAIN][ENROLLED_DEVICES].add(device.uuid)
