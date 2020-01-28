@@ -4,7 +4,7 @@ resources:
   - url: /local/thermostat-card.js?v=1.1
     type: module
   # cards loaded via hacs
-  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+  - url: /community_plugin/custom-header/custom-header.js
     type: module
   - url: /community_plugin/mini-media-player/mini-media-player.js
     type: module
@@ -15,8 +15,10 @@ resources:
   - url: /community_plugin/lovelace-card-tools/card-tools.js
     type: js
 excluded_entities:
-cch:
-  hide_tabs: 6
+custom_header:
+  compact_mode: true
+  hide_tabs:
+    - 6
   hide_help: true
   hide_config: true
 views:
