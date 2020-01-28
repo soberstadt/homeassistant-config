@@ -32,8 +32,13 @@ views:
           type: entities
           show_header_toggle: false
           entities:
-            - camera.camera_1
-            - cover.garage_door
+            - type: call-service
+              icon: mdi:garage-open
+              name: Garage Door
+              action_name: Close
+              service: cover.close_cover
+              service_data:
+                entity_id: cover.garage_door
       - type: glance
         columns: 6
         entities:
