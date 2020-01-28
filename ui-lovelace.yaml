@@ -6,13 +6,13 @@ resources:
   # cards loaded via hacs
   - url: /community_plugin/custom-header/custom-header.js
     type: module
+  - url: /community_plugin/lovelace-card-tools/card-tools.js
+    type: module
   - url: /community_plugin/mini-media-player/mini-media-player.js
     type: module
   - url: /community_plugin/roku-card/roku-card.js
     type: module
   - url: /community_plugin/lovelace-color-picker/color-picker.js
-    type: js
-  - url: /community_plugin/lovelace-card-tools/card-tools.js
     type: js
 excluded_entities:
 custom_header:
