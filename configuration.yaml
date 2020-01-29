@@ -80,8 +80,9 @@ speedtestdotnet:
 
 google_assistant:
   project_id: soberstadt
-  api_key: !secret google_api_api_key
+  service_account: !include google_account.json
   secure_devices_pin: !secret google_pin
+  report_state: true
   entity_config:
     light.ge_12724_3way_dimmer_switch_level:
       name: Bedroom Lights

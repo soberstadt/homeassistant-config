@@ -24,5 +24,6 @@ pyozw.sqlite
 html5_push_registrations.conf
 ip_bans.yaml
 /icloud/*
+google_account.json
 
 __pycache__/
