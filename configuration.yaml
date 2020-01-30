@@ -121,6 +121,10 @@ tuya:
   password: !secret tuya_password
   country_code: 1
 
+vesync:
+  username: !secret vesync_username
+  password: !secret vesync_password
+
 stream:
 
 camera:
