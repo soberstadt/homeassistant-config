@@ -71,6 +71,8 @@ device_tracker:
   - platform: google_maps
     username: !secret google_location_account
 
+mobile_app:
+
 map:
 
 speedtestdotnet:
