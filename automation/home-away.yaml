@@ -38,7 +38,7 @@
 - alias: Return to Neighborhood
   trigger:
     - platform: state
-      entity_id: device_tracker.google_maps_114754196444501299267
+      entity_id: device_tracker.sm_g950u
       to: "Neighborhood"
     - platform: state
       entity_id: device_tracker.google_maps_104430582414753567698

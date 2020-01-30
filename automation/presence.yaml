@@ -2,12 +2,12 @@
   trigger:
     - platform: state
       entity_id: device_tracker.spencer_phone
-      from: 'not_home'
-      to: 'home'
+      from: "not_home"
+      to: "home"
     - platform: state
       entity_id: device_tracker.lynsey_phone
-      from: 'not_home'
-      to: 'home'
+      from: "not_home"
+      to: "home"
   action:
     - service: input_select.select_option
       data_template:
@@ -41,27 +41,27 @@
           {% else %}
             Just Arrived
           {% endif %}
- 
+
 - alias: Mark person as home
   trigger:
     - platform: state
       entity_id: input_select.spencer_status_dropdown
-      to: 'Just Arrived'
+      to: "Just Arrived"
       for:
         minutes: 10
     - platform: state
       entity_id: input_select.lynsey_status_dropdown
-      to: 'Just Arrived'
+      to: "Just Arrived"
       for:
         minutes: 10
     - platform: state
       entity_id: input_select.spencer_status_dropdown
-      from: 'Just Left'
-      to: 'Just Arrived'
+      from: "Just Left"
+      to: "Just Arrived"
     - platform: state
       entity_id: input_select.lynsey_status_dropdown
-      from: 'Just Left'
-      to: 'Just Arrived'
+      from: "Just Left"
+      to: "Just Arrived"
   action:
     - service: input_select.select_option
       data_template:
@@ -77,17 +77,17 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: Home
- 
+
 - alias: Mark person as just left
   trigger:
     - platform: state
       entity_id: device_tracker.spencer_phone
-      from: 'home'
-      to: 'not_home'
+      from: "home"
+      to: "not_home"
     - platform: state
       entity_id: device_tracker.lynsey_phone
-      from: 'home'
-      to: 'not_home'
+      from: "home"
+      to: "not_home"
   action:
     - service: input_select.select_option
       data_template:
@@ -121,12 +121,12 @@
   trigger:
     - platform: state
       entity_id: input_select.spencer_status_dropdown
-      to: 'Just Left'
+      to: "Just Left"
       for:
         minutes: 10
     - platform: state
       entity_id: input_select.lynsey_status_dropdown
-      to: 'Just Left'
+      to: "Just Left"
       for:
         minutes: 10
   action:
@@ -157,17 +157,17 @@
               {{ states.input_select.family_status_dropdown.state }}
             {% endif %}
           {% endif %}
- 
+
 - alias: Mark person as extended away
   trigger:
     - platform: state
       entity_id: input_select.spencer_status_dropdown
-      to: 'Away'
+      to: "Away"
       for:
         hours: 24
     - platform: state
       entity_id: input_select.lynsey_status_dropdown
-      to: 'Away'
+      to: "Away"
       for:
         hours: 24
   action:
@@ -203,16 +203,16 @@
 - alias: Mark person at work
   trigger:
     - platform: state
-      entity_id: device_tracker.google_maps_114754196444501299267
-      to: 'Work'
+      entity_id: device_tracker.sm_g950u
+      to: "Work"
     - platform: state
       entity_id: device_tracker.google_maps_104430582414753567698
-      to: 'Work'
+      to: "Work"
   action:
     - service: input_select.select_option
       data_template:
         entity_id: >
-          {% if trigger.entity_id == 'device_tracker.google_maps_114754196444501299267' %}
+          {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
             input_select.spencer_status_dropdown
           {% else %}
             input_select.lynsey_status_dropdown
@@ -223,7 +223,7 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: >
-          {% if trigger.entity_id == 'device_tracker.google_maps_114754196444501299267' %}
+          {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
             {% if states.input_select.lynsey_status_dropdown.state in ['Work', 'Extended Away'] %}
               Work
             {% else %}
@@ -240,18 +240,18 @@
 - alias: Mark person leaving work
   trigger:
     - platform: state
-      entity_id: device_tracker.google_maps_114754196444501299267
-      from: 'work'
-      to: 'away'
+      entity_id: device_tracker.sm_g950u
+      from: "work"
+      to: "away"
     - platform: state
       entity_id: device_tracker.google_maps_104430582414753567698
-      from: 'work'
-      to: 'away'
+      from: "work"
+      to: "away"
   action:
     - service: input_select.select_option
       data_template:
         entity_id: >
-          {% if trigger.entity_id == 'device_tracker.google_maps_114754196444501299267' %}
+          {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
             input_select.spencer_status_dropdown
           {% else %}
             input_select.lynsey_status_dropdown
@@ -262,7 +262,7 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: >
-          {% if trigger.entity_id == 'device_tracker.google_maps_114754196444501299267' %}
+          {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
             {% if states.input_select.lynsey_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
               Away
             {% else %}
