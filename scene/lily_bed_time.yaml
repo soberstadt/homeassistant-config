@@ -9,7 +9,7 @@
       state: off
     light.living_room_lights:
       state: on
-      brightness: 64
+      brightness: 77
     group.mood_lights:
       state: on
       rgb_color: [255, 0, 0]
@@ -23,7 +23,8 @@
       state: on
       brightness: 77
     light.dining_room_lamp:
-      state: off
+      state: on
+      brightness: 39
     light.flux_lily_bedroom:
       state: on
       rgb_color: [255, 36, 0]
