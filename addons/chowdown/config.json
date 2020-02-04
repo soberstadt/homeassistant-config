@@ -1,0 +1,11 @@
+{
+  "name": "Chow Down",
+  "version": "1",
+  "slug": "chowdown",
+  "description": "",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "before",
+  "boot": "auto",
+  "options": {},
+  "schema": {}
+}
