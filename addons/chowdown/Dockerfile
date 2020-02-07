@@ -1,13 +1,7 @@
-ARG BUILD_FROM=hassioaddons/base:6.0.1
+ARG BUILD_FROM=
 FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
-
-# Copy data for add-on
-COPY run.sh /
-RUN chmod a+x /run.sh
-
-CMD [ "/run.sh" ]
 
 ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
@@ -43,10 +37,18 @@ RUN apk update --update \
           /var/tmp/*
 
 RUN apk add --no-cache --virtual .build-deps make gcc g++ musl-dev \
- && gem install --no-document jekyll \
+ && gem install --no-document jekyll webrick \
  && apk del .build-deps
 
-RUN jekyll new myblog
+# RUN jekyll new myblog
+RUN git clone https://github.com/clarklab/chowdown.git
 
-WORKDIR /myblog
+# Copy data for add-on
+COPY run.sh /
+RUN chmod a+x /run.sh
 
+CMD [ "bash", "/run.sh" ]
+
+EXPOSE 4000
+
+WORKDIR /chowdown
