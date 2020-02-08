@@ -3,9 +3,7 @@
     light.ge_12724_3way_dimmer_switch_level:
       state: on
       brightness: 100
-    switch.tuya_switch_1:
-      state: off
-    switch.sonoff_1:
+    group.sitting_room:
       state: off
     light.living_room_lights:
       state: on
