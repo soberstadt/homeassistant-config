@@ -39,12 +39,3 @@ wii:
     - service: python_script.set_roku_volume
       data:
         level: 14
-
-lily_white_noise:
-  alias: Lily White Noise
-  sequence:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.googlehome9316
-        media_content_id: https://oberstadt.duckdns.org:8123/local/pink.9.mp3
-        media_content_type: music

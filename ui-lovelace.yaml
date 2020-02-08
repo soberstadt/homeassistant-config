@@ -280,10 +280,6 @@ views:
           - type: custom:mini-media-player
             entity: media_player.googlehome9316
             icon: mdi:cast
-          - type: entities
-            show_header_toggle: false
-            entities:
-              - script.lily_white_noise
       - type: horizontal-stack
         cards:
           - type: picture-entity
