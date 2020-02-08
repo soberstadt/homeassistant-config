@@ -49,6 +49,6 @@ RUN chmod a+x /run.sh
 
 CMD [ "bash", "/run.sh" ]
 
-EXPOSE 4000
+EXPOSE 8099
 
 WORKDIR /chowdown
