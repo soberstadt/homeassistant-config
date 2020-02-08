@@ -207,6 +207,8 @@ views:
         title: Extra
         entities:
           - switch.meross_2
+          - switch.etekcity_1
+          - switch.etekcity_2
       - type: custom:color-picker
         entity: light.mood_lights
 
