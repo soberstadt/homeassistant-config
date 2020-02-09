@@ -75,6 +75,11 @@ mobile_app:
 
 map:
 
+panel_iframe:
+  chowdown:
+    title: "Recipes"
+    url: "https://soberstadt.github.io/chowdown/"
+
 speedtestdotnet:
   monitored_conditions:
     - ping
