@@ -2,11 +2,11 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.arrow_2_humidity
-      above: 50
+      above: 55
   action:
     - service: notify.pushbullet
       data:
-        message: 'Home humidity above 50%!'
+        message: "Home humidity above 55%!"
 
 - alias: Climate - Too Hot (Family Home)
   trigger:
@@ -16,13 +16,13 @@
   action:
     - condition: state
       entity_id: input_select.family_status_dropdown
-      state: 'Home'
+      state: "Home"
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'off'
+      state: "off"
     - service: notify.pushbullet
       data:
-        message: 'Temperature above 78.5!'
+        message: "Temperature above 78.5!"
 
 - alias: Climate - Too Hot (Family Away)
   trigger:
@@ -32,4 +32,4 @@
   action:
     - service: notify.pushbullet
       data:
-        message: 'Temperature above 82!'
+        message: "Temperature above 82!"
