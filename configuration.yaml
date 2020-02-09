@@ -78,6 +78,7 @@ map:
 panel_iframe:
   chowdown:
     title: "Recipes"
+    icon: mdi:chef-hat
     url: "https://soberstadt.github.io/chowdown/"
 
 speedtestdotnet:
