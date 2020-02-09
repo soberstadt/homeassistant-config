@@ -19,3 +19,19 @@
   state_topic: "tele/sonoff_rf/RESULT"
   value_template: "{{ value_json.RfReceived.Data }}"
   off_delay: 3
+
+- platform: mqtt
+  name: Front Door
+  payload_on: "236136"
+  state_topic: "tele/sonoff_rf/RESULT"
+  value_template: "{{ value_json.RfReceived.Data }}"
+  off_delay: 10
+  device_class: door
+
+- platform: mqtt
+  name: Garage Entry
+  payload_on: "21CE46"
+  state_topic: "tele/sonoff_rf/RESULT"
+  value_template: "{{ value_json.RfReceived.Data }}"
+  off_delay: 10
+  device_class: door
