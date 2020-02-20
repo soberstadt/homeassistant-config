@@ -117,6 +117,7 @@ views:
                     entity_id: scene.lily_bed_time
       - type: entities
         title: Light Groups
+        show_header_toggle: false
         entities:
           - light.living_room_lights
           - light.kitchen_lights
