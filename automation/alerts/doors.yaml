@@ -13,5 +13,5 @@
       entity_id: input_boolean.guest_mode
       state: "off"
     - service: notify.pushbullet
-      data:
+      data_template:
         message: "{{ trigger.to_state.attributes.friendly_name }} opened!"
