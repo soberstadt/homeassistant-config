@@ -1,0 +1,10 @@
+- alias: Turn Off Scentsy
+  trigger:
+    - platform: state
+      entity_id: switch.etekcity_2
+      to: "on"
+      for:
+        hours: 3
+  action:
+    - service: switch.turn_off
+      entity_id: switch.etekcity_2

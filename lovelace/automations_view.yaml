@@ -81,3 +81,7 @@ cards:
     entities:
       - automation.sunrise
       - automation.sunset
+  - type: entities
+    title: Plugs
+    entities:
+      - automation.turn_off_scentsy
