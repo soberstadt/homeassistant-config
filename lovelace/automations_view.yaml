@@ -11,6 +11,7 @@ cards:
       - automation.climate_too_hot_family_away
       - automation.guest_mode_still_on
       - automation.fam_away_motion_alert
+      - automation.fam_away_door_open_alert
       - automation.notify_for_new_devices
   - type: entities
     title: Garage
@@ -23,10 +24,10 @@ cards:
   - type: entities
     title: Motion
     entities:
-       - automation.day_living_room_motion
-       - automation.day_lights_off_after_30_min_of_no_motion
-       - automation.night_light_off_after_20_min_of_no_motion
-       - automation.night_lights_on_when_motion
+      - automation.day_living_room_motion
+      - automation.day_lights_off_after_30_min_of_no_motion
+      - automation.night_light_off_after_20_min_of_no_motion
+      - automation.night_lights_on_when_motion
   - type: entities
     title: System
     entities:
