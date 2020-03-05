@@ -86,6 +86,10 @@ speedtestdotnet:
     - ping
     - download
 
+weather:
+  - platform: darksky
+    api_key: !secret darksky
+
 google_assistant:
   project_id: soberstadt
   service_account: !include google_account.json

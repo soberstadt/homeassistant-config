@@ -12,6 +12,8 @@ resources:
     type: module
   - url: /community_plugin/roku-card/roku-card.js
     type: module
+  - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
+    type: module
   - url: /community_plugin/lovelace-color-picker/color-picker.js
     type: js
 excluded_entities:

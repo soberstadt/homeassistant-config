@@ -6,7 +6,7 @@
     - temperature
     - humidity
   scan_interval:
-    minutes: 30
+    minutes: 15
 
 - platform: uptime
   name: HA Uptime
