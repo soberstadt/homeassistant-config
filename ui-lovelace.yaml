@@ -43,6 +43,13 @@ views:
               service: cover.close_cover
               service_data:
                 entity_id: cover.garage_door
+      - type: custom:simple-weather-card
+        entity: weather.dark_sky
+        name: " "
+        backdrop: true
+        secondary_info:
+          - humidity
+          - precipitation_probability
       - type: glance
         columns: 6
         entities:

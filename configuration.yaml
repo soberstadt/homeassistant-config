@@ -89,6 +89,7 @@ speedtestdotnet:
 weather:
   - platform: darksky
     api_key: !secret darksky
+    mode: daily
 
 google_assistant:
   project_id: soberstadt
