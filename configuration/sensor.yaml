@@ -94,6 +94,12 @@
         {{- HI_C|round(1) -}}
       unit_of_measurement: "°C"
 
+    lily_door_last_changed_minutes:
+      friendly_name: "Lilys Door Last Changed Minutes"
+      entity_id: sensor.time
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.arrow_10_door.last_changed)) / 60 }}"
+      device_class: timestamp
+
 - platform: min_max
   type: mean
   name: House Mean Temperature

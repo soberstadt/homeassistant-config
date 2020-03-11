@@ -64,3 +64,9 @@ cards:
       - sensor.arrow_9_temperature
       - sensor.arrow_9_humidity
       - switch.arrow_9_restart
+  - type: entities
+    title: Arrow 10
+    show_header_toggle: false
+    entities:
+      - binary_sensor.arrow_10_door
+      - switch.arrow_10_restart

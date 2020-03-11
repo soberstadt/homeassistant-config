@@ -1,0 +1,31 @@
+# currently used for Lily's bedroom door
+esphome:
+  name: arrow_10
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+  fast_connect: true
+
+logger:
+
+api:
+
+ota:
+  password: !secret mqtt_password
+
+web_server:
+  port: 80
+
+binary_sensor:
+  - platform: gpio
+    pin: D3
+    name: Arrow 10 Door
+    device_class: door
+
+switch:
+  # Switch to restart the device.
+  - platform: restart
+    name: Arrow 10 Restart
