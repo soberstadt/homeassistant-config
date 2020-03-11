@@ -3,26 +3,63 @@ import logging
 from homeassistant.const import ATTR_VOLTAGE
 from homeassistant.helpers.entity import Entity
 from meross_iot.cloud.devices.power_plugs import GenericPlug
+from meross_iot.meross_event import DeviceOnlineStatusEvent
 
 from .common import (DOMAIN, MANAGER, SENSORS,
-                     calculate_sensor_id)
+                     calculate_sensor_id, AbstractMerossEntityWrapper, cloud_io, HA_SENSOR)
+import threading
+
 
 _LOGGER = logging.getLogger(__name__)
 
 
-class PowerSensorWrapper(Entity):
+class PowerSensorWrapper(Entity, AbstractMerossEntityWrapper):
     """Wrapper class to adapt the Meross power sensors into the Homeassistant platform"""
 
     def __init__(self, device: GenericPlug):
-        self._device = device
+        super().__init__(device)
+
+        # Device properties
         self._device_id = device.uuid
-        self._id = calculate_sensor_id(self._device.uuid)
-        self._device_name = self._device.name
+        self._id = calculate_sensor_id(device.uuid)
+        self._device_name = device.name
+        self._sensor_info = None
+
+        self._is_online = self._device.online
+
+    def device_event_handler(self, evt):
+        # Any event received from the device causes the reset of the error state
+        self.reset_error_state()
+
+        # Handle here events that are common to all the wrappers
+        if isinstance(evt, DeviceOnlineStatusEvent):
+            _LOGGER.info("Device %s reported online status: %s" % (self._device.name, evt.status))
+            if evt.status not in ["online", "offline"]:
+                raise ValueError("Invalid online status")
+            self._is_online = evt.status == "online"
+
+        self.schedule_update_ha_state(False)
+
+    @cloud_io
+    def update(self):
+        # TODO: loading the entire device data at every iteration might be stressful. Need to re-engineer this
+        self._device.get_status(force_status_refresh=False)
+        self._is_online = self._device.online
+
+        # Update electricity stats
+        if self._is_online:
+            self._sensor_info = self._device.get_electricity()
+
+    def force_state_update(self, ui_only=False):
+        if not self.enabled:
+            return
+
+        force_refresh = not ui_only
+        self.schedule_update_ha_state(force_refresh=force_refresh)
 
     @property
     def available(self) -> bool:
-        # A device is available if it's online
-        return self._device.online
+        return self._is_online
 
     @property
     def name(self) -> str:
@@ -37,18 +74,10 @@ class PowerSensorWrapper(Entity):
     def unique_id(self) -> str:
         return self._id
 
-    async def async_update(self):
-        if self.available:
-            sensor_info = self._device.get_electricity()
-        else:
-            sensor_info = None
-
-        self.hass.data[DOMAIN][SENSORS][self.unique_id] = sensor_info
-
     @property
     def device_state_attributes(self):
         # Return device's state
-        sensor_data = self.hass.data[DOMAIN][SENSORS].get(self.unique_id)
+        sensor_data = self._sensor_info
         if sensor_data is None:
             sensor_data = {}
 
@@ -89,7 +118,7 @@ class PowerSensorWrapper(Entity):
     @property
     def state(self) -> str:
         # Return the state attributes.
-        sensor_data = self.hass.data[DOMAIN][SENSORS].get(self.unique_id)
+        sensor_data = self._sensor_info
         if sensor_data is None:
             sensor_data = {}
 
@@ -117,25 +146,34 @@ class PowerSensorWrapper(Entity):
             'sw_version': self._device.fwversion
         }
 
+    async def async_added_to_hass(self) -> None:
+        self._device.register_event_callback(self.device_event_handler)
+
+    async def async_will_remove_from_hass(self) -> None:
+        self._device.unregister_event_callback(self.device_event_handler)
+
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
-    sensor_entities = []
-    manager = hass.data[DOMAIN][MANAGER]  # type:MerossManager
-    plugs = manager.get_devices_by_kind(GenericPlug)
+    def sync_logic():
+        sensor_entities = []
+        manager = hass.data[DOMAIN][MANAGER]
+        plugs = manager.get_devices_by_kind(GenericPlug)
 
-    # First, parse power sensors that are embedded into power plugs
-    for plug in plugs:  # type: GenericPlug
-        if not plug.online:
-            _LOGGER.warning("The plug %s is offline; it's impossible to determine if it supports any ability"
-                            % plug.name)
-        elif plug.supports_consumption_reading():
-            w = PowerSensorWrapper(device=plug)
-            sensor_entities.append(w)
+        # First, parse power sensors that are embedded into power plugs
+        for plug in plugs:  # type: GenericPlug
+            if not plug.online:
+                _LOGGER.warning("The plug %s is offline; it's impossible to determine if it supports any ability"
+                                % plug.name)
+            elif plug.type.startswith("mss310") or plug.supports_consumption_reading():
+                w = PowerSensorWrapper(device=plug)
+                sensor_entities.append(w)
+                hass.data[DOMAIN][HA_SENSOR][w.unique_id] = w
+        # TODO: Then parse thermostat sensors?
+        return sensor_entities
 
-    # TODO: Then parse thermostat sensors?
-
+    sensor_entities = await hass.async_add_executor_job(sync_logic)
     async_add_entities(sensor_entities)
 
 
-async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
+def setup_platform(hass, config, async_add_entities, discovery_info=None):
     pass

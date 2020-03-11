@@ -7,12 +7,11 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 from homeassistant.helpers.typing import HomeAssistantType
 from meross_iot.api import UnauthorizedException
-from meross_iot.logger import h, ROOT_MEROSS_LOGGER
+from meross_iot.logger import h, ROOT_MEROSS_LOGGER, set_log_level
 from meross_iot.manager import MerossManager
-
 from .common import (DOMAIN, ATTR_CONFIG, MEROSS_PLATFORMS, HA_COVER, HA_LIGHT, HA_SENSOR,
                      HA_SWITCH, MANAGER, SENSORS, dismiss_notification,
-                     notify_error)
+                     notify_error, CLOUD_HANDLER, MerossCloudConnectionWatchdog, HA_CLIMATE, HA_FAN)
 
 # Unset the default stream handler for logger of the meross_iot library
 ROOT_MEROSS_LOGGER.removeHandler(h)
@@ -28,6 +27,18 @@ CONFIG_SCHEMA = vol.Schema({
 }, extra=vol.ALLOW_EXTRA)
 
 
+def print_version():
+    try:
+        import json
+        import os
+        fname = os.path.join(os.path.dirname(__file__), "manifest.json")
+        with open(fname, "rt") as f:
+            data = json.load(f)
+            _LOGGER.info("MerossCloudVersion: %s" % data.get("meross_cloud_version"))
+    except:
+        _LOGGER.error("Failed to print version")
+
+
 async def async_setup_entry(hass: HomeAssistantType, config_entry):
     """
     This class is called by the HomeAssistant framework when a configuration entry is provided.
@@ -36,19 +47,29 @@ async def async_setup_entry(hass: HomeAssistantType, config_entry):
     """
 
     try:
+        print_version()
 
         # These will contain the initialized devices
         # The following call can cause am UnauthorizedException if bad login credentials are provided
         # or if a network exception occurs.
         manager = MerossManager(meross_email=config_entry.data.get(CONF_USERNAME), meross_password=config_entry.data.get(CONF_PASSWORD))
-
+        cloud_handler = MerossCloudConnectionWatchdog(manager=manager, hass=hass)
+        hass.data[DOMAIN][CLOUD_HANDLER] = cloud_handler
         hass.data[DOMAIN][MANAGER] = manager
-        hass.data[DOMAIN][SENSORS] = {}
+        hass.data[DOMAIN][HA_CLIMATE] = {}
+        hass.data[DOMAIN][HA_COVER] = {}
+        hass.data[DOMAIN][HA_LIGHT] = {}
+        hass.data[DOMAIN][HA_SENSOR] = {}
+        hass.data[DOMAIN][HA_SWITCH] = {}
+        hass.data[DOMAIN][HA_FAN] = {}
 
         _LOGGER.info("Starting meross manager")
         manager.start()
 
-        for platform in (MEROSS_PLATFORMS):
+        _LOGGER.info("Starting meross cloud connection watchdog")
+        cloud_handler.register_manager()
+
+        for platform in MEROSS_PLATFORMS:
             hass.async_create_task(
                 hass.config_entries.async_forward_entry_setup(config_entry, platform)
             )
@@ -77,9 +98,6 @@ async def async_setup(hass, config):
 
     :return:
     """
-
-    # TODO: check whether the integration has been already configured previously via User Config Entry or
-    #       discovery
 
     conf = config.get(DOMAIN)
     hass.data[DOMAIN] = {}
