@@ -4,17 +4,17 @@ resources:
   - url: /local/thermostat-card.js?v=1.1
     type: module
   # cards loaded via hacs
-  - url: /community_plugin/custom-header/custom-header.js
+  - url: /hacsfiles/custom-header/custom-header.js
     type: module
-  - url: /community_plugin/lovelace-card-tools/card-tools.js
+  - url: /hacsfiles/lovelace-card-tools/card-tools.js
     type: module
-  - url: /community_plugin/mini-media-player/mini-media-player.js
+  - url: /hacsfiles/mini-media-player/mini-media-player.js
     type: module
-  - url: /community_plugin/roku-card/roku-card.js
+  - url: /hacsfiles/roku-card/roku-card.js
     type: module
   - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
     type: module
-  - url: /community_plugin/lovelace-color-picker/color-picker.js
+  - url: /hacsfiles/lovelace-color-picker/color-picker.js
     type: js
 excluded_entities:
 custom_header:
@@ -46,7 +46,9 @@ views:
       - type: custom:simple-weather-card
         entity: weather.dark_sky
         name: " "
-        backdrop: true
+        backdrop:
+          day: "var(--primary-color)"
+          night: "#40445a"
         secondary_info:
           - humidity
           - precipitation_probability
