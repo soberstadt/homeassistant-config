@@ -136,48 +136,51 @@ views:
           - light.sitting_room_lights
           - light.dining_room_lights
           - light.mood_lights
-      - type: vertical-stack
-        cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
           - type: custom:thermostat-card
             entity: climate.2gig_technologies_ct101_thermostat_iris_mode
           - type: conditional
             conditions:
               - entity: climate.2gig_technologies_ct101_thermostat_iris_mode
                 state: "cool"
-            card:
-              type: entities
-              show_header_toggle: false
-              entities:
-                - type: call-service
-                  icon: mdi:radiator
-                  name: Set thermostat to
-                  action_name: Heat
-                  service: climate.set_hvac_mode
-                  service_data:
-                    entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
-                    hvac_mode: heat
+            row:
+              type: call-service
+              icon: mdi:radiator
+              name: Set thermostat to
+              action_name: Heat
+              service: climate.set_hvac_mode
+              service_data:
+                entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
+                hvac_mode: heat
           - type: conditional
             conditions:
               - entity: climate.2gig_technologies_ct101_thermostat_iris_mode
                 state: "heat"
-            card:
-              type: entities
-              show_header_toggle: false
-              entities:
-                - type: call-service
-                  icon: mdi:air-conditioner
-                  name: Set thermostat to
-                  action_name: Cool
-                  service: climate.set_hvac_mode
-                  service_data:
-                    entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
-                    hvac_mode: cool
+            row:
+              type: call-service
+              icon: mdi:air-conditioner
+              name: Set thermostat to
+              action_name: Cool
+              service: climate.set_hvac_mode
+              service_data:
+                entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
+                hvac_mode: cool
       - type: picture-glance
         title: Front Door
         camera_image: camera.front_door
         camera_view: live
         entities:
           - camera.front_door
+      - type: markdown
+        content: |
+          ## Lily's Door Last Changed
+          {% set minutes_closed = (as_timestamp(now()) - as_timestamp(states.binary_sensor.arrow_10_door.last_changed)) / 60 %}
+          {% if minutes_closed > 60 -%}
+            {{ (minutes_closed / 60) | round(0, 'floor') }} {{ 'hours ' }}
+          {%- endif %}
+          {{- (minutes_closed % 60) | round() }} minutes ago
 
   - title: Lights
     background: var(--background-image)
