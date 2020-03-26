@@ -190,6 +190,12 @@ input_select:
       - Away
       - Extended Away
       - Work
+  lily_door_status_dropdown:
+    name: Lily's Door Status
+    options:
+      - Closed
+      - Open
+      - Unavailable
   hass_theme:
     name: Themes
     options:

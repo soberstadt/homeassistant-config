@@ -77,6 +77,12 @@ cards:
       - automation.mark_person_at_work
       - automation.mark_person_leaving_work
   - type: entities
+    title: Lily Door
+    entities:
+      - automation.mark_lily_door_open
+      - automation.mark_lily_door_closed
+      - automation.mark_lily_door_unavailable
+  - type: entities
     title: Sun
     entities:
       - automation.sunrise
