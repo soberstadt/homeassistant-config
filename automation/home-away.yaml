@@ -41,7 +41,7 @@
       entity_id: device_tracker.sm_g950u
       to: "Neighborhood"
     - platform: state
-      entity_id: device_tracker.google_maps_104430582414753567698
+      entity_id: device_tracker.sm_g950u_2
       to: "Neighborhood"
   condition:
     condition: and

@@ -2,7 +2,7 @@
   sensors:
     spencer_charging:
       value_template: >-
-        {{ states.device_tracker.google_maps_114754196444501299267.attributes.battery_charging }}
+        {{ states.sensor.sm_g950u_battery_level_2.attributes.is_charging }}
 
 # button 1 Left: 9864A1
 # button 1 Right: 9864A2

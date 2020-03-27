@@ -206,16 +206,16 @@
       entity_id: device_tracker.sm_g950u
       to: "Work"
     - platform: state
-      entity_id: device_tracker.google_maps_104430582414753567698
+      entity_id: device_tracker.sm_g950u_2
       to: "Work"
   action:
     - service: input_select.select_option
       data_template:
         entity_id: >
           {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
-            input_select.spencer_status_dropdown
-          {% else %}
             input_select.lynsey_status_dropdown
+          {% else %}
+            input_select.spencer_status_dropdown
           {% endif %}
         option: Work
     # if someone gets marked as work, only mark as work if other person is work
@@ -223,7 +223,7 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: >
-          {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
+          {% if trigger.entity_id == 'device_tracker.sm_g950u_2' %}
             {% if states.input_select.lynsey_status_dropdown.state in ['Work', 'Extended Away'] %}
               Work
             {% else %}
@@ -244,7 +244,7 @@
       from: "work"
       to: "away"
     - platform: state
-      entity_id: device_tracker.google_maps_104430582414753567698
+      entity_id: device_tracker.sm_g950u_2
       from: "work"
       to: "away"
   action:
@@ -252,9 +252,9 @@
       data_template:
         entity_id: >
           {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
-            input_select.spencer_status_dropdown
-          {% else %}
             input_select.lynsey_status_dropdown
+          {% else %}
+            input_select.spencer_status_dropdown
           {% endif %}
         option: Away
     # if someone gets marked as leaving work, only mark as away if other person is not home
@@ -262,7 +262,7 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: >
-          {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
+          {% if trigger.entity_id == 'device_tracker.sm_g950u_2' %}
             {% if states.input_select.lynsey_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
               Away
             {% else %}
