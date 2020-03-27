@@ -108,3 +108,17 @@
     - sensor.arrow_2_humidity
     - sensor.arrow_5_humidity
     - sensor.arrow_9_humidity
+
+- platform: history_stats
+  name: Lily Sleep Today
+  entity_id: input_select.lily_door_status_dropdown
+  state: 'Closed'
+  type: time
+  duration:
+    hours: 24
+  end: '{{ now() }}'
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /home
