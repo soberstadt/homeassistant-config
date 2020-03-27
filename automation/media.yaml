@@ -1,13 +1,15 @@
 - alias: Autoplay Jeopardy
   trigger:
     platform: time
-    at: '18:59:30'
+    at: "18:59:30"
   condition:
     condition: and
     conditions:
       - condition: time
         weekday:
           - mon
+          - tue
+          - wed
           - thu
           - fri
       - condition: template
@@ -19,13 +21,13 @@
   trigger:
     platform: state
     entity_id: media_player.living_room_tv
-    to: 'off'
+    to: "off"
     for:
       minutes: 15
   condition:
     - condition: state
       entity_id: sensor.roku_source
-      state: 'Streaming box'
+      state: "Streaming box"
       for:
         minutes: 15
   action:
