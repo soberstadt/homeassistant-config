@@ -26,4 +26,7 @@ ip_bans.yaml
 /icloud/*
 google_account.json
 
+bin/
+pyvenv.cfg
+
 __pycache__/
