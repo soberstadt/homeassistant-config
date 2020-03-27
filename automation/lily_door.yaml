@@ -32,3 +32,18 @@
       data_template:
         entity_id: input_select.lily_door_status_dropdown
         option: Unavailable
+
+- alias: Lights Back On After Lily Door Close
+  trigger:
+    - platform: state
+      entity_id: input_select.lily_door_status_dropdown
+      to: "Closed"
+      for:
+        seconds: 5
+  condition:
+    - condition: time
+      after: "20:30:00"
+      before: "23:30:00"
+  action:
+    - service: scene.turn_on
+      entity_id: scene.evening

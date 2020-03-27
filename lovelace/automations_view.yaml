@@ -82,6 +82,7 @@ cards:
       - automation.mark_lily_door_open
       - automation.mark_lily_door_closed
       - automation.mark_lily_door_unavailable
+      - automation.lights_back_on_after_lily_door_close
   - type: entities
     title: Sun
     entities:

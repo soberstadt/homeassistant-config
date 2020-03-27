@@ -158,15 +158,8 @@ views:
           - camera.front_door
       - type: markdown
         content: |
-          {% if states('binary_sensor.arrow_10_door') == 'on' -%}
-            {% set door_state = 'Opened' %}
-          {% elif  states('binary_sensor.arrow_10_door') == 'off' %}
-            {% set door_state = 'Closed' %}
-          {% else %}
-            {% set door_state = 'Unavailable' %}
-          {%- endif %}
-          ## Lily's Door {{ door_state }} For
-          {% set minutes_closed = (as_timestamp(now()) - as_timestamp(states.binary_sensor.arrow_10_door.last_changed)) / 60 %}
+          ## Lily's Door {{ states('input_select.lily_door_status_dropdown') }} For
+          {% set minutes_closed = (as_timestamp(now()) - as_timestamp(states.input_select.lily_door_status_dropdown.last_changed)) / 60 %}
           {% if minutes_closed > 60 -%}
             {{ (minutes_closed / 60) | round(0, 'floor') }} {{ 'hours ' }}
           {%- endif %}
