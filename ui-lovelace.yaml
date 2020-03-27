@@ -207,8 +207,9 @@ views:
           - switch.meross_2
           - switch.etekcity_1
           - switch.etekcity_2
-      - type: custom:color-picker
+      - type: custom:light-entity-card
         entity: light.mood_lights
+        brightness: false
 
   - title: Media
     icon: mdi:television

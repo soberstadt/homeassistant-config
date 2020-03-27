@@ -25,15 +25,13 @@ lovelace:
     # cards loaded via hacs
     - url: /hacsfiles/custom-header/custom-header.js
       type: module
-    - url: /hacsfiles/lovelace-card-tools/card-tools.js
-      type: module
     - url: /hacsfiles/mini-media-player/mini-media-player.js
       type: module
     - url: /hacsfiles/roku-card/roku-card.js
       type: module
     - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
       type: module
-    - url: /hacsfiles/lovelace-color-picker/color-picker.js
+    - url: /hacsfiles/light-entity-card/light-entity-card.js
       type: js
 
 config:
