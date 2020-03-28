@@ -1,0 +1,30 @@
+- alias: Night - Bedroom Mood Sleep Warning
+  trigger:
+    platform: time
+    at: "23:25:00"
+  condition:
+    - condition: state
+      entity_id: light.ge_12724_3way_dimmer_switch_level
+      state: "on"
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.flux_bedroom
+        rgb_color: >
+          {% if states.light.flux_bedroom.attributes.rgb_color == (255, 0, 0) %}
+            [255, 0, 200]
+          {% else %}
+            [255, 0, 0]
+          {% endif %}
+
+- alias: Night - Bedroom Sleep Time
+  trigger:
+    platform: time
+    at: "23:30:00"
+  condition:
+    - condition: state
+      entity_id: light.ge_12724_3way_dimmer_switch_level
+      state: "on"
+  action:
+    - service: scene.turn_on
+      entity_id: scene.darkroom
