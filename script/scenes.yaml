@@ -11,7 +11,19 @@ good_night:
         option: clear-dark
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'off'
+      state: "off"
     - service: light.turn_off
       data:
         entity_id: light.dining_room_lamp
+
+warn_for_bed_time:
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.flux_bedroom
+        color_name: >
+          {% if states.light.flux_bedroom.attributes.rgb_color == (255, 0, 0) %}
+            orangered
+          {% else %}
+            red
+          {% endif %}

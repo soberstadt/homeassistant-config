@@ -7,15 +7,7 @@
       entity_id: light.ge_12724_3way_dimmer_switch_level
       state: "on"
   action:
-    - service: light.turn_on
-      data:
-        entity_id: light.flux_bedroom
-        rgb_color: >
-          {% if states.light.flux_bedroom.attributes.rgb_color == (255, 0, 0) %}
-            [255, 0, 200]
-          {% else %}
-            [255, 0, 0]
-          {% endif %}
+    - service: script.warn_for_bed_time
 
 - alias: Night - Bedroom Sleep Time
   trigger:
