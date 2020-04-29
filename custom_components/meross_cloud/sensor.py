@@ -2,68 +2,74 @@ import logging
 
 from homeassistant.const import ATTR_VOLTAGE
 from homeassistant.helpers.entity import Entity
+from meross_iot.cloud.client_status import ClientStatus
 from meross_iot.cloud.devices.power_plugs import GenericPlug
+from meross_iot.cloud.exceptions.CommandTimeoutException import CommandTimeoutException
 from meross_iot.meross_event import DeviceOnlineStatusEvent
 
-from .common import (DOMAIN, MANAGER, SENSORS,
-                     calculate_sensor_id, AbstractMerossEntityWrapper, cloud_io, HA_SENSOR)
-import threading
-
+from .common import (DOMAIN, HA_SENSOR, MANAGER, calculate_sensor_id, ConnectionWatchDog, MerossEntityWrapper,
+                     log_exception)
 
 _LOGGER = logging.getLogger(__name__)
+PARALLEL_UPDATES = 1
 
 
-class PowerSensorWrapper(Entity, AbstractMerossEntityWrapper):
+class PowerSensorWrapper(Entity, MerossEntityWrapper):
     """Wrapper class to adapt the Meross power sensors into the Homeassistant platform"""
 
     def __init__(self, device: GenericPlug):
-        super().__init__(device)
+        self._device = device
 
         # Device properties
-        self._device_id = device.uuid
         self._id = calculate_sensor_id(device.uuid)
-        self._device_name = device.name
         self._sensor_info = None
+        self._available = True  # Assume the mqtt client is connected
+        self._ignore_update = False
 
-        self._is_online = self._device.online
-
-    def device_event_handler(self, evt):
-        # Any event received from the device causes the reset of the error state
-        self.reset_error_state()
-
-        # Handle here events that are common to all the wrappers
-        if isinstance(evt, DeviceOnlineStatusEvent):
-            _LOGGER.info("Device %s reported online status: %s" % (self._device.name, evt.status))
-            if evt.status not in ["online", "offline"]:
-                raise ValueError("Invalid online status")
-            self._is_online = evt.status == "online"
-
-        self.schedule_update_ha_state(False)
-
-    @cloud_io
     def update(self):
-        # TODO: loading the entire device data at every iteration might be stressful. Need to re-engineer this
-        self._device.get_status(force_status_refresh=False)
-        self._is_online = self._device.online
-
-        # Update electricity stats
-        if self._is_online:
-            self._sensor_info = self._device.get_electricity()
-
-    def force_state_update(self, ui_only=False):
-        if not self.enabled:
+        if self._ignore_update:
+            _LOGGER.warning("Skipping UPDATE as ignore_update is set.")
             return
 
-        force_refresh = not ui_only
-        self.schedule_update_ha_state(force_refresh=force_refresh)
+        # Given that the device is online, we force a full state refresh.
+        # This is necessary as this device is handled with HA should_poll=True
+        # flag, so the UPDATE should every time update its status.
+        try:
+            self._sensor_info = {
+                'voltage': 0,
+                'current': 0,
+                'power': 0
+            }
+            on_off = self._device.get_status(force_status_refresh=self._device.online)
+
+            # Update electricity stats only if the device is online and currently turned on
+            if self.available and on_off:
+                self._sensor_info = self._device.get_electricity()
+
+        except CommandTimeoutException as e:
+            log_exception(logger=_LOGGER, device=self._device)
+            raise
+
+    def device_event_handler(self, evt):
+        # Update the device state when an event occurs
+        self.schedule_update_ha_state(False)
+
+    def notify_client_state(self, status: ClientStatus):
+        # When a connection change occurs, update the internal state
+        # If we are connecting back, schedule a full refresh of the device
+        # In any other case, mark the device unavailable
+        # and only update the UI
+        client_online = status == ClientStatus.SUBSCRIBED
+        self._available = client_online
+        self.schedule_update_ha_state(True)
 
     @property
     def available(self) -> bool:
-        return self._is_online
+        return self._available and self._device.online
 
     @property
     def name(self) -> str:
-        return self._device_name
+        return self._device.name
 
     @property
     def should_poll(self) -> bool:
@@ -139,8 +145,8 @@ class PowerSensorWrapper(Entity, AbstractMerossEntityWrapper):
     @property
     def device_info(self):
         return {
-            'identifiers': {(DOMAIN, self._device_id)},
-            'name': self._device_name,
+            'identifiers': {(DOMAIN, self._device.uuid)},
+            'name': self._device.name,
             'manufacturer': 'Meross',
             'model': self._device.type + " " + self._device.hwversion,
             'sw_version': self._device.fwversion
@@ -148,9 +154,11 @@ class PowerSensorWrapper(Entity, AbstractMerossEntityWrapper):
 
     async def async_added_to_hass(self) -> None:
         self._device.register_event_callback(self.device_event_handler)
+        self._ignore_update = False
 
     async def async_will_remove_from_hass(self) -> None:
         self._device.unregister_event_callback(self.device_event_handler)
+        self._ignore_update = True
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
@@ -171,8 +179,13 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         # TODO: Then parse thermostat sensors?
         return sensor_entities
 
+    # Register a connection watchdog to notify devices when connection to the cloud MQTT goes down.
+    manager = hass.data[DOMAIN][MANAGER]  # type:MerossManager
+    watchdog = ConnectionWatchDog(hass=hass, platform=HA_SENSOR)
+    manager.register_event_handler(watchdog.connection_handler)
+
     sensor_entities = await hass.async_add_executor_job(sync_logic)
-    async_add_entities(sensor_entities)
+    async_add_entities(sensor_entities, True)
 
 
 def setup_platform(hass, config, async_add_entities, discovery_info=None):

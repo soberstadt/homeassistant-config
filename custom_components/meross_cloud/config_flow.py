@@ -1,4 +1,3 @@
-"""Config flow for TP-Link."""
 import logging
 from urllib.error import HTTPError
 
@@ -7,11 +6,12 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
 from meross_iot.api import MerossHttpClient, UnauthorizedException
-from requests import ConnectTimeout
-
-from .common import DOMAIN
+from requests.exceptions import ConnectTimeout
+from datetime import datetime
+from .common import DOMAIN, CONF_STORED_CREDS
 
 _LOGGER = logging.getLogger(__name__)
+PARALLEL_UPDATES = 1
 
 
 class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
@@ -23,15 +23,18 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     def __init__(self):
         """Initialize the meross configuration flow."""
         """Initialize."""
-        self.data_schema = {
+        self.schema = vol.Schema({
             vol.Required(CONF_USERNAME): str,
-            vol.Required(CONF_PASSWORD): str,
-        }
+            vol.Required(CONF_PASSWORD): str
+        })
 
     async def async_step_user(self, user_input=None):
         """Handle a flow initialized by the user interface"""
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
+
+        await self.async_set_unique_id(DOMAIN)
+        self._abort_if_unique_id_configured()
 
         if not user_input:
             return self._show_form()
@@ -41,7 +44,7 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
         # Test the connection to the Meross Cloud.
         try:
-            await self.hass.async_add_executor_job(
+            creds = await self.hass.async_add_executor_job(
                 self._test_authorization, username, password
             )
 
@@ -56,21 +59,28 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             title=user_input[CONF_USERNAME],
             data={
                 CONF_USERNAME: username,
-                CONF_PASSWORD: password
+                CONF_PASSWORD: password,
+                CONF_STORED_CREDS: {
+                    'token': creds.token,
+                    'key': creds.key,
+                    'user_id': creds.user_id,
+                    'user_email': creds.user_email,
+                    'issued_on': creds.issued_on.isoformat()
+                }
             }
         )
 
     @staticmethod
     def _test_authorization(username, password):
-        client = MerossHttpClient(email=username, password=password)
-        client.get_cloud_credentials()
+        client = MerossHttpClient.from_user_password(email=username, password=password)
+        return client.get_cloud_credentials()
 
     @callback
     def _show_form(self, errors=None):
         """Show the form to the user."""
         return self.async_show_form(
             step_id="user",
-            data_schema=vol.Schema(self.data_schema),
+            data_schema=self.schema,
             errors=errors if errors else {},
         )
 
@@ -81,6 +91,4 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_abort(reason="single_instance_allowed")
 
         return await self.async_step_user(import_config)
-
-
 

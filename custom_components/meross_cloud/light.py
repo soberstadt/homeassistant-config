@@ -1,14 +1,20 @@
 import logging
+
 import homeassistant.util.color as color_util
-from homeassistant.components.light import (Light, SUPPORT_BRIGHTNESS, SUPPORT_COLOR, SUPPORT_COLOR_TEMP,
-                                            ATTR_HS_COLOR, ATTR_COLOR_TEMP, ATTR_BRIGHTNESS)
+from homeassistant.components.light import (ATTR_BRIGHTNESS, ATTR_COLOR_TEMP,
+                                            ATTR_HS_COLOR, SUPPORT_BRIGHTNESS,
+                                            SUPPORT_COLOR, SUPPORT_COLOR_TEMP,
+                                            Light)
+from meross_iot.cloud.client_status import ClientStatus
 from meross_iot.cloud.devices.light_bulbs import GenericBulb
+from meross_iot.cloud.exceptions.CommandTimeoutException import CommandTimeoutException
 from meross_iot.manager import MerossManager
-from meross_iot.meross_event import BulbSwitchStateChangeEvent, BulbLightStateChangeEvent, DeviceOnlineStatusEvent
-
-from .common import DOMAIN, MANAGER, AbstractMerossEntityWrapper, cloud_io, HA_LIGHT
-
+from meross_iot.meross_event import (BulbLightStateChangeEvent,
+                                     BulbSwitchStateChangeEvent,
+                                     DeviceOnlineStatusEvent)
+from .common import (DOMAIN, HA_LIGHT, MANAGER, ConnectionWatchDog, log_exception)
 _LOGGER = logging.getLogger(__name__)
+PARALLEL_UPDATES = 1
 
 
 def rgb_int_to_tuple(color):
@@ -25,30 +31,51 @@ def expand_status(status):
     return out
 
 
-class LightEntityWrapper(Light, AbstractMerossEntityWrapper):
+class LightEntityWrapper(Light):
     """Wrapper class to adapt the Meross switches into the Homeassistant platform"""
 
     def __init__(self, device: GenericBulb, channel: int):
-        super().__init__(device)
-
-        # Device state
-        self._state = {}
-        self._flags = 0
+        self._device = device
 
         # Device info
-        self._channel_id = channel
         self._id = self._device.uuid
-        self._device_name = self._device.name
+        self._channel_id = channel
+        self._available = True  # Assume the mqtt client is connected
+        self._first_update_done = False
+        self._ignore_update = False
 
-        # Update device state
-        self._is_online = self._device.online
-        if self._is_online:
-            self.update()
+        # Assume this device supports all the following features.
+        # If that's not the case, we'll discover it after first UPDATE() occurs
+        self._flags = 0
+        self._flags |= SUPPORT_BRIGHTNESS
+        self._flags |= SUPPORT_COLOR
+        self._flags |= SUPPORT_COLOR_TEMP
+    
+    def update(self):
+        if self._ignore_update:
+            _LOGGER.warning("Skipping UPDATE as ignore_update is set.")
+            return
+
+        if self._device.online:
+            try:
+                self._device.get_status(force_status_refresh=True)
+                self._flags = 0
+                if self._device.supports_luminance():
+                    self._flags |= SUPPORT_BRIGHTNESS
+                if self._device.is_rgb():
+                    self._flags |= SUPPORT_COLOR
+                if self._device.is_light_temperature():
+                    self._flags |= SUPPORT_COLOR_TEMP
+                self._first_update_done = True
+            except CommandTimeoutException as e:
+                log_exception(logger=_LOGGER, device=self._device)
+                raise
 
     def device_event_handler(self, evt):
-        # Any event received from the device causes the reset of the error state
-        self.reset_error_state()
+        # Update the device state as soon as an event occurs
+        self.schedule_update_ha_state(False)
 
+        """
         # Handle here events that are common to all the wrappers
         if isinstance(evt, DeviceOnlineStatusEvent):
             _LOGGER.info("Device %s reported online status: %s" % (self._device.name, evt.status))
@@ -69,9 +96,20 @@ class LightEntityWrapper(Light, AbstractMerossEntityWrapper):
                 self._state['transform'] = evt.light_state.get('transform')
         else:
             _LOGGER.warning("Unhandled/ignored event: %s" % str(evt))
+        """
 
-        # When receiving an event, let's immediately trigger the update state
-        self.schedule_update_ha_state(False)
+    def notify_client_state(self, status: ClientStatus):
+        # When a connection change occurs, update the internal state
+        # If we are connecting back, schedule a full refresh of the device
+        # In any other case, mark the device unavailable
+        # and only update the UI
+        client_online = status == ClientStatus.SUBSCRIBED
+        self._available = client_online
+        self.schedule_update_ha_state(True)
+
+    @property
+    def assumed_state(self) -> bool:
+        return not self._first_update_done
 
     @property
     def should_poll(self) -> bool:
@@ -80,50 +118,61 @@ class LightEntityWrapper(Light, AbstractMerossEntityWrapper):
     @property
     def available(self) -> bool:
         # A device is available if it's online
-        return self._is_online
+        return self._available and self._device.online
 
     @property
     def is_on(self) -> bool:
-        if self._state is None:
+        if not self._first_update_done:
+            # Schedule update and return
+            self.schedule_update_ha_state(True)
             return None
-        return self._state.get('onoff', None) == 1
+
+        return self._device.get_channel_status(channel=self._channel_id).get('onoff')
 
     @property
     def brightness(self):
-        if self._state is None:
+        if not self._first_update_done:
+            # Schedule update and return
+            self.schedule_update_ha_state(True)
             return None
 
         # Meross bulbs support luminance between 0 and 100;
         # while the HA wants values from 0 to 255. Therefore, we need to scale the values.
-        luminance = self._state.get('luminance', None)
+        luminance = self._device.get_status().get('luminance', None)
         if luminance is None:
             return None
         return float(luminance) / 100 * 255
 
     @property
     def hs_color(self):
-        if self._state is None:
+        if not self._first_update_done:
+            # Schedule update and return
+            self.schedule_update_ha_state(True)
             return None
 
-        if self._state.get('capacity') == 5:  # rgb mode
-            rgb = rgb_int_to_tuple(self._state.get('rgb'))
+        status = self._device.get_status(channel=self._channel_id)
+        if status.get('capacity') == 5:  # rgb mode
+            rgb = rgb_int_to_tuple(status.get('rgb'))
             return color_util.color_RGB_to_hs(*rgb)
         return None
 
     @property
     def color_temp(self):
-        if self._state is None:
+        if not self._first_update_done:
+            # Schedule update and return
+            self.schedule_update_ha_state(True)
             return None
 
-        if self._state.get('capacity') == 6:  # White light mode
-            value = self._state.get('temperature')
+        status = self._device.get_status(channel=self._channel_id)
+        if status.get('capacity') == 6:  # White light mode
+            value = status.get('temperature')
             norm_value = (100 - value) / 100.0
             return self.min_mireds + (norm_value * (self.max_mireds - self.min_mireds))
         return None
 
     @property
     def name(self) -> str:
-        return self._device_name
+        return self._device.name
 
     @property
     def unique_id(self) -> str:
@@ -137,39 +186,15 @@ class LightEntityWrapper(Light, AbstractMerossEntityWrapper):
     def device_info(self):
         return {
             'identifiers': {(DOMAIN, self._id)},
-            'name': self._device_name,
+            'name': self._device.name,
             'manufacturer': 'Meross',
             'model': self._device.type + " " + self._device.hwversion,
             'sw_version': self._device.fwversion
         }
 
-    def force_state_update(self, ui_only=False):
-        if not self.enabled:
-            return
-
-        force_refresh = not ui_only
-        self.schedule_update_ha_state(force_refresh=force_refresh)
-
-    @cloud_io
-    def update(self):
-        self._device.get_status(force_status_refresh=True)
-        self._is_online = self._device.online
-
-        if self._is_online:
-            if self._device.supports_luminance():
-                self._flags |= SUPPORT_BRIGHTNESS
-            if self._device.is_rgb():
-                self._flags |= SUPPORT_COLOR
-            if self._device.is_light_temperature():
-                self._flags |= SUPPORT_COLOR_TEMP
-
-            self._state = self._device.get_status(self._channel_id, force_status_refresh=True)
-
-    @cloud_io
     def turn_off(self, **kwargs) -> None:
         self._device.turn_off(channel=self._channel_id)
 
-    @cloud_io
     def turn_on(self, **kwargs) -> None:
         if not self.is_on:
             self._device.turn_on(channel=self._channel_id)
@@ -195,9 +220,11 @@ class LightEntityWrapper(Light, AbstractMerossEntityWrapper):
 
     async def async_added_to_hass(self) -> None:
         self._device.register_event_callback(self.device_event_handler)
+        self._ignore_update = False
 
     async def async_will_remove_from_hass(self) -> None:
         self._device.unregister_event_callback(self.device_event_handler)
+        self._ignore_update = True
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
@@ -212,10 +239,13 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             hass.data[DOMAIN][HA_LIGHT][w.unique_id] = w
         return bulb_devices
 
+    # Register a connection watchdog to notify devices when connection to the cloud MQTT goes down.
+    manager = hass.data[DOMAIN][MANAGER]  # type:MerossManager
+    watchdog = ConnectionWatchDog(hass=hass, platform=HA_LIGHT)
+    manager.register_event_handler(watchdog.connection_handler)
     bulb_devices = await hass.async_add_executor_job(sync_logic)
-    async_add_entities(bulb_devices)
+    async_add_entities(bulb_devices, True)
 
 
 def setup_platform(hass, config, async_add_entities, discovery_info=None):
     pass
-
