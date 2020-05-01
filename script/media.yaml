@@ -21,7 +21,7 @@ jeopardy:
     - service: media_player.play_media
       data:
         entity_id: media_player.roku
-        media_content_type: "TV"
+        media_content_type: channel
         media_content_id: '9.1'
     - delay:
         seconds: 10

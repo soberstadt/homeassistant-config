@@ -49,5 +49,5 @@
     service: media_player.play_media
     data_template:
       entity_id: media_player.roku
-      media_content_type: "TV"
+      media_content_type: channel
       media_content_id: "{{ trigger.event.data.channel }}"

@@ -296,7 +296,7 @@ views:
               service: media_player.play_media
               service_data:
                 entity_id: media_player.roku
-                media_content_type: "TV"
+                media_content_type: channel
                 media_content_id: "2.1"
           - type: picture-entity
             entity: media_player.roku
@@ -308,7 +308,7 @@ views:
               service: media_player.play_media
               service_data:
                 entity_id: media_player.roku
-                media_content_type: "TV"
+                media_content_type: channel
                 media_content_id: "6.1"
           - type: picture-entity
             entity: media_player.roku
@@ -320,7 +320,7 @@ views:
               service: media_player.play_media
               service_data:
                 entity_id: media_player.roku
-                media_content_type: "TV"
+                media_content_type: channel
                 media_content_id: "9.1"
           - type: picture-entity
             entity: media_player.roku
@@ -332,7 +332,7 @@ views:
               service: media_player.play_media
               service_data:
                 entity_id: media_player.roku
-                media_content_type: "TV"
+                media_content_type: channel
                 media_content_id: "35.1"
 
   - title: Settings
