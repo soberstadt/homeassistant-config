@@ -26,33 +26,11 @@ binary_sensor:
     pin:
       number: D3
     name: Arrow 8 Flash Button
-    on_press:
-      - switch.turn_on: relay
-    on_release:
-      - switch.turn_off: relay
 
 switch:
-  - platform: template
-    name: "Garage Remote"
-    icon: "mdi:garage"
-    id: relay_wrapper
-    turn_on_action:
-    - switch.turn_on: relay
-    - delay: 500ms
-    - switch.turn_off: relay
-
-  - platform: gpio
-    name: Arrow 8 Relay
-    pin:
-      number: D5
-      inverted: yes
-    id: relay
-    restore_mode: ALWAYS_OFF
-
   # Switch to restart the device.
   - platform: restart
     name: Arrow 8 Restart
-
 
 # Sensors with general information.
 sensor:

@@ -55,5 +55,21 @@ binary_sensor:
       - delayed_on_off: 15s
 
 switch:
+  - platform: template
+    name: "Garage Remote"
+    icon: "mdi:garage"
+    id: relay_wrapper
+    turn_on_action:
+    - switch.turn_on: relay
+    - delay: 500ms
+    - switch.turn_off: relay
+
+  - platform: gpio
+    name: Test Arrow Relay
+    pin:
+      number: D5
+    id: relay
+    restore_mode: ALWAYS_OFF
+
   - platform: restart
     name: Arrow 3 Restart
