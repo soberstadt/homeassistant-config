@@ -199,6 +199,13 @@ input_select:
       - midnight
       - clear
       - clear-dark
+input_number:
+  home_temperature:
+    name: Home Temperature
+    initial: 73
+    min: 71
+    max: 75
+    step: 1
 
 # custom components:
 hacs:
