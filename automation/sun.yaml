@@ -10,7 +10,13 @@
       before: '21:00:00'
   action:
     - service: scene.turn_on
-      entity_id: scene.evening
+      data_template:
+        entity_id: >
+          {% if states.input_select.family_status_dropdown.state == 'Extended Away' %}
+            scene.away_evening
+          {% else %}
+            scene.evening
+          {% endif %}
 
 - alias: Sunrise
   trigger:
