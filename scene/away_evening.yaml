@@ -1,0 +1,20 @@
+- name: Away Evening
+  entities:
+    group.mood_lights:
+      state: off
+    light.ge_12724_3way_dimmer_switch_level:
+      state: off
+    light.sink:
+      state: off
+    light.oven:
+      state: off
+    light.tuya_light_1:
+      state: on
+      brightness: 102
+    group.living_room_lights:
+      state: off
+    light.dining_room_lamp:
+      state: on
+      brightness: 255
+    group.sitting_room:
+      state: on
