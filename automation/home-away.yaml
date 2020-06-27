@@ -30,7 +30,7 @@
       entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
       state: "cool"
     - service: climate.set_temperature
-      data:
+      data_template:
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
         temperature: {{ states('input_number.home_temperature') | int }}
         hvac_mode: cool
