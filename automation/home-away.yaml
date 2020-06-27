@@ -32,7 +32,7 @@
     - service: climate.set_temperature
       data_template:
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
-        temperature: {{ states('input_number.home_temperature') | int }}
+        temperature: '{{ states.input_number.home_temperature.state | int }}'
         hvac_mode: cool
 
 - alias: Return to Neighborhood
