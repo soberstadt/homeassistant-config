@@ -209,12 +209,13 @@ views:
           - switch.etekcity_2
       - type: custom:light-entity-card
         entity: light.mood_lights
-        header: false
+        hide_header: true
         persist_features: true
         brightness: false
         color_temp: false
         white_value: false
         effects_list: false
+        consolidate_entities: true
 
   - title: Media
     icon: mdi:television

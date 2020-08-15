@@ -39,10 +39,6 @@
       friendly_name: "Mission Name"
       value_template: '{{ states.sensor.spacex.attributes["mission_name"] }}'
 
-    spencers_battery:
-      unit_of_measurement: "%"
-      value_template: "{{ states.device_tracker.sm_g950u.attributes.battery_level | round(0) }}"
-
     roku_source:
       value_template: "{{ states.media_player.roku.attributes.source }}"
 
