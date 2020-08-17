@@ -64,6 +64,7 @@ cards:
   - type: entities
     title: Media
     entities:
+      - automation.morning_bedroom_white_noise_stop
       - automation.autoplay_jeopardy
       - automation.roku_off_if_chromecast_doing_nothing
   - type: entities

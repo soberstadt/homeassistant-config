@@ -358,6 +358,13 @@ views:
           - sensor.house_mean_humidity
           - sensor.avg_real_feel
       - type: entities
+        title: Wake-up Times
+        show_header_toggle: false
+        entities:
+          - input_datetime.special_wakeup
+          - input_datetime.weekday_wakeup
+          - input_datetime.weekend_wakeup
+      - type: entities
         title: Speedtest
         show_header_toggle: false
         entities:
