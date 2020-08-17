@@ -202,6 +202,19 @@ input_number:
     min: 71
     max: 75
     step: 1
+input_datetime:
+  weekday_wakeup:
+    name: Weekday Wakeup Time
+    has_date: false
+    has_time: true
+  weekend_wakeup:
+    name: Weekend Wakeup Time
+    has_date: false
+    has_time: true
+  special_wakeup:
+    name: Special Wakeup Time
+    has_date: false
+    has_time: true
 
 # custom components:
 hacs:
