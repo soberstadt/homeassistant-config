@@ -8,6 +8,9 @@
   scan_interval:
     minutes: 15
 
+- platform: time_date
+  display_options:
+    - 'time'
 - platform: uptime
   name: HA Uptime
   unit_of_measurement: hours
