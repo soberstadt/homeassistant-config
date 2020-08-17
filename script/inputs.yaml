@@ -1,6 +1,7 @@
 clear_special_wakup:
+  alias: Clear Special Wakeup Time
   sequence:
     service: input_datetime.set_datetime
     data:
       entity_id: input_datetime.special_wakeup
-      time: '00:00:00'
+      time: "00:00:00"
