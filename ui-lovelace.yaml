@@ -362,6 +362,7 @@ views:
         show_header_toggle: false
         entities:
           - input_datetime.special_wakeup
+          - script.clear_special_wakup
           - input_datetime.weekday_wakeup
           - input_datetime.weekend_wakeup
       - type: entities
