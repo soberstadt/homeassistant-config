@@ -1,3 +1,7 @@
+- platform: workday
+  country: USA
+  province: FL
+
 - platform: template
   sensors:
     spencer_charging:
