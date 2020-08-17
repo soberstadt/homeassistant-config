@@ -8,9 +8,6 @@
       - condition: time
         after: '04:00:00'
         before: '12:00:00'
-      - condition: state
-        entity_id: media_player.bedroom_speaker
-        state: "playing"
       - condition: template
         value_template: >
           {% if (state_attr('input_datetime.special_wakeup', 'timestamp') | int) != 0 %}
@@ -21,9 +18,8 @@
             {{ states('sensor.time') == (state_attr('input_datetime.weekend_wakeup', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}
           {% endif %}
   action:
-    - service: notify.pushbullet
-      data:
-        message: "Wake Up!"
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_speaker
     - service: input_datetime.set_datetime
       entity_id: input_datetime.special_wakeup
       data:
