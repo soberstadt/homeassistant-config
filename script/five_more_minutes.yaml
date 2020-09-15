@@ -1,0 +1,25 @@
+five_more_minutes:
+  alias: Five More Minutes
+  mode: restart
+  sequence:
+    choose:
+      - conditions:
+          - condition: time
+            after: '04:00:00'
+            before: '12:00:00'
+        sequence:
+          - service: media_player.media_play
+            data:
+              entity_id: media_player.bedroom_speaker
+          - delay:
+              minutes: 5
+          - service: media_player.media_pause
+            data:
+              entity_id: media_player.bedroom_speaker
+    default:
+      - service: light.turn_on
+        entity_id: light.ge_12724_3way_dimmer_switch_level
+      - delay:
+          minutes: 5
+      - service: scene.turn_on
+        entity_id: scene.darkroom
