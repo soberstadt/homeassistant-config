@@ -139,6 +139,26 @@ google_assistant:
       name: Garage Door
       expose: true
       room: Garage
+    scene.darkroom:
+      name: Darkroom Scene
+      expose: true
+      room: Bedroom
+    scene.romantic:
+      name: Romantic Scene
+      expose: true
+      room: Bedroom
+    scene.evening:
+      name: Evening Scene
+      expose: true
+    scene.movie_playing:
+      name: Movie Scene
+      expose: true
+    script.good_night:
+      name: Good Night Script
+      expose: true
+    input_boolean.guest_mode:
+      name: Guest Mode
+      expose: true
   expose_by_default: false
 
 vesync:
@@ -198,7 +218,6 @@ input_select:
 input_number:
   home_temperature:
     name: Home Temperature
-    initial: 73
     min: 71
     max: 75
     step: 1
