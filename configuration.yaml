@@ -153,9 +153,17 @@ google_assistant:
     scene.movie_playing:
       name: Movie Scene
       expose: true
+    scene.lily_bed_time:
+      name: Lily's Bed Time
+      expose: true
+      room: Lily's Room
     script.good_night:
       name: Good Night Script
       expose: true
+    script.five_more_minutes:
+      name: Five More Minutes
+      expose: true
+      room: Bedroom
     input_boolean.guest_mode:
       name: Guest Mode
       expose: true
