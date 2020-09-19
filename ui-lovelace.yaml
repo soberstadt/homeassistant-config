@@ -337,7 +337,7 @@ views:
                 media_content_id: "35.1"
 
   - title: Settings
-    icon: mdi:settings
+    icon: mdi:cog
     background: var(--background-image)
     path: settings
     cards:

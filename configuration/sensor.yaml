@@ -47,7 +47,6 @@
 
     arrow_2_real_feel:
       friendly_name: "Arrow 2 Real Feel"
-      entity_id: [sensor.arrow_2_temperature, sensor.arrow_2_humidity]
       value_template: >-
         {% set T = states('sensor.arrow_2_temperature')|float %}
         {% set RH = states('sensor.arrow_2_humidity')|float %}
@@ -71,7 +70,6 @@
 
     avg_real_feel:
       friendly_name: "House Average Real Feel"
-      entity_id: [sensor.house_mean_temperature, sensor.house_mean_humidity]
       value_template: >-
         {% set T = states('sensor.house_mean_temperature')|float %}
         {% set RH = states('sensor.house_mean_humidity')|float %}
