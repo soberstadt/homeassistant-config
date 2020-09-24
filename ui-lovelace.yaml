@@ -1,11 +1,11 @@
 title: Oberstadt Home
 excluded_entities:
-custom_header:
-  compact_mode: true
-  hide_tabs:
-    - 6
-  hide_help: true
-  hide_config: true
+# custom_header:
+#   compact_mode: true
+#   hide_tabs:
+#     - 6
+#   hide_help: true
+#   hide_config: true
 views:
   - title: Home
     icon: mdi:home
