@@ -9,6 +9,43 @@
   payload_available: "Online"
   payload_not_available: "Offline"
   retain: false
+
+- platform: template
+  switches:
+    rf_plug1:
+      friendly_name: RF Plug 1
+      icon_template: mdi:power-socket-us
+      turn_on:
+        service: mqtt.publish
+        data:
+          topic: cmnd/sonoff_rf/RfKey1
+      turn_off:
+        service: mqtt.publish
+        data:
+          topic: cmnd/sonoff_rf/RfKey2
+    rf_plug2:
+      friendly_name: RF Plug 2
+      icon_template: mdi:power-socket-us
+      turn_on:
+        service: mqtt.publish
+        data:
+          topic: cmnd/sonoff_rf/RfKey3
+      turn_off:
+        service: mqtt.publish
+        data:
+          topic: cmnd/sonoff_rf/RfKey4
+    rf_plug3:
+      friendly_name: RF Plug 3
+      icon_template: mdi:power-socket-us
+      turn_on:
+        service: mqtt.publish
+        data:
+          topic: cmnd/sonoff_rf/RfKey5
+      turn_off:
+        service: mqtt.publish
+        data:
+          topic: cmnd/sonoff_rf/RfKey6
+
 # - platform: rpi_rf
 #   gpio: 18
 #   switches:
