@@ -17,6 +17,8 @@
   value_template: "{{ value_json.RfReceived.Data }}"
   off_delay: 3
   availability_topic: "tele/sonoff_rf/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
 
 - platform: mqtt
   name: RF Button One - Right
@@ -25,6 +27,8 @@
   value_template: "{{ value_json.RfReceived.Data }}"
   off_delay: 3
   availability_topic: "tele/sonoff_rf/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
 
 - platform: mqtt
   name: Front Door
@@ -34,6 +38,8 @@
   off_delay: 10
   device_class: door
   availability_topic: "tele/sonoff_rf/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
 
 - platform: mqtt
   name: Garage Entry
@@ -43,3 +49,5 @@
   off_delay: 10
   device_class: door
   availability_topic: "tele/sonoff_rf/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
