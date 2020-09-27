@@ -15,6 +15,7 @@
     rf_plug1:
       friendly_name: RF Plug 1
       icon_template: mdi:power-socket-us
+      availability_template: "{{ is_state('binary_sensor.rf_bridge_available', 'on') }}"
       turn_on:
         service: mqtt.publish
         data:
@@ -26,6 +27,7 @@
     rf_plug2:
       friendly_name: RF Plug 2
       icon_template: mdi:power-socket-us
+      availability_template: "{{ is_state('binary_sensor.rf_bridge_available', 'on') }}"
       turn_on:
         service: mqtt.publish
         data:
@@ -37,6 +39,7 @@
     rf_plug3:
       friendly_name: RF Plug 3
       icon_template: mdi:power-socket-us
+      availability_template: "{{ is_state('binary_sensor.rf_bridge_available', 'on') }}"
       turn_on:
         service: mqtt.publish
         data:
@@ -45,15 +48,3 @@
         service: mqtt.publish
         data:
           topic: cmnd/sonoff_rf/RfKey6
-
-# - platform: rpi_rf
-#   gpio: 18
-#   switches:
-#     aux1:
-#       pulselength: 190
-#       code_on: 349955
-#       code_off: 349964
-#     aux2:
-#       pulselength: 190
-#       code_on: 349635
-#       code_off: 349644
