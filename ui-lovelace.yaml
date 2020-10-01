@@ -186,6 +186,7 @@ views:
           - light.sink
           - light.oven
           - light.tuya_light_1
+          - light.kitchen_cabinet
       - type: entities
         title: Bedroom Lights
         entities:

@@ -13,6 +13,7 @@ kitchen_lights:
   - light.sink
   - light.oven
   - light.tuya_light_1
+  - light.kitchen_cabinet
 Bedroom Lights:
   - light.ge_12724_3way_dimmer_switch_level
   - light.flux_bedroom
