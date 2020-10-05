@@ -20,3 +20,22 @@
   action:
     - service: scene.turn_on
       entity_id: scene.darkroom
+
+- alias: Night - Lily Night Light On
+  trigger:
+    platform: time
+    at: "19:00:00"
+  condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: light.flux_lily_bedroom
+          state: "off"
+        - condition: template
+          value_template: "{{ states.input_select.family_status_dropdown.state != 'Extended Away' }}"
+  action:
+    - service: light.turn_on
+      entity_id: light.flux_lily_bedroom
+      data:
+        rgb_color: [255, 36, 0]
+        brightness: 26

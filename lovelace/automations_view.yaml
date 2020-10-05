@@ -58,9 +58,12 @@ cards:
       - automation.ifttt_night_scene
       - automation.ifttt_roku_channel
   - type: entities
-    title: Lights
+    title: Bedtime Lights
     entities:
       - automation.night_lights_off_after_20_min_of_no_tv
+      - automation.night_lily_night_light_on
+      - automation.night_bedroom_mood_sleep_warning
+      - automation.night_bedroom_sleep_time
   - type: entities
     title: Media
     entities:
