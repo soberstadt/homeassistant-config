@@ -9,6 +9,11 @@ roku_ff_seconds:
     service: python_script.roku_fast_forward_seconds
     data_template:
       seconds: "{{ seconds }}"
+roku_play_pause:
+  sequence:
+    service: media_player.media_play_pause
+    data:
+      entity_id: media_player.roku
 tv_off:
   sequence:
     - service: media_player.turn_off
