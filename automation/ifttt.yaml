@@ -18,14 +18,30 @@
     event_data:
       action: call_roku_channel_by_name
   action:
-    service: media_player.play_media
-    data_template:
-      entity_id: media_player.roku
-      media_content_type: channel
-      media_content_id: >
-        {% set channels = {
-          'NBC':'2.1',
-          'ABC':'9.1',
-          'CBS':'6.1',
-          'FOX':'35.1' } %}
-        "{{ channels[trigger.event.data.channel.upper()] }}"
+    - service: system_log.write
+      data_template:
+        level: info
+        message: "{{ trigger.event.data.channel.upper() }}"
+    - service: system_log.write
+      data_template:
+        level: info
+        message: >
+          {% set channels = {
+            'NBC':'2.1',
+            'ABC':'9.1',
+            'CBS':'6.1',
+            'FOX':'35.1' } %}
+          "{{ channels[''] }}"
+          "{{ channels[trigger.event.data.channel.upper()] }}"
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.roku
+        media_content_type: channel
+        media_content_id: >
+          {% set channels = {
+            'NBC':'2.1',
+            'ABC':'9.1',
+            'CBS':'6.1',
+            'FOX':'35.1' } %}
+          "{{ channels[''] }}"
+          "{{ channels[trigger.event.data.channel.upper()] }}"
