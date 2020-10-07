@@ -1,44 +1,3 @@
-- alias: IFTTT - Scenes
-  trigger:
-    platform: event
-    event_type: ifttt_webhook_received
-    event_data:
-      action: call_scene
-  action:
-    service: scene.turn_on
-    data_template:
-      entity_id: "{{ trigger.event.data.entity_id }}"
-
-- alias: IFTTT - Roku
-  trigger:
-    platform: event
-    event_type: ifttt_webhook_received
-    event_data:
-      action: call_roku
-  action:
-    service: remote.send_command
-    data_template:
-      entity_id: remote.roku
-      command: "{{ trigger.event.data.button }}"
-
-- alias: IFTTT - Wii
-  trigger:
-    platform: event
-    event_type: ifttt_webhook_received
-    event_data:
-      action: wii
-  action:
-    service: script.wii
-
-- alias: IFTTT - Night Scene
-  trigger:
-    platform: event
-    event_type: ifttt_webhook_received
-    event_data:
-      action: night_scene
-  action:
-    service: script.good_night
-
 - alias: IFTTT - Roku Channel
   trigger:
     platform: event
@@ -51,3 +10,22 @@
       entity_id: media_player.roku
       media_content_type: channel
       media_content_id: "{{ trigger.event.data.channel }}"
+
+- alias: IFTTT - Roku Channel by Name
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_roku_channel_by_name
+  action:
+    service: media_player.play_media
+    data_template:
+      entity_id: media_player.roku
+      media_content_type: channel
+      media_content_id: >
+        {% set channels = {
+          'NBC':'2.1',
+          'ABC':'9.1',
+          'CBS':'6.1',
+          'FOX':'35.1' } %}
+        "{{ channels[trigger.event.data.channel.upper()] }}"

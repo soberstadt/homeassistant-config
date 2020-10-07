@@ -51,11 +51,8 @@ cards:
   - type: entities
     title: IFTTT
     entities:
-      - automation.ifttt_roku
-      - automation.ifttt_scenes
-      - automation.ifttt_wii
-      - automation.ifttt_night_scene
       - automation.ifttt_roku_channel
+      - automation.ifttt_roku_channel_by_name
   - type: entities
     title: Bedtime Lights
     entities:
