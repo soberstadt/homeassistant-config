@@ -20,11 +20,9 @@
   action:
     - service: system_log.write
       data_template:
-        level: info
         message: "{{ trigger.event.data.channel.upper() }}"
     - service: system_log.write
       data_template:
-        level: info
         message: >
           {% set channels = {
             'NBC':'2.1',
