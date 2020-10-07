@@ -29,8 +29,7 @@
             'ABC':'9.1',
             'CBS':'6.1',
             'FOX':'35.1' } %}
-          "{{ channels[''] }}"
-          "{{ channels[trigger.event.data.channel.upper()] }}"
+          {{ channels[trigger.event.data.channel.upper()] }}
     - service: media_player.play_media
       data_template:
         entity_id: media_player.roku
@@ -41,5 +40,4 @@
             'ABC':'9.1',
             'CBS':'6.1',
             'FOX':'35.1' } %}
-          "{{ channels[''] }}"
-          "{{ channels[trigger.event.data.channel.upper()] }}"
+          {{ channels[trigger.event.data.channel.upper()] }}
