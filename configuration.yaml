@@ -53,6 +53,15 @@ history:
 logbook:
 recorder:
   purge_keep_days: 3
+  commit_interval: 5
+  exclude:
+    domains:
+      - automation
+      - updater
+    entity_globs:
+      - media_player.*
+    entities:
+      - sun.sun
 
 sun:
 system_health:
