@@ -1,38 +1,25 @@
 - alias: Night - Bedroom Mood Sleep Warning
   trigger:
     platform: time
-    at: "23:25:00"
+    at: input_datetime.bedtime
   condition:
     - condition: state
       entity_id: light.ge_12724_3way_dimmer_switch_level
       state: "on"
   action:
     - service: script.warn_for_bed_time
-
-- alias: Night - Bedroom Sleep Time
-  trigger:
-    platform: time
-    at: "23:30:00"
-  condition:
-    - condition: state
-      entity_id: light.ge_12724_3way_dimmer_switch_level
-      state: "on"
-  action:
+    - delay:
+        minutes: "5"
     - service: scene.turn_on
       entity_id: scene.darkroom
 
 - alias: Night - Lily Night Light On
   trigger:
     platform: time
-    at: "19:00:00"
+    at: "19:10:00"
   condition:
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: light.flux_lily_bedroom
-          state: "off"
-        - condition: template
-          value_template: "{{ states.input_select.family_status_dropdown.state != 'Extended Away' }}"
+    - condition: template
+      value_template: "{{ states.input_select.family_status_dropdown.state != 'Extended Away' }}"
   action:
     - service: light.turn_on
       entity_id: light.flux_lily_bedroom

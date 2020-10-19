@@ -249,6 +249,10 @@ input_datetime:
     name: Special Wakeup Time
     has_date: false
     has_time: true
+  bedtime:
+    name: Bedtime
+    has_date: false
+    has_time: true
 
 # custom components:
 hacs:
