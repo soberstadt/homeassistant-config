@@ -53,6 +53,17 @@
   payload_not_available: Offline
 
 - platform: mqtt
+  name: Bedroom Door
+  payload_on: "A7790A"
+  payload_off: "A7790E"
+  state_topic: "tele/sonoff_rf/RESULT"
+  value_template: "{{ value_json.RfReceived.Data }}"
+  device_class: door
+  availability_topic: "tele/sonoff_rf/LWT"
+  payload_available: Online
+  payload_not_available: Offline
+
+- platform: mqtt
   name: RF Bridge Available
   payload_on: Online
   payload_off: Offline
