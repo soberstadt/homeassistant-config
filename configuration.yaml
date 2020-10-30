@@ -109,6 +109,10 @@ speedtestdotnet:
     - ping
     - download
 
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_secret
+
 weather:
   - platform: darksky
     api_key: !secret darksky
