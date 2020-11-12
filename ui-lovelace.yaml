@@ -426,6 +426,9 @@ views:
           - sensor.spacex_next_launch_site
           - sensor.spacex_next_landing_type
           - sensor.spacex_next_rocket
+      - type: custom:thermostat-card
+        entity: climate.2gig_technologies_ct101_thermostat_iris_mode
+        step: 1
   - !include lovelace/arrows_view.yaml
   - !include lovelace/automations_view.yaml
   - title: wifi

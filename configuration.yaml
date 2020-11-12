@@ -27,6 +27,8 @@ lovelace:
     # cards loaded via hacs
     - url: /hacsfiles/custom-header/custom-header.js
       type: module
+    - url: /hacsfiles/lovelace-thermostat-card/main.js
+      type: module
     - url: /hacsfiles/mini-media-player/mini-media-player.js
       type: module
     - url: /hacsfiles/roku-card/roku-card.js
