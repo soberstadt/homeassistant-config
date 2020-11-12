@@ -26,8 +26,8 @@ sensor:
   - platform: ultrasonic
     id: a3_ultrasonic_sensor
     name: "Arrow 3 Distance Sensor"
-    trigger_pin: D2
-    echo_pin: D1
+    trigger_pin: D6
+    echo_pin: D7
     update_interval: 5s
     timeout: 3m
 
