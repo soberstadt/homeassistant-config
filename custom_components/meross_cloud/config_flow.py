@@ -5,16 +5,18 @@ import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.const import CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
-from meross_iot.api import MerossHttpClient, UnauthorizedException
+from meross_iot.http_api import MerossHttpClient
+from meross_iot.model.credentials import MerossCloudCreds
+from meross_iot.model.http.exception import UnauthorizedException
 from requests.exceptions import ConnectTimeout
-from datetime import datetime
-from .common import DOMAIN, CONF_STORED_CREDS
+
+from .common import PLATFORM, CONF_STORED_CREDS
 
 _LOGGER = logging.getLogger(__name__)
 PARALLEL_UPDATES = 1
 
 
-class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+class MerossFlowHandler(config_entries.ConfigFlow, domain=PLATFORM):
     """Handle Meross config flow."""
 
     VERSION = 1
@@ -33,7 +35,7 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
 
-        await self.async_set_unique_id(DOMAIN)
+        await self.async_set_unique_id(PLATFORM)
         self._abort_if_unique_id_configured()
 
         if not user_input:
@@ -44,10 +46,7 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
         # Test the connection to the Meross Cloud.
         try:
-            creds = await self.hass.async_add_executor_job(
-                self._test_authorization, username, password
-            )
-
+            creds = await self._test_authorization(username, password)
         except UnauthorizedException as ex:
             _LOGGER.error("Unable to connect to Meross HTTP api: %s", str(ex))
             return self._show_form({"base": "invalid_credentials"})
@@ -71,9 +70,9 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
     @staticmethod
-    def _test_authorization(username, password):
-        client = MerossHttpClient.from_user_password(email=username, password=password)
-        return client.get_cloud_credentials()
+    async def _test_authorization(username: str, password: str) -> MerossCloudCreds:
+        client = await MerossHttpClient.async_from_user_password(email=username, password=password)
+        return client.cloud_credentials
 
     @callback
     def _show_form(self, errors=None):
@@ -87,7 +86,8 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_import(self, import_config):
         """Import a config entry from configuration.yaml."""
         if self._async_current_entries():
-            _LOGGER.warning("Only one configuration of Meross is allowed.")
+            _LOGGER.warning("Only one configuration of Meross is allowed. If you added Meross via configuration.yaml, "
+                            "you should now remove that and use the integration menu con configure it.")
             return self.async_abort(reason="single_instance_allowed")
 
         return await self.async_step_user(import_config)

@@ -1,172 +1,226 @@
 import logging
-from typing import Any, Optional
+from datetime import timedelta
+from typing import Any, Optional, Iterable, List
 
-from homeassistant.components.fan import SUPPORT_SET_SPEED, FanEntity
-from meross_iot.cloud.client_status import ClientStatus
-from meross_iot.cloud.devices.humidifier import GenericHumidifier, SprayMode
-from meross_iot.cloud.exceptions.CommandTimeoutException import CommandTimeoutException
+from homeassistant.core import HomeAssistant
+from meross_iot.controller.device import BaseDevice
+from meross_iot.controller.mixins.spray import SprayMixin
 from meross_iot.manager import MerossManager
-from meross_iot.meross_event import (DeviceOnlineStatusEvent,
-                                     HumidifierSpryEvent)
+from meross_iot.model.enums import OnlineStatus, Namespace, SprayMode
+from meross_iot.model.exception import CommandTimeoutError
+from meross_iot.model.push.generic import GenericPushNotification
 
-from .common import (DOMAIN, HA_FAN, MANAGER, ConnectionWatchDog, MerossEntityWrapper, log_exception)
+from .common import (PLATFORM, MANAGER, calculate_humidifier_id, log_exception, SENSOR_POLL_INTERVAL_SECONDS)
+
+# Conditional import for fan device device
+try:
+    from homeassistant.components.fan import FanEntity, SUPPORT_SET_SPEED
+except ImportError:
+    from homeassistant.components.switch import FanDevice as FanEntity
+
 
 _LOGGER = logging.getLogger(__name__)
 PARALLEL_UPDATES = 1
+SCAN_INTERVAL = timedelta(seconds=SENSOR_POLL_INTERVAL_SECONDS)
 
 
-class MerossSmartHumidifier(FanEntity, MerossEntityWrapper):
+class MerossHumidifierDevice(SprayMixin, BaseDevice):
     """
-    At the time of writing, Homeassistant does not offer any specific device implementation that we can extend
-    for implementing the smart humidifier. We'll exploit the fan entity to do so
+    Type hints helper
     """
+    pass
 
-    def __init__(self, device: GenericHumidifier):
+
+class HumidifierEntityWrapper(FanEntity):
+    """Wrapper class to adapt the Meross humidifier into the Homeassistant platform"""
+
+    def __init__(self, device: MerossHumidifierDevice, channel: int):
         self._device = device
-        self._id = device.uuid
 
-        # Device state
-        self._available = True  # Assume the mqtt client is connected
-        self._first_update_done = False
-        self._ignore_update = False
+        # If the current device has more than 1 channel, we need to setup the device name and id accordingly
+        self._id = calculate_humidifier_id(device.internal_id, channel)
+        channel_data = device.channels[channel]
+        self._entity_name = "{} ({}) - {}".format(device.name, device.type, channel_data.name)
 
-    def update(self):
-        if self._ignore_update:
-            _LOGGER.warning("Skipping UPDATE as ignore_update is set.")
-            return
+        # Device properties
+        self._channel_id = channel
 
-        if self._device.online:
+    # region Device wrapper common methods
+    async def async_update(self):
+        if self._device.online_status == OnlineStatus.ONLINE:
             try:
-                self._device.get_status(force_status_refresh=True)
-                self._first_update_done = True
-            except CommandTimeoutException as e:
+                await self._device.async_update()
+            except CommandTimeoutError as e:
                 log_exception(logger=_LOGGER, device=self._device)
-                raise
+                pass
 
-    def device_event_handler(self, evt):
-        # Update the device state when an event occurs
-        self.schedule_update_ha_state(False)
+    async def _async_push_notification_received(self, namespace: Namespace, data: dict):
+        update_state = False
+        full_update = False
 
-    def notify_client_state(self, status: ClientStatus):
-        # When a connection change occurs, update the internal state
-        # If we are connecting back, schedule a full refresh of the device
-        # In any other case, mark the device unavailable
-        # and only update the UI
-        client_online = status == ClientStatus.SUBSCRIBED
-        self._available = client_online
-        self.schedule_update_ha_state(True)
+        if namespace == Namespace.CONTROL_UNBIND:
+            _LOGGER.warning(f"Received unbind event. Removing device {self.name} from HA")
+            await self.platform.async_remove_entity(self.entity_id)
+        elif namespace == Namespace.SYSTEM_ONLINE:
+            _LOGGER.warning(f"Device {self.name} reported online event.")
+            online = OnlineStatus(int(data.get('online').get('status')))
+            update_state = True
+            full_update = online == OnlineStatus.ONLINE
+
+        elif namespace == Namespace.HUB_ONLINE:
+            _LOGGER.warning(f"Device {self.name} reported (HUB) online event.")
+            online = OnlineStatus(int(data.get('status')))
+            update_state = True
+            full_update = online == OnlineStatus.ONLINE
+        else:
+            update_state = True
+            full_update = False
+
+        # In all other cases, just tell HA to update the internal state representation
+        if update_state:
+            self.async_schedule_update_ha_state(force_refresh=full_update)
 
     async def async_added_to_hass(self) -> None:
-        self._device.register_event_callback(self.device_event_handler)
-        self._ignore_update = False
+        self._device.register_push_notification_handler_coroutine(self._async_push_notification_received)
+        self.hass.data[PLATFORM]["ADDED_ENTITIES_IDS"].add(self.unique_id)
 
     async def async_will_remove_from_hass(self) -> None:
-        self._device.unregister_event_callback(self.device_event_handler)
-        self._ignore_update = True
+        self._device.unregister_push_notification_handler_coroutine(self._async_push_notification_received)
+        self.hass.data[PLATFORM]["ADDED_ENTITIES_IDS"].remove(self.unique_id)
+
+    # endregion
+
+    # region Device wrapper common properties
+    @property
+    def unique_id(self) -> str:
+        # Since Meross plugs may have more than 1 switch, we need to provide a composed ID
+        # made of uuid and channel
+        return self._id
 
     @property
-    def assumed_state(self) -> bool:
-        return not self._first_update_done
+    def name(self) -> str:
+        return self._entity_name
+
+    @property
+    def device_info(self):
+        return {
+            'identifiers': {(PLATFORM, self._device.internal_id)},
+            'name': self._device.name,
+            'manufacturer': 'Meross',
+            'model': self._device.type + " " + self._device.hardware_version,
+            'sw_version': self._device.firmware_version
+        }
 
     @property
     def available(self) -> bool:
         # A device is available if the client library is connected to the MQTT broker and if the
         # device we are contacting is online
-        return self._available and self._device.online
+        return self._device.online_status == OnlineStatus.ONLINE
 
     @property
-    def is_on(self) -> bool:
-        if not self._first_update_done:
-            # Schedule update and return
-            self.schedule_update_ha_state(True)
-            return None
+    def should_poll(self) -> bool:
+        return False
+    # endregion
 
-        # This device is considered "on" if spry mode is continuous or intermittent
-        spry_mode = SprayMode(self._device.get_status().get('spray')[0].get('mode'))
-        return spry_mode != SprayMode.OFF
+    # region Platform-specific command methods
+    async def async_turn_off(self, **kwargs) -> None:
+        await self._device.async_set_mode(mode=SprayMode.OFF, channel=self._channel_id)
 
-    @property
-    def speed(self) -> Optional[str]:
-        if not self._first_update_done:
-            # Schedule update and return
-            self.schedule_update_ha_state(True)
-            return None
-        spry_mode = SprayMode(self._device.get_status().get('spray')[0].get('mode'))
-        return spry_mode.name
+    async def async_turn_on(self, speed: Optional[str] = None, **kwargs: Any) -> None:
+        if speed is None:
+            mode = SprayMode.CONTINUOUS
+        else:
+            mode = SprayMode[speed]
+        await self._device.async_set_mode(mode=mode, channel=self._channel_id)
 
-    @property
-    def supported_features(self) -> int:
-        return 0 | SUPPORT_SET_SPEED
-
-    @property
-    def speed_list(self) -> list:
-        """Get the list of available speeds."""
-        return [e.name for e in SprayMode]
-
-    def set_speed(self, speed: str) -> None:
+    async def async_set_speed(self, speed: str) -> None:
         mode = SprayMode[speed]
-        self._device.set_spray_mode(mode)
+        await self._device.async_set_mode(mode=mode, channel=self._channel_id)
 
     def set_direction(self, direction: str) -> None:
         # Not supported
         pass
 
-    def turn_on(self, speed: Optional[str] = None, **kwargs) -> None:
-        if speed is None:
-            mode = SprayMode.CONTINUOUS
-        else:
-            mode = SprayMode[speed]
+    def set_speed(self, speed: str) -> None:
+        # Not implemented: use async method instead...
+        pass
 
-        self._device.set_spray_mode(mode)
+    def turn_on(self, speed: Optional[str] = None, **kwargs) -> None:
+        # Not implemented: use async method instead...
+        pass
 
     def turn_off(self, **kwargs: Any) -> None:
-        self._device.set_spray_mode(SprayMode.OFF)
+        # Not implemented: use async method instead...
+        pass
+    # endregion
+
+    # region Platform specific properties
+    @property
+    def supported_features(self) -> int:
+        return SUPPORT_SET_SPEED
 
     @property
-    def name(self) -> Optional[str]:
-        return self._device.name
+    def is_on(self) -> Optional[bool]:
+        mode = self._device.get_current_mode(channel=self._channel_id)
+        if mode is None:
+            return None
+        return mode != SprayMode.OFF
 
     @property
-    def device_info(self):
-        return {
-            'identifiers': {(DOMAIN, self._id)},
-            'name': self._device.name,
-            'manufacturer': 'Meross',
-            'model': self._device.type + " " + self._device.hwversion,
-            'sw_version': self._device.fwversion
-        }
+    def speed_list(self) -> list:
+        return [e.name for e in SprayMode]
 
     @property
-    def should_poll(self) -> bool:
-        """
-        This device handles stat update via push notification
-        :return:
-        """
-        return False
+    def speed(self) -> Optional[str]:
+        mode = self._device.get_current_mode(channel=self._channel_id)
+        if mode is None:
+            return None
+        return mode.name
+
+    # endregion
+
+
+async def _add_entities(hass: HomeAssistant, devices: Iterable[BaseDevice], async_add_entities):
+    new_entities = []
+
+    # Identify all the devices that expose the Spray capability
+    devs = filter(lambda d: isinstance(d, SprayMixin), devices)
+
+    for d in devs:
+        for channel_index, channel in enumerate(d.channels):
+            w = HumidifierEntityWrapper(device=d, channel=channel_index)
+            if w.unique_id not in hass.data[PLATFORM]["ADDED_ENTITIES_IDS"]:
+                new_entities.append(w)
+            else:
+                _LOGGER.info(f"Skipping device {w} as it was already added to registry once.")
+    async_add_entities(new_entities, True)
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
-    def sync_logic():
+    # When loading the platform, immediately add currently available
+    # switches.
+    manager = hass.data[PLATFORM][MANAGER]  # type:MerossManager
+    devices = manager.find_devices()
+    await _add_entities(hass=hass, devices=devices, async_add_entities=async_add_entities)
 
-        fan_devices = []
-        manager = hass.data[DOMAIN][MANAGER]  # type:MerossManager
+    # Register a listener for the Bind push notification so that we can add new entities at runtime
+    async def platform_async_add_entities(push_notification: GenericPushNotification, target_devices: List[BaseDevice]):
+        if push_notification.namespace == Namespace.CONTROL_BIND \
+                or push_notification.namespace == Namespace.SYSTEM_ONLINE \
+                or push_notification.namespace == Namespace.HUB_ONLINE:
 
-        # Add smart humidifiers
-        humidifiers = manager.get_devices_by_kind(GenericHumidifier)
-        for humidifier in humidifiers:
-            h = MerossSmartHumidifier(device=humidifier)
-            fan_devices.append(h)
-            hass.data[DOMAIN][HA_FAN][h.unique_id] = h
+            # TODO: Discovery needed only when device becomes online?
+            await manager.async_device_discovery(push_notification.namespace == Namespace.HUB_ONLINE,
+                                                 meross_device_uuid=push_notification.originating_device_uuid)
+            devs = manager.find_devices(device_uuids=(push_notification.originating_device_uuid,))
+            await _add_entities(hass=hass, devices=devs, async_add_entities=async_add_entities)
 
-        return fan_devices
+    # Register a listener for new bound devices
+    manager.register_push_notification_handler_coroutine(platform_async_add_entities)
 
-    # Register a connection watchdog to notify devices when connection to the cloud MQTT goes down.
-    manager = hass.data[DOMAIN][MANAGER]  # type:MerossManager
-    watchdog = ConnectionWatchDog(hass=hass, platform=HA_FAN)
-    manager.register_event_handler(watchdog.connection_handler)
 
-    devices = await hass.async_add_executor_job(sync_logic)
-    async_add_entities(devices, True)
+# TODO: Unload entry
+# TODO: Remove entry
 
 
 def setup_platform(hass, config, async_add_entities, discovery_info=None):
