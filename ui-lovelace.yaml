@@ -119,37 +119,10 @@ views:
           - light.sitting_room_lights
           - light.dining_room_lights
           - light.mood_lights
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - type: custom:thermostat-card
-            entity: climate.2gig_technologies_ct101_thermostat_iris_mode
-          - type: conditional
-            conditions:
-              - entity: climate.2gig_technologies_ct101_thermostat_iris_mode
-                state: "cool"
-            row:
-              type: call-service
-              icon: mdi:radiator
-              name: Set thermostat to
-              action_name: Heat
-              service: climate.set_hvac_mode
-              service_data:
-                entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
-                hvac_mode: heat
-          - type: conditional
-            conditions:
-              - entity: climate.2gig_technologies_ct101_thermostat_iris_mode
-                state: "heat"
-            row:
-              type: call-service
-              icon: mdi:air-conditioner
-              name: Set thermostat to
-              action_name: Cool
-              service: climate.set_hvac_mode
-              service_data:
-                entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
-                hvac_mode: cool
+      - type: custom:thermostat-card
+        entity: climate.2gig_technologies_ct101_thermostat_iris_mode
+        step: 1
+        title: ""
       - type: picture-glance
         title: Front Door
         camera_image: camera.front_door
@@ -426,9 +399,6 @@ views:
           - sensor.spacex_next_launch_site
           - sensor.spacex_next_landing_type
           - sensor.spacex_next_rocket
-      - type: custom:thermostat-card
-        entity: climate.2gig_technologies_ct101_thermostat_iris_mode
-        step: 1
   - !include lovelace/arrows_view.yaml
   - !include lovelace/automations_view.yaml
   - title: wifi

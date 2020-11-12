@@ -21,9 +21,6 @@ frontend:
 lovelace:
   mode: yaml
   resources:
-    # local copy of card that I have edited
-    - url: /local/thermostat-card.js?v=1.1
-      type: module
     # cards loaded via hacs
     - url: /hacsfiles/custom-header/custom-header.js
       type: module
