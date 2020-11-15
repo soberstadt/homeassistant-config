@@ -10,7 +10,7 @@ before_install:
   - sudo touch /ssl/fullchain.pem
   - sudo touch /ssl/privkey.pem
   - mv github_resources/secrets_redacted.yaml secrets.yaml
-  - mv github_resources/google_account_redacted.yaml google_account.yaml
+  - mv github_resources/google_account_redacted.json google_account.json
   - sudo apt-get install libudev-dev
 
 install: pip3 install homeassistant
