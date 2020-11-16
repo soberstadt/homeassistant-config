@@ -4,6 +4,12 @@
 
 - platform: template
   sensors:
+    sun_down:
+      value_template: >-
+        {{ state_attr('sun.sun', 'elevation') < 8 }}
+
+- platform: template
+  sensors:
     spencer_charging:
       value_template: >-
         {{ states.sensor.sm_g950u_battery_level_2.attributes.is_charging }}
