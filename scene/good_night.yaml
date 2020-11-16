@@ -1,11 +1,26 @@
-- name: Good Night Lights
+- name: Good Night Guest
   entities:
+    group.bedroom_lights:
+      state: off
     light.dining_room_lamp:
       state: on
       brightness: 51
     group.mood_lights:
       state: off
+    group.sitting_room:
+      state: off
+    group.living_room_lights:
+      state: off
+    group.kitchen_lights:
+      state: off
+
+- name: Good Night Lights
+  entities:
     group.bedroom_lights:
+      state: off
+    light.dining_room_lamp:
+      state: off
+    group.mood_lights:
       state: off
     group.sitting_room:
       state: off
