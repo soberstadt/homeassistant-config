@@ -13,6 +13,8 @@
       state: off
     group.kitchen_lights:
       state: off
+    switch.etekcity_2:
+      state: off
 
 - name: Good Night Lights
   entities:
@@ -27,4 +29,6 @@
     group.living_room_lights:
       state: off
     group.kitchen_lights:
+      state: off
+    switch.etekcity_2:
       state: off
