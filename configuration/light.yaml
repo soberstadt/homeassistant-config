@@ -20,6 +20,10 @@
   payload_off: "OFF"
   payload_available: "Online"
   payload_not_available: "Offline"
+  brightness_state_topic: "stat/tasmota-4578/RESULT"
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  brightness_command_topic: "cmnd/tasmota-4578/DIMMER"
+  brightness_scale: 100
 
 - platform: group
   name: Living Room Lights
