@@ -39,7 +39,7 @@
   entities:
     - light.sink
     - light.oven
-    - light.tuya_light_1
+    - light.bulb_4578
     - light.kitchen_cabinet
 - platform: group
   name: Bedroom Lights
@@ -67,7 +67,7 @@
   entity_id: switch.sonoff_1
 - platform: switch
   name: Sitting Room Couch
-  entity_id: switch.tuya_switch_1
+  entity_id: switch.teckin_6634
 - platform: switch
   name: Paper Lamp
   entity_id: switch.meross_1

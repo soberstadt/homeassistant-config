@@ -8,7 +8,7 @@
       state: off
     light.oven:
       state: off
-    light.tuya_light_1:
+    light.bulb_4578:
       state: on
       brightness: 102
     group.living_room_lights:

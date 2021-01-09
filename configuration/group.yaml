@@ -12,7 +12,7 @@ Living Room Lights:
 kitchen_lights:
   - light.sink
   - light.oven
-  - light.tuya_light_1
+  - light.bulb_4578
   - light.kitchen_cabinet
 Bedroom Lights:
   - light.ge_12724_3way_dimmer_switch_level
@@ -21,7 +21,7 @@ dining_room:
   - light.dining_room_lamp
   - light.6001948a98a2_1921680101
 Sitting Room:
-  - switch.tuya_switch_1
+  - switch.teckin_6634
   - switch.sonoff_1
   - switch.meross_1
 mood_lights:

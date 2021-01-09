@@ -158,7 +158,7 @@ views:
         entities:
           - light.sink
           - light.oven
-          - light.tuya_light_1
+          - light.bulb_4578
           - light.kitchen_cabinet
       - type: entities
         title: Bedroom Lights
@@ -172,7 +172,7 @@ views:
       - type: entities
         title: Sitting Room
         entities:
-          - switch.tuya_switch_1
+          - switch.teckin_6634
           - switch.sonoff_1
           - switch.meross_1
       - type: entities

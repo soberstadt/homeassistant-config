@@ -3,5 +3,5 @@
     group.living_room_lights:
       state: on
       brightness: 51
-    light.tuya_light_1:
+    light.bulb_4578:
       state: off

@@ -12,7 +12,7 @@
       state: on
       rgb_color: [255, 0, 0]
       brightness: 255
-    light.tuya_light_1:
+    light.bulb_4578:
       state: off
     light.sink:
       state: on
