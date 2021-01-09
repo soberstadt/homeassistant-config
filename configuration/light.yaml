@@ -9,6 +9,20 @@
       name: flux_lily_bedroom
     192.168.0.195:
       name: kitchen_cabinet
+
+- platform: mqtt
+  name: Bulb 4578
+  state_topic: "stat/tasmota-6634/POWER"
+  command_topic: "cmnd/tasmota-6634/POWER"
+  availability_topic: "tele/tasmota-4578/LWT"
+  brightness_state_topic: "stat/tasmota-6634/RESULT"
+  brightness_value_template: "{{ value_json.Dimmer }}"
+  brightness_command_topic: "cmnd/tasmota-6634/DIMMER"
+  brightness_scale: 100
+  color_temp_state_topic: "stat/tasmota-6634/RESULT"
+  color_temp_value_template: "{{ value_json.Color }}"
+  color_temp_command_topic: "cmnd/tasmota-6634/CT"
+
 - platform: group
   name: Living Room Lights
   entities:
