@@ -24,6 +24,9 @@
   brightness_value_template: "{{ value_json.Dimmer }}"
   brightness_command_topic: "cmnd/tasmota-4578/DIMMER"
   brightness_scale: 100
+  color_temp_state_topic: "stat/tasmota-4578/RESULT"
+  color_temp_value_template: "{{ value_json.Color }}"
+  color_temp_command_topic: "cmnd/tasmota-4578/CT"
 
 - platform: group
   name: Living Room Lights
