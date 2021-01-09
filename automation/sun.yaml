@@ -1,13 +1,8 @@
 - alias: Sunset
   trigger:
-    platform: numeric_state
-    entity_id: sun.sun
-    value_template: '{{ state.attributes.elevation }}'
-    below: 8
-  condition:
-    - condition: time
-      after: '16:00:00'
-      before: '21:00:00'
+    platform: state
+    entity_id: binary_sensor.sun_down
+    to: 'on'
   action:
     - service: scene.turn_on
       data_template:
@@ -20,15 +15,9 @@
 
 - alias: Sunrise
   trigger:
-    platform: numeric_state
-    entity_id: sun.sun
-    value_template: '{{ state.attributes.elevation }}'
-    above: 8
-    below: 10
-  condition:
-    - condition: time
-      after: '05:00:00'
-      before: '12:00:00'
+    platform: state
+    entity_id: binary_sensor.sun_down
+    to: 'off'
   action:
     - service: input_select.select_option
       data:
