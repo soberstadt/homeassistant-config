@@ -90,7 +90,7 @@ zwave:
 
 device_tracker:
   - platform: nmap_tracker
-    hosts: 192.168.0.100-140
+    hosts: 192.168.0.100-180
     scan_options: " -sn "
 
 mobile_app:

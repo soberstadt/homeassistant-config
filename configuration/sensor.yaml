@@ -13,7 +13,6 @@
     - 'time'
 - platform: uptime
   name: HA Uptime
-  unit_of_measurement: hours
 
 - platform: rest
   name: SpaceX
