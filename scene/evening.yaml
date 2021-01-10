@@ -20,7 +20,7 @@
       rgb_color: [255, 61, 0]
     light.bulb_4578:
       state: on
-      brightness: 102
+      brightness: 184
     group.living_room_lights:
       state: on
       brightness: 255

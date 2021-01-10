@@ -10,7 +10,7 @@
       state: off
     light.bulb_4578:
       state: on
-      brightness: 102
+      brightness: 184
     group.living_room_lights:
       state: off
     light.dining_room_lamp:
