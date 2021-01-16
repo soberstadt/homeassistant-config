@@ -10,9 +10,11 @@
 
 - platform: template
   sensors:
-    spencer_charging:
+    chromecast_idle:
       value_template: >-
-        {{ states.sensor.sm_g950u_battery_level_2.attributes.is_charging }}
+        {{ is_state('media_player.roku', 'on')
+           and is_state_attr('media_player.roku', 'app_id', 'tvinput.hdmi1')
+           and is_state('media_player.living_room_tv', 'off') }}
 
 # button 1 Left: 9864A1
 # button 1 Right: 9864A2
