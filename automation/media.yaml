@@ -29,7 +29,6 @@
       data:
         title: Alert
         message: Chromecast idle for 15 minutes
-        entity_id: remote.roku
         data:
           actions:
             - action: roku_off
