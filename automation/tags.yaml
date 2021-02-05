@@ -1,0 +1,40 @@
+# copied from https://www.home-assistant.io/integrations/tag/#building-an-rfid-jukebox
+- id: handle_tag_scan
+  alias: Handle Tag Scan
+  mode: single
+  # Hide warnings when triggered while in delay.
+  max_exceeded: silent
+  variables:
+    # Map scanner device ID to media player entity ID
+    media_players:
+      0e19cd3cf2b311ea88f469a7512c307d: media_player.spotify_balloob
+    # Map tag ID to content
+    tags:
+      A7-6B-90-5F:
+        media_content_id: spotify:album:0h2knr6qpiAq0tV5ri5JMF
+        media_content_type: album
+      04-B1-C6-62-2F-64-80:
+        media_content_id: spotify:playlist:0OtWh3u6fZrBJTQtVBQWge
+        media_content_type: playlist
+  trigger:
+    platform: event
+    event_type: tag_scanned
+  # condition:
+    # Test that we support this device and tag
+    # - "{{ trigger.event.data.tag_id in tags }}"
+    # - "{{ trigger.event.data.device_id in media_players }}"
+  action:
+    - service: notify.mobile_app_spencer_s_pixel_4
+      data:
+        title: Tag Scanned
+        message: "{{trigger.event.data.tag_id}}"
+    # - variables:
+    #     media_player_entity_id: "{{ media_players[trigger.event.data.device_id] }}"
+    #     media_content_id: "{{ tags[trigger.event.data.tag_id].media_content_id }}"
+    #     media_content_type: "{{ tags[trigger.event.data.tag_id].media_content_type }}"
+    # - service: media_player.play_media
+    #   data:
+    #     entity_id: "{{ media_player_entity_id }}"
+    #     media_content_id: "{{ media_content_id }}"
+    #     media_content_type: "{{ media_content_type }}"
+    - delay: 2 # timeout before we allow processing next scan
