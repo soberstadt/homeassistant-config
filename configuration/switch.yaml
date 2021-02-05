@@ -10,18 +10,6 @@
   payload_not_available: "Offline"
   retain: false
 
-- platform: mqtt
-  name: Teckin 6634
-  state_topic: "stat/tasmota-6634/POWER"
-  command_topic: "cmnd/tasmota-6634/POWER"
-  availability_topic: "tele/tasmota-6634/LWT"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  retain: false
-
 - platform: template
   switches:
     rf_plug1:
