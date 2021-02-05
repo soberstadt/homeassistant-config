@@ -17,21 +17,43 @@
   action:
     - service: script.jeopardy
 
+- alias: Alert chromecast idle
+  trigger:
+    platform: state
+    entity_id: binary_sensor.chromecast_idle
+    to: "on"
+    for:
+      minutes: 15
+  action:
+    - service: notify.mobile_app_spencer_s_pixel_4
+      data:
+        title: Alert
+        message: Chromecast idle for 15 minutes
+        entity_id: remote.roku
+        data:
+          actions:
+            - action: roku_off
+              title: Turn Off
+
 - alias: Roku off if chromecast doing nothing
   trigger:
     platform: state
-    entity_id: media_player.living_room_tv
-    to: "off"
+    entity_id: binary_sensor.chromecast_idle
+    to: "on"
     for:
-      minutes: 15
-  condition:
-    - condition: state
-      entity_id: sensor.roku_source
-      state: "Streaming box"
-      for:
-        minutes: 15
+      minutes: 60
   action:
-    - service: remote.send_command
+    - service: remote.turn_off
       data:
         entity_id: remote.roku
-        command: power
+
+- alias: Noti Action - Roku Off
+  trigger:
+    platform: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: roku_off
+  action:
+    - service: remote.turn_off
+      data:
+        entity_id: remote.roku
