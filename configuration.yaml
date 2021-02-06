@@ -44,6 +44,7 @@ http:
 # Checks for available updates
 updater:
   include_used_components: true
+media_source:
 # Discover some devices automatically
 discovery:
 # Enables support for tracking state changes over time.
