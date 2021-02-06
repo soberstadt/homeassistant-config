@@ -34,8 +34,6 @@ lovelace:
       type: module
     - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
       type: module
-    - url: /hacsfiles/light-entity-card/light-entity-card.js
-      type: js
 
 config:
 
