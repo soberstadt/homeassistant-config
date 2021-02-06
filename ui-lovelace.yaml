@@ -181,6 +181,33 @@ views:
           - switch.meross_2
           - switch.etekcity_1
           - switch.etekcity_2
+      - type: 'custom:rgb-light-card'
+        entity: light.mood_lights
+        colors:
+          - rgb_color:
+            - 255
+            - 0
+            - 0
+          - rgb_color:
+            - 255
+            - 165
+            - 0
+          - rgb_color:
+            - 0
+            - 255
+            - 0
+          - rgb_color:
+            - 0
+            - 255
+            - 255
+          - rgb_color:
+            - 0
+            - 0
+            - 255
+          - rgb_color:
+            - 255
+            - 0
+            - 255
       - type: custom:light-entity-card
         entity: light.mood_lights
         hide_header: true

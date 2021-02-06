@@ -28,6 +28,8 @@ lovelace:
       type: module
     - url: /hacsfiles/mini-media-player/mini-media-player.js
       type: module
+    - url: /hacsfiles/rgb-light-card/card.js
+      type: module
     - url: /hacsfiles/roku-card/roku-card.js
       type: module
     - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
