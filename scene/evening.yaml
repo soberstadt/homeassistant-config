@@ -1,35 +1,35 @@
 - name: Evening
   entities:
     group.mood_lights:
-      state: on
+      state: "on"
       rgb_color: [0, 255, 10]
       brightness: 255
     light.ge_12724_3way_dimmer_switch_level:
-      state: on
+      state: "on"
       brightness: 191
     light.sink:
-      state: on
+      state: "on"
       brightness: 255
     light.oven:
-      state: on
+      state: "on"
       brightness: 255
     light.kitchen_cabinet:
-      state: on
+      state: "on"
       brightness: 255
       white_value: 255
       rgb_color: [255, 61, 0]
     light.bulb_4578:
-      state: on
+      state: "on"
       brightness: 184
     group.living_room_lights:
-      state: on
+      state: "on"
       brightness: 255
     light.dining_room_lamp:
-      state: on
+      state: "on"
       brightness: 255
     light.flux_bedroom:
-      state: on
+      state: "on"
       rgb_color: [151, 255, 0]
       brightness: 255
     group.sitting_room:
-      state: on
+      state: "on"

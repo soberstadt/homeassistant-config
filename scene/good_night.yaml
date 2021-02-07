@@ -1,34 +1,34 @@
 - name: Good Night Guest
   entities:
     group.bedroom_lights:
-      state: off
+      state: "off"
     light.dining_room_lamp:
-      state: on
+      state: "on"
       brightness: 51
     group.mood_lights:
-      state: off
+      state: "off"
     group.sitting_room:
-      state: off
+      state: "off"
     group.living_room_lights:
-      state: off
+      state: "off"
     group.kitchen_lights:
-      state: off
+      state: "off"
     switch.etekcity_2:
-      state: off
+      state: "off"
 
 - name: Good Night Lights
   entities:
     group.bedroom_lights:
-      state: off
+      state: "off"
     light.dining_room_lamp:
-      state: off
+      state: "off"
     group.mood_lights:
-      state: off
+      state: "off"
     group.sitting_room:
-      state: off
+      state: "off"
     group.living_room_lights:
-      state: off
+      state: "off"
     group.kitchen_lights:
-      state: off
+      state: "off"
     switch.etekcity_2:
-      state: off
+      state: "off"

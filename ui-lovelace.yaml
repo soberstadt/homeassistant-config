@@ -55,7 +55,7 @@ views:
         cards:
           - type: horizontal-stack
             cards:
-              - type: entity-button
+              - type: button
                 entity: scene.evening
                 icon: mdi:weather-sunset
                 name: Evening
@@ -64,7 +64,7 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.evening
-              - type: entity-button
+              - type: button
                 entity: scene.good_night_lights
                 icon: mdi:flashlight
                 name: Night Light
@@ -73,7 +73,7 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.good_night_lights
-              - type: entity-button
+              - type: button
                 entity: script.good_night
                 icon: mdi:sleep
                 name: All Off
@@ -82,7 +82,7 @@ views:
                   service: script.good_night
           - type: horizontal-stack
             cards:
-              - type: entity-button
+              - type: button
                 entity: scene.romantic
                 icon: mdi:heart
                 name: Romantic
@@ -91,7 +91,7 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.romantic
-              - type: entity-button
+              - type: button
                 entity: scene.movie_playing
                 icon: mdi:movie
                 name: Movie
@@ -100,7 +100,7 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.movie_playing
-              - type: entity-button
+              - type: button
                 entity: scene.lily_bed_time
                 icon: mdi:baby-carriage
                 name: Lily Bed Time
@@ -220,7 +220,7 @@ views:
     cards:
       - type: horizontal-stack
         cards:
-          - type: entity-button
+          - type: button
             entity: media_player.roku
             icon: mdi:netflix
             show_name: false
@@ -230,7 +230,7 @@ views:
               service_data:
                 entity_id: media_player.roku
                 source: Netflix
-          - type: entity-button
+          - type: button
             entity: media_player.roku
             icon: mdi:amazon
             show_name: false
@@ -240,7 +240,7 @@ views:
               service_data:
                 entity_id: media_player.roku
                 source: Prime Video
-          - type: entity-button
+          - type: button
             entity: media_player.roku
             icon: mdi:youtube
             show_name: false
@@ -250,14 +250,17 @@ views:
               service_data:
                 entity_id: media_player.roku
                 source: YouTube
-          - type: entity-button
+          - type: button
             entity: media_player.roku
-            icon: mdi:wii
+            icon: mdi:plus
             show_name: false
             tap_action:
               action: call-service
-              service: script.wii
-          - type: entity-button
+              service: media_player.select_source
+              service_data:
+                entity_id: media_player.roku
+                source: Disney Plus
+          - type: button
             entity: media_player.roku
             icon: mdi:alpha-j-circle
             show_name: false
@@ -345,6 +348,7 @@ views:
         title: More Details
         show_header_toggle: false
         entities:
+          - sun.sun
           - sensor.dark_sky_summary
           - sensor.dark_sky_temperature
           - sensor.dark_sky_humidity
