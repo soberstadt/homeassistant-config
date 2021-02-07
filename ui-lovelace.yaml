@@ -345,7 +345,6 @@ views:
         title: More Details
         show_header_toggle: false
         entities:
-          - sun.sun
           - sensor.dark_sky_summary
           - sensor.dark_sky_temperature
           - sensor.dark_sky_humidity

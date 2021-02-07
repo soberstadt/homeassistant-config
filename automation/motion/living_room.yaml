@@ -5,8 +5,8 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: sun.sun
-      state: 'above_horizon'
+      entity_id: binary_sensor.sun_down
+      state: 'off'
     - condition: state
       entity_id: group.living_room_lights
       state: 'off'
@@ -25,8 +25,8 @@
         minutes: 30
   condition:
     - condition: state
-      entity_id: sun.sun
-      state: 'above_horizon'
+      entity_id: binary_sensor.sun_down
+      state: 'off'
   action:
     - service: light.turn_off
       entity_id: group.living_room_lights

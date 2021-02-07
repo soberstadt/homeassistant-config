@@ -7,9 +7,6 @@
     sun_down:
       value_template: >-
         {{ state_attr('sun.sun', 'elevation') < 8 }}
-
-- platform: template
-  sensors:
     chromecast_idle:
       value_template: >-
         {{ is_state('media_player.roku', 'on')
