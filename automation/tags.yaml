@@ -8,9 +8,13 @@
     # Map scanner device ID to media player entity ID
     media_players:
       d11f1280b68527bd: media_player.bedroom_speaker
+      39ad9ea6f42dda4c991537f887333705: media_player.googlehome7312
     # Map tag ID to content
     tags:
       e4d8f59a-38c9-4b05-8d18-a41d855ccde7:
+        media_content_id: media-source://media_source/local/dj_airhorn.mp3
+        media_content_type: music
+      04-15-91-1A-9B-E7-25:
         media_content_id: media-source://media_source/local/dj_airhorn.mp3
         media_content_type: music
       04-B1-C6-62-2F-64-80:

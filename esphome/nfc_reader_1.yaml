@@ -1,0 +1,38 @@
+esphome:
+  name: nfc_reader_1
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret mqtt_wifi_ssid
+  password: !secret mqtt_wifi_password
+  fast_connect: on
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: !secret mqtt_password
+
+# Enable Web server.
+web_server:
+  port: 80
+
+spi:
+  clk_pin: D5
+  mosi_pin: D7
+  miso_pin: D6
+
+switch:
+  - platform: restart
+    name: NFC Scanner 1 Restart
+
+pn532_spi:
+  cs_pin: D0
+  update_interval: 1s
+  on_tag:
+    then:
+      - homeassistant.tag_scanned: !lambda 'return x;'
