@@ -56,3 +56,6 @@
 - platform: switch
   name: Front Door Light
   entity_id: switch.gosund_sw1
+- platform: switch
+  name: Kitchen Overhead Lights
+  entity_id: switch.gosund_sw2

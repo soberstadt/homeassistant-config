@@ -161,6 +161,7 @@ views:
           - light.oven
           - light.bulb_4578
           - light.kitchen_cabinet
+          - light.kitchen_overhead_lights
       - type: entities
         title: Bedroom Lights
         entities:
