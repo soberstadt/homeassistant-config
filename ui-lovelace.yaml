@@ -119,6 +119,7 @@ views:
           - light.sitting_room_lights
           - light.dining_room_lights
           - light.mood_lights
+          - light.front_door_light
       - type: custom:thermostat-card
         entity: climate.2gig_technologies_ct101_thermostat_iris_mode
         step: 1
@@ -185,34 +186,34 @@ views:
         show_header_toggle: false
         entities:
           - entity: light.mood_lights
-          - type: 'custom:rgb-light-card'
+          - type: "custom:rgb-light-card"
             entity: light.mood_lights
             justify: center
             colors:
               - rgb_color:
-                - 255
-                - 0
-                - 0
+                  - 255
+                  - 0
+                  - 0
               - rgb_color:
-                - 255
-                - 165
-                - 0
+                  - 255
+                  - 165
+                  - 0
               - rgb_color:
-                - 0
-                - 255
-                - 0
+                  - 0
+                  - 255
+                  - 0
               - rgb_color:
-                - 0
-                - 255
-                - 255
+                  - 0
+                  - 255
+                  - 255
               - rgb_color:
-                - 0
-                - 0
-                - 255
+                  - 0
+                  - 0
+                  - 255
               - rgb_color:
-                - 255
-                - 0
-                - 255
+                  - 255
+                  - 0
+                  - 255
 
   - title: Media
     icon: mdi:television

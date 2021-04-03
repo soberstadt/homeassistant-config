@@ -53,3 +53,6 @@
 - platform: switch
   name: Paper Lamp
   entity_id: switch.meross_1
+- platform: switch
+  name: Front Door Light
+  entity_id: switch.gosund_sw1
