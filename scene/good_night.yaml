@@ -13,7 +13,11 @@
       state: "off"
     group.kitchen_lights:
       state: "off"
+    light.light.kitchen_overhead_lights:
+      state: "off"
     switch.etekcity_2:
+      state: "off"
+    light.front_door_light:
       state: "off"
 
 - name: Good Night Lights
@@ -30,5 +34,9 @@
       state: "off"
     group.kitchen_lights:
       state: "off"
+    light.light.kitchen_overhead_lights:
+      state: "off"
     switch.etekcity_2:
+      state: "off"
+    light.front_door_light:
       state: "off"
