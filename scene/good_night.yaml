@@ -13,7 +13,7 @@
       state: "off"
     group.kitchen_lights:
       state: "off"
-    light.light.kitchen_overhead_lights:
+    light.kitchen_overhead_lights:
       state: "off"
     switch.etekcity_2:
       state: "off"
@@ -34,7 +34,7 @@
       state: "off"
     group.kitchen_lights:
       state: "off"
-    light.light.kitchen_overhead_lights:
+    light.kitchen_overhead_lights:
       state: "off"
     switch.etekcity_2:
       state: "off"
