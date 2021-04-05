@@ -148,6 +148,14 @@ google_assistant:
       name: Breakfast Table Light
       expose: true
       room: Kitchen
+    light.kitchen_overhead_lights:
+      name: Kitchen Overhead Lights
+      expose: true
+      room: Overhead Kitchen
+    light.front_door_light:
+      name: Front Door Light
+      expose: true
+      room: Outside
     switch.sonoff_1:
       name: Sitting Room Lamp
       expose: true
