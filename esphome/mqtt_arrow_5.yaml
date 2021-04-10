@@ -29,24 +29,10 @@ sensor:
       name: "Arrow 5 Humidity"
     update_interval: 120s
 
-output:
-  - platform: esp8266_pwm
-    pin: D1
-    id: redgpio
-  - platform: esp8266_pwm
-    pin: D2
-    id: greengpio
-  - platform: esp8266_pwm
-    pin: D3
-    id: bluegpio
-
-light:
-  - platform: rgb
-    name: Arrow 5 Alert Light
-    red: redgpio
-    green: greengpio
-    blue: bluegpio
-
 switch:
   - platform: restart
     name: Arrow 5 Restart
+  - platform: gpio
+    pin: GPIO2
+    name: Arrow 5 Status LED
+    inverted: true

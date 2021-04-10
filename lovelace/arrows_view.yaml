@@ -31,7 +31,7 @@ cards:
     title: Arrow 5
     show_header_toggle: false
     entities:
-      - light.arrow_5_alert_light
+      - light.arrow_5_status_led
       - binary_sensor.arrow_5_button
       - sensor.arrow_5_humidity
       - switch.arrow_5_restart
