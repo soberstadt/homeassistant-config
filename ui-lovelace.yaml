@@ -1,11 +1,5 @@
 title: Oberstadt Home
 excluded_entities:
-# custom_header:
-#   compact_mode: true
-#   hide_tabs:
-#     - 6
-#   hide_help: true
-#   hide_config: true
 views:
   - title: Home
     icon: mdi:home
@@ -427,6 +421,10 @@ views:
           - sensor.spacex_next_launch_site
           - sensor.spacex_next_landing_type
           - sensor.spacex_next_rocket
+      - type: custom:googletimers-card
+        entity: sensor.kitchen_speaker_timers
+        alarms_entry: sensor.kitchen_speaker_alarms
+        title: Kitchen Timers
   - !include lovelace/arrows_view.yaml
   - !include lovelace/automations_view.yaml
   - title: wifi

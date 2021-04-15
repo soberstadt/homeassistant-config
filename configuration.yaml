@@ -22,7 +22,7 @@ lovelace:
   mode: yaml
   resources:
     # cards loaded via hacs
-    - url: /hacsfiles/custom-header/custom-header.js
+    - url: /hacsfiles/google_home_timers_card/googletimers-card.js
       type: module
     - url: /hacsfiles/lovelace-thermostat-card/main.js
       type: module
@@ -41,9 +41,6 @@ http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 
-# Checks for available updates
-updater:
-  include_used_components: true
 media_source:
 # Discover some devices automatically
 discovery:
