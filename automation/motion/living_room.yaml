@@ -65,6 +65,8 @@
         brightness_pct: 25
         transition: 3
     # turn cabnet lights on twice because they don't turn on to correct brightness
+    - delay:
+        milliseconds: 200
     - service: light.turn_on
       entity_id: light.kitchen_cabinet
       data:
