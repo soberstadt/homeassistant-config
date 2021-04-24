@@ -2,9 +2,3 @@ sensor.spacex_next_mission_name:
   icon: mdi:information-outline
 sensor.spacex_next_launch_date:
   icon: mdi:calendar
-sensor.spacex_next_launch_site:
-  icon: mdi:map-marker-radius
-sensor.spacex_next_landing_type:
-  icon: mdi:bullseye-arrow
-sensor.spacex_next_rocket:
-  icon: mdi:rocket
