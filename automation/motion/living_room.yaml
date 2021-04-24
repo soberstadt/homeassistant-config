@@ -64,6 +64,13 @@
         rgb_color: [63,12,0]
         brightness_pct: 25
         transition: 3
+    # turn cabnet lights on twice because they don't turn on to correct brightness
+    - service: light.turn_on
+      entity_id: light.kitchen_cabinet
+      data:
+        brightness: 15
+        white_value: 5
+        rgb_color: [255, 61, 0]
 
 - alias: Night - Light off after 20 min of no motion
   trigger:
