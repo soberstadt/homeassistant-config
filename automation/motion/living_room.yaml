@@ -55,7 +55,7 @@
     - service: light.turn_on
       entity_id: light.kitchen_cabinet
       data:
-        brightness: 40
+        brightness: 15
         white_value: 5
         rgb_color: [255, 61, 0]
     - service: light.turn_on

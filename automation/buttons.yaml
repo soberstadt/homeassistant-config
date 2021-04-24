@@ -1,21 +1,25 @@
-- alias: Nightstand Button - Short Press
+- alias: Nightstand Button
   trigger:
     - platform: state
       entity_id: binary_sensor.arrow_5_button
       to: 'on'
   action:
+  - wait_for_trigger:
+    - platform: state
+      entity_id: binary_sensor.arrow_5_button
+      to: 'off'
+    continue_on_timeout: true
+    timeout: 00:00:02
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ not wait.trigger }}'
+      sequence:
+      - service: script.good_night
+    default:
     - service: scene.turn_on
       entity_id: scene.darkroom
-
-- alias: Nightstand Button - Long Press
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.arrow_5_button
-      to: 'on'
-      for:
-        seconds: 4
-  action:
-    service: script.good_night
+  mode: single
 
 - alias: RF Button 1 - Left Action
   trigger:
