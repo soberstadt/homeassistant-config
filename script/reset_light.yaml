@@ -1,0 +1,19 @@
+reset_light:
+  fields:
+    entity_id:
+      description: "The light to reset"
+      example: "light.sink"
+    existing_state:
+      description: "If the light is on already or not"
+      example: "off"
+  sequence:
+    - service: light.turn_on
+      target:
+        entity_id: "{{ entity_id }}"
+      data:
+        brightness: 255
+    - condition: template
+      value_template: "{{ existing_state == 'off' }"
+    - delay: 3
+    - service: light.turn_off
+      entity_id: "{{ entity_id }}"
