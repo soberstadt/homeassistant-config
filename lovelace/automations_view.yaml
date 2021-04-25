@@ -36,8 +36,7 @@ cards:
   - type: entities
     title: Buttons
     entities:
-      - automation.nightstand_button_short_press
-      - automation.nightstand_button_long_press
+      - automation.nightstand_button
       - automation.rf_button_1_left_action
       - automation.rf_button_1_right_action
   - type: entities
@@ -64,7 +63,10 @@ cards:
     entities:
       - automation.morning_bedroom_white_noise_stop
       - automation.autoplay_jeopardy
+      - automation.alert_chromecast_idle
+      - automation.noti_action_roku_off
       - automation.roku_off_if_chromecast_doing_nothing
+      - automation.handle_tag_scan
   - type: entities
     title: Presence
     entities:
