@@ -38,12 +38,6 @@
       9d30b740-7eb0-488a-8310-bad55e94a6d6:
         media_content_id: media-source://media_source/local/dj_airhorn.mp3
         media_content_type: music
-      04-15-91-1A-9B-E7-25:
-        media_content_id: media-source://media_source/local/dj_airhorn.mp3
-        media_content_type: music
-      04-B1-C6-62-2F-64-80:
-        media_content_id: spotify:playlist:0OtWh3u6fZrBJTQtVBQWge
-        media_content_type: playlist
   trigger:
     platform: event
     event_type: tag_scanned
