@@ -11,35 +11,29 @@
       39ad9ea6f42dda4c991537f887333705: media_player.googlehome7312
     # Map tag ID to content
     tags:
-      e4d8f59a-38c9-4b05-8d18-a41d855ccde7:
+      04-15-91-1A-9B-E7-25:
         media_content_id: media-source://media_source/local/candy_cane_lane.mp3
         media_content_type: music
-      1e9e0e05-4441-4714-9edc-24d12de89aa5:
+      04-15-91-1A-66-77-25:
         media_content_id: media-source://media_source/local/blinding_lights.mp3
         media_content_type: music
-      1b8d673b-43bf-4adc-98b3-689c65ac5b89:
+      04-15-91-28-C4-E7-25:
         media_content_id: media-source://media_source/local/good_morning.mp3
         media_content_type: music
-      0b995b83-ee21-4561-884a-f6034a898463:
+      04-15-91-28-27-97-25:
         media_content_id: media-source://media_source/local/dj_airhorn.mp3
         media_content_type: music
-      b3c5f749-1274-41bf-8b00-d2377edaf328:
+      04-15-91-28-E1-AF-25:
         media_content_id: media-source://media_source/local/abc_song.m4a
         media_content_type: music
-      eebb5944-03aa-43c1-acf9-5d3c6891bd1a:
+      04-15-91-1A-54-32-25:
         media_content_id: media-source://media_source/local/thankfulness_song_medley.mp3
         media_content_type: music
-      6c952a2d-7dcb-45a3-adfe-37c805b71da4:
+      04-15-91-1A-2C-CF-25:
         media_content_id: media-source://media_source/local/jesus_loves_the_little_children.mp3
         media_content_type: music
-      5f377813-79bd-4dc1-8a3e-2af6cc81f62e:
+      04-15-91-1A-C6-36-25:
         media_content_id: media-source://media_source/local/jesus_loves_me.mp3
-        media_content_type: music
-      9d30b740-7eb0-488a-8310-bad55e94a6d6:
-        media_content_id: media-source://media_source/local/dj_airhorn.mp3
-        media_content_type: music
-      04-15-91-1A-9B-E7-25:
-        media_content_id: media-source://media_source/local/dj_airhorn.mp3
         media_content_type: music
       04-B1-C6-62-2F-64-80:
         media_content_id: spotify:playlist:0OtWh3u6fZrBJTQtVBQWge
