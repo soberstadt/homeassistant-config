@@ -16,4 +16,5 @@ reset_light:
       value_template: "{{ existing_state == 'off' }}"
     - delay: 3
     - service: light.turn_off
-      entity_id: "{{ entity_id }}"
+      target:
+        entity_id: "{{ entity_id }}"
