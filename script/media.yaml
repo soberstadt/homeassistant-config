@@ -47,8 +47,9 @@ wii:
 
 show_wifi_details:
   sequence:
-    - service: cast.show_lovelace_view
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.living_room_tv
       data:
-        dashboard_path: "lovelace-wifi"
-        entity_id: "media_player.living_room_tv"
-        view_path: "wifi"
+        media_content_type: "image/png"
+        media_content_id: !secret wifi_qr_url
