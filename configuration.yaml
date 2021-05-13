@@ -200,6 +200,10 @@ google_assistant:
     script.roku_play_pause:
       name: Roku Play Pause
       expose: true
+    script.show_wifi_details:
+      name: Show WIFI Details
+      expose: true
+      room: Living Room
   expose_by_default: false
 
 vesync:
