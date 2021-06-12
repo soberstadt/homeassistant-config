@@ -15,7 +15,7 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
-        temperature: 79
+        temperature: 77
         hvac_mode: cool
 
 - alias: Family Home
