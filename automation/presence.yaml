@@ -1,4 +1,5 @@
 - alias: Mark person as just arrived
+  mode: parallel
   trigger:
     - platform: state
       entity_id: device_tracker.spencer_phone
@@ -43,6 +44,7 @@
           {% endif %}
 
 - alias: Mark person as home
+  mode: parallel
   trigger:
     - platform: state
       entity_id: input_select.spencer_status_dropdown
@@ -79,6 +81,7 @@
         option: Home
 
 - alias: Mark person as just left
+  mode: parallel
   trigger:
     - platform: state
       entity_id: device_tracker.spencer_phone
@@ -118,6 +121,7 @@
           {% endif %}
 
 - alias: Mark person as away
+  mode: parallel
   trigger:
     - platform: state
       entity_id: input_select.spencer_status_dropdown
@@ -159,6 +163,7 @@
           {% endif %}
 
 - alias: Mark person as extended away
+  mode: parallel
   trigger:
     - platform: state
       entity_id: input_select.spencer_status_dropdown
@@ -201,6 +206,7 @@
         option: Extended Away
 
 - alias: Mark person at work
+  mode: parallel
   trigger:
     - platform: state
       entity_id: device_tracker.sm_g950u
@@ -238,6 +244,7 @@
           {% endif %}
 
 - alias: Mark person leaving work
+  mode: parallel
   trigger:
     - platform: state
       entity_id: device_tracker.sm_g950u
