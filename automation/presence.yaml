@@ -209,16 +209,16 @@
   mode: parallel
   trigger:
     - platform: state
-      entity_id: device_tracker.sm_g950u
+      entity_id: device_tracker.spencer_s_pixel_4
       to: "Work"
     - platform: state
-      entity_id: device_tracker.sm_g950u_2
+      entity_id: device_tracker.pixel_4a
       to: "Work"
   action:
     - service: input_select.select_option
       data_template:
         entity_id: >
-          {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
+          {% if trigger.entity_id == 'device_tracker.pixel_4a' %}
             input_select.lynsey_status_dropdown
           {% else %}
             input_select.spencer_status_dropdown
@@ -229,7 +229,7 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: >
-          {% if trigger.entity_id == 'device_tracker.sm_g950u_2' %}
+          {% if trigger.entity_id == 'device_tracker.spencer_s_pixel_4' %}
             {% if states.input_select.lynsey_status_dropdown.state in ['Work', 'Extended Away'] %}
               Work
             {% else %}
@@ -247,18 +247,18 @@
   mode: parallel
   trigger:
     - platform: state
-      entity_id: device_tracker.sm_g950u
+      entity_id: device_tracker.spencer_s_pixel_4
       from: "work"
       to: "away"
     - platform: state
-      entity_id: device_tracker.sm_g950u_2
+      entity_id: device_tracker.pixel_4a
       from: "work"
       to: "away"
   action:
     - service: input_select.select_option
       data_template:
         entity_id: >
-          {% if trigger.entity_id == 'device_tracker.sm_g950u' %}
+          {% if trigger.entity_id == 'device_tracker.pixel_4a' %}
             input_select.lynsey_status_dropdown
           {% else %}
             input_select.spencer_status_dropdown
@@ -269,7 +269,7 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: >
-          {% if trigger.entity_id == 'device_tracker.sm_g950u_2' %}
+          {% if trigger.entity_id == 'device_tracker.spencer_s_pixel_4' %}
             {% if states.input_select.lynsey_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
               Away
             {% else %}
