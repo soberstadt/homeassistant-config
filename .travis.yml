@@ -11,7 +11,7 @@ before_install:
   - sudo touch /ssl/privkey.pem
   - mv github_resources/secrets_redacted.yaml secrets.yaml
   - mv github_resources/google_account_redacted.json google_account.json
-  - sudo apt-get install libudev-dev av
+  - sudo apt-get install libudev-dev libswscale-dev libavfilter-dev libavdevice-dev
 
 install: pip3 install homeassistant
 
