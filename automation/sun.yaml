@@ -19,9 +19,5 @@
     entity_id: binary_sensor.sun_down
     to: 'off'
   action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.hass_theme
-        option: clear
     - service: light.turn_off
       entity_id: light.flux_lily_bedroom
