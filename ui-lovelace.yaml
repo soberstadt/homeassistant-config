@@ -273,7 +273,7 @@ views:
       - type: vertical-stack
         cards:
           - type: custom:mini-media-player
-            entity: media_player.googlehome7312
+            entity: media_player.kitchen_speaker
             icon: mdi:cast
           - type: custom:mini-media-player
             entity: media_player.bedroom_speaker

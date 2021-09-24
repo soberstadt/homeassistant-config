@@ -7,8 +7,8 @@
   variables:
     # Map scanner device ID to media player entity ID
     media_players:
-      d11f1280b68527bd: media_player.googlehome7312 # spencer's phone
-      522c53653c318531: media_player.googlehome7312 # lynsey's phone
+      d11f1280b68527bd: media_player.kitchen_speaker # spencer's phone
+      522c53653c318531: media_player.kitchen_speaker # lynsey's phone
       39ad9ea6f42dda4c991537f887333705: media_player.googlehome9316 # nfc scanner 1
     # Map tag ID to content
     tags:
