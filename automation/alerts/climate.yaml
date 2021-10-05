@@ -28,8 +28,8 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.arrow_2_temperature
-      above: 82
+      above: 83
   action:
     - service: notify.pushbullet
       data:
-        message: "Temperature above 82!"
+        message: "Temperature above 83!"
