@@ -1,7 +1,7 @@
 - alias: High Humidity
   trigger:
     - platform: numeric_state
-      entity_id: sensor.arrow_2_humidity
+      entity_id: sensor.house_mean_humidity
       above: 55
   action:
     - service: notify.pushbullet
@@ -11,7 +11,7 @@
 - alias: Climate - Too Hot (Family Home)
   trigger:
     - platform: numeric_state
-      entity_id: sensor.arrow_2_temperature
+      entity_id: sensor.house_mean_temperature
       above: 78.5
   action:
     - condition: state
@@ -27,7 +27,7 @@
 - alias: Climate - Too Hot (Family Away)
   trigger:
     - platform: numeric_state
-      entity_id: sensor.arrow_2_temperature
+      entity_id: sensor.house_mean_temperature
       above: 83
   action:
     - service: notify.pushbullet
