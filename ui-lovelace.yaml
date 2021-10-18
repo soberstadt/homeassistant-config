@@ -361,6 +361,7 @@ views:
           - script.clear_special_wakup
           - input_datetime.weekday_wakeup
           - input_datetime.weekend_wakeup
+          - input_datetime.lily_wakeup
           - input_datetime.bedtime
       - type: entities
         title: Speedtest

@@ -24,3 +24,23 @@
       entity_id: input_datetime.special_wakeup
       data:
         time: '00:00:00'
+
+- alias: Morning - Lily Wakeup Light
+  trigger:
+    platform: time_pattern
+    minutes: "/1"
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '04:00:00'
+        before: '12:00:00'
+      - condition: template
+        value_template: >
+          {{ states('sensor.time') == (state_attr('input_datetime.lily_wakeup', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}
+  action:
+    - service: light.turn_on
+      entity_id: light.flux_lily_bedroom
+      data:
+        rgb_color: [0, 255, 0]
+        brightness: 128
