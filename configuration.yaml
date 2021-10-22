@@ -86,11 +86,6 @@ zwave:
     light.ge_12724_3way_dimmer_switch_level:
       polling_intensity: 1
 
-device_tracker:
-  - platform: nmap_tracker
-    hosts: 192.168.0.100-180
-    scan_options: " -sn "
-
 mobile_app:
 
 map:
@@ -205,10 +200,6 @@ google_assistant:
       expose: true
       room: Living Room
   expose_by_default: false
-
-vesync:
-  username: !secret vesync_username
-  password: !secret vesync_password
 
 stream:
 
