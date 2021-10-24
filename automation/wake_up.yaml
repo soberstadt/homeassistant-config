@@ -43,4 +43,4 @@
       entity_id: light.flux_lily_bedroom
       data:
         rgb_color: [0, 255, 0]
-        brightness: 128
+        brightness: 96

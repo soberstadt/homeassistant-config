@@ -23,6 +23,9 @@
   action:
     - service: light.turn_on
       entity_id: light.flux_lily_bedroom
+      data:
+        rgb_color: [255, 36, 0]
+        brightness: 5
     - delay: 5
     - service: light.turn_on
       entity_id: light.flux_lily_bedroom
