@@ -1,4 +1,5 @@
 - alias: Stop Working
+  id: 7cf6716d-d428-4bc5-875d-07df003954ad
   trigger:
     platform: time
     at: "17:30:00"
@@ -7,10 +8,9 @@
     entity_id: binary_sensor.workday_sensor
     state: "on"
   action:
-    service: media.play_media
-    target:
-      entity_id: media_player.spotify
-    data:
-      media_content_id: "https://open.spotify.com/playlist/5xddIVAtLrZKtt4YGLM1SQ?si=YcvRqaKNTxOi043Qn4LYkg"
-      media_content_type: music
-
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.spotify_spencer_t_oberstadt
+      data:
+        media_content_id: https://open.spotify.com/track/1A5V1sxyCLpKJezp75tUXn?si=6e853fd210324b0a
+        media_content_type: music
