@@ -67,6 +67,7 @@ cards:
       - automation.noti_action_roku_off
       - automation.roku_off_if_chromecast_doing_nothing
       - automation.handle_tag_scan
+      - automation.stop_working
   - type: entities
     title: Presence
     entities:

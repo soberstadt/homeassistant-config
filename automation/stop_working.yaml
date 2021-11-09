@@ -1,0 +1,16 @@
+- alias: Stop Working
+  trigger:
+    platform: time
+    at: "17:30:00"
+  condition:
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: "on"
+  action:
+    service: media.play_media
+    target:
+      entity_id: media_player.spotify
+    data:
+      media_content_id: "https://open.spotify.com/playlist/5xddIVAtLrZKtt4YGLM1SQ?si=YcvRqaKNTxOi043Qn4LYkg"
+      media_content_type: music
+
