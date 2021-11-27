@@ -39,6 +39,7 @@
     - light.paper_lamp
     - light.buffet_lamp
     - light.sitting_room_couch
+    - light.wled_1
 - platform: group
   name: Dining Room Lights
   entities:

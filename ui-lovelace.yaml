@@ -171,6 +171,7 @@ views:
           - switch.teckin_6634
           - switch.sonoff_1
           - switch.meross_1
+          - light.wled_1
       - type: entities
         title: Extra
         entities:
