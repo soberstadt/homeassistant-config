@@ -35,8 +35,8 @@ pn532_spi:
   update_interval: 1s
   on_tag:
     then:
+      # https://esphome.io/components/binary_sensor/pn532.html#ndef-reading
       - homeassistant.tag_scanned: !lambda |
-          # https://esphome.io/components/binary_sensor/pn532.html#ndef-reading
           if (!tag.has_ndef_message()) {
             return x;
           }
