@@ -16,16 +16,16 @@ from meross_iot.model.http.exception import UnauthorizedException, BadLoginExcep
 from requests.exceptions import ConnectTimeout
 import re
 
-from .common import PLATFORM, CONF_STORED_CREDS, CONF_HTTP_ENDPOINT, CONF_MQTT_SKIP_CERT_VALIDATION, \
+from .common import DOMAIN, CONF_STORED_CREDS, CONF_HTTP_ENDPOINT, CONF_MQTT_SKIP_CERT_VALIDATION, \
     CONF_OPT_ENABLE_RATE_LIMITS, CONF_OPT_GLOBAL_RATE_LIMIT_MAX_TOKENS, CONF_OPT_GLOBAL_RATE_LIMIT_PER_SECOND, \
-    CONF_OPT_DEVICE_RATE_LIMIT_MAX_TOKENS, CONF_OPT_DEVICE_RATE_LIMIT_PER_SECOND, CONF_OPT_DEVICE_MAX_COMMAND_QUEUE
+    CONF_OPT_DEVICE_RATE_LIMIT_MAX_TOKENS, CONF_OPT_DEVICE_RATE_LIMIT_PER_SECOND, CONF_OPT_DEVICE_MAX_COMMAND_QUEUE, \
+    HTTP_API_RE
 
 _LOGGER = logging.getLogger(__name__)
 PARALLEL_UPDATES = 1
-HTTP_API_RE = re.compile("(http:\/\/|https:\/\/)?([^:]+)(:([0-9]+))?")
 
 
-class MerossFlowHandler(config_entries.ConfigFlow, domain=PLATFORM):
+class MerossFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle Meross config flow."""
 
     VERSION = 1
@@ -195,26 +195,32 @@ class MerossFlowHandler(config_entries.ConfigFlow, domain=PLATFORM):
             )
 
         # TODO: Test MQTT connection?
-
-        await self.async_set_unique_id(http_api_endpoint)
-        self._abort_if_unique_id_configured()
-
-        return self.async_create_entry(
-            title=user_input[CONF_HTTP_ENDPOINT],
-            data={
-                CONF_USERNAME: username,
-                CONF_PASSWORD: password,
-                CONF_HTTP_ENDPOINT: http_api_endpoint,
-                CONF_STORED_CREDS: {
-                    "token": creds.token,
-                    "key": creds.key,
-                    "user_id": creds.user_id,
-                    "user_email": creds.user_email,
-                    "issued_on": creds.issued_on.isoformat(),
-                },
-                CONF_MQTT_SKIP_CERT_VALIDATION: skip_cert_validation
+        data = {
+            CONF_USERNAME: username,
+            CONF_PASSWORD: password,
+            CONF_HTTP_ENDPOINT: http_api_endpoint,
+            CONF_STORED_CREDS: {
+                "token": creds.token,
+                "key": creds.key,
+                "user_id": creds.user_id,
+                "user_email": creds.user_email,
+                "issued_on": creds.issued_on.isoformat(),
             },
-        )
+            CONF_MQTT_SKIP_CERT_VALIDATION: skip_cert_validation
+        }
+        entry = await self.async_set_unique_id(http_api_endpoint)
+
+        # If this is a re-auth for an existing entry, just update the entry configuration.
+        if entry is not None:
+            self._abort_if_unique_id_configured(updates=data, reload_on_update=True)  # No more needed
+            await self.hass.config_entries.async_reload(entry.entry_id)
+
+        # Otherwise create a new entry from scratch
+        else:
+            return self.async_create_entry(
+                title=user_input[CONF_HTTP_ENDPOINT],
+                data=data
+            )
 
     @staticmethod
     @callback
@@ -256,7 +262,8 @@ class MerossOptionsFlowHandler(config_entries.OptionsFlow):
                 title="",
                 data={k: v for k, v in user_input.items() if v not in (None, "")},
             )
-        
+
+        saved_options = {}
         if self.config_entry is not None:
             saved_options = self.config_entry.options
 
