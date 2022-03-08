@@ -211,9 +211,6 @@ camera:
   - platform: ffmpeg
     input: !secret front_door_camera_url
     name: Front Door
-  - platform: ffmpeg
-    input: !secret kitchen_camera_url
-    name: Kitchen
 
 input_boolean:
   guest_mode:

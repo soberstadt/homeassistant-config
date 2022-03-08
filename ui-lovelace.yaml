@@ -124,12 +124,6 @@ views:
         camera_view: live
         entities:
           - camera.front_door
-      - type: picture-glance
-        title: Kitchen
-        camera_image: camera.kitchen
-        camera_view: live
-        entities:
-          - camera.kitchen
       - type: markdown
         content: |
           ## Lily's Door {{ states('input_select.lily_door_status_dropdown') }} For
