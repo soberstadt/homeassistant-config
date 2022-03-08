@@ -1,5 +1,5 @@
 - platform: workday
-  country: USA
+  country: US
   province: FL
 
 - platform: template
