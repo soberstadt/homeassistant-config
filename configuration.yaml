@@ -80,12 +80,6 @@ cover: !include ./configuration/cover.yaml
 tts:
   platform: google_translate
 
-zwave:
-  usb_path: /dev/ttyACM0
-  device_config:
-    light.ge_12724_3way_dimmer_switch_level:
-      polling_intensity: 1
-
 mobile_app:
 
 map:
