@@ -209,7 +209,7 @@
   mode: parallel
   trigger:
     - platform: state
-      entity_id: device_tracker.spencer_s_pixel_4
+      entity_id: device_tracker.spencers_pixel_5
       to: "Work"
     - platform: state
       entity_id: device_tracker.pixel_4a
@@ -229,7 +229,7 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: >
-          {% if trigger.entity_id == 'device_tracker.spencer_s_pixel_4' %}
+          {% if trigger.entity_id == 'device_tracker.spencers_pixel_5' %}
             {% if states.input_select.lynsey_status_dropdown.state in ['Work', 'Extended Away'] %}
               Work
             {% else %}
@@ -247,7 +247,7 @@
   mode: parallel
   trigger:
     - platform: state
-      entity_id: device_tracker.spencer_s_pixel_4
+      entity_id: device_tracker.spencers_pixel_5
       from: "work"
       to: "away"
     - platform: state
@@ -269,7 +269,7 @@
       data_template:
         entity_id: input_select.family_status_dropdown
         option: >
-          {% if trigger.entity_id == 'device_tracker.spencer_s_pixel_4' %}
+          {% if trigger.entity_id == 'device_tracker.spencers_pixel_5' %}
             {% if states.input_select.lynsey_status_dropdown.state in ['Away', 'Work', 'Extended Away'] %}
               Away
             {% else %}

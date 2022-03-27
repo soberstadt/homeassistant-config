@@ -25,7 +25,7 @@
     for:
       minutes: 15
   action:
-    - service: notify.mobile_app_spencer_s_pixel_4
+    - service: notify.mobile_app_spencer_s_pixel_5
       data:
         title: Alert
         message: Chromecast idle for 15 minutes

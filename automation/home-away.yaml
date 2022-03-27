@@ -32,14 +32,14 @@
     - service: climate.set_temperature
       data_template:
         entity_id: climate.2gig_technologies_ct101_thermostat_iris_mode
-        temperature: '{{ states.input_number.home_temperature.state | int }}'
+        temperature: "{{ states.input_number.home_temperature.state | int }}"
         hvac_mode: cool
 
 - alias: Return to Neighborhood
   mode: parallel
   trigger:
     - platform: state
-      entity_id: device_tracker.spencer_s_pixel_4
+      entity_id: device_tracker.spencers_pixel_5
       to: "Neighborhood"
     - platform: state
       entity_id: device_tracker.pixel_4a
