@@ -26,6 +26,6 @@ I have a series of ESP8266 boards that serve as sensors around the house. Here t
 
 ## mqtt_arrow_5
 
-| Room     | Firmware | source                                 | purpose                   | hardware |
-| -------- | -------- | -------------------------------------- | ------------------------- | -------- |
-| Bed Room | esphome  | [Source](../esphome/mqtt_arrow_5.yaml) | House light switch button | D1 Mini  |
+| Room    | Firmware | source                                 | purpose                   | hardware |
+| ------- | -------- | -------------------------------------- | ------------------------- | -------- |
+| Bedroom | esphome  | [Source](../esphome/mqtt_arrow_5.yaml) | House light switch button | D1 Mini  |

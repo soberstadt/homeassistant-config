@@ -10,7 +10,7 @@
 
 - platform: time_date
   display_options:
-    - 'time'
+    - "time"
 - platform: uptime
   name: HA Uptime
 
@@ -29,9 +29,6 @@
     spacex_next_mission_name:
       friendly_name: "Next Launch Mission Name"
       value_template: '{{ states.sensor.spacex.attributes["name"] }}'
-
-    roku_source:
-      value_template: "{{ states.media_player.roku.attributes.source }}"
 
     arrow_2_real_feel:
       friendly_name: "Arrow 2 Real Feel"
@@ -97,11 +94,11 @@
 - platform: history_stats
   name: Lily Sleep Today
   entity_id: input_select.lily_door_status_dropdown
-  state: 'Closed'
+  state: "Closed"
   type: time
   duration:
     hours: 24
-  end: '{{ now() }}'
+  end: "{{ now() }}"
 
 - platform: systemmonitor
   resources:
