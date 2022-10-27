@@ -1,18 +1,27 @@
 esphome:
-  name: nfc_reader_1
-  platform: ESP8266
+  name: nfc-reader-1
+
+esp8266:
   board: d1_mini
 
 wifi:
-  ssid: !secret mqtt_wifi_ssid
-  password: !secret mqtt_wifi_password
-  fast_connect: on
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Nfc-Reader-1 Fallback Hotspot"
+    password: "8uxbAa114mG1"
 
 # Enable logging
 logger:
 
 # Enable Home Assistant API
 api:
+  encryption:
+    key: "XiGg7ua9EMiPuJOwq/MYQdqThFZcxDzYm3PXO8jX8cg="
+
+captive_portal:
 
 ota:
   password: !secret mqtt_password
